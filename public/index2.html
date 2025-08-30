@@ -13,7 +13,7 @@
     :root {
       --bg: #000100;
       --card: #717170;
-      --text: #fdfdfd;       /* whiter text */
+      --text: #fdfdfd;       /* whiter text in dark mode */
       --muted: #e0e0e0;      /* neutral muted */
       --accent: #c12331;
       --accent-2: #ff8a00;
@@ -25,7 +25,7 @@
       font-family: "Open Sans", Arial, sans-serif; 
       background: var(--bg); 
       color: var(--text); 
-      border: 1px solid var(--accent-2);   /* bright orange border flush to edges */
+      border: 2px solid var(--accent-2);   /* thin orange border flush to edges */
     }
 
     header { padding: 64px 20px 32px; text-align: center; }
@@ -95,13 +95,26 @@
 
     footer {
       text-align: center;
-      color: #ffffff;    /* always white */
+      color: var(--text);   /* dynamic: white in dark mode, black in light */
       font-size: .92rem;
       padding: 28px 16px;
     }
 
-    body.light { --bg: #f8fafc; --card: #ffffff; --text: #0b1220; --muted: #475569; --ring: rgba(0,0,0,0.08); }
-    .theme-toggle { position: fixed; top: 16px; right: 16px; z-index: 1000; background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: white; border: none; padding: 8px 14px; border-radius: 6px; font-weight: 800; cursor: pointer; }
+    /* Light mode overrides */
+    body.light {
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --text: #000000;     /* black text in light mode */
+      --muted: #475569;
+      --ring: rgba(0,0,0,0.08);
+    }
+
+    .theme-toggle { 
+      position: fixed; top: 16px; right: 16px; z-index: 1000; 
+      background: linear-gradient(135deg, var(--accent), var(--accent-2)); 
+      color: white; border: none; padding: 8px 14px; border-radius: 6px; 
+      font-weight: 800; cursor: pointer; 
+    }
 
     @media (max-width: 480px) {
       .cta-row { margin-top: 36px; }
@@ -177,7 +190,16 @@
       <!-- Next Up -->
       <aside class="card">
         <h2>Next Up</h2>
-        <div class="embed-wrap" style="text-align:center; padding:30px;">
+        <p style="font-size:1.05rem; font-weight:600; margin:0 0 8px;">
+          Toronto CISO Open Mic
+        </p>
+        <p style="color:var(--muted); margin:0 0 16px;">
+          September 24, 2025 · 6:00–9:00 PM ET
+        </p>
+        <p style="color:var(--muted); margin:0 0 20px;">
+          Join CISOs and security leaders for an evening of candid discussions and peer learning.
+        </p>
+        <div class="embed-wrap" style="text-align:center; padding:20px;">
           <a href="https://lu.ma/event/evt-tYYm8prjk6J5TjD"
              class="luma-checkout--button"
              data-luma-action="checkout"
