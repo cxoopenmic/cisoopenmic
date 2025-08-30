@@ -122,11 +122,22 @@
       --ring: rgba(0,0,0,0.08);
     }
 
+    /* Neutral theme toggle */
     .theme-toggle { 
-      position: fixed; top: 16px; right: 16px; z-index: 1000; 
-      background: linear-gradient(135deg, var(--accent), var(--accent-2)); 
-      color: white; border: none; padding: 8px 14px; border-radius: 6px; 
-      font-weight: 800; cursor: pointer; 
+      position: fixed; top: 16px; right: 16px; z-index: 1000;
+      background: var(--muted);
+      color: var(--bg);
+      border: none;
+      padding: 8px 14px;
+      border-radius: 6px;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      transition: background 0.3s, color 0.3s;
+    }
+    .theme-toggle:hover {
+      background: var(--text);
+      color: var(--bg);
     }
 
     @media (max-width: 480px) {
@@ -200,7 +211,7 @@
         </script>
       </section>
 
-      <!-- Next Up (B + C + D combined) -->
+      <!-- Next Up -->
       <aside class="card">
         <h2>Next Up</h2>
 
