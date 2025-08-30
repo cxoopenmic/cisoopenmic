@@ -106,6 +106,25 @@
     .divider { border: none; border-top: 1px solid var(--ring); margin: 16px 0; }
     .highlights { color: var(--muted); font-size: 0.95rem; padding-left: 18px; margin: 0 0 20px; }
 
+    /* Sponsors section */
+    .sponsors { text-align: center; margin-top: 32px; }
+    .sponsor-logos {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+    }
+    .sponsor-logos img {
+      max-height: 60px;
+      object-fit: contain;
+      filter: brightness(0) invert(1); /* white logos in dark mode */
+      transition: filter 0.3s;
+    }
+    body.light .sponsor-logos img {
+      filter: none; /* normal logos in light mode */
+    }
+
     footer {
       text-align: center;
       color: var(--text);   /* dynamic: white in dark mode, black in light */
@@ -244,19 +263,39 @@
         </div>
       </aside>
     </div>
+
+    <!-- Sponsors Section -->
+    <section class="card sponsors">
+      <h2>Our Sponsors</h2>
+      <div class="sponsor-logos">
+        <img src="assets/sponsor1.png" alt="Sponsor 1">
+        <img src="assets/sponsor2.png" alt="Sponsor 2">
+        <img src="assets/sponsor3.png" alt="Sponsor 3">
+      </div>
+    </section>
   </main>
 
   <footer>© 2025 CISO Open Mic</footer>
 
-  <!-- Script for contextual toggle -->
+  <!-- Script for contextual toggle with system preference detection -->
   <script>
     const toggleBtn = document.getElementById('theme-toggle');
+
+    // On load: respect system preference
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+      document.body.classList.add('light');
+      toggleBtn.textContent = 'Dark';  // Light mode active → option is Dark
+    } else {
+      toggleBtn.textContent = 'Light'; // Dark mode active → option is Light
+    }
+
+    // Toggle on click
     toggleBtn.addEventListener('click', () => {
       document.body.classList.toggle('light');
       if (document.body.classList.contains('light')) {
-        toggleBtn.textContent = 'Dark';   // in Light mode, option is Dark
+        toggleBtn.textContent = 'Dark';
       } else {
-        toggleBtn.textContent = 'Light';  // in Dark mode, option is Light
+        toggleBtn.textContent = 'Light';
       }
     });
   </script>
