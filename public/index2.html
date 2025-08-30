@@ -93,6 +93,19 @@
       border-bottom: 1px solid var(--accent-2);
     }
 
+    /* Extra styling for "Next Up" content */
+    .event-info {
+      background: rgba(0,0,0,0.25);
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid var(--ring);
+      margin-bottom: 16px;
+    }
+    .event-title { font-size: 1.05rem; font-weight: 700; margin: 0; }
+    .event-meta { color: var(--muted); margin: 4px 0 0; }
+    .divider { border: none; border-top: 1px solid var(--ring); margin: 16px 0; }
+    .highlights { color: var(--muted); font-size: 0.95rem; padding-left: 18px; margin: 0 0 20px; }
+
     footer {
       text-align: center;
       color: var(--text);   /* dynamic: white in dark mode, black in light */
@@ -187,18 +200,26 @@
         </script>
       </section>
 
-      <!-- Next Up -->
+      <!-- Next Up (B + C + D combined) -->
       <aside class="card">
         <h2>Next Up</h2>
-        <p style="font-size:1.05rem; font-weight:600; margin:0 0 8px;">
-          Toronto CISO Open Mic
-        </p>
-        <p style="color:var(--muted); margin:0 0 16px;">
-          September 24, 2025 · 6:00–9:00 PM ET
-        </p>
-        <p style="color:var(--muted); margin:0 0 20px;">
-          Join CISOs and security leaders for an evening of candid discussions and peer learning.
-        </p>
+
+        <!-- Mini-card with name, date/time, location -->
+        <div class="event-info">
+          <p class="event-title">Toronto CISO Open Mic</p>
+          <p class="event-meta">September 24, 2025 · 6:00–9:00 PM ET</p>
+          <p class="event-meta">📍 The National Club · Toronto</p>
+        </div>
+
+        <!-- Divider + highlights -->
+        <hr class="divider">
+        <ul class="highlights">
+          <li>Networking with CISOs and security leaders</li>
+          <li>Interactive Open Mic format</li>
+          <li>Drinks & light dinner provided</li>
+        </ul>
+
+        <!-- Register button -->
         <div class="embed-wrap" style="text-align:center; padding:20px;">
           <a href="https://lu.ma/event/evt-tYYm8prjk6J5TjD"
              class="luma-checkout--button"
