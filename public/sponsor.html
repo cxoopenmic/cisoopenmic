@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sponsorship — CISO Open Mic</title>
+  <meta name="description" content="Sponsor CISO Open Mic — connect with CISOs and security leaders across major North American cities."/>
+  <link rel="icon" href="assets/favicon.ico" type="image/x-icon"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root { --bg:#000100; --card:#717170; --text:#fdfdfd; --muted:#e0e0e0; --accent:#c12331; --accent-2:#ff8a00; --ring:rgba(255,255,255,0.08); }
+    body { margin:0; font-family:"Open Sans",Arial,sans-serif; background:var(--bg); color:var(--text); border:2px solid var(--accent-2); }
+
+    /* Top-left static nav */
+    .top-nav { display:flex; gap:14px; padding:12px 16px; }
+    .top-nav a { color:var(--muted); font-weight:600; text-decoration:none; transition:color .2s,border-bottom .2s; }
+    .top-nav a:hover { color:var(--accent-2); border-bottom:2px solid var(--accent-2); padding-bottom:2px; }
+
+    header { padding:56px 20px 24px; text-align:center; }
+    .brand { display:inline-flex; align-items:center; gap:14px; margin-bottom:8px; }
+    .brand img.logo { width:72px; height:72px; border-radius:50%; object-fit:cover; border:none; box-shadow:0 6px 18px rgba(0,0,0,0.35); }
+    h1 { font-size:clamp(28px,4vw,40px); margin:0; line-height:1.15; background:linear-gradient(135deg,var(--accent),var(--accent-2)); -webkit-background-clip:text; background-clip:text; color:transparent; }
+    .tagline { color:var(--muted); margin-top:10px; }
+
+    /* Unified buttons (also matches Lu.ma checkout) */
+    .btn, .luma-checkout--button {
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #fff !important;
+      padding: 12px 18px !important;
+      border-radius: 8px !important;
+      font-weight: 700 !important;
+      font-size: 1rem !important;
+      text-decoration: none !important;
+      display: inline-flex !important;
+      align-items: center; justify-content: center;
+      line-height: 1.2;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.25);
+      border: none !important;
+      cursor: pointer;
+    }
+
+    .cta-row { display:flex; justify-content:center; gap:12px; flex-wrap:wrap; margin-top:18px; }
+
+    main { max-width:1100px; margin:0 auto; padding:0 32px 64px; }
+    .grid { display:grid; gap:20px; grid-template-columns:1fr; }
+    .card { background:var(--card); border-radius:14px; padding:18px; border:1px solid var(--ring); }
+    .card h2 { margin:0 0 10px; font-size:1.25rem; }
+    .card a { color:var(--accent); font-weight:600; text-decoration:none; border-bottom:1px dashed var(--accent); }
+    .card a:hover { color:var(--accent-2); border-bottom:1px solid var(--accent-2); }
+
+    .stats { display:flex; flex-wrap:wrap; gap:10px; margin-top:8px; }
+    .pill { background:rgba(0,0,0,0.25); border:1px solid var(--ring); padding:10px 12px; border-radius:999px; font-weight:600; }
+
+    @media (min-width:980px){ .twocol { display:grid; grid-template-columns:1fr 1fr; gap:20px; } }
+
+    .tiers { display:grid; gap:16px; grid-template-columns:1fr; }
+    @media (min-width:980px){ .tiers { grid-template-columns:repeat(3,1fr); } }
+    .tier { background:rgba(0,0,0,0.25); border:1px solid var(--ring); border-radius:12px; padding:16px; }
+    .price { font-weight:800; font-size:1.1rem; margin:6px 0 10px; }
+    .tier ul { margin:0; padding-left:18px; color:var(--muted); }
+    .tier h3 { margin:0; }
+
+    .logo-specs { display:grid; gap:12px; grid-template-columns:1fr; }
+    @media (min-width:980px){ .logo-specs { grid-template-columns:1fr 1fr; } }
+    .spec-item { background:rgba(0,0,0,0.25); border:1px solid var(--ring); border-radius:10px; padding:12px; }
+
+    footer { text-align:center; color:var(--text); font-size:.92rem; padding:28px 16px; margin-top:24px; border-top:1px solid var(--ring); }
+
+    body.light { --bg:#f8fafc; --card:#ffffff; --text:#000000; --muted:#475569; --ring:rgba(0,0,0,0.08); }
+
+    .theme-toggle { position:fixed; top:16px; right:16px; z-index:1000; background:var(--muted); color:var(--bg); border:none; padding:8px 14px; border-radius:6px; font-weight:800; cursor:pointer; box-shadow:0 2px 6px rgba(0,0,0,0.2); transition:background .3s,color .3s; }
+    .theme-toggle:hover { background:var(--text); color:var(--bg); }
+    .center { text-align:center; }
+  </style>
+</head>
+<body>
+  <button id="theme-toggle" class="theme-toggle">Light</button>
+
+  <!-- Static nav -->
+  <nav class="top-nav">
+    <a href="index.html">Events</a>
+    <a href="how-it-works.html">How it Works</a>
+    <a href="sponsorship.html">Sponsorship</a>
+  </nav>
+
+  <header>
+    <div class="brand">
+      <img src="assets/logo.png" alt="CISO Open Mic logo" class="logo"/>
+      <h1>Sponsorship</h1>
+    </div>
+    <div class="tagline">Partner with CISO Open Mic to reach a focused audience of CISOs and security leaders.</div>
+    <div class="cta-row">
+      <a class="btn" href="assets/CISO-Open-Mic-Sponsorship-Prospectus.pdf" target="_blank" rel="noopener">Download Prospectus (PDF)</a>
+      <a class="btn" href="mailto:sponsor@cisoopenmic.org?subject=Sponsorship%20Inquiry">Email Us</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="grid">
+      <section class="card twocol">
+        <div>
+          <h2>Audience Snapshot</h2>
+          <div class="stats">
+            <div class="pill">Primary: CISOs, VP/Head of Security</div>
+            <div class="pill">Company Size: 200–10k+</div>
+            <div class="pill">Industries: SaaS, Finance, Retail, Healthcare</div>
+            <div class="pill">Geography: Toronto, Montreal, NYC (expanding)</div>
+            <div class="pill">Avg. Attendees: 60–120</div>
+            <div class="pill">Community: 1,200+ (growing)</div>
+          </div>
+          <p style="color:var(--muted); margin-top:8px;">High-signal, vendor-neutral discussions with a senior, practitioner-led crowd.</p>
+        </div>
+        <div>
+          <h2>Event Format</h2>
+          <ul style="color:var(--muted); padding-left:18px; margin-top:6px;">
+            <li>Evening events (2.5–3 hours): networking + Open Mic</li>
+            <li>Host intro, 2–3 prompts, audience-led discussion</li>
+            <li>No decks, no pitches. Food & beverages included.</li>
+            <li>Recurring series across multiple cities</li>
+          </ul>
+          <div class="center" style="margin-top:8px;">
+            <a class="btn" href="https://lu.ma/cal-hw6M9gTyUBMNupW" target="_blank" rel="noopener">See Upcoming Cities</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Sponsorship Tiers</h2>
+        <div class="tiers">
+          <div class="tier">
+            <h3>Title Sponsor</h3>
+            <div class="price">$10,000 / event</div>
+            <ul>
+              <li>“Presented by” branding across page, signage, and emails</li>
+              <li>Welcome remarks (2–3 minutes, no pitch)</li>
+              <li>Lead list (opt-in registrants & attendees)</li>
+              <li>Premium table/booth placement</li>
+              <li>4 complimentary passes</li>
+            </ul>
+          </div>
+          <div class="tier">
+            <h3>Supporting Sponsor</h3>
+            <div class="price">$5,000 / event</div>
+            <ul>
+              <li>Logo on page, signage, emails</li>
+              <li>MC mention and thank-you</li>
+              <li>Lead list (opt-in attendees)</li>
+              <li>2 complimentary passes</li>
+            </ul>
+          </div>
+          <div class="tier">
+            <h3>Community Partner</h3>
+            <div class="price">$2,000 / event</div>
+            <ul>
+              <li>Logo on page and signage</li>
+              <li>MC thank-you</li>
+              <li>1 complimentary pass</li>
+            </ul>
+          </div>
+        </div>
+        <p class="center" style="margin-top:16px;">
+          Need something different? <a href="mailto:sponsor@cisoopenmic.org?subject=Custom%20Sponsorship">Ask about custom packages</a>.
+        </p>
+      </section>
+
+      <section class="card">
+        <h2>Logo & Asset Specs</h2>
+        <div class="logo-specs">
+          <div class="spec-item">
+            <strong>File Types:</strong> SVG (preferred), PNG (transparent), high-res JPG<br/>
+            <strong>Color:</strong> Full-color + white version for dark mode
+          </div>
+          <div class="spec-item">
+            <strong>Size Guidance:</strong> 240–320px wide on web; print varies by venue<br/>
+            <strong>Deadline:</strong> 10 business days before event
+          </div>
+        </div>
+      </section>
+
+      <section class="card center">
+        <h2>Ready to Sponsor?</h2>
+        <p class="tagline">We’ll help you pick the right city and format.</p>
+        <div class="cta-row">
+          <a class="btn" href="assets/CISO-Open-Mic-Sponsorship-Prospectus.pdf" target="_blank" rel="noopener">Download Prospectus</a>
+          <a class="btn" href="mailto:sponsor@cisoopenmic.org?subject=Sponsorship%20Inquiry">Contact Us</a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>© 2025 CISO Open Mic</footer>
+
+  <script>
+    const toggleBtn = document.getElementById('theme-toggle');
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+      document.body.classList.add('light'); toggleBtn.textContent = 'Dark';
+    } else { toggleBtn.textContent = 'Light'; }
+    toggleBtn.addEventListener('click', () => {
+      document.body.classList.toggle('light');
+      toggleBtn.textContent = document.body.classList.contains('light') ? 'Dark' : 'Light';
+    });
+  </script>
+</body>
+</html>
