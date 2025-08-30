@@ -63,6 +63,12 @@
 
     .embed-wrap { background:transparent; border:none; padding:0; min-height:auto; }
     .luma-calendar-embed { width:100%; min-height:420px; display:block; }
+
+    /* Helper note under calendar */
+    .embed-note { margin-top: 10px; font-size: .95rem; color: var(--muted); }
+    .embed-note a { color: var(--muted); text-decoration: underline; text-underline-offset: 2px; border: none; }
+    .embed-note a:hover { color: var(--accent-2); }
+
     .card a { color:var(--accent); font-weight:600; text-decoration:none; border-bottom:1px dashed var(--accent); }
     .card a:hover { color:var(--accent-2); border-bottom:1px solid var(--accent-2); }
 
@@ -115,17 +121,56 @@
 
   <main>
     <div class="grid">
+      <!-- Upcoming Events -->
       <section class="card">
         <h2>Upcoming Events</h2>
         <div class="embed-wrap">
+          <!-- Primary embed -->
           <script src="https://embed.lu.ma/calendar.js"></script>
           <div id="luma-cal" class="luma-calendar-embed"
                data-calendar-id="cal-hw6M9gTyUBMNupW"
                data-default-view="list"
                data-show-search="false"></div>
+
+          <!-- Fallback iframe -->
+          <div id="luma-cal-fallback" style="display:none;">
+            <iframe
+              src="https://lu.ma/embed/calendar/cal-hw6M9gTyUBMNupW/events"
+              width="600" height="520" frameborder="0"
+              style="border: 1px solid var(--ring); border-radius: 8px; width:100%;"
+              loading="lazy" allowfullscreen>
+            </iframe>
+          </div>
+
+          <!-- Always-visible note -->
+          <p class="embed-note">
+            If the calendar doesn’t load, you can
+            <a href="https://lu.ma/cal-hw6M9gTyUBMNupW" target="_blank" rel="noopener">open it on Lu.ma</a>.
+          </p>
+
+          <noscript>
+            <p class="embed-note">
+              JavaScript is required to load the calendar. You can
+              <a href="https://lu.ma/cal-hw6M9gTyUBMNupW" target="_blank" rel="noopener">open it on Lu.ma</a>.
+            </p>
+          </noscript>
         </div>
+
+        <script>
+          // Show fallback if Lu.ma doesn’t inject
+          setTimeout(function () {
+            var host = document.getElementById('luma-cal');
+            var fallback = document.getElementById('luma-cal-fallback');
+            var rendered = host && host.querySelector('iframe');
+            if (!rendered && fallback) {
+              fallback.style.display = 'block';
+              if (host) host.style.display = 'none';
+            }
+          }, 2000);
+        </script>
       </section>
 
+      <!-- Next Up -->
       <aside class="card">
         <h2>Next Up</h2>
         <div class="event-info">
