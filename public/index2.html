@@ -30,36 +30,52 @@
     @media (min-width: 980px){ .grid { grid-template-columns: 1.2fr 0.8fr; } }
     .card { background: var(--card); border-radius: 14px; padding: 18px; }
     .card h2 { margin: 0 0 10px; font-size: 1.25rem; }
+
+    /* NEW: ensure Lu.ma calendar has space and expands */
+    .embed-wrap {
+      background: #0c1e39;
+      border: 1px dashed rgba(255, 255, 255, 0.15);
+      border-radius: 10px;
+      padding: 12px;
+      min-height: 420px;
+    }
+    .luma-calendar-embed {
+      width: 100%;
+      min-height: 420px;
+      display: block;
+    }
+
     iframe { max-width: 100%; }
     footer { text-align: center; color: #9fb3c8; font-size: .92rem; padding: 28px 16px; }
     body.light { --bg: #f8fafc; --card: #ffffff; --text: #0b1220; --muted: #475569; --ring: rgba(0,0,0,0.08); }
     .theme-toggle { position: fixed; top: 16px; right: 16px; z-index: 1000; background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: white; border: none; padding: 8px 14px; border-radius: 6px; font-weight: 800; cursor: pointer; }
-  h1 { line-height: 1.15; }                 /* prevent title from collapsing */
-.tagline { display: block; margin-top: 12px; }
 
-.cta-row {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  flex-wrap: wrap;
-  margin-top: 36px;                       /* was 20px — gives more space */
-}
+    h1 { line-height: 1.15; }                 /* prevent title from collapsing */
+    .tagline { display: block; margin-top: 12px; }
 
-.btn {
-  display: inline-flex;                   /* ensures proper layout */
-  line-height: 1.2;                       /* avoids tall-font overlap */
-}
+    .cta-row {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 36px;
+    }
 
-/* Extra breathing room on small screens */
-@media (max-width: 480px) {
-  .cta-row { margin-top: 36px; }
-  header { padding-bottom: 40px; }        /* prevents any stacking collisions */
-}
-main {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 24px 32px 64px;  /* increase the left/right padding */
-}
+    .btn {
+      display: inline-flex;
+      line-height: 1.2;
+    }
+
+    @media (max-width: 480px) {
+      .cta-row { margin-top: 36px; }
+      header { padding-bottom: 40px; }
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 24px 32px 64px;
+    }
   </style>
 </head>
 <body>
@@ -70,18 +86,45 @@ main {
       <h1>CISO Open Mic</h1>
     </div>
     <div class="tagline">A forum for CISOs and security leaders to share, connect, and learn.</div>
-    <a class="btn" href="https://lu.ma/cal-hw6M9gTyUBMNupW" target="_blank">View All Events</a>
+
+    <!-- Wrap the CTA so spacing applies -->
+    <div class="cta-row">
+      <a class="btn" href="https://lu.ma/cal-hw6M9gTyUBMNupW" target="_blank" rel="noopener">View All Events</a>
+    </div>
   </header>
+
   <main>
     <div class="grid">
       <section class="card">
         <h2>Upcoming Events</h2>
-        <iframe src="https://lu.ma/embed/calendar/cal-hw6M9gTyUBMNupW/events" width="600" height="450" frameborder="0" style="border: 1px solid #bfcbda88; border-radius: 4px;" allowfullscreen="" aria-hidden="false" tabindex="0"
-></iframe>
+
+        <!-- REPLACED: script-based Lu.ma calendar embed -->
+        <div class="embed-wrap">
+          <script src="https://embed.lu.ma/calendar.js"></script>
+          <div class="luma-calendar-embed"
+               data-calendar-id="cal-hw6M9gTyUBMNupW"
+               data-default-view="list"
+               data-show-search="false">
+          </div>
+          <noscript>
+            <p style="color:#cbd5e1">
+              JavaScript is required to load the Lu.ma calendar.
+              <a href="https://lu.ma/cal-hw6M9gTyUBMNupW" target="_blank" rel="noopener">
+                Open the calendar directly
+              </a>.
+            </p>
+          </noscript>
+        </div>
       </section>
+
       <aside class="card">
         <h2>Next Up</h2>
-        <a href="https://lu.ma/event/evt-tYYm8prjk6J5TjD" class="luma-checkout--button" data-luma-action="checkout" data-luma-event-id="evt-tYYm8prjk6J5TjD">Register for Event</a>
+        <a href="https://lu.ma/event/evt-tYYm8prjk6J5TjD"
+           class="luma-checkout--button"
+           data-luma-action="checkout"
+           data-luma-event-id="evt-tYYm8prjk6J5TjD">
+          Register for Event
+        </a>
         <script id="luma-checkout" src="https://embed.lu.ma/checkout-button.js"></script>
       </aside>
     </div>
