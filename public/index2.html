@@ -16,10 +16,34 @@
     .brand { display:inline-flex; align-items:center; gap:14px; margin-bottom:8px; }
     .brand img.logo { width:112px; height:112px; border-radius:50%; object-fit:cover; border:none; box-shadow:0 6px 18px rgba(0,0,0,0.35); }
     h1 { font-size:clamp(28px,4vw,42px); margin:0; line-height:1.15; background:linear-gradient(135deg,var(--accent),var(--accent-2)); -webkit-background-clip:text; background-clip:text; color:transparent; }
-    /* Top nav */
-    .top-nav { margin:16px 0; text-align:center; }
-    .top-nav a { margin:0 14px; color:var(--muted); font-weight:600; text-decoration:none; transition:color .3s,border-bottom .3s; }
-    .top-nav a:hover { color:var(--accent-2); border-bottom:2px solid var(--accent-2); padding-bottom:2px; }
+
+    /* Top-left nav */
+    .top-nav {
+      position: fixed;
+      top: 16px;
+      left: 16px;
+      z-index: 1000;
+      display: flex;
+      gap: 14px;
+      margin: 0;
+      padding: 6px 8px;
+      text-align: left;
+      background: transparent;
+      border-radius: 8px;
+    }
+    .top-nav a {
+      color: var(--muted);
+      font-weight: 600;
+      text-decoration: none;
+      transition: color 0.3s, border-bottom 0.3s;
+    }
+    .top-nav a:hover {
+      color: var(--accent-2);
+      border-bottom: 2px solid var(--accent-2);
+      padding-bottom: 2px;
+    }
+    @media (max-width:480px){ .top-nav { gap:10px; padding:4px 6px; } }
+
     .tagline { color:var(--muted); margin-top:8px; font-size:1.05rem; display:block; }
     .btn { background:linear-gradient(135deg,var(--accent),var(--accent-2)); color:#fff !important; padding:12px 18px; border-radius:8px; font-weight:700; text-decoration:none !important; display:inline-flex; line-height:1.2; box-shadow:0 8px 18px rgba(0,0,0,0.25); }
     .luma-checkout--button { background:linear-gradient(135deg,var(--accent),var(--accent-2)) !important; color:#fff !important; font-weight:700 !important; text-decoration:none !important; padding:12px 18px !important; border-radius:8px !important; display:inline-flex !important; align-items:center; justify-content:center; line-height:1.2 !important; border:none !important; box-shadow:0 8px 18px rgba(0,0,0,0.25) !important; cursor:pointer; }
@@ -61,7 +85,7 @@
       <h1>CISO Open Mic</h1>
     </div>
 
-    <!-- Site-wide nav -->
+    <!-- Site-wide nav (top-left) -->
     <nav class="top-nav">
       <a href="index.html">Events</a>
       <a href="how-it-works.html">How it Works</a>
