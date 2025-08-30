@@ -26,7 +26,7 @@
     .brand { display: inline-flex; align-items: center; gap: 14px; margin-bottom: 8px; }
     .brand img.logo {
       width: 112px; height: 112px; border-radius: 50%; object-fit: cover; border: none;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.35); /* subtle lift, no border */
+      box-shadow: 0 6px 18px rgba(0,0,0,0.35);
     }
 
     h1 {
@@ -70,16 +70,21 @@
     .card { background: var(--card); border-radius: 14px; padding: 18px; border: 1px solid var(--ring); }
     .card h2 { margin: 0 0 10px; font-size: 1.25rem; }
 
-    /* Clean embed containers (no blue background, no dashed border) */
-    .embed-wrap {
-      background: transparent;
-      border: none;
-      padding: 0;
-      min-height: auto;
-    }
-
-    /* Ensure Lu.ma calendar has room to render */
+    /* Clean embed containers */
+    .embed-wrap { background: transparent; border: none; padding: 0; min-height: auto; }
     .luma-calendar-embed { width: 100%; min-height: 420px; display: block; }
+
+    /* Custom link style inside cards */
+    .card a {
+      color: var(--accent);
+      font-weight: 600;
+      text-decoration: none;
+      border-bottom: 1px dashed var(--accent);
+    }
+    .card a:hover {
+      color: var(--accent-2);
+      border-bottom: 1px solid var(--accent-2);
+    }
 
     footer { text-align: center; color: #9fb3c8; font-size: .92rem; padding: 28px 16px; }
 
@@ -111,7 +116,6 @@
       <section class="card">
         <h2>Upcoming Events</h2>
         <div class="embed-wrap">
-          <!-- Primary: script-based Lu.ma embed -->
           <script src="https://embed.lu.ma/calendar.js"></script>
           <div id="luma-cal" class="luma-calendar-embed"
                data-calendar-id="cal-hw6M9gTyUBMNupW"
@@ -119,7 +123,6 @@
                data-show-search="false">
           </div>
 
-          <!-- Fallback iframe (hidden by default) -->
           <div id="luma-cal-fallback" style="display:none;">
             <iframe
               src="https://lu.ma/embed/calendar/cal-hw6M9gTyUBMNupW/events"
@@ -144,7 +147,6 @@
         </div>
 
         <script>
-          // If Lu.ma doesn’t inject within 2s, show the iframe fallback
           (function() {
             var checkMs = 2000;
             setTimeout(function() {
