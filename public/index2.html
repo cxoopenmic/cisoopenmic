@@ -10,153 +10,46 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --bg: #000100;
-      --card: #717170;
-      --text: #fdfdfd;
-      --muted: #e0e0e0;
-      --accent: #c12331;
-      --accent-2: #ff8a00;
-      --ring: rgba(255,255,255,0.08);
-    }
-
-    body {
-      margin: 0;
-      font-family: "Open Sans", Arial, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      border: 2px solid var(--accent-2);
-    }
-
-    header { padding: 64px 20px 32px; text-align: center; }
-
-    .brand { display: inline-flex; align-items: center; gap: 14px; margin-bottom: 8px; }
-    .brand img.logo {
-      width: 112px; height: 112px; border-radius: 50%; object-fit: cover; border: none;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.35);
-    }
-
-    h1 {
-      font-size: clamp(28px, 4vw, 42px); margin: 0; line-height: 1.15;
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      -webkit-background-clip: text; background-clip: text; color: transparent;
-    }
-
-    .tagline { color: var(--muted); margin-top: 12px; font-size: 1.05rem; display: block; }
-
-    .btn {
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      color: #fff !important;            /* force white text */
-      padding: 12px 18px;
-      border-radius: 8px;
-      font-weight: 700;
-      text-decoration: none !important;  /* force no underline */
-      display: inline-flex;
-      line-height: 1.2;
-      box-shadow: 0 8px 18px rgba(0,0,0,0.25);
-    }
-
-    .luma-checkout--button {
-      background: linear-gradient(135deg, var(--accent), var(--accent-2)) !important;
-      color: #fff !important;
-      font-weight: 700 !important;
-      text-decoration: none !important;
-      padding: 12px 18px !important;
-      border-radius: 8px !important;
-      display: inline-flex !important;
-      align-items: center; justify-content: center;
-      line-height: 1.2 !important;
-      border: none !important;
-      box-shadow: 0 8px 18px rgba(0,0,0,0.25) !important;
-      cursor: pointer;
-    }
-
-    .cta-row { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-top: 36px; }
-
-    main { max-width: 1100px; margin: 0 auto; padding: 24px 32px 64px; }
-
-    .grid { display: grid; grid-template-columns: 1fr; gap: 20px; margin-top: 24px; }
-    @media (min-width: 980px){ .grid { grid-template-columns: 1.2fr 0.8fr; } }
-
-    .card { background: var(--card); border-radius: 14px; padding: 18px; border: 1px solid var(--ring); }
-    .card h2 { margin: 0 0 10px; font-size: 1.25rem; }
-
-    .embed-wrap { background: transparent; border: none; padding: 0; min-height: auto; }
-    .luma-calendar-embed { width: 100%; min-height: 420px; display: block; }
-
-    .card a {
-      color: var(--accent);
-      font-weight: 600;
-      text-decoration: none;
-      border-bottom: 1px dashed var(--accent);
-    }
-    .card a:hover {
-      color: var(--accent-2);
-      border-bottom: 1px solid var(--accent-2);
-    }
-
-    .event-info {
-      background: rgba(0,0,0,0.25);
-      padding: 12px;
-      border-radius: 8px;
-      border: 1px solid var(--ring);
-      margin-bottom: 16px;
-    }
-    .event-title { font-size: 1.05rem; font-weight: 700; margin: 0; }
-    .event-meta { color: var(--muted); margin: 4px 0 0; }
-    .divider { border: none; border-top: 1px solid var(--ring); margin: 16px 0; }
-    .highlights { color: var(--muted); font-size: 0.95rem; padding-left: 18px; margin: 0 0 20px; }
-
-    .sponsors { text-align: center; margin-top: 32px; }
-    .sponsor-logos {
-      display: flex;
-      justify-content: center;
-      gap: 24px;
-      flex-wrap: wrap;
-      margin-top: 16px;
-    }
-    .sponsor-logos img {
-      max-height: 60px;
-      object-fit: contain;
-      filter: brightness(0) invert(1);
-      transition: filter 0.3s;
-    }
-    body.light .sponsor-logos img { filter: none; }
-    .sponsors .cta-row { margin-top: 20px; }
-
-    /* Newsletter */
-    .newsletter-signup { text-align: center; margin-top: 32px; }
-    .newsletter-signup .cta-row { justify-content: center; }
-    .newsletter-signup p { color: var(--muted); }
-
-    footer {
-      text-align: center;
-      color: var(--text);
-      font-size: .92rem;
-      padding: 28px 16px;
-    }
-
-    body.light {
-      --bg: #f8fafc;
-      --card: #ffffff;
-      --text: #000000;
-      --muted: #475569;
-      --ring: rgba(0,0,0,0.08);
-    }
-
-    .theme-toggle {
-      position: fixed; top: 16px; right: 16px; z-index: 1000;
-      background: var(--muted);
-      color: var(--bg);
-      border: none;
-      padding: 8px 14px;
-      border-radius: 6px;
-      font-weight: 800;
-      cursor: pointer;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-      transition: background 0.3s, color 0.3s;
-    }
-    .theme-toggle:hover { background: var(--text); color: var(--bg); }
+    :root { --bg:#000100; --card:#717170; --text:#fdfdfd; --muted:#e0e0e0; --accent:#c12331; --accent-2:#ff8a00; --ring:rgba(255,255,255,0.08); }
+    body { margin:0; font-family:"Open Sans",Arial,sans-serif; background:var(--bg); color:var(--text); border:2px solid var(--accent-2); }
+    header { padding:64px 20px 24px; text-align:center; }
+    .brand { display:inline-flex; align-items:center; gap:14px; margin-bottom:8px; }
+    .brand img.logo { width:112px; height:112px; border-radius:50%; object-fit:cover; border:none; box-shadow:0 6px 18px rgba(0,0,0,0.35); }
+    h1 { font-size:clamp(28px,4vw,42px); margin:0; line-height:1.15; background:linear-gradient(135deg,var(--accent),var(--accent-2)); -webkit-background-clip:text; background-clip:text; color:transparent; }
+    /* Top nav */
+    .top-nav { margin:16px 0; text-align:center; }
+    .top-nav a { margin:0 14px; color:var(--muted); font-weight:600; text-decoration:none; transition:color .3s,border-bottom .3s; }
+    .top-nav a:hover { color:var(--accent-2); border-bottom:2px solid var(--accent-2); padding-bottom:2px; }
+    .tagline { color:var(--muted); margin-top:8px; font-size:1.05rem; display:block; }
+    .btn { background:linear-gradient(135deg,var(--accent),var(--accent-2)); color:#fff !important; padding:12px 18px; border-radius:8px; font-weight:700; text-decoration:none !important; display:inline-flex; line-height:1.2; box-shadow:0 8px 18px rgba(0,0,0,0.25); }
+    .luma-checkout--button { background:linear-gradient(135deg,var(--accent),var(--accent-2)) !important; color:#fff !important; font-weight:700 !important; text-decoration:none !important; padding:12px 18px !important; border-radius:8px !important; display:inline-flex !important; align-items:center; justify-content:center; line-height:1.2 !important; border:none !important; box-shadow:0 8px 18px rgba(0,0,0,0.25) !important; cursor:pointer; }
+    .cta-row { display:flex; justify-content:center; gap:12px; flex-wrap:wrap; margin-top:24px; }
+    main { max-width:1100px; margin:0 auto; padding:24px 32px 64px; }
+    .grid { display:grid; grid-template-columns:1fr; gap:20px; margin-top:24px; }
+    @media (min-width:980px){ .grid { grid-template-columns:1.2fr 0.8fr; } }
+    .card { background:var(--card); border-radius:14px; padding:18px; border:1px solid var(--ring); }
+    .card h2 { margin:0 0 10px; font-size:1.25rem; }
+    .embed-wrap { background:transparent; border:none; padding:0; min-height:auto; }
+    .luma-calendar-embed { width:100%; min-height:420px; display:block; }
+    .card a { color:var(--accent); font-weight:600; text-decoration:none; border-bottom:1px dashed var(--accent); }
+    .card a:hover { color:var(--accent-2); border-bottom:1px solid var(--accent-2); }
+    .event-info { background:rgba(0,0,0,0.25); padding:12px; border-radius:8px; border:1px solid var(--ring); margin-bottom:16px; }
+    .event-title { font-size:1.05rem; font-weight:700; margin:0; }
+    .event-meta { color:var(--muted); margin:4px 0 0; }
+    .divider { border:none; border-top:1px solid var(--ring); margin:16px 0; }
+    .highlights { color:var(--muted); font-size:.95rem; padding-left:18px; margin:0 0 20px; }
+    .sponsors { text-align:center; margin-top:32px; }
+    .sponsor-logos { display:flex; justify-content:center; gap:24px; flex-wrap:wrap; margin-top:16px; }
+    .sponsor-logos img { max-height:60px; object-fit:contain; filter:brightness(0) invert(1); transition:filter .3s; }
+    body.light .sponsor-logos img { filter:none; }
+    .sponsors .cta-row { margin-top:20px; }
+    .newsletter-signup { text-align:center; margin-top:32px; }
+    .newsletter-signup .cta-row { justify-content:center; }
+    .newsletter-signup p { color:var(--muted); }
+    footer { text-align:center; color:var(--text); font-size:.92rem; padding:28px 16px; }
+    body.light { --bg:#f8fafc; --card:#ffffff; --text:#000000; --muted:#475569; --ring:rgba(0,0,0,0.08); }
+    .theme-toggle { position:fixed; top:16px; right:16px; z-index:1000; background:var(--muted); color:var(--bg); border:none; padding:8px 14px; border-radius:6px; font-weight:800; cursor:pointer; box-shadow:0 2px 6px rgba(0,0,0,0.2); transition:background .3s,color .3s; }
+    .theme-toggle:hover { background:var(--text); color:var(--bg); }
   </style>
 </head>
 <body>
@@ -167,6 +60,14 @@
       <img src="assets/logo.png" alt="CISO Open Mic logo" class="logo"/>
       <h1>CISO Open Mic</h1>
     </div>
+
+    <!-- Site-wide nav -->
+    <nav class="top-nav">
+      <a href="index.html">Events</a>
+      <a href="how-it-works.html">How it Works</a>
+      <a href="sponsorship.html">Sponsorship</a>
+    </nav>
+
     <div class="tagline">A forum for CISOs and security leaders to share, connect, and learn.</div>
     <div class="cta-row">
       <a class="btn" href="https://lu.ma/cal-hw6M9gTyUBMNupW" target="_blank" rel="noopener">View All Events</a>
@@ -200,12 +101,8 @@
           <li>Drinks & light dinner provided</li>
         </ul>
         <div class="embed-wrap" style="text-align:center; padding:20px;">
-          <a href="https://lu.ma/event/evt-tYYm8prjk6J5TjD"
-             class="luma-checkout--button"
-             data-luma-action="checkout"
-             data-luma-event-id="evt-tYYm8prjk6J5TjD">
-            Register for Event
-          </a>
+          <a href="https://lu.ma/event/evt-tYYm8prjk6J5TjD" class="luma-checkout--button"
+             data-luma-action="checkout" data-luma-event-id="evt-tYYm8prjk6J5TjD">Register for Event</a>
           <script id="luma-checkout" src="https://embed.lu.ma/checkout-button.js"></script>
         </div>
       </aside>
@@ -220,7 +117,7 @@
         <img src="assets/sponsor3.png" alt="Sponsor 3">
       </div>
       <div class="cta-row">
-        <a class="btn" href="sponsorship.html" target="_blank" rel="noopener">Become a Sponsor</a>
+        <a class="btn" href="sponsorship.html">Become a Sponsor</a>
       </div>
     </section>
 
@@ -229,11 +126,9 @@
       <h2>Join Our Newsletter</h2>
       <p class="tagline">Get invites, recaps, and city announcements — powered by our Lu.ma calendar.</p>
       <div class="cta-row" style="margin-top:16px;">
-        <a class="btn" href="https://lu.ma/cal-hw6M9gTyUBMNupW" target="_blank" rel="noopener">
-          Subscribe on Lu.ma
-        </a>
+        <a class="btn" href="https://lu.ma/cal-hw6M9gTyUBMNupW" target="_blank" rel="noopener">Subscribe on Lu.ma</a>
       </div>
-      <p style="margin-top:10px; color: var(--muted); font-size: 0.95rem;">
+      <p style="margin-top:10px; color:var(--muted); font-size:.95rem;">
         Subscribing adds you to our Lu.ma mailing list. You’ll get event invites and newsletters directly from us.
       </p>
     </section>
@@ -244,11 +139,8 @@
   <script>
     const toggleBtn = document.getElementById('theme-toggle');
     if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
-      document.body.classList.add('light');
-      toggleBtn.textContent = 'Dark';
-    } else {
-      toggleBtn.textContent = 'Light';
-    }
+      document.body.classList.add('light'); toggleBtn.textContent = 'Dark';
+    } else { toggleBtn.textContent = 'Light'; }
     toggleBtn.addEventListener('click', () => {
       document.body.classList.toggle('light');
       toggleBtn.textContent = document.body.classList.contains('light') ? 'Dark' : 'Light';
