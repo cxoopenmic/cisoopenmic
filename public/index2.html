@@ -147,7 +147,9 @@
   </style>
 </head>
 <body>
-  <button class="theme-toggle" onclick="document.body.classList.toggle('light')">🌓 Dark / Light</button>
+  <!-- Contextual theme toggle -->
+  <button id="theme-toggle" class="theme-toggle">Light</button>
+
   <header>
     <div class="brand">
       <img src="assets/logo.png" alt="CISO Open Mic logo" class="logo"/>
@@ -245,5 +247,18 @@
   </main>
 
   <footer>© 2025 CISO Open Mic</footer>
+
+  <!-- Script for contextual toggle -->
+  <script>
+    const toggleBtn = document.getElementById('theme-toggle');
+    toggleBtn.addEventListener('click', () => {
+      document.body.classList.toggle('light');
+      if (document.body.classList.contains('light')) {
+        toggleBtn.textContent = 'Dark';   // in Light mode, option is Dark
+      } else {
+        toggleBtn.textContent = 'Light';  // in Dark mode, option is Light
+      }
+    });
+  </script>
 </body>
 </html>
