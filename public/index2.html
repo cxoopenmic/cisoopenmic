@@ -34,6 +34,28 @@
     footer { text-align: center; color: #9fb3c8; font-size: .92rem; padding: 28px 16px; }
     body.light { --bg: #f8fafc; --card: #ffffff; --text: #0b1220; --muted: #475569; --ring: rgba(0,0,0,0.08); }
     .theme-toggle { position: fixed; top: 16px; right: 16px; z-index: 1000; background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: white; border: none; padding: 8px 14px; border-radius: 6px; font-weight: 800; cursor: pointer; }
+  h1 { line-height: 1.15; }                 /* prevent title from collapsing */
+.tagline { display: block; margin-top: 12px; }
+
+.cta-row {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 28px;                       /* was 20px — gives more space */
+}
+
+.btn {
+  display: inline-flex;                   /* ensures proper layout */
+  line-height: 1.2;                       /* avoids tall-font overlap */
+}
+
+/* Extra breathing room on small screens */
+@media (max-width: 480px) {
+  .cta-row { margin-top: 36px; }
+  header { padding-bottom: 40px; }        /* prevents any stacking collisions */
+}
+  
   </style>
 </head>
 <body>
