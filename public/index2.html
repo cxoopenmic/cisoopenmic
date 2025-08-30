@@ -12,12 +12,12 @@
   <style>
     :root { --bg:#000100; --card:#717170; --text:#fdfdfd; --muted:#e0e0e0; --accent:#c12331; --accent-2:#ff8a00; --ring:rgba(255,255,255,0.08); }
     body { margin:0; font-family:"Open Sans",Arial,sans-serif; background:var(--bg); color:var(--text); border:2px solid var(--accent-2); }
-    header { padding:64px 20px 24px; text-align:center; }
+    header { padding:96px 20px 24px; text-align:center; } /* increased top padding */
     .brand { display:inline-flex; align-items:center; gap:14px; margin-bottom:8px; }
     .brand img.logo { width:112px; height:112px; border-radius:50%; object-fit:cover; border:none; box-shadow:0 6px 18px rgba(0,0,0,0.35); }
     h1 { font-size:clamp(28px,4vw,42px); margin:0; line-height:1.15; background:linear-gradient(135deg,var(--accent),var(--accent-2)); -webkit-background-clip:text; background-clip:text; color:transparent; }
 
-    /* Top-left nav */
+    /* Top-left frosted nav */
     .top-nav {
       position: fixed;
       top: 16px;
@@ -26,23 +26,31 @@
       display: flex;
       gap: 14px;
       margin: 0;
-      padding: 6px 8px;
-      text-align: left;
-      background: transparent;
-      border-radius: 8px;
+      padding: 8px 12px;
+      border-radius: 10px;
+
+      background: color-mix(in srgb, var(--bg) 88%, transparent);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      border: 1px solid var(--ring);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.18);
     }
     .top-nav a {
-      color: var(--muted);
-      font-weight: 600;
+      color: var(--text);
+      opacity: 0.9;
+      font-weight: 700;
       text-decoration: none;
-      transition: color 0.3s, border-bottom 0.3s;
+      transition: color .2s, opacity .2s, border-bottom .2s;
     }
-    .top-nav a:hover {
+    .top-nav a:hover,
+    .top-nav a:focus-visible {
+      opacity: 1;
       color: var(--accent-2);
       border-bottom: 2px solid var(--accent-2);
       padding-bottom: 2px;
+      outline: none;
     }
-    @media (max-width:480px){ .top-nav { gap:10px; padding:4px 6px; } }
+    @media (max-width:480px){ .top-nav { gap:10px; padding:6px 8px; } }
 
     .tagline { color:var(--muted); margin-top:8px; font-size:1.05rem; display:block; }
     .btn { background:linear-gradient(135deg,var(--accent),var(--accent-2)); color:#fff !important; padding:12px 18px; border-radius:8px; font-weight:700; text-decoration:none !important; display:inline-flex; line-height:1.2; box-shadow:0 8px 18px rgba(0,0,0,0.25); }
@@ -79,18 +87,18 @@
 <body>
   <button id="theme-toggle" class="theme-toggle">Light</button>
 
+  <!-- Site-wide nav (top-left, frosted) -->
+  <nav class="top-nav">
+    <a href="index.html">Events</a>
+    <a href="how-it-works.html">How it Works</a>
+    <a href="sponsorship.html">Sponsorship</a>
+  </nav>
+
   <header>
     <div class="brand">
       <img src="assets/logo.png" alt="CISO Open Mic logo" class="logo"/>
       <h1>CISO Open Mic</h1>
     </div>
-
-    <!-- Site-wide nav (top-left) -->
-    <nav class="top-nav">
-      <a href="index.html">Events</a>
-      <a href="how-it-works.html">How it Works</a>
-      <a href="sponsorship.html">Sponsorship</a>
-    </nav>
 
     <div class="tagline">A forum for CISOs and security leaders to share, connect, and learn.</div>
     <div class="cta-row">
