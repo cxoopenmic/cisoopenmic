@@ -39,9 +39,25 @@
 
     .event-sub { margin-top:10px; color:var(--muted); font-size:.95rem; }
     footer { position:fixed; bottom:12px; left:0; right:0; text-align:center; color:var(--muted); font-size:.9rem; }
+
+    /* Light mode */
+    body.light { --bg:#f8fafc; --text:#000000; --muted:#475569; }
+
+    /* Toggle button */
+    .theme-toggle {
+      position:fixed; top:16px; right:16px; z-index:1000;
+      background:var(--muted); color:var(--bg);
+      border:none; padding:8px 14px; border-radius:6px;
+      font-weight:800; cursor:pointer;
+      box-shadow:0 2px 6px rgba(0,0,0,0.2);
+      transition:background .3s,color .3s;
+    }
+    .theme-toggle:hover { background:var(--text); color:var(--bg); }
   </style>
 </head>
 <body>
+  <button id="theme-toggle" class="theme-toggle">Light</button>
+
   <div class="brand">
     <img src="assets/logo.png" alt="CISO Open Mic logo" class="logo"/>
     <h1>CISO Open Mic</h1>
@@ -58,5 +74,16 @@
   <div class="event-sub">The National Club · Toronto</div>
 
   <footer>© 2025 CISO Open Mic</footer>
+
+  <script>
+    const toggleBtn = document.getElementById('theme-toggle');
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+      document.body.classList.add('light'); toggleBtn.textContent = 'Dark';
+    } else { toggleBtn.textContent = 'Light'; }
+    toggleBtn.addEventListener('click', () => {
+      document.body.classList.toggle('light');
+      toggleBtn.textContent = document.body.classList.contains('light') ? 'Dark' : 'Light';
+    });
+  </script>
 </body>
 </html>
