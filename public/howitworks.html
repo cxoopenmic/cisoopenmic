@@ -1,194 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>How it Works — CISO Open Mic</title>
-  <meta name="description" content="How CISO Open Mic works — vendor-neutral, high-signal events for CISOs and security leaders."/>
+  <title>How it Works · CISO Open Mic</title>
   <link rel="icon" href="assets/favicon.ico" type="image/x-icon"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
     :root { --bg:#000100; --card:#717170; --text:#fdfdfd; --muted:#e0e0e0; --accent:#c12331; --accent-2:#ff8a00; --ring:rgba(255,255,255,0.08); }
     body { margin:0; font-family:"Open Sans",Arial,sans-serif; background:var(--bg); color:var(--text); border:2px solid var(--accent-2); }
 
-    /* Top-left static nav */
-    .top-nav { display:flex; gap:14px; padding:12px 16px; }
-    .top-nav a { color:var(--muted); font-weight:600; text-decoration:none; transition:color .2s,border-bottom .2s; }
+    /* --- Nav (mobile-ready) --- */
+    .nav-wrap { position: relative; padding: 12px 16px; }
+    .nav-toggle { display:none; background:var(--muted); color:var(--bg); border:none; padding:8px 12px; border-radius:6px; font-weight:800; cursor:pointer; box-shadow:0 2px 6px rgba(0,0,0,0.2); }
+    .nav-toggle:hover { background:var(--text); color:var(--bg); }
+    .top-nav { display:flex; gap:14px; }
+    .top-nav a { color:var(--muted); font-weight:600; text-decoration:none; transition:color .2s, border-bottom .2s; }
     .top-nav a:hover { color:var(--accent-2); border-bottom:2px solid var(--accent-2); padding-bottom:2px; }
-
-    header { padding:56px 20px 24px; text-align:center; }
-    .brand { display:inline-flex; align-items:center; gap:14px; margin-bottom:8px; }
-    .brand img.logo { width:72px; height:72px; border-radius:50%; object-fit:cover; border:none; box-shadow:0 6px 18px rgba(0,0,0,0.35); }
-    h1 { font-size:clamp(28px,4vw,40px); margin:0; line-height:1.15; background:linear-gradient(135deg,var(--accent),var(--accent-2)); -webkit-background-clip:text; background-clip:text; color:transparent; }
-    .tagline { color:var(--muted); margin-top:10px; }
-
-    /* Unified buttons (also matches Lu.ma checkout) */
-    .btn, .luma-checkout--button {
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      color: #fff !important;
-      padding: 12px 18px !important;
-      border-radius: 8px !important;
-      font-weight: 700 !important;
-      font-size: 1rem !important;
-      text-decoration: none !important;
-      display: inline-flex !important;
-      align-items: center; justify-content: center;
-      line-height: 1.2;
-      box-shadow: 0 8px 18px rgba(0,0,0,0.25);
-      border: none !important;
-      cursor: pointer;
+    @media (max-width:720px){
+      .nav-toggle{display:inline-block;}
+      .top-nav{display:none; position:absolute; left:12px; right:12px; top:52px; flex-direction:column; gap:10px; padding:12px; background:var(--bg); border:1px solid var(--ring); border-radius:10px; z-index:999;}
+      .top-nav.open{display:flex;}
+      header{padding-top:48px;}
     }
 
-    .cta-row { display:flex; justify-content:center; gap:12px; flex-wrap:wrap; margin-top:18px; }
+    header { padding:40px 20px; text-align:center; }
+    h1 { margin:0; font-size:2rem; background:linear-gradient(135deg,var(--accent),var(--accent-2)); -webkit-background-clip:text; background-clip:text; color:transparent; }
 
-    main { max-width:1100px; margin:0 auto; padding:0 32px 64px; }
-    .grid { display:grid; gap:20px; grid-template-columns:1fr; }
-    .card { background:var(--card); border-radius:14px; padding:18px; border:1px solid var(--ring); }
-    .card h2 { margin:0 0 10px; font-size:1.25rem; }
-    .card a { color:var(--accent); font-weight:600; text-decoration:none; border-bottom:1px dashed var(--accent); }
-    .card a:hover { color:var(--accent-2); border-bottom:1px solid var(--accent-2); }
+    main { max-width:900px; margin:0 auto; padding:24px 32px 64px; }
+    .card { background:var(--card); border-radius:14px; padding:24px; border:1px solid var(--ring); margin-bottom:24px; }
+    .card h2 { margin-top:0; }
+    ul { margin-left: 18px; }
 
-    .twocol { display:grid; gap:16px; }
-    @media (min-width:980px){ .twocol { grid-template-columns:1fr 1fr; } }
-    .muted { color:var(--muted); }
-    .steps { display:grid; gap:12px; }
-    .step { background:rgba(0,0,0,0.25); border:1px solid var(--ring); border-radius:10px; padding:12px; }
-    .step h3 { margin:0 0 6px; font-size:1.05rem; }
-    .toc ul { margin:8px 0 0; padding-left:18px; }
-    .toc li { margin:6px 0; }
-    .rules { padding-left:18px; margin-top:8px; }
-    .rules li { margin:6px 0; }
-    .divider { border:none; border-top:1px solid var(--ring); margin:14px 0; }
+    footer { text-align:center; color:var(--text); font-size:.9rem; padding:28px 16px; }
 
-    footer { text-align:center; color:var(--text); font-size:.92rem; padding:28px 16px; margin-top:24px; border-top:1px solid var(--ring); }
-
+    /* Light mode */
     body.light { --bg:#f8fafc; --card:#ffffff; --text:#000000; --muted:#475569; --ring:rgba(0,0,0,0.08); }
-
     .theme-toggle { position:fixed; top:16px; right:16px; z-index:1000; background:var(--muted); color:var(--bg); border:none; padding:8px 14px; border-radius:6px; font-weight:800; cursor:pointer; box-shadow:0 2px 6px rgba(0,0,0,0.2); transition:background .3s,color .3s; }
     .theme-toggle:hover { background:var(--text); color:var(--bg); }
-    .center { text-align:center; }
   </style>
 </head>
 <body>
   <button id="theme-toggle" class="theme-toggle">Light</button>
 
-  <!-- Static nav -->
-<nav class="top-nav">
-  <a href="index.html">Home</a>
-  <a href="index.html">Events</a>
-  <a href="howitworks.html">How it Works</a>
-  <a href="sponsor.html">Sponsor</a>
-</nav>
+  <div class="nav-wrap">
+    <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Toggle navigation">☰ Menu</button>
+    <nav id="site-nav" class="top-nav">
+      <a href="index2.html">Home</a>
+      <a href="index2.html">Events</a>
+      <a href="howitworks.html">How it Works</a>
+      <a href="sponsor.html">Sponsor</a>
+      <a href="crew.html">Crew</a>
+    </nav>
+  </div>
 
   <header>
-    <div class="brand">
-      <img src="assets/logo.png" alt="CISO Open Mic logo" class="logo"/>
-      <h1>How it Works</h1>
-    </div>
-    <div class="tagline">Simple. Vendor-neutral. High-signal. Here’s exactly what to expect at CISO Open Mic.</div>
-    <div class="cta-row">
-      <a class="btn" href="index.html">← Back to Events</a>
-      <a class="btn" href="https://lu.ma/cal-hw6M9gTyUBMNupW" target="_blank" rel="noopener">View All Events</a>
-    </div>
+    <h1>How CISO Open Mic Works</h1>
   </header>
 
   <main>
-    <div class="grid">
-      <section class="card">
-        <h2>Overview</h2>
-        <p class="muted">CISO Open Mic brings security leaders together for candid, peer-led discussion. No slideware, no sales pitches — just real conversations about what’s working (and what isn’t).</p>
-      </section>
+    <section class="card">
+      <h2>The Format</h2>
+      <p>CISO Open Mic is an interactive evening where security leaders share stories, lessons, and questions with peers. No slide decks — just candid insights.</p>
+    </section>
 
-      <section class="card toc">
-        <h2>Table of Contents</h2>
-        <ul>
-          <li><a href="#before">Before the Event</a></li>
-          <li><a href="#during">During the Event</a></li>
-          <li><a href="#after">After the Event</a></li>
-          <li><a href="#rules">House Rules</a></li>
-          <li><a href="#privacy">Privacy & Chatham House Rule</a></li>
-          <li><a href="#faq">FAQs</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </section>
+    <section class="card">
+      <h2>Participation</h2>
+      <ul>
+        <li>Anyone can step up to the mic — share a challenge, lesson, or ask a question.</li>
+        <li>Short, focused shares keep the pace high and the conversation lively.</li>
+        <li>Moderation ensures respectful, on-topic dialogue.</li>
+      </ul>
+    </section>
 
-      <section id="before" class="card twocol">
-        <div>
-          <h2>Before the Event</h2>
-          <div class="steps">
-            <div class="step"><h3>1) Register</h3><p class="muted">Sign up on Lu.ma. If a waitlist forms, we’ll release additional spots in batches.</p></div>
-            <div class="step"><h3>2) Read the Brief</h3><p class="muted">We share a short email with the evening’s prompts and venue details 48–72 hours before.</p></div>
-            <div class="step"><h3>3) Come as You Are</h3><p class="muted">Business casual works. Bring questions, lessons learned, and curiosity.</p></div>
-          </div>
-        </div>
-        <div id="during">
-          <h2>During the Event</h2>
-          <div class="steps">
-            <div class="step"><h3>Check-in & Networking</h3><p class="muted">Arrive, grab a drink, meet peers. We start the Open Mic shortly after doors open.</p></div>
-            <div class="step"><h3>Open Mic</h3><p class="muted">Host intro, 2–3 prompts, then the room leads. Short, focused shares — no decks, no pitches.</p></div>
-            <div class="step"><h3>Close & Mingle</h3><p class="muted">We wrap on time and leave room for follow-ups and intros.</p></div>
-          </div>
-        </div>
-      </section>
+    <section class="card">
+      <h2>Who Should Attend</h2>
+      <ul>
+        <li>CISOs and senior security leaders</li>
+        <li>Security architects and program owners</li>
+        <li>Trusted sponsors and community partners</li>
+      </ul>
+    </section>
 
-      <section id="after" class="card">
-        <h2>After the Event</h2>
-        <ul class="muted" style="padding-left:18px; margin-top:8px;">
-          <li><strong>Takeaways:</strong> Short recap with anonymized highlights (no attribution).</li>
-          <li><strong>Connections:</strong> Opt-in attendees may receive polite follow-ups or intros.</li>
-          <li><strong>Next Cities:</strong> Watch the calendar for new dates.</li>
-        </ul>
-      </section>
-
-      <section id="rules" class="card">
-        <h2>House Rules</h2>
-        <ul class="rules muted">
-          <li><strong>No slideware, no pitches.</strong> Community conversation first.</li>
-          <li><strong>Be concise.</strong> Share the signal; keep stories tight.</li>
-          <li><strong>Respect time.</strong> Give others the mic.</li>
-          <li><strong>Be kind.</strong> Disagree without being disagreeable.</li>
-        </ul>
-        <hr class="divider">
-        <p class="muted"><em>Accessibility:</em> If you have accessibility needs or dietary restrictions, reply to your confirmation email — we’ll accommodate.</p>
-      </section>
-
-      <section id="privacy" class="card">
-        <h2>Privacy & Chatham House Rule</h2>
-        <p class="muted">We follow the spirit of the Chatham House Rule: use the information received, but do not reveal the identity or affiliation of speakers. No recording or live-posting.</p>
-      </section>
-
-      <section id="faq" class="card">
-        <h2>FAQs</h2>
-        <div class="twocol">
-          <div>
-            <p><strong>Who can attend?</strong><br><span class="muted">Security leaders and adjacent exec/manager roles.</span></p>
-            <p><strong>Are vendors allowed?</strong><br><span class="muted">Yes — as community members or sponsors. “No pitch” rule applies.</span></p>
-            <p><strong>Is there a cost?</strong><br><span class="muted">Usually complimentary thanks to sponsors; some cities may have nominal tickets.</span></p>
-          </div>
-          <div>
-            <p><strong>Will there be food?</strong><br><span class="muted">Yes — light dinner and beverages.</span></p>
-            <p><strong>Can I suggest a topic?</strong><br><span class="muted">Absolutely. Use the contact link below.</span></p>
-            <p><strong>What if I need to cancel?</strong><br><span class="muted">Please release your ticket via Lu.ma for waitlisted guests.</span></p>
-          </div>
-        </div>
-      </section>
-
-      <section id="contact" class="card center">
-        <h2>Join an Upcoming Event</h2>
-        <p class="tagline">Check the calendar, pick your city, and grab a spot.</p>
-        <div class="cta-row">
-          <a class="btn" href="https://lu.ma/cal-hw6M9gTyUBMNupW" target="_blank" rel="noopener">View Calendar</a>
-          <a class="btn" href="mailto:team@cisoopenmic.org?subject=Topic%20Suggestion">Suggest a Topic</a>
-        </div>
-      </section>
-    </div>
+    <section class="card">
+      <h2>Code of Conduct</h2>
+      <p>We foster a respectful, private environment. Be constructive, protect confidentiality, and avoid sales pitches from the mic.</p>
+    </section>
   </main>
 
   <footer>© 2025 CISO Open Mic</footer>
 
   <script>
+    // Theme toggle
     const toggleBtn = document.getElementById('theme-toggle');
     if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
       document.body.classList.add('light'); toggleBtn.textContent = 'Dark';
@@ -197,6 +100,20 @@
       document.body.classList.toggle('light');
       toggleBtn.textContent = document.body.classList.contains('light') ? 'Dark' : 'Light';
     });
+
+    // Mobile nav
+    (function () {
+      const btn = document.querySelector('.nav-toggle');
+      const nav = document.getElementById('site-nav');
+      if (!btn || !nav) return;
+      btn.addEventListener('click', () => {
+        const isOpen = nav.classList.toggle('open');
+        btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
+      nav.addEventListener('click', (e) => {
+        if (e.target.tagName === 'A') { nav.classList.remove('open'); btn.setAttribute('aria-expanded','false'); }
+      });
+    })();
   </script>
 </body>
 </html>
