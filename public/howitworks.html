@@ -30,7 +30,31 @@
     main { max-width:900px; margin:0 auto; padding:24px 32px 64px; }
     .card { background:var(--card); border-radius:14px; padding:24px; border:1px solid var(--ring); margin-bottom:24px; }
     .card h2 { margin-top:0; }
+    .muted { color: var(--muted); }
+
+    /* Button (matches index2 + Luma checkout style) */
+    .btn,
+    .luma-checkout--button {
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #fff !important;
+      padding: 12px 18px !important;
+      border-radius: 8px !important;
+      font-weight: 700 !important;
+      font-size: 1rem !important;
+      text-decoration: none !important;
+      display: inline-flex !important;
+      align-items: center;
+      justify-content: center;
+      line-height: 1.2;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.25);
+      border: none !important;
+      cursor: pointer;
+    }
+
     ul { margin-left: 18px; }
+    .steps { display: grid; gap: 12px; }
+    .step { background: rgba(0,0,0,0.25); border: 1px solid var(--ring); border-radius: 10px; padding: 12px 14px; }
+    .step strong { display: inline-block; margin-bottom: 4px; }
 
     footer { text-align:center; color:var(--text); font-size:.9rem; padding:28px 16px; }
 
@@ -60,31 +84,61 @@
 
   <main>
     <section class="card">
-      <h2>The Format</h2>
-      <p>CISO Open Mic is an interactive evening where security leaders share stories, lessons, and questions with peers. No slide decks — just candid insights.</p>
+      <h2>What This Is</h2>
+      <p>Join us for an exclusive evening designed for Canada’s top security leaders.</p>
+      <p>Like all of our other events, there are no sales pitches, no moderators, and no endless slide decks. Instead, it’s an open space where CISOs and senior security leaders can connect, share insights, and speak freely.</p>
     </section>
 
     <section class="card">
-      <h2>Participation</h2>
+      <h2>What to Expect</h2>
       <ul>
-        <li>Anyone can step up to the mic — share a challenge, lesson, or ask a question.</li>
-        <li>Short, focused shares keep the pace high and the conversation lively.</li>
-        <li>Moderation ensures respectful, on-topic dialogue.</li>
+        <li>Exclusive networking with peers at one of Toronto’s premier private clubs</li>
+        <li>Drinks &amp; hors d’oeuvres in a relaxed setting</li>
+        <li>Open mic sessions &amp; prizes designed to spark real conversations</li>
       </ul>
+      <p class="muted">Attendance is limited to senior security leaders from established organizations. Please complete the registration form. Confirmations will be sent to approved guests; others may be placed on a waitlist due to limited availability.</p>
     </section>
 
     <section class="card">
-      <h2>Who Should Attend</h2>
-      <ul>
-        <li>CISOs and senior security leaders</li>
-        <li>Security architects and program owners</li>
-        <li>Trusted sponsors and community partners</li>
-      </ul>
+      <h2>Here’s How It Works</h2>
+      <div class="steps">
+        <div class="step">
+          <strong>🛤️ Step 1: Register</strong>
+          <div>Reserve your spot and, if you’d like, submit a topic to take the mic.</div>
+        </div>
+        <div class="step">
+          <strong>📍 Step 2: Attend</strong>
+          <div>Join us on <strong>October 14, 2025</strong>, at <strong>The National Club, Toronto</strong>, where leading security voices come together.</div>
+        </div>
+        <div class="step">
+          <strong>🎤 Step 3: Share or Listen</strong>
+          <div>Step up to the mic for a <strong>5-minute talk</strong>, or simply listen and learn from your peers.</div>
+        </div>
+        <div class="step">
+          <strong>🤝 Step 4: Connect</strong>
+          <div>Network with fellow CISOs and senior security leaders, exchange ideas, and strengthen your professional circle.</div>
+        </div>
+        <div class="step">
+          <strong>🏆 Step 5: Recognition &amp; Prizes</strong>
+          <div>Compete for prizes and gain peer recognition in a collaborative, high-impact environment.</div>
+        </div>
+      </div>
+
+      <div style="margin-top:16px;">
+        <a href="https://lu.ma/event/evt-tYYm8prjk6J5TjD"
+           class="luma-checkout--button"
+           data-luma-action="checkout"
+           data-luma-event-id="evt-tYYm8prjk6J5TjD">
+          Register for Event
+        </a>
+        <script id="luma-checkout" src="https://embed.lu.ma/checkout-button.js"></script>
+      </div>
     </section>
 
     <section class="card">
-      <h2>Code of Conduct</h2>
-      <p>We foster a respectful, private environment. Be constructive, protect confidentiality, and avoid sales pitches from the mic.</p>
+      <h2>Photography &amp; Video Notice</h2>
+      <p>Please note that photos and videos may be taken during the event for promotional and documentation purposes. By attending, you consent to the use of your image and likeness in such materials.</p>
+      <p>If you do not wish to be photographed or recorded, please inform the event staff upon arrival so we can accommodate your request.</p>
     </section>
   </main>
 
