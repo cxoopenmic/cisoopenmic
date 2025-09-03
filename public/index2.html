@@ -13,24 +13,48 @@
     :root { --bg:#000100; --card:#717170; --text:#fdfdfd; --muted:#e0e0e0; --accent:#c12331; --accent-2:#ff8a00; --ring:rgba(255,255,255,0.08); }
     body { margin:0; font-family:"Open Sans",Arial,sans-serif; background:var(--bg); color:var(--text); border:2px solid var(--accent-2); }
 
-    /* Top-left static nav */
-    .top-nav {
-      display: flex;
-      gap: 14px;
-      padding: 12px 16px;
+    /* --- Nav --- */
+    .nav-wrap { position: relative; padding: 12px 16px; }
+    .nav-toggle {
+      display: none;
+      background: var(--muted);
+      color: var(--bg);
+      border: none;
+      padding: 8px 12px;
+      border-radius: 6px;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
     }
-    .top-nav a {
-      color: var(--muted);
-      font-weight: 600;
-      text-decoration: none;
-      transition: color .2s, border-bottom .2s;
+    .nav-toggle:hover { background: var(--text); color: var(--bg); }
+    .top-nav { display:flex; gap:14px; }
+    .top-nav a { color:var(--muted); font-weight:600; text-decoration:none; transition: color .2s, border-bottom .2s; }
+    .top-nav a:hover { color:var(--accent-2); border-bottom:2px solid var(--accent-2); padding-bottom:2px; }
+
+    @media (max-width: 720px) {
+      .nav-toggle { display: inline-block; }
+      .top-nav {
+        display: none;
+        position: absolute;
+        left: 12px;
+        right: 12px;
+        top: 52px;
+        flex-direction: column;
+        gap: 10px;
+        padding: 12px;
+        background: var(--bg);
+        border: 1px solid var(--ring);
+        border-radius: 10px;
+        z-index: 999;
+      }
+      .top-nav.open { display: flex; }
+      header { padding-top: 48px; }
     }
-    .top-nav a:hover { color: var(--accent-2); border-bottom: 2px solid var(--accent-2); padding-bottom: 2px; }
 
     header { padding:64px 20px 24px; text-align:center; }
     .brand { display:inline-flex; align-items:center; gap:14px; margin-bottom:8px; }
     .brand img.logo { width:112px; height:112px; border-radius:50%; object-fit:cover; border:none; box-shadow:0 6px 18px rgba(0,0,0,0.35); }
-    h1 { font-size:clamp(28px,4vw,42px); margin:0; line-height:1.15; background:linear-gradient(135deg,var(--accent),var(--accent-2)); -webkit-background-clip:text; background-clip:text; color:transparent; }
+    h1 { font-size:clamp(28px,4vw,42px); margin:0; line-height:1.15; background:linear-gradient(135deg,var(--accent),var(--accent-2)); -webkit-background-clip: text; background-clip: text; color:transparent; }
 
     .tagline { color:var(--muted); margin-top:8px; font-size:1.05rem; display:block; }
 
@@ -42,7 +66,7 @@
       padding: 12px 18px !important;
       border-radius: 8px !important;
       font-weight: 700 !important;
-      font-size: 1rem !important;   /* normalized size */
+      font-size: 1rem !important;
       text-decoration: none !important;
       display: inline-flex !important;
       align-items: center;
@@ -64,7 +88,6 @@
     .embed-wrap { background:transparent; border:none; padding:0; min-height:auto; }
     .luma-calendar-embed { width:100%; min-height:420px; display:block; }
 
-    /* Helper note under calendar */
     .embed-note { margin-top: 10px; font-size: .95rem; color: var(--muted); }
     .embed-note a { color: var(--muted); text-decoration: underline; text-underline-offset: 2px; border: none; }
     .embed-note a:hover { color: var(--accent-2); }
@@ -100,13 +123,19 @@
   <!-- Theme toggle stays top-right -->
   <button id="theme-toggle" class="theme-toggle">Light</button>
 
-  <!-- Simple top-left nav (static) -->
-<nav class="top-nav">
-  <a href="index.html">Home</a>
-  <a href="index.html">Events</a>
-  <a href="howitworks.html">How it Works</a>
-  <a href="sponsor.html">Sponsor</a>
-</nav>
+  <!-- Responsive nav -->
+  <div class="nav-wrap">
+    <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Toggle navigation">
+      ☰ Menu
+    </button>
+    <nav id="site-nav" class="top-nav">
+      <a href="index2.html">Home</a>
+      <a href="index2.html">Events</a>
+      <a href="howitworks.html">How it Works</a>
+      <a href="sponsor.html">Sponsor</a>
+      <a href="crew.html">Crew</a>
+    </nav>
+  </div>
 
   <header>
     <div class="brand">
@@ -126,14 +155,12 @@
       <section class="card">
         <h2>Upcoming Events</h2>
         <div class="embed-wrap">
-          <!-- Primary embed -->
           <script src="https://embed.lu.ma/calendar.js"></script>
           <div id="luma-cal" class="luma-calendar-embed"
                data-calendar-id="cal-hw6M9gTyUBMNupW"
                data-default-view="list"
                data-show-search="false"></div>
 
-          <!-- Fallback iframe -->
           <div id="luma-cal-fallback" style="display:none;">
             <iframe
               src="https://lu.ma/embed/calendar/cal-hw6M9gTyUBMNupW/events"
@@ -143,7 +170,6 @@
             </iframe>
           </div>
 
-          <!-- Always-visible note -->
           <p class="embed-note">
             If the calendar doesn’t load, you can
             <a href="https://lu.ma/cal-hw6M9gTyUBMNupW" target="_blank" rel="noopener">open it on Lu.ma</a>.
@@ -158,7 +184,6 @@
         </div>
 
         <script>
-          // Show fallback if Lu.ma doesn’t inject
           setTimeout(function () {
             var host = document.getElementById('luma-cal');
             var fallback = document.getElementById('luma-cal-fallback');
@@ -176,7 +201,7 @@
         <h2>Next Up</h2>
         <div class="event-info">
           <p class="event-title">Toronto CISO Open Mic</p>
-          <p class="event-meta">September 24, 2025 · 6:00–9:00 PM ET</p>
+          <p class="event-meta">October 14, 2025 · 5:00–8:00 PM ET</p>
           <p class="event-meta">📍 The National Club · Toronto</p>
         </div>
         <hr class="divider">
@@ -202,7 +227,7 @@
         <img src="assets/sponsor3.png" alt="Sponsor 3">
       </div>
       <div class="cta-row">
-        <a class="btn" href="sponsorship.html">Become a Sponsor</a>
+        <a class="btn" href="sponsor.html">Sponsor</a>
       </div>
     </section>
 
@@ -222,6 +247,7 @@
   <footer>© 2025 CISO Open Mic</footer>
 
   <script>
+    // Theme toggle
     const toggleBtn = document.getElementById('theme-toggle');
     if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
       document.body.classList.add('light'); toggleBtn.textContent = 'Dark';
@@ -230,6 +256,23 @@
       document.body.classList.toggle('light');
       toggleBtn.textContent = document.body.classList.contains('light') ? 'Dark' : 'Light';
     });
+
+    // Mobile nav toggle
+    (function () {
+      const btn = document.querySelector('.nav-toggle');
+      const nav = document.getElementById('site-nav');
+      if (!btn || !nav) return;
+      btn.addEventListener('click', () => {
+        const isOpen = nav.classList.toggle('open');
+        btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
+      nav.addEventListener('click', (e) => {
+        if (e.target.tagName === 'A') {
+          nav.classList.remove('open');
+          btn.setAttribute('aria-expanded', 'false');
+        }
+      });
+    })();
   </script>
 </body>
 </html>
