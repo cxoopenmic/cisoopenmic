@@ -1,1 +1,62 @@
-Hello CISO world!
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CISO Open Mic</title>
+  <meta name="description" content="CISO Open Mic — a forum for CISOs and security leaders to share, connect, and learn."/>
+  <link rel="icon" href="assets/favicon.ico" type="image/x-icon"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root { --bg:#000100; --text:#fdfdfd; --muted:#e0e0e0; --accent:#c12331; --accent-2:#ff8a00; }
+    body {
+      margin:0; font-family:"Open Sans",Arial,sans-serif;
+      background:var(--bg); color:var(--text);
+      display:flex; flex-direction:column; align-items:center; justify-content:center;
+      min-height:100svh; text-align:center; border:2px solid var(--accent-2); padding:24px;
+    }
+    .brand img.logo {
+      width:140px; height:140px; border-radius:50%; object-fit:cover;
+      box-shadow:0 6px 18px rgba(0,0,0,0.35);
+    }
+    h1 {
+      font-size:clamp(28px,4vw,42px); margin:16px 0 8px;
+      background:linear-gradient(135deg,var(--accent),var(--accent-2));
+      -webkit-background-clip:text; background-clip:text; color:transparent;
+    }
+    .tagline { color:var(--muted); font-size:1.1rem; margin-bottom:28px; }
+
+    .btn {
+      background:linear-gradient(135deg,var(--accent),var(--accent-2));
+      color:#fff; padding:16px 24px; border-radius:10px; font-weight:700;
+      font-size:1.1rem; text-decoration:none; display:inline-block;
+      box-shadow:0 8px 18px rgba(0,0,0,0.25); transition:transform .15s ease;
+      min-width:280px;
+    }
+    .btn:hover { transform: translateY(-2px); }
+
+    .event-sub { margin-top:10px; color:var(--muted); font-size:.95rem; }
+    footer { position:fixed; bottom:12px; left:0; right:0; text-align:center; color:var(--muted); font-size:.9rem; }
+  </style>
+</head>
+<body>
+  <div class="brand">
+    <img src="assets/logo.png" alt="CISO Open Mic logo" class="logo"/>
+    <h1>CISO Open Mic</h1>
+  </div>
+
+  <div class="tagline">A forum for CISOs and security leaders to share, connect, and learn.</div>
+
+  <!-- Hard-coded Toronto event -->
+  <a class="btn"
+     href="https://lu.ma/event/evt-tYYm8prjk6J5TjD"
+     target="_blank" rel="noopener">
+    Register for Toronto — Oct 14, 5:00–8:00 PM ET
+  </a>
+  <div class="event-sub">The National Club · Toronto</div>
+
+  <footer>© 2025 CISO Open Mic</footer>
+</body>
+</html>
