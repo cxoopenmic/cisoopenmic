@@ -30,12 +30,33 @@
     main { max-width:900px; margin:0 auto; padding:24px 32px 64px; }
     .card { background:var(--card); border-radius:14px; padding:24px; border:1px solid var(--ring); margin-bottom:24px; }
     .card h2 { margin-top:0; }
-    .btn{ background:linear-gradient(135deg,var(--accent),var(--accent-2)); color:#fff; padding:12px 18px; border-radius:8px; font-weight:700; text-decoration:none; display:inline-flex; }
-    .cta-row{ display:flex; gap:12px; flex-wrap:wrap; }
+    .muted { color: var(--muted); }
+
+    /* Buttons (match site + Lu.ma checkout look) */
+    .btn,
+    .luma-checkout--button {
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #fff !important;
+      padding: 12px 18px !important;
+      border-radius: 8px !important;
+      font-weight: 700 !important;
+      font-size: 1rem !important;
+      text-decoration: none !important;
+      display: inline-flex !important;
+      align-items: center;
+      justify-content: center;
+      line-height: 1.2;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.25);
+      border: none !important;
+      cursor: pointer;
+    }
+    .cta-row { display:flex; gap:12px; flex-wrap:wrap; }
+
+    ul { margin-left: 18px; }
 
     footer { text-align:center; color:var(--text); font-size:.9rem; padding:28px 16px; }
 
-    /* Light mode tokens */
+    /* Light mode */
     body.light { --bg:#f8fafc; --card:#ffffff; --text:#000000; --muted:#475569; --ring:rgba(0,0,0,0.08); }
     .theme-toggle { position:fixed; top:16px; right:16px; z-index:1000; background:var(--muted); color:var(--bg); border:none; padding:8px 14px; border-radius:6px; font-weight:800; cursor:pointer; box-shadow:0 2px 6px rgba(0,0,0,0.2); transition:background .3s,color .3s; }
     .theme-toggle:hover { background:var(--text); color:var(--bg); }
@@ -61,23 +82,54 @@
 
   <main>
     <section class="card">
-      <h2>Why Sponsor?</h2>
-      <p>CISO Open Mic brings together security leaders in an intimate, trusted setting. Sponsors gain brand visibility, thought leadership opportunities, and the chance to build genuine connections with decision-makers.</p>
-    </section>
-
-    <section class="card">
-      <h2>Sponsorship Opportunities</h2>
+      <h2>About the Series</h2>
+      <p>CISO Open Mic is a trusted forum for senior security leaders. There are no sales pitches, no moderators, and no slide decks—just candid perspectives from CISOs and security executives in an intimate setting.</p>
       <ul>
-        <li><strong>Event Sponsor</strong> — Recognition throughout the event, logo on all materials.</li>
-        <li><strong>Dinner/Reception Sponsor</strong> — Highlighted branding and a short welcome during networking.</li>
-        <li><strong>Community Partner</strong> — Presence across multiple events and channels.</li>
+        <li>Audience: 30–50 senior cybersecurity leaders (Director+)</li>
+        <li>Format: networking, hors d’oeuvres, open mic talks, and recognition</li>
+        <li>Venues: premium private clubs (e.g., The National Club, Toronto)</li>
+        <li>Limited sponsors per event to preserve quality and access</li>
       </ul>
     </section>
 
     <section class="card">
-      <h2>Get in Touch</h2>
-      <p>Email us at <a href="mailto:info@cisocollaboration.ca">info@cisocollaboration.ca</a> to discuss sponsorship options.</p>
+      <h2>National Sponsorship Package</h2>
+      <p><strong>List price:</strong> <strong>$15,000 CAD</strong> &nbsp;<span class="muted">(preferred sponsors received $14,000)</span></p>
+      <p><em>Commitment:</em> sponsor four events in Canadian cities (Toronto, Calgary, Montreal, Vancouver, Ottawa, Halifax).</p>
+      <h3 style="margin-top:14px;">Benefits</h3>
+      <ul>
+        <li><strong>Opening remarks</strong> at each sponsored event by your Field CISO/CTO</li>
+        <li><strong>Recognition</strong> across events, our website, and social channels</li>
+        <li>Ability to <strong>select award categories</strong> you sponsor</li>
+        <li><strong>Logo placement</strong> at entrance, on banners, and stage screens</li>
+        <li><strong>Acknowledgement</strong> in opening/closing notes and communications</li>
+        <li><strong>Present one award</strong> at each event</li>
+        <li><strong>Attendee contact information</strong> provided within 5 business days</li>
+        <li>Priority access to sponsor lounge, pre-event dinners, and early invites</li>
+      </ul>
+      <div class="cta-row" style="margin-top:8px;">
+        <a class="btn" href="mailto:info@cisocollaboration.ca?subject=National%20Sponsorship%20Inquiry">Contact Us About Sponsorship</a>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Enhancements and Add-On Options <span class="muted">(per event)</span></h2>
+      <ul>
+        <li>Additional event — <strong>$3,500</strong></li>
+        <li>Additional attendee (space permitting) — <strong>$1,500</strong></li>
+        <li>Exclusive VIP lounge (45 minutes) — <strong>$1,500</strong></li>
+        <li>Pre-event <strong>VIP dinner</strong> (venue dependent) — <strong>$2,500</strong></li>
+      </ul>
+      <div class="cta-row" style="margin-top:8px;">
+        <a class="btn" href="mailto:info@cisocollaboration.ca?subject=Sponsorship%20Enhancements">Ask About Enhancements</a>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Ready to Talk?</h2>
+      <p>We’ll tailor the experience to your goals while preserving the integrity of the community. Let’s discuss where you can add the most value.</p>
       <div class="cta-row" style="margin-top:12px;">
+        <a class="btn" href="mailto:info@cisocollaboration.ca?subject=Sponsor%20CISO%20Open%20Mic">Sponsor CISO Open Mic</a>
         <a class="btn" href="index2.html#sponsors">See Current Sponsors</a>
       </div>
     </section>
