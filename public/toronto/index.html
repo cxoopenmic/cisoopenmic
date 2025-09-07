@@ -81,7 +81,7 @@
     .site-footer{border-top:1px solid var(--ring); color:var(--muted); padding:28px 0}
     @media (max-width:980px){.grid--2{grid-template-columns:1fr}.grid--3{grid-template-columns:1fr}}
 
-    /* Light mode overrides */
+    /* Light mode overrides (default on first load) */
     body.light{
       --bg:#f8fafc; --card:#ffffff; --text:#000000; --muted:#475569; --ring:rgba(0,0,0,0.08);
     }
@@ -89,12 +89,22 @@
       background:linear-gradient(180deg,#ffffff 0%, #f9fafc 100%);
       border-bottom:1px solid var(--ring);
     }
-    .theme-toggle{position:fixed; top:16px; right:16px; z-index:1000; background:var(--muted); color:var(--bg); border:none; padding:8px 14px; border-radius:6px; font-weight:800; cursor:pointer; box-shadow:0 8px 18px rgba(0,0,0,0.25);}
+
+    /* Floating theme toggle (bottom-right) */
+    .theme-toggle{
+      position:fixed; bottom:20px; right:20px; z-index:1000;
+      background:var(--muted); color:var(--bg);
+      border:none; padding:12px; border-radius:50%;
+      width:48px; height:48px; display:flex; align-items:center; justify-content:center;
+      font-size:20px; line-height:1; cursor:pointer; box-shadow:0 8px 18px rgba(0,0,0,0.25);
+    }
+    .theme-toggle:focus{outline:2px solid var(--accent-2); outline-offset:3px}
   </style>
 </head>
 
-<body class="page page--toronto">
-  <button id="theme-toggle" class="theme-toggle" aria-label="Toggle color theme">Light</button>
+<body class="page page--toronto light">
+  <!-- Floating icon toggle: 🌙 (switch to dark) / ☀️ (switch to light) -->
+  <button id="theme-toggle" class="theme-toggle" aria-label="Toggle color theme" title="Toggle theme">🌙</button>
 
   <header class="site-header" role="banner">
     <div class="container header__inner">
@@ -201,7 +211,7 @@
     <section id="sponsors" class="section section--band">
       <div class="container">
         <h2>Toronto Event Sponsors</h2>
-        <p class="lead">Supported by partners who believe the mic should belong to CISOs.</p>
+        <p class="lead">Supported by partners who support the building of community and sharing of insights by cybersecurity leaders.</p>
         <ul class="logo-list" aria-label="Sponsor logos">
           <li><span class="logo">AWS</span></li>
           <li><span class="logo">Palo Alto Networks</span></li>
@@ -249,10 +259,7 @@
         "@id": "https://cisoopenmic.ca/#org",
         "name": "CISO Open Mic",
         "url": "https://cisoopenmic.ca/",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://cisoopenmic.ca/assets/logo.png"
-        },
+        "logo": { "@type": "ImageObject", "url": "https://cisoopenmic.ca/assets/logo.png" },
         "sameAs": ["https://linkedin.com/showcase/cisoopenmic"]
       },
       {
@@ -304,10 +311,7 @@
         },
         "image": ["https://cisoopenmic.ca/assets/og/ciso-open-mic-toronto.jpg"],
         "organizer": { "@id": "https://cisoopenmic.ca/#org" },
-        "audience": {
-          "@type": "Audience",
-          "audienceType": ["CISO", "Security Executive", "Cybersecurity Leader"]
-        },
+        "audience": { "@type": "Audience", "audienceType": ["CISO", "Security Executive", "Cybersecurity Leader"] },
         "offers": {
           "@type": "Offer",
           "url": "https://lu.ma/event/evt-tYYm8prjk6J5TjD",
@@ -328,23 +332,40 @@
     const headerNav = document.querySelector('.nav');
     if (navToggle) navToggle.addEventListener('click', ()=> headerNav.classList.toggle('open'));
 
-    // Theme toggle with persistence
+    // Theme toggle with persistence; default is LIGHT on first load
     const toggleBtn = document.getElementById('theme-toggle');
     const saved = localStorage.getItem('com-theme');
-    const prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
 
-    if (saved === 'light' || (!saved && prefersLight)) {
-      document.body.classList.add('light');
-      toggleBtn.textContent = 'Dark';
+    // Apply saved preference; otherwise default to light
+    if (saved === 'dark') {
+      document.body.classList.remove('light');
+      toggleBtn.textContent = '☀️';
+      toggleBtn.setAttribute('aria-label','Switch to light theme');
+      toggleBtn.setAttribute('title','Switch to light theme');
     } else {
-      toggleBtn.textContent = 'Light';
+      document.body.classList.add('light');
+      toggleBtn.textContent = '🌙';
+      toggleBtn.setAttribute('aria-label','Switch to dark theme');
+      toggleBtn.setAttribute('title','Switch to dark theme');
     }
 
     toggleBtn.addEventListener('click', () => {
-      document.body.classList.toggle('light');
-      const light = document.body.classList.contains('light');
-      toggleBtn.textContent = light ? 'Dark' : 'Light';
-      localStorage.setItem('com-theme', light ? 'light' : 'dark');
+      const isLight = document.body.classList.contains('light');
+      if (isLight) {
+        // switch to dark
+        document.body.classList.remove('light');
+        localStorage.setItem('com-theme','dark');
+        toggleBtn.textContent = '☀️';
+        toggleBtn.setAttribute('aria-label','Switch to light theme');
+        toggleBtn.setAttribute('title','Switch to light theme');
+      } else {
+        // switch to light
+        document.body.classList.add('light');
+        localStorage.setItem('com-theme','light');
+        toggleBtn.textContent = '🌙';
+        toggleBtn.setAttribute('aria-label','Switch to dark theme');
+        toggleBtn.setAttribute('title','Switch to dark theme');
+      }
     });
 
     // Footer year
