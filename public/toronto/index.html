@@ -253,4 +253,102 @@
           "@type": "ImageObject",
           "url": "https://cisoopenmic.ca/assets/logo.png"
         },
-        "sameAs": ["https://linkedin.com/showcase
+        "sameAs": ["https://linkedin.com/showcase/cisoopenmic"]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://cisoopenmic.ca/#website",
+        "url": "https://cisoopenmic.ca/",
+        "name": "CISO Open Mic",
+        "publisher": { "@id": "https://cisoopenmic.ca/#org" },
+        "inLanguage": "en-CA"
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://cisoopenmic.ca/toronto#webpage",
+        "url": "https://cisoopenmic.ca/toronto",
+        "name": "CISO Open Mic Toronto",
+        "isPartOf": { "@id": "https://cisoopenmic.ca/#website" },
+        "about": { "@id": "https://cisoopenmic.ca/#org" },
+        "breadcrumb": {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://cisoopenmic.ca/" },
+            { "@type": "ListItem", "position": 2, "name": "Toronto", "item": "https://cisoopenmic.ca/toronto" }
+          ]
+        },
+        "description": "You, your peers, and the mic. Toronto’s peer-led CISO forum — no pitches, no panels, just candid conversations among cybersecurity leaders.",
+        "inLanguage": "en-CA"
+      },
+      {
+        "@type": "Event",
+        "@id": "https://cisoopenmic.ca/toronto#event",
+        "name": "CISO Open Mic Toronto",
+        "description": "You, your peers, and the mic. Toronto’s peer-led CISO forum for candid conversations — no pitches, no panels.",
+        "keywords": ["Toronto CISO", "CISO Open Mic", "Toronto cybersecurity event", "CISO networking Toronto"],
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "startDate": "2025-11-25T17:30:00-05:00",
+        "endDate": "2025-11-25T20:30:00-05:00",
+        "location": {
+          "@type": "Place",
+          "name": "The National Club",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "303 Bay St",
+            "addressLocality": "Toronto",
+            "addressRegion": "ON",
+            "postalCode": "M5H 2R1",
+            "addressCountry": "CA"
+          }
+        },
+        "image": ["https://cisoopenmic.ca/assets/og/ciso-open-mic-toronto.jpg"],
+        "organizer": { "@id": "https://cisoopenmic.ca/#org" },
+        "audience": {
+          "@type": "Audience",
+          "audienceType": ["CISO", "Security Executive", "Cybersecurity Leader"]
+        },
+        "offers": {
+          "@type": "Offer",
+          "url": "https://lu.ma/event/evt-tYYm8prjk6J5TjD",
+          "price": "0",
+          "priceCurrency": "CAD",
+          "availability": "https://schema.org/InStock",
+          "validFrom": "2025-09-07T09:00:00-04:00"
+        },
+        "inLanguage": "en-CA"
+      }
+    ]
+  }
+  </script>
+
+  <script>
+    // Mobile nav (optional)
+    const navToggle = document.querySelector('.nav-toggle');
+    const headerNav = document.querySelector('.nav');
+    if (navToggle) navToggle.addEventListener('click', ()=> headerNav.classList.toggle('open'));
+
+    // Theme toggle with persistence
+    const toggleBtn = document.getElementById('theme-toggle');
+    const saved = localStorage.getItem('com-theme');
+    const prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+
+    if (saved === 'light' || (!saved && prefersLight)) {
+      document.body.classList.add('light');
+      toggleBtn.textContent = 'Dark';
+    } else {
+      toggleBtn.textContent = 'Light';
+    }
+
+    toggleBtn.addEventListener('click', () => {
+      document.body.classList.toggle('light');
+      const light = document.body.classList.contains('light');
+      toggleBtn.textContent = light ? 'Dark' : 'Light';
+      localStorage.setItem('com-theme', light ? 'light' : 'dark');
+    });
+
+    // Footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
