@@ -1,283 +1,181 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>CISO Open Mic Toronto | Exclusive Event for CISOs & Security Leaders</title>
-  <meta name="description" content="You, your peers, and the mic. Toronto’s peer-led CISO forum — no pitches, no panels, just candid conversations among cybersecurity leaders." />
-  <link rel="canonical" href="https://YOURDOMAIN/toronto" />
-
-  <!-- Social -->
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="CISO Open Mic Toronto" />
-  <meta property="og:description" content="You, your peers, and the mic. Toronto’s peer-led CISO forum for candid conversations." />
-  <meta property="og:url" content="https://YOURDOMAIN/toronto" />
-  <meta property="og:image" content="https://YOURDOMAIN/static/og/ciso-open-mic-toronto.jpg" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="CISO Open Mic Toronto" />
-  <meta name="twitter:description" content="You, your peers, and the mic. Toronto’s peer-led CISO forum for candid conversations." />
-  <meta name="twitter:image" content="https://YOURDOMAIN/static/og/ciso-open-mic-toronto.jpg" />
-
-  <link rel="icon" href="/favicon.ico" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CISO Open Mic Toronto</title>
+  <meta name="description" content="You, your peers, and the mic. Toronto’s peer-led CISO forum — no pitches, no panels, just candid conversations among cybersecurity leaders."/>
+  <link rel="icon" href="assets/favicon.ico" type="image/x-icon"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
-    /* ===== Brand System (matches existing CISO Open Mic palette) ===== */
-    :root{
-      --brand-red:#c12331;        /* primary accent */
-      --brand-red-dk:#a41e2a;
-      --brand-navy:#112c50;       /* headings / links */
-      --brand-grey:#282828;       /* body text */
-      --brand-warm:#f6f7fb;       /* soft section bg */
-      --brand-line:#e7e8ee;       /* hairline borders */
-      --white:#ffffff;
-      --maxw:1120px;
-      --radius:16px;
-      --shadow:0 10px 24px rgba(17,44,80,.08);
+    :root { --bg:#000100; --card:#717170; --text:#fdfdfd; --muted:#e0e0e0; --accent:#c12331; --accent-2:#ff8a00; --ring:rgba(255,255,255,0.08); }
+    body { margin:0; font-family:"Open Sans",Arial,sans-serif; background:var(--bg); color:var(--text); border:2px solid var(--accent-2); }
+
+    /* Nav */
+    .nav-wrap { position: relative; padding: 12px 16px; }
+    .nav-toggle { display:none; background:var(--muted); color:var(--bg); border:none; padding:8px 12px; border-radius:6px; font-weight:800; cursor:pointer; }
+    .top-nav { display:flex; gap:14px; }
+    .top-nav a { color:var(--muted); font-weight:600; text-decoration:none; transition:color .2s, border-bottom .2s; }
+    .top-nav a:hover { color:var(--accent-2); border-bottom:2px solid var(--accent-2); padding-bottom:2px; }
+    @media (max-width:720px){
+      .nav-toggle{display:inline-block;}
+      .top-nav{display:none; position:absolute; left:12px; right:12px; top:52px; flex-direction:column; gap:10px; padding:12px; background:var(--bg); border:1px solid var(--ring); border-radius:10px; z-index:999;}
+      .top-nav.open{display:flex;}
+      header{padding-top:48px;}
     }
-    /* Base */
-    *{box-sizing:border-box}
-    html,body{margin:0;padding:0}
-    body{
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Inter, "Helvetica Neue", Arial, "Noto Sans";
-      color:var(--brand-grey);
-      background:var(--white);
-      line-height:1.55;
-    }
-    a{color:var(--brand-navy); text-decoration:none}
-    a:hover{opacity:.9; text-decoration:underline}
-    .container{max-width:var(--maxw); margin:0 auto; padding:0 20px}
-    /* Header (inherits site chrome; minimal local styles) */
-    .site-header{border-bottom:1px solid var(--brand-line); background:var(--white)}
-    .header__inner{display:flex; align-items:center; justify-content:space-between; height:64px}
-    .brand{font-weight:800; letter-spacing:.2px; color:var(--brand-navy)}
-    .nav a{margin-left:18px}
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center; gap:8px;
-      font-weight:700; padding:12px 18px; border-radius:12px; border:1px solid transparent;
-      box-shadow:var(--shadow); transition:transform .06s ease, box-shadow .2s ease;
-      white-space:nowrap;
-    }
-    .btn:active{transform:translateY(1px)}
-    .btn--primary{background:var(--brand-red); color:#fff; border-color:var(--brand-red)}
-    .btn--primary:hover{background:var(--brand-red-dk); border-color:var(--brand-red-dk)}
-    .btn--secondary{background:#fff; color:var(--brand-navy); border-color:var(--brand-navy)}
-    .btn--ghost{background:#fff; color:var(--brand-navy); border-color:var(--brand-line); box-shadow:none}
-    /* Sections */
-    .section{padding:56px 0}
-    .section--hero{padding:64px 0 40px; background:linear-gradient(180deg,#ffffff 0%, #f9fafc 100%)}
-    .section--band{background:var(--brand-warm)}
-    .eyebrow{color:#516b8c; letter-spacing:.18em; font-size:12px; text-transform:uppercase}
-    h1,h2,h3{color:var(--brand-navy); margin:0 0 10px}
-    h1{font-size: clamp(34px, 5vw, 56px); line-height:1.05; font-weight:900}
-    h2{font-size: clamp(22px, 2.8vw, 30px); font-weight:900}
-    h3{font-size:18px}
-    .lead{font-size:18px; color:#3a3a3a}
-    .muted{color:#606a76}
-    .hr{height:1px; background:var(--brand-line); margin:22px 0}
-    /* Layout helpers */
-    .grid{display:grid; gap:18px}
-    .grid--2{grid-template-columns:1.2fr 1fr}
-    .grid--3{grid-template-columns:repeat(3,1fr)}
-    .card{
-      background:#fff; border:1px solid var(--brand-line); border-radius:var(--radius);
-      padding:20px; box-shadow:var(--shadow)
-    }
-    .list{margin:10px 0 0; padding:0 0 0 18px}
-    .list--meta{list-style:none; padding:0; margin:0}
-    .list--meta li{padding:6px 0; border-bottom:1px dashed var(--brand-line)}
-    .logo-list{list-style:none; padding:0; display:flex; gap:14px; flex-wrap:wrap}
-    .logo{display:inline-flex; align-items:center; justify-content:center; min-width:140px; height:70px; border:1px solid var(--brand-line); border-radius:12px; padding:8px 12px}
-    /* Tagline lockup */
-    .lockup{display:flex; align-items:center; gap:14px; margin-top:16px}
-    .lockup .words{font-weight:900; line-height:1.05; letter-spacing:.2px}
-    .lockup .you{color:var(--brand-red)}
-    .lockup .peers{color:var(--brand-navy)}
-    .lockup .mic{color:var(--brand-grey)}
-    /* Footer */
-    .site-footer{border-top:1px solid var(--brand-line); background:#fff; color:#5f6770; padding:28px 0}
-    /* Responsive */
-    @media (max-width: 980px){
-      .grid--2{grid-template-columns:1fr}
-      .grid--3{grid-template-columns:1fr}
-      .nav a.hide-sm{display:none}
-    }
+
+    header { padding:64px 20px 24px; text-align:center; }
+    .brand { display:inline-flex; align-items:center; gap:14px; margin-bottom:8px; }
+    .brand img.logo { width:112px; height:112px; border-radius:50%; object-fit:cover; border:none; box-shadow:0 6px 18px rgba(0,0,0,0.35); }
+    h1 { font-size:clamp(28px,4vw,42px); margin:0; line-height:1.15; background:linear-gradient(135deg,var(--accent),var(--accent-2)); -webkit-background-clip:text; background-clip:text; color:transparent; }
+    .tagline { color:var(--muted); margin-top:8px; font-size:1.05rem; display:block; }
+
+    .btn { background:linear-gradient(135deg,var(--accent),var(--accent-2)); color:#fff; padding:12px 18px; border-radius:8px; font-weight:700; text-decoration:none; display:inline-flex; line-height:1.2; box-shadow:0 8px 18px rgba(0,0,0,0.25); }
+
+    main { max-width:1100px; margin:0 auto; padding:24px 32px 64px; }
+    .grid { display:grid; grid-template-columns:1fr; gap:20px; margin-top:24px; }
+    @media (min-width:980px){ .grid { grid-template-columns:1.2fr 0.8fr; } }
+    .card { background:var(--card); border-radius:14px; padding:18px; border:1px solid var(--ring); margin-bottom:24px; }
+    .card h2 { margin:0 0 10px; font-size:1.25rem; }
+
+    .sponsors { text-align:center; margin-top:32px; }
+    .sponsor-logos { display:flex; justify-content:center; gap:32px; flex-wrap:wrap; margin-top:16px; }
+    .sponsor-logos img { max-height:60px; object-fit:contain; filter:brightness(0) invert(1); transition:filter .3s; }
+    body.light .sponsor-logos img { filter:none; }
+
+    footer { text-align:center; color:var(--text); font-size:.92rem; padding:28px 16px; }
+
+    /* Light mode */
+    body.light { --bg:#f8fafc; --card:#ffffff; --text:#000000; --muted:#475569; --ring:rgba(0,0,0,0.08); }
+    .theme-toggle { position:fixed; top:16px; right:16px; z-index:1000; background:var(--muted); color:var(--bg); border:none; padding:8px 14px; border-radius:6px; font-weight:800; cursor:pointer; }
   </style>
 </head>
+<body>
+  <button id="theme-toggle" class="theme-toggle">Light</button>
 
-<body class="page page--toronto">
-  <header class="site-header" role="banner">
-    <div class="container header__inner">
-      <a class="brand" href="/">CISO Open Mic</a>
-      <nav class="nav" aria-label="Primary">
-        <a class="hide-sm" href="/#about">About</a>
-        <a class="hide-sm" href="/howitworks">How it works</a>
-        <a class="hide-sm" href="/sponsor">Sponsors</a>
-        <a class="hide-sm" href="/#events">Events</a>
-        <a class="btn btn--ghost" href="#register">Register</a>
-      </nav>
+  <div class="nav-wrap">
+    <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Toggle navigation">☰ Menu</button>
+    <nav id="site-nav" class="top-nav">
+      <a href="index2.html">Home</a>
+      <a href="index2.html#events">Events</a>
+      <a href="howitworks.html">How it Works</a>
+      <a href="sponsor.html">Sponsor</a>
+      <a href="crew.html">Crew</a>
+    </nav>
+  </div>
+
+  <header>
+    <div class="brand">
+      <img src="assets/logo.png" alt="CISO Open Mic logo" class="logo"/>
+      <h1>CISO Open Mic Toronto</h1>
+    </div>
+    <div class="tagline">You, your peers, and the mic.</div>
+    <div class="cta-row">
+      <a class="btn" href="https://lu.ma/YOUR_EVENT" target="_blank" rel="noopener">Register for the Next Toronto Event</a>
     </div>
   </header>
 
-  <main id="main" class="main" role="main">
-    <!-- HERO -->
-    <section id="hero" class="section section--hero">
-      <div class="container grid grid--2" style="align-items:center">
-        <div>
-          <p class="eyebrow">Toronto • CISO Community</p>
-          <h1>CISO Open Mic Toronto</h1>
-          <p class="lead">You, your peers, and the mic. An exclusive evening for Toronto’s CISOs and cybersecurity executives to share openly, connect deeply, and learn from one another.</p>
-          <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:14px">
-            <a id="register" class="btn btn--primary" href="https://lu.ma/YOUR_EVENT" target="_blank" rel="noopener">Register for the Next Toronto Event</a>
-            <a class="btn btn--secondary" href="/howitworks">How it works</a>
-          </div>
+  <main>
+    <section class="card">
+      <h2>Why Toronto CISOs Choose CISO Open Mic</h2>
+      <p>At CISO Open Mic Toronto, the mic belongs to the community. No vendor pitches, no scripted panels, no moderators. Just you, your peers, and the mic — a safe space for Toronto CISOs to talk through the realities of leadership in cybersecurity.</p>
+    </section>
 
-          <div class="lockup" aria-label="Tagline lockup">
-            <svg viewBox="0 0 120 120" width="68" height="68" aria-hidden="true">
-              <defs>
-                <linearGradient id="micgrad" x1="0" y1="0" x2="1" y2="1">
-                  <stop offset="0%" stop-color="#c12331"/>
-                  <stop offset="100%" stop-color="#a41e2a"/>
-                </linearGradient>
-              </defs>
-              <circle cx="60" cy="60" r="56" fill="none" stroke="url(#micgrad)" stroke-width="4"/>
-              <rect x="50" y="30" width="20" height="40" rx="10" fill="#112c50" opacity="0.95"/>
-              <rect x="54" y="70" width="12" height="18" rx="6" fill="#112c50" opacity="0.95"/>
-              <rect x="56" y="88" width="8" height="10" rx="4" fill="#112c50" opacity="0.95"/>
-            </svg>
-            <div class="words">
-              <div class="you">YOU,</div>
-              <div class="peers">YOUR PEERS,</div>
-              <div class="mic">AND THE MIC.</div>
-            </div>
-          </div>
-        </div>
+    <section class="card">
+      <h2>Next Toronto CISO Open Mic</h2>
+      <ul>
+        <li><strong>Date:</strong> Nov 25, 2025</li>
+        <li><strong>Time:</strong> 5:30–8:30 PM</li>
+        <li><strong>Venue:</strong> The National Club, Downtown Toronto</li>
+      </ul>
+      <a class="btn" href="https://lu.ma/YOUR_EVENT" target="_blank" rel="noopener">Secure Your Spot</a>
+    </section>
 
-        <aside class="card" aria-labelledby="next-title">
-          <h2 id="next-title" style="margin-bottom:8px">Next Toronto CISO Open Mic</h2>
-          <ul class="list--meta">
-            <li><strong>Date:</strong> Nov 25, 2025</li>
-            <li><strong>Time:</strong> 5:30–8:30 PM (America/Toronto)</li>
-            <li><strong>Venue:</strong> The National Club, Downtown Toronto</li>
-          </ul>
-          <div style="display:flex; gap:10px; margin-top:14px">
-            <a class="btn btn--primary" href="https://lu.ma/YOUR_EVENT" target="_blank" rel="noopener">Secure Your Spot</a>
-            <a class="btn btn--ghost" href="#ics">Add to Calendar</a>
-          </div>
-        </aside>
+    <section class="card">
+      <h2>What to Expect</h2>
+      <ul>
+        <li>Exclusive networking with Toronto CISOs and senior security leaders</li>
+        <li>Open-floor format — the mic is open to every voice in the room</li>
+        <li>Optional pre- and post-event networking for deeper connections</li>
+      </ul>
+    </section>
+
+    <section class="card sponsors">
+      <h2>Toronto Sponsors</h2>
+      <div class="sponsor-logos">
+        <img src="assets/aws.png" alt="AWS">
+        <img src="assets/paloalto.png" alt="Palo Alto Networks">
+        <img src="assets/cyberark.png" alt="CyberArk">
+        <img src="assets/axonius.png" alt="Axonius">
+        <img src="assets/phelpsgroup.png" alt="Phelps Group">
       </div>
     </section>
 
-    <!-- ABOUT -->
-    <section id="about" class="section">
-      <div class="container">
-        <h2>Why Toronto CISOs Choose CISO Open Mic</h2>
-        <p>At CISO Open Mic Toronto, the mic belongs to the community. No vendor pitches, no scripted panels, no moderators. Just you, your peers, and the mic — a safe space for Toronto CISOs to talk through the realities of leadership in cybersecurity.</p>
-        <div class="grid grid--3" style="margin-top:14px">
-          <div class="card">
-            <h3>Peer-Only Conversations</h3>
-            <p>Candid, practical discussion among CISOs and senior security leaders.</p>
-          </div>
-          <div class="card">
-            <h3>Private, Premium Venues</h3>
-            <p>Spaces like The National Club create the right environment for trust.</p>
-          </div>
-          <div class="card">
-            <h3>No Pitches, No Slides</h3>
-            <p>We removed the noise so the signal is stronger — one mic, many perspectives.</p>
-          </div>
-        </div>
-      </div>
+    <section class="card">
+      <h2>Venue</h2>
+      <p>Our Toronto events take place at exclusive venues such as <em>The National Club</em>, offering a private, sophisticated setting for you, your peers, and the mic.</p>
     </section>
 
-    <!-- HIGHLIGHTS (Band) -->
-    <section id="highlights" class="section section--band">
-      <div class="container">
-        <h2>What to Expect</h2>
-        <ul class="list">
-          <li>Exclusive networking with Toronto CISOs and senior security leaders</li>
-          <li>Open-floor format — the mic is open to every voice in the room</li>
-          <li>Optional pre- and post-event networking for deeper connections</li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- RECAPS -->
-    <section id="recaps" class="section">
-      <div class="container">
-        <h2>Toronto CISO Insights &amp; Event Recaps</h2>
-        <div class="grid grid--3">
-          <article class="card">
-            <h3><a href="/blog/toronto-summer-2025-highlights">Highlights — Summer 2025</a></h3>
-            <p>Key themes Toronto CISOs shared when they took the mic.</p>
-          </article>
-          <article class="card">
-            <h3><a href="/blog/toronto-leader-takeaways">Top Takeaways for Leaders</a></h3>
-            <p>Three ideas CISOs brought back to their teams the next day.</p>
-          </article>
-          <article class="card">
-            <h3><a href="/blog/why-peer-led-over-pitches">Why Peer-Led Beats Pitches</a></h3>
-            <p>The strategic edge of a no-slide, no-sell format for CISOs.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- SPONSORS -->
-    <section id="sponsors" class="section section--band">
-      <div class="container">
-        <h2>Toronto Event Sponsors</h2>
-        <p class="muted">Supported by partners who believe the mic should belong to CISOs.</p>
-        <ul class="logo-list" aria-label="Sponsor logos">
-          <li><span class="logo">AWS</span></li>
-          <li><span class="logo">Palo Alto Networks</span></li>
-          <li><span class="logo">CyberArk</span></li>
-          <li><span class="logo">Axonius</span></li>
-          <li><span class="logo">Phelps Group</span></li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- VENUE -->
-    <section id="venue" class="section">
-      <div class="container">
-        <h2>Hosted at Toronto’s Premier Private Clubs</h2>
-        <p>Our Toronto events take place at exclusive venues such as <em>The National Club</em>, offering a private, sophisticated setting for you, your peers, and the mic.</p>
-      </div>
-    </section>
-
-    <!-- CTA -->
-    <section id="cta" class="section section--band">
-      <div class="container">
-        <h2>Join the Toronto CISO Community</h2>
-        <p class="lead">Your voice matters. You, your peers, and the mic — step into the conversation.</p>
-        <div style="display:flex; gap:12px; flex-wrap:wrap">
-          <a class="btn btn--primary" href="https://lu.ma/YOUR_EVENT" target="_blank" rel="noopener">Register for CISO Open Mic Toronto</a>
-          <a class="btn btn--secondary" href="/howitworks">How it works</a>
-        </div>
-      </div>
+    <section class="card">
+      <h2>Join the Toronto CISO Community</h2>
+      <p>Your voice matters. You, your peers, and the mic — step into the conversation.</p>
+      <a class="btn" href="https://lu.ma/YOUR_EVENT" target="_blank" rel="noopener">Register Now</a>
     </section>
   </main>
 
-  <footer class="site-footer" role="contentinfo">
-    <div class="container">
-      <small>© <span id="year"></span> CISO Open Mic • Toronto, Canada</small>
-    </div>
-  </footer>
+  <footer>© 2025 CISO Open Mic Toronto</footer>
 
-  <!-- JSON-LD: Organization + Event -->
+  <!-- JSON-LD Schema -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "Organization",
+        "@id": "https://cisoopenmic.ca/#org",
         "name": "CISO Open Mic",
-        "url": "https://YOURDOMAIN",
-        "logo": "https://YOURDOMAIN/static/logo.png",
-        "sameAs": ["https://www.linkedin.com/company/ciso-open-mic"]
+        "url": "https://cisoopenmic.ca/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://cisoopenmic.ca/assets/logo.png"
+        },
+        "sameAs": [
+          "https://www.linkedin.com/company/ciso-open-mic"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://cisoopenmic.ca/#website",
+        "url": "https://cisoopenmic.ca/",
+        "name": "CISO Open Mic",
+        "publisher": { "@id": "https://cisoopenmic.ca/#org" },
+        "inLanguage": "en-CA"
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://cisoopenmic.ca/toronto#webpage",
+        "url": "https://cisoopenmic.ca/toronto",
+        "name": "CISO Open Mic Toronto",
+        "isPartOf": { "@id": "https://cisoopenmic.ca/#website" },
+        "about": { "@id": "https://cisoopenmic.ca/#org" },
+        "breadcrumb": {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://cisoopenmic.ca/" },
+            { "@type": "ListItem", "position": 2, "name": "Toronto", "item": "https://cisoopenmic.ca/toronto" }
+          ]
+        },
+        "description": "You, your peers, and the mic. Toronto’s peer-led CISO forum — no pitches, no panels, just candid conversations among cybersecurity leaders.",
+        "inLanguage": "en-CA"
       },
       {
         "@type": "Event",
+        "@id": "https://cisoopenmic.ca/toronto#event",
         "name": "CISO Open Mic Toronto",
+        "description": "You, your peers, and the mic. Toronto’s peer-led CISO forum for candid conversations — no pitches, no panels.",
+        "keywords": ["Toronto CISO", "CISO Open Mic", "Toronto cybersecurity event", "CISO networking Toronto"],
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "eventStatus": "https://schema.org/EventScheduled",
         "startDate": "2025-11-25T17:30:00-05:00",
@@ -294,17 +192,47 @@
             "addressCountry": "CA"
           }
         },
-        "image": ["https://YOURDOMAIN/static/og/ciso-open-mic-toronto.jpg"],
-        "description": "You, your peers, and the mic. Toronto’s peer-led CISO forum for candid conversations — no pitches, no panels.",
-        "organizer": {"@type": "Organization","name": "CISO Open Mic","url": "https://YOURDOMAIN"},
-        "offers": {"@type": "Offer","url": "https://lu.ma/YOUR_EVENT","price": "0","priceCurrency": "CAD","availability": "https://schema.org/InStock"}
+        "image": [
+          "https://cisoopenmic.ca/assets/og/ciso-open-mic-toronto.jpg"
+        ],
+        "organizer": { "@id": "https://cisoopenmic.ca/#org" },
+        "performer": {
+          "@type": "Organization",
+          "name": "CISO Community (Peer-Led)"
+        },
+        "audience": {
+          "@type": "Audience",
+          "audienceType": ["CISO", "Security Executive", "Cybersecurity Leader"]
+        },
+        "offers": {
+          "@type": "Offer",
+          "url": "https://lu.ma/YOUR_EVENT",
+          "price": "0",
+          "priceCurrency": "CAD",
+          "availability": "https://schema.org/InStock",
+          "validFrom": "2025-09-07T09:00:00-04:00"
+        },
+        "inLanguage": "en-CA"
       }
     ]
   }
   </script>
 
   <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
+    // nav toggle
+    const navToggle=document.querySelector('.nav-toggle');
+    const nav=document.getElementById('site-nav');
+    navToggle.addEventListener('click',()=>{nav.classList.toggle('open')});
+
+    // theme toggle
+    const toggleBtn = document.getElementById('theme-toggle');
+    if (window.matchMedia('(prefers-color-scheme: light)').matches) {
+      document.body.classList.add('light'); toggleBtn.textContent = 'Dark';
+    } else { toggleBtn.textContent = 'Light'; }
+    toggleBtn.addEventListener('click', () => {
+      document.body.classList.toggle('light');
+      toggleBtn.textContent = document.body.classList.contains('light') ? 'Dark' : 'Light';
+    });
   </script>
 </body>
 </html>
