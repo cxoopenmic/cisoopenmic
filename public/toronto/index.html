@@ -81,42 +81,57 @@ body.light .site-header{background:linear-gradient(180deg,#ffffff 0%,#f9fafc 100
 </header>
 
 <main id="main" class="main" role="main">
-  <!-- HERO -->
-  <section id="hero" class="section section--hero">
-    <div class="container grid grid--2" style="align-items:center">
-      <div>
-        <p class="eyebrow">Toronto • CISO Community</p>
-        <h1>CISO Open Mic Toronto</h1>
-        <p class="lead">You, your peers, and the mic. An exclusive evening for Toronto’s CISOs and cybersecurity executives to share openly, connect deeply, and learn from one another.</p>
-        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:14px">
-          <a id="register" class="btn" href="https://lu.ma/event/evt-tYYm8prjk6J5TjD" target="_blank" rel="noopener">Register for the Next Toronto Event</a>
-          <a class="btn btn--secondary" href="/howitworks">How it works</a>
-        </div>
-        <div class="lockup" aria-label="Tagline lockup">
-          <svg viewBox="0 0 120 120" width="68" height="68" aria-hidden="true">
-            <defs><linearGradient id="micgrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#c12331"/><stop offset="100%" stop-color="#ff8a00"/></linearGradient></defs>
-            <circle cx="60" cy="60" r="56" fill="none" stroke="url(#micgrad)" stroke-width="4"/>
-            <rect x="50" y="30" width="20" height="40" rx="10" fill="#fdfdfd" opacity=".9"/>
-            <rect x="54" y="70" width="12" height="18" rx="6" fill="#fdfdfd" opacity=".9"/>
-            <rect x="56" y="88" width="8" height="10" rx="4" fill="#fdfdfd" opacity=".9"/>
-          </svg>
-          <div class="words"><div class="you">YOU,</div><div class="peers">YOUR PEERS,</div><div class="mic">AND THE MIC.</div></div>
+<!-- HERO -->
+<section id="hero" class="section section--hero">
+  <div class="container grid grid--2" style="align-items:center">
+    <!-- LEFT: message -->
+    <div>
+      <p class="eyebrow">Toronto • CISO Community</p>
+      <h1>CISO Open Mic Toronto</h1>
+      <p class="lead">
+        You, your peers, and the mic — a peer-led forum for CISOs to share candidly and connect.
+      </p>
+      <p class="muted" style="margin-top:8px">
+        <a href="/howitworks" style="color:inherit;text-decoration:underline">How it works</a>
+      </p>
+
+      <!-- Tagline lockup -->
+      <div class="lockup" aria-label="Tagline lockup" style="gap:12px;margin-top:14px">
+        <svg viewBox="0 0 120 120" width="56" height="56" aria-hidden="true">
+          <defs>
+            <linearGradient id="micgrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#c12331"/>
+              <stop offset="100%" stop-color="#ff8a00"/>
+            </linearGradient>
+          </defs>
+          <circle cx="60" cy="60" r="56" fill="none" stroke="url(#micgrad)" stroke-width="4"/>
+          <rect x="50" y="30" width="20" height="40" rx="10" fill="#fdfdfd" opacity=".9"/>
+          <rect x="54" y="70" width="12" height="18" rx="6" fill="#fdfdfd" opacity=".9"/>
+          <rect x="56" y="88" width="8" height="10" rx="4" fill="#fdfdfd" opacity=".9"/>
+        </svg>
+        <div class="words">
+          <div class="you">YOU,</div>
+          <div class="peers">YOUR PEERS,</div>
+          <div class="mic">AND THE MIC.</div>
         </div>
       </div>
-      <aside class="card" aria-labelledby="next-title">
-        <h2 id="next-title" style="margin-bottom:8px">Next Toronto CISO Open Mic</h2>
-        <ul class="list--meta">
-          <li><strong>Date:</strong> Oct 14, 2025</li>
-          <li><strong>Time:</strong> 5:00–8:00 PM (America/Toronto)</li>
-          <li><strong>Venue:</strong> The National Club, Downtown Toronto</li>
-        </ul>
-        <div style="display:flex;gap:10px;margin-top:14px">
-          <a class="btn" href="https://lu.ma/event/evt-tYYm8prjk6J5TjD" target="_blank" rel="noopener">Secure Your Spot</a>
-          <a class="btn btn--ghost" href="#ics">Add to Calendar</a>
-        </div>
-      </aside>
     </div>
-  </section>
+
+    <!-- RIGHT: info card -->
+    <aside id="next" class="card" aria-labelledby="next-title">
+      <h2 id="next-title" style="margin-bottom:6px">Next Toronto CISO Open Mic</h2>
+      <ul class="list--meta">
+        <li><strong>Date:</strong> Oct 14, 2025</li>
+        <li><strong>Time:</strong> 5:00–8:00 PM (America/Toronto)</li>
+        <li><strong>Venue:</strong> The National Club (Downtown)</li>
+      </ul>
+      <div style="display:flex;gap:10px;margin-top:14px">
+        <a class="btn" href="https://lu.ma/event/evt-tYYm8prjk6J5TjD" target="_blank" rel="noopener">Register</a>
+        <a class="btn btn--ghost" href="#ics">Add to Calendar</a>
+      </div>
+    </aside>
+  </div>
+</section>
 
   <!-- ABOUT -->
   <section id="about" class="section">
