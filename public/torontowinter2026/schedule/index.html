@@ -72,20 +72,27 @@ body{
   width:44px;
   height:44px;
   border-radius:12px;
-  background:var(--panel);
-  border:1px solid var(--border);
-  box-shadow: 0 10px 25px rgba(2,6,23,.08);
+
+  /* KEY: no white tile */
+  background: transparent;
+  border: none;
+  box-shadow: none;
+
   display:flex;
   align-items:center;
   justify-content:center;
   overflow:hidden;
   flex:0 0 auto;
 }
+  
 .brandLogo img{
   width:100%;
   height:100%;
   object-fit:contain;
   display:block;
+
+  /* KEY: no glow/shadow */
+  filter: none;
 }
 
 .brandTitle{
