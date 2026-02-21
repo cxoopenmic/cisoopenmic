@@ -129,9 +129,12 @@ body{
 }
 
 .dot{
-  width:10px;height:10px;border-radius:999px;background:var(--warn);
-  box-shadow:0 0 0 3px rgba(217,119,6,.14);
+  width:10px;
+  height:10px;
+  border-radius:999px;
+  box-shadow:0 0 0 4px rgba(22,163,74,.15);
 }
+  
 .dot.ok{ background:var(--ok); box-shadow:0 0 0 3px rgba(22,163,74,.14); }
 .dot.bad{ background:var(--bad); box-shadow:0 0 0 3px rgba(220,38,38,.14); }
 
@@ -214,7 +217,7 @@ body{
 
 .name{
   font-weight:900;
-  color: rgba(2,6,23,.92);
+  font-size:16px;
 }
 .talk{
   font-size:14px;
@@ -272,13 +275,12 @@ body{
   border-radius:8px;
   color:rgba(15,23,42,.70);
 }
-  .title{
+ .title{
   font-size:22px;
-  font-weight:900;
-  background: var(--brandGrad);
-  -webkit-background-clip:text;
-  background-clip:text;
-  color:transparent;
+  font-weight:850;
+  background: linear-gradient(90deg, #b91c1c 0%, #ea580c 45%, #f97316 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 @media (max-width: 1100px){
