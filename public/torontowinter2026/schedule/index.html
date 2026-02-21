@@ -69,9 +69,9 @@ body{
 }
 
 .brandLogo{
-  width:44px;
-  height:44px;
-  border-radius:12px;
+  width:52px;
+  height:52px;
+  border-radius:10px;
 
   /* KEY: no white tile */
   background: transparent;
@@ -103,7 +103,7 @@ body{
 }
 .kicker{
   font-size:12px;
-  letter-spacing:.12em;
+  letter-spacing:.18em;
   text-transform:uppercase;
   color:var(--muted);
   white-space:nowrap;
@@ -196,15 +196,20 @@ body{
 .slot:last-child{border-bottom:none}
 
 .rank{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
   font-weight:900;
-  background: var(--brandGrad);
-  color:#fff;
-  padding:4px 10px;
-  border-radius:999px;
+  background: var(--accentWash);
+  border:1px solid rgba(234,88,12,.30);
+  color: rgba(194,65,12,.95);
+
+  height:34px;
   min-width:54px;
-  text-align:center;
+
+  border-radius:999px;
   flex:0 0 auto;
-  box-shadow: 0 10px 22px rgba(2,6,23,.10);
 }
 
 .name{
