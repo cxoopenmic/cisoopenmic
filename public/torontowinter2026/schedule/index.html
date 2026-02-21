@@ -3,12 +3,231 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Toronto Winter 2026 — Live Schedule</title>
-  <meta http-equiv="refresh" content="0; url=https://cxoopenmic.com/cisoopenmic/torontowinter2026/schedule" />
+  <title>CISO Open Mic — Toronto Winter 2026 — Schedule</title>
+
+  <style>
+    :root{
+      --bg:#05060a;
+      --panel:#0b1020;
+      --border:rgba(148,163,184,.22);
+      --text:#f8fafc;
+      --muted:#a7b0c0;
+      --accent:#e7994d;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      height:100vh;
+      background: radial-gradient(circle at top, #0d1633, var(--bg));
+      color:var(--text);
+      font-family: system-ui, -apple-system, Segoe UI, sans-serif;
+      overflow:hidden;
+    }
+
+    /* Loader */
+    #loader{
+      position:absolute;
+      inset:0;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:24px;
+      z-index:10;
+    }
+    .card{
+      width:min(720px, 92vw);
+      border:1px solid var(--border);
+      background: rgba(11,16,32,.92);
+      border-radius:18px;
+      box-shadow: 0 18px 60px rgba(0,0,0,.35);
+      padding:22px 22px 18px;
+    }
+    .top{
+      display:flex;
+      gap:14px;
+      align-items:center;
+    }
+    .logo{
+      width:56px;height:56px;
+      border-radius:16px;
+      border:1px solid rgba(148,163,184,.25);
+      background: rgba(2,6,23,.55);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      overflow:hidden;
+      flex:0 0 auto;
+    }
+    .logo img{width:100%;height:100%;object-fit:contain}
+    .title{
+      min-width:0;
+      display:flex;
+      flex-direction:column;
+      line-height:1.12;
+    }
+    .kicker{
+      font-size:12px;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      opacity:.82;
+    }
+    .headline{
+      font-size:22px;
+      font-weight:900;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+    .sub{
+      margin-top:10px;
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.45;
+    }
+
+    .row{
+      margin-top:14px;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    .spinner{
+      width:16px;height:16px;
+      border-radius:999px;
+      border:2px solid rgba(255,255,255,.22);
+      border-top-color: var(--accent);
+      animation: spin .9s linear infinite;
+    }
+    @keyframes spin{ to { transform: rotate(360deg); } }
+
+    .btn{
+      border:1px solid rgba(148,163,184,.25);
+      background: rgba(2,6,23,.55);
+      color: var(--text);
+      padding:.45rem .75rem;
+      border-radius:12px;
+      cursor:pointer;
+      font-weight:700;
+    }
+
+    /* Iframe */
+    #frame{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      border:0;
+      display:none; /* becomes block when loaded */
+      background: transparent;
+    }
+
+    /* Error panel */
+    #error{
+      display:none;
+      margin-top:14px;
+      padding:12px 12px;
+      border-radius:14px;
+      border:1px solid rgba(239,68,68,.35);
+      background: rgba(127,29,29,.20);
+      color:#fecaca;
+      font-size:13px;
+      line-height:1.45;
+    }
+    .small{
+      opacity:.75;
+      font-size:12px;
+      margin-top:6px;
+      word-break:break-all;
+    }
+  </style>
 </head>
+
 <body>
+  <div id="loader">
+    <div class="card">
+      <div class="top">
+        <div class="logo">
+          <img src="https://cxoopenmic.com/CxO.png" alt="CxO Open Mic" />
+        </div>
+        <div class="title">
+          <div class="kicker">CISO Open Mic</div>
+          <div class="headline">Toronto Winter 2026 — Live Schedule</div>
+        </div>
+      </div>
+
+      <div class="sub">
+        Loading the live monitor view…<br/>
+        If this is on a room display, full-screen mode is recommended.
+      </div>
+
+      <div class="row" id="loadingRow">
+        <div class="spinner" aria-hidden="true"></div>
+        <div id="statusText">Connecting…</div>
+      </div>
+
+      <div id="error">
+        <div style="font-weight:800; margin-bottom:6px;">Could not load the schedule.</div>
+        <div>This page loads the schedule app from the CRM service.</div>
+        <div class="small" id="errorDetail"></div>
+        <div style="margin-top:10px; display:flex; gap:10px; flex-wrap:wrap;">
+          <button class="btn" id="btnRetry" type="button">Retry</button>
+          <button class="btn" id="btnOpenDirect" type="button">Open direct</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <iframe id="frame" title="CISO Open Mic schedule"></iframe>
+
   <script>
-    location.replace("https://cxoopenmic.com/cisoopenmic/torontowinter2026/schedule");
+    (function(){
+      // This is the real schedule app (served from CRM worker)
+      var TARGET = "https://cxoopenmic.com/cisoopenmic/torontowinter2026/schedule";
+
+      var frame = document.getElementById("frame");
+      var loader = document.getElementById("loader");
+      var statusText = document.getElementById("statusText");
+      var errorBox = document.getElementById("error");
+      var errorDetail = document.getElementById("errorDetail");
+      var btnRetry = document.getElementById("btnRetry");
+      var btnOpenDirect = document.getElementById("btnOpenDirect");
+
+      function showError(msg){
+        statusText.textContent = "Failed.";
+        errorDetail.textContent = (msg || "") + "  " + TARGET;
+        errorBox.style.display = "block";
+      }
+
+      function start(){
+        errorBox.style.display = "none";
+        statusText.textContent = "Connecting…";
+
+        // force reload the iframe
+        frame.style.display = "none";
+        frame.src = TARGET + (TARGET.indexOf("?") >= 0 ? "&" : "?") + "t=" + Date.now();
+
+        // If iframe loads, show it and hide loader.
+        frame.onload = function(){
+          frame.style.display = "block";
+          loader.style.display = "none";
+        };
+
+        // timeout: if nothing loads, show error (common if route blocked)
+        setTimeout(function(){
+          if (loader.style.display !== "none") {
+            showError("Timeout loading schedule.");
+          }
+        }, 12000);
+      }
+
+      btnRetry && btnRetry.addEventListener("click", function(){ start(); });
+      btnOpenDirect && btnOpenDirect.addEventListener("click", function(){ window.location.href = TARGET; });
+
+      start();
+    })();
   </script>
 </body>
 </html>
