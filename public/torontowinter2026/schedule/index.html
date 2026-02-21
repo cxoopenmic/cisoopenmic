@@ -388,9 +388,10 @@ body{
     }
   }
 
-  let sponsorTimer = null;
+let sponsorTimer = null;
 let sponsorIdx = 0;
 let sponsorList = [];
+let sponsorStarted = false;
 
 function renderSponsor(i){
   const box = document.getElementById("sponsors");
@@ -481,7 +482,7 @@ const b2 = perfs.filter(p => Number(p.performance_block) === 2);
 el("block1").innerHTML = b1.length ? b1.map(renderSlot).join("") : '<div class="loading">No speakers yet.</div>';
 el("block2").innerHTML = b2.length ? b2.map(renderSlot).join("") : '<div class="loading">No speakers yet.</div>';
 
-// ---- sponsors (NEW) ----
+// ---- sponsors ----
 sponsorList = (Array.isArray(data.sponsors) ? data.sponsors : [])
   .map(function(s){
     return {
@@ -491,8 +492,16 @@ sponsorList = (Array.isArray(data.sponsors) ? data.sponsors : [])
   })
   .filter(function(s){ return s.sponsor_org_name.trim(); });
 
-startSponsorCarousel();
-    console.log("sponsors:", sponsorList.length, sponsorList);
+// Start carousel once; do NOT reset every refresh
+if (!sponsorStarted) {
+  startSponsorCarousel();
+  sponsorStarted = true;
+} else {
+  // If sponsor list changed size, keep index valid
+  if (sponsorIdx >= sponsorList.length) sponsorIdx = 0;
+}
+
+console.log("sponsors:", sponsorList.length, sponsorList);
 
 stampOk();
 setStatus("ok","Live");
