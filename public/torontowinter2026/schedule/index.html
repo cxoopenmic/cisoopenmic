@@ -7,18 +7,18 @@
 
 <style>
 :root{
-  /* Light theme palette (CISO Open Mic leaning orange) */
-  --bg:#f6f7fb;
+  /* CISO Open Mic (from the hero button look) */
+  --brandRed:#b43a3a;        /* left side */
+  --brandOrange:#f08a2b;     /* right side */
+  --brandGrad: linear-gradient(90deg, var(--brandRed), var(--brandOrange));
+
+  /* Light theme */
+  --bg:#f4f6f9;
   --panel:#ffffff;
   --border:rgba(15,23,42,.12);
 
   --text:#0b1220;
   --muted:rgba(15,23,42,.62);
-
-  /* Accent (orange) + neutrals */
-  --accent:#c2410c;          /* deep orange */
-  --accent2:#ea580c;         /* bright orange */
-  --accentWash:rgba(234,88,12,.10);
 
   --ok:#16a34a;
   --warn:#d97706;
@@ -32,14 +32,14 @@
 body{
   margin:0;
   background:
-    radial-gradient(900px 320px at 18% 0%, rgba(234,88,12,.13), rgba(234,88,12,0)),
-    radial-gradient(820px 320px at 78% 0%, rgba(194,65,12,.10), rgba(194,65,12,0)),
+    radial-gradient(1200px 520px at 50% -180px, rgba(240,138,43,.16), rgba(240,138,43,0)),
+    radial-gradient(900px 420px at 18% -160px, rgba(180,58,58,.14), rgba(180,58,58,0)),
     var(--bg);
   color:var(--text);
   font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
   overflow:hidden;
 }
-
+  
 .wrap{
   height:100vh;
   display:flex;
@@ -166,12 +166,14 @@ body{
 
 .pill{
   font-size:12px;
-  padding:4px 10px;
+  padding:5px 12px;
   border-radius:999px;
-  border:1px solid rgba(234,88,12,.30);
-  background: var(--accentWash);
-  color: rgba(194,65,12,.95);
-  font-weight:750;
+  border:0;
+  background: var(--brandGrad);
+  color:#fff;
+  font-weight:850;
+  letter-spacing:.02em;
+  box-shadow: 0 10px 22px rgba(2,6,23,.12);
 }
 
 .slot{
@@ -184,14 +186,14 @@ body{
 
 .rank{
   font-weight:900;
-  background: var(--accentWash);
-  border:1px solid rgba(234,88,12,.30);
-  color: rgba(194,65,12,.95);
+  background: var(--brandGrad);
+  color:#fff;
   padding:4px 10px;
   border-radius:999px;
   min-width:54px;
   text-align:center;
   flex:0 0 auto;
+  box-shadow: 0 10px 22px rgba(2,6,23,.10);
 }
 
 .name{
@@ -253,6 +255,14 @@ body{
   padding:2px 8px;
   border-radius:8px;
   color:rgba(15,23,42,.70);
+}
+  .title{
+  font-size:22px;
+  font-weight:900;
+  background: var(--brandGrad);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
 }
 
 @media (max-width: 1100px){
