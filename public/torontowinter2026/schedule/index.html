@@ -482,8 +482,17 @@ el("block1").innerHTML = b1.length ? b1.map(renderSlot).join("") : '<div class="
 el("block2").innerHTML = b2.length ? b2.map(renderSlot).join("") : '<div class="loading">No speakers yet.</div>';
 
 // ---- sponsors (NEW) ----
-sponsorList = Array.isArray(data.sponsors) ? data.sponsors : [];
+sponsorList = (Array.isArray(data.sponsors) ? data.sponsors : [])
+  .map(function(s){
+    return {
+      sponsor_org_name: (s && (s.sponsor_org_name || s.name)) ? String(s.sponsor_org_name || s.name) : "",
+      tier: (s && s.tier) ? String(s.tier) : ""
+    };
+  })
+  .filter(function(s){ return s.sponsor_org_name.trim(); });
+
 startSponsorCarousel();
+    console.log("sponsors:", sponsorList.length, sponsorList);
 
 stampOk();
 setStatus("ok","Live");
