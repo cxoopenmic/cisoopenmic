@@ -320,7 +320,8 @@ body{
 
     <div class="card">
       <div class="block-title">Sponsors</div>
-      <div id="sponsors" class="loading">—</div>
+      <div id="sponsors" class="loading">Loading sponsors…</div>
+<div id="sponsorTier" class="loading" style="margin-top:6px; font-size:12px; opacity:.75;"></div>
     </div>
   </div>
 
@@ -387,6 +388,39 @@ body{
     }
   }
 
+  let sponsorTimer = null;
+let sponsorIdx = 0;
+let sponsorList = [];
+
+function renderSponsor(i){
+  const box = document.getElementById("sponsors");
+  const tierBox = document.getElementById("sponsorTier");
+  if (!box) return;
+
+  if (!Array.isArray(sponsorList) || sponsorList.length === 0) {
+    box.textContent = "—";
+    if (tierBox) tierBox.textContent = "";
+    return;
+  }
+
+  const s = sponsorList[i] || {};
+  box.textContent = String(s.sponsor_org_name || "—");
+  if (tierBox) tierBox.textContent = s.tier ? ("Tier: " + String(s.tier)) : "";
+}
+
+function startSponsorCarousel(){
+  if (sponsorTimer) { clearInterval(sponsorTimer); sponsorTimer = null; }
+  sponsorIdx = 0;
+  renderSponsor(0);
+
+  if (Array.isArray(sponsorList) && sponsorList.length > 1) {
+    sponsorTimer = setInterval(function(){
+      sponsorIdx = (sponsorIdx + 1) % sponsorList.length;
+      renderSponsor(sponsorIdx);
+    }, 6000);
+  }
+}
+
   async function load(){
     setStatus("warn","Loading…");
     showErr("");
@@ -440,15 +474,19 @@ body{
       return;
     }
 
-    const perfs = Array.isArray(data.performances) ? data.performances : [];
-    const b1 = perfs.filter(p => Number(p.performance_block) === 1);
-    const b2 = perfs.filter(p => Number(p.performance_block) === 2);
+const perfs = Array.isArray(data.performances) ? data.performances : [];
+const b1 = perfs.filter(p => Number(p.performance_block) === 1);
+const b2 = perfs.filter(p => Number(p.performance_block) === 2);
 
-    el("block1").innerHTML = b1.length ? b1.map(renderSlot).join("") : '<div class="loading">No speakers yet.</div>';
-    el("block2").innerHTML = b2.length ? b2.map(renderSlot).join("") : '<div class="loading">No speakers yet.</div>';
+el("block1").innerHTML = b1.length ? b1.map(renderSlot).join("") : '<div class="loading">No speakers yet.</div>';
+el("block2").innerHTML = b2.length ? b2.map(renderSlot).join("") : '<div class="loading">No speakers yet.</div>';
 
-    stampOk();
-    setStatus("ok","Live");
+// ---- sponsors (NEW) ----
+sponsorList = Array.isArray(data.sponsors) ? data.sponsors : [];
+startSponsorCarousel();
+
+stampOk();
+setStatus("ok","Live");
   }
 
   load();
