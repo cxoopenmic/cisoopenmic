@@ -536,6 +536,7 @@ function renderSponsorLogo(i){
   const showEl = flip ? b : a;
   const hideEl = flip ? a : b;
 
+  const img = new Image();
   // Preload before switching to avoid “blank” flashes
  img.onload = function(){
   // Heuristic: ultra-wide or ultra-tall logos get a bigger safe inset + less zoom
