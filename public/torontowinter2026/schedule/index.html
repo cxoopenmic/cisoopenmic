@@ -603,8 +603,13 @@ el("block2").innerHTML = b2.length ? b2.map(renderSlot).join("") : '<div class="
 // ---- sponsors (logos) ----
 sponsorList = normalizeSponsors(data.sponsors);
 
+    if (!sponsorList.length && Array.isArray(data.sponsors) && data.sponsors.length) {
+  console.log("Sponsors returned but no logo_url found on any sponsor.", data.sponsors);
+}
+
 // Start carousel once; don’t restart on every refresh unless the list changed
 if (!sponsorStarted) {
+  sponsorPrevLen = sponsorList.length;   // IMPORTANT: initialize baseline
   startSponsorCarousel();
   sponsorStarted = true;
 } else {
@@ -615,14 +620,7 @@ if (!sponsorStarted) {
   }
 }
 
-// Start carousel once; do NOT reset every refresh
-if (!sponsorStarted) {
-  startSponsorCarousel();
-  sponsorStarted = true;
-} else {
-  // If sponsor list changed size, keep index valid
-  if (sponsorIdx >= sponsorList.length) sponsorIdx = 0;
-}
+
 
 console.log("sponsors:", sponsorList.length, sponsorList);
 
