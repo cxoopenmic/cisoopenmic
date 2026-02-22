@@ -288,34 +288,49 @@ body{
   overflow:hidden;
 }
 
+/* Sponsor logo stage (NO border) */
+.sponsorStage{
+  margin-top:6px;
+  position:relative;
+  height:140px;
+  border:0;                 /* <-- remove border */
+  border-radius:16px;
+  background:transparent;   /* or #fff if you want a tile */
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+}
+
+/* Two-layer crossfade image */
 .sponsorImg{
   position:absolute;
 
-  /* smaller inset so small logos can fill more */
-  inset:10px; /* was 14px */
-  width:calc(100% - 20px);
-  height:calc(100% - 20px);
+  /* defaults (can be overridden per-logo via CSS variables set in JS) */
+  --inset: 10px;
+  --zoom: 1.055;
 
-  object-fit:contain;
+  inset: var(--inset);
+  width: calc(100% - (var(--inset) * 2));
+  height: calc(100% - (var(--inset) * 2));
+
+  object-fit: contain;
 
   opacity:0;
   transform: scale(1);
   transform-origin:center center;
 
-  /* smoother GPU compositing */
   will-change: opacity, transform;
   backface-visibility: hidden;
 
-  /* soften the crossfade */
   transition:
     opacity 900ms ease-in-out,
     transform 6000ms ease-in-out;
 }
 
-/* When visible: fade in AND slowly zoom */
 .sponsorImg.show{
   opacity:1;
-  transform: scale(1.055); /* gentle premium zoom */
+  transform: scale(var(--zoom));
 }
   
  .title{
@@ -522,16 +537,37 @@ function renderSponsorLogo(i){
   const hideEl = flip ? a : b;
 
   // Preload before switching to avoid “blank” flashes
-  const img = new Image();
-  img.onload = function(){
-    showEl.src = nextUrl;
+ img.onload = function(){
+  // Heuristic: ultra-wide or ultra-tall logos get a bigger safe inset + less zoom
+  var w = img.naturalWidth || 0;
+  var h = img.naturalHeight || 0;
+  var ratio = (w && h) ? (w / h) : 1;
 
-    hideEl.classList.remove("show");
-    showEl.classList.add("show");
+  var inset = 10;
+  var zoom = 1.055;
 
-    setSponsorTier(s);
-    flip = !flip;
-  };
+  // very wide (banners)
+  if (ratio >= 2.4) { inset = 18; zoom = 1.02; }
+
+  // very tall (vertical marks)
+  if (ratio <= 0.55) { inset = 18; zoom = 1.02; }
+
+  showEl.style.setProperty("--inset", inset + "px");
+  showEl.style.setProperty("--zoom", String(zoom));
+
+  showEl.src = nextUrl;
+
+  // overlap fade: show new first, then hide old after paint
+  showEl.classList.add("show");
+  requestAnimationFrame(function(){
+    requestAnimationFrame(function(){
+      hideEl.classList.remove("show");
+    });
+  });
+
+  setSponsorTier(s);
+  flip = !flip;
+};
   img.onerror = function(){
     // skip this sponsor if the logo 404s
     sponsorIdx = (sponsorIdx + 1) % sponsorList.length;
