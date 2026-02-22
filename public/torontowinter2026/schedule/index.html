@@ -291,27 +291,31 @@ body{
 .sponsorImg{
   position:absolute;
 
-  /* SAFE FRAME so even big logos don't hit the edges */
-  inset:14px;                         /* <- increase/decrease to taste */
-  width:calc(100% - 28px);
-  height:calc(100% - 28px);
+  /* smaller inset so small logos can fill more */
+  inset:10px; /* was 14px */
+  width:calc(100% - 20px);
+  height:calc(100% - 20px);
 
   object-fit:contain;
 
   opacity:0;
   transform: scale(1);
   transform-origin:center center;
-  transition: opacity 900ms ease;
+
+  /* smoother GPU compositing */
+  will-change: opacity, transform;
+  backface-visibility: hidden;
+
+  /* soften the crossfade */
+  transition:
+    opacity 900ms ease-in-out,
+    transform 6000ms ease-in-out;
 }
 
+/* When visible: fade in AND slowly zoom */
 .sponsorImg.show{
   opacity:1;
-  animation: sponsorZoom 6s ease forwards;
-}
-
-@keyframes sponsorZoom{
-  0%   { transform: scale(1); }
-  100% { transform: scale(1.035); }   /* smaller zoom so it stays inside frame */
+  transform: scale(1.055); /* gentle premium zoom */
 }
   
  .title{
