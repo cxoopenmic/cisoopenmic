@@ -290,15 +290,17 @@ body{
 
 .sponsorImg{
   position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
+
+  /* SAFE FRAME so even big logos don't hit the edges */
+  inset:14px;                         /* <- increase/decrease to taste */
+  width:calc(100% - 28px);
+  height:calc(100% - 28px);
+
   object-fit:contain;
-  padding:6px;
 
   opacity:0;
-
   transform: scale(1);
+  transform-origin:center center;
   transition: opacity 900ms ease;
 }
 
@@ -308,12 +310,8 @@ body{
 }
 
 @keyframes sponsorZoom{
-  0%{
-    transform: scale(1);
-  }
-  100%{
-    transform: scale(1.06);   /* slow premium zoom */
-  }
+  0%   { transform: scale(1); }
+  100% { transform: scale(1.035); }   /* smaller zoom so it stays inside frame */
 }
   
  .title{
