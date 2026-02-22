@@ -29,6 +29,7 @@
 
 *{box-sizing:border-box}
 
+  
 body{
   margin:0;
 
@@ -341,6 +342,51 @@ body{
   -webkit-text-fill-color: transparent;
 }
 
+  .qrWrap{
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 9999;
+  width: 160px;
+  padding: 10px;
+  border-radius: 14px;
+  background: rgba(255,255,255,.92);
+  border: 1px solid rgba(15,23,42,.10);
+  box-shadow: 0 18px 55px rgba(2,6,23,.16);
+  color: rgba(15,23,42,.85);
+  text-align: center;
+}
+
+.qrTitle{
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  opacity: .8;
+}
+
+.qrImg{
+  width: 140px;
+  height: 140px;
+  display: block;
+  margin: 0 auto;
+  image-rendering: pixelated;
+}
+
+.qrUrl{
+  margin-top: 6px;
+  font-size: 10px;
+  line-height: 1.2;
+  opacity: .75;
+  word-break: break-word;
+}
+
+/* Optional: hide QR on small screens */
+@media (max-width: 820px){
+  .qrWrap{ display:none; }
+}
+
 @media (max-width: 1100px){
   body{ overflow:auto; }
   .wrap{ height:auto; min-height:100vh; }
@@ -421,7 +467,12 @@ body{
     <div>Event ID: <span class="eventPill" id="eventIdPill"></span></div>
   </div>
 </div>
-
+<!-- QR: scan to view on mobile -->
+<div id="qrWrap" class="qrWrap" aria-label="QR code to open this schedule on mobile">
+  <div class="qrTitle">Scan to view</div>
+  <img id="qrImg" class="qrImg" alt="QR code" />
+  <div id="qrUrl" class="qrUrl"></div>
+</div>
 <script>
 (function(){
   const EVENT_ID = "event_toronto_2026_02_25";
@@ -671,7 +722,33 @@ if (!sponsorStarted) {
   }
 }
 
+// --- QR code (mobile share) ---
+(function initQr(){
+  var img = document.getElementById("qrImg");
+  var urlEl = document.getElementById("qrUrl");
+  if (!img) return;
 
+  // Prefer a stable public URL (recommended)
+  // Change this to your canonical path once final:
+  var publicUrl = "https://cisoopenmic.com/schedule/torontowinter2026";
+
+  // If you’d rather encode whatever URL the screen is currently on, use:
+  // var publicUrl = window.location.href;
+
+  if (urlEl) urlEl.textContent = publicUrl.replace(/^https?:\/\//i, "");
+
+  // QR image (external generator)
+  // Size is controlled by CSS; this sets enough pixels for crisp scan.
+  var qr = "https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=" + encodeURIComponent(publicUrl);
+  img.src = qr;
+})();
+
+    document.addEventListener("keydown", function(e){
+  if (e.key && e.key.toLowerCase() === "q") {
+    var w = document.getElementById("qrWrap");
+    if (w) w.style.display = (w.style.display === "none" ? "" : "none");
+  }
+});
 
 console.log("sponsors:", sponsorList.length, sponsorList);
 
