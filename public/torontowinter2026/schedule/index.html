@@ -491,20 +491,26 @@ body{
       .replace(/"/g,"&quot;");
   }
 
-  function renderSlot(p){
-    const order = (p && p.performance_order != null) ? String(p.performance_order) : "?";
-    const name  = (p && p.full_name) ? String(p.full_name) : "Speaker TBD";
-    const talk  = (p && p.talk_title) ? String(p.talk_title) : "";
-    return (
-      '<div class="slot">' +
-        '<div class="rank">#' + esc(order) + '</div>' +
-        '<div>' +
-          '<div class="name">' + esc(name) + '</div>' +
-          '<div class="talk">' + esc(talk) + '</div>' +
-        '</div>' +
-      '</div>'
-    );
-  }
+function renderSlot(p){
+  const order = (p && p.performance_order != null) ? String(p.performance_order) : "?";
+  const name  = (p && p.full_name) ? String(p.full_name) : "Speaker TBD";
+  const talk  = (p && p.talk_title) ? String(p.talk_title) : "";
+  const title = (p && p.speaker_title) ? String(p.speaker_title) : "";
+  const org   = (p && p.organization_name) ? String(p.organization_name) : "";
+
+  const meta = [title.trim(), org.trim()].filter(Boolean).join(" · ");
+
+  return (
+    '<div class="slot">' +
+      '<div class="rank">#' + esc(order) + '</div>' +
+      '<div>' +
+        '<div class="name">' + esc(name) + '</div>' +
+        '<div class="talk">' + esc(talk) + '</div>' +
+        (meta ? ('<div class="talk" style="font-size:12px; opacity:.65; margin-top:4px;">' + esc(meta) + '</div>') : '') +
+      '</div>' +
+    '</div>'
+  );
+}
 
   function setStatus(state, msg){
     const dot = el("dot");
