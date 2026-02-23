@@ -756,6 +756,14 @@ stampOk();
 setStatus("ok","Live");
   }
 
+  // Toggle QR with "Q"
+  document.addEventListener("keydown", function(e){
+    if (e.key && e.key.toLowerCase() === "q") {
+      var w = document.getElementById("qrWrap");
+      if (w) w.style.display = (w.style.display === "none" ? "" : "none");
+    }
+  });
+
   load();
   setInterval(load, REFRESH_MS);
 })();
