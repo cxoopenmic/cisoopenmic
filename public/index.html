@@ -40,6 +40,24 @@
     .event-sub { margin-top:10px; color:var(--muted); font-size:.95rem; }
     footer { position:fixed; bottom:12px; left:0; right:0; text-align:center; color:var(--muted); font-size:.9rem; }
 
+    footer .legal-links {
+  margin-top:6px;
+  display:flex;
+  justify-content:center;
+  gap:8px;
+  flex-wrap:wrap;
+}
+
+footer a {
+  color:var(--accent-2);
+  text-decoration:none;
+  font-weight:600;
+}
+
+footer a:hover {
+  text-decoration:underline;
+}
+    
     /* Light mode */
     body.light { --bg:#f8fafc; --text:#000000; --muted:#475569; }
 
@@ -73,7 +91,16 @@
   </a>
   <div class="event-sub">The National Club · Toronto</div>
 
-  <footer>© 2026 CISO Open Mic</footer>
+<footer>
+  <div>© 2026 CISO Open Mic</div>
+  <div class="legal-links">
+    <a href="/privacy">Privacy Policy</a>
+    <span>·</span>
+    <a href="/terms">Terms of Use</a>
+    <span>·</span>
+    <a href="/conduct">Code of Conduct</a>
+  </div>
+</footer>
 
   <script>
     const toggleBtn = document.getElementById('theme-toggle');
