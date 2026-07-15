@@ -37,8 +37,9 @@
     .lede{font-size:1.2rem;color:var(--muted)}
     .empty{margin-top:28px;padding:32px;border:1px dashed var(--line);border-radius:14px;background:var(--panel);color:var(--muted)}
     .empty strong{color:var(--text)}
-    .site-foot{padding:28px 0;color:var(--muted);font-size:.88rem;text-align:center;display:block}
-    .legal-links{margin-top:6px;display:flex;justify-content:center;gap:8px;flex-wrap:wrap}
+    .site-foot{padding:28px 0;color:var(--muted);font-size:.88rem;flex-wrap:wrap;row-gap:6px}
+    .site-foot>div:first-child{white-space:nowrap}
+    .legal-links{display:flex;justify-content:flex-end;gap:8px;flex-wrap:wrap}
     .site-foot a{color:var(--accent-2);font-weight:600;text-decoration:none}
     .site-foot a:hover{text-decoration:underline}
     @media(max-width:600px){.site-head{align-items:flex-start;flex-direction:column;padding:18px 0}}
