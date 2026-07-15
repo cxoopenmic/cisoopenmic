@@ -22,8 +22,7 @@
     body{margin:0;background:var(--bg);color:var(--text);font:16px/1.7 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
     a{color:var(--accent-2)}
     .site-head,.site-foot{width:min(900px,calc(100% - 36px));margin:auto;display:flex;align-items:center;justify-content:space-between;gap:20px}
-    .site-head{position:relative;min-height:76px;border-bottom:1px solid var(--line)}
-    .site-head:after{content:"";position:absolute;right:0;bottom:-1px;left:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent-2))}
+    .site-head{min-height:76px}
     .site-head a{color:var(--text);font-weight:800;text-decoration:none}
     .site-head nav{display:flex;gap:18px}
     .site-head nav a{color:var(--muted);font-size:.92rem}
@@ -44,7 +43,7 @@
 </head>
 <body>
   <header class="site-head">
-    <a href="/"><span class="brand-lockup"><img src="/assets/logo.png" alt="" />CISO Open Mic</span></a>
+    <a href="/" aria-label="CISO Open Mic"><span class="brand-lockup"><img src="/assets/logo.png" alt="" /></span></a>
     <nav aria-label="Main navigation"><a href="/">Home</a><a href="/blog/" aria-current="page">Blog</a><button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch to dark theme">Dark</button></nav>
   </header>
   <main>
