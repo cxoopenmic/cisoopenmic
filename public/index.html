@@ -38,25 +38,30 @@
     .btn:hover { transform: translateY(-2px); }
 
     .event-sub { margin-top:10px; color:var(--muted); font-size:.95rem; }
-    footer { position:fixed; bottom:12px; left:0; right:0; text-align:center; color:var(--muted); font-size:.9rem; }
+    footer {
+      position:fixed; bottom:12px; left:50%;
+      width:min(900px,calc(100% - 36px));
+      display:flex; align-items:center; justify-content:space-between;
+      flex-wrap:wrap; gap:20px; row-gap:6px;
+      transform:translateX(-50%); color:var(--muted); font-size:.9rem;
+    }
+
+    footer > div:first-child { white-space:nowrap; }
 
     footer .legal-links {
-  margin-top:6px;
-  display:flex;
-  justify-content:center;
-  gap:8px;
-  flex-wrap:wrap;
-}
+      display:flex;
+      justify-content:flex-end;
+      gap:8px;
+      flex-wrap:wrap;
+    }
 
-footer a {
-  color:var(--accent-2);
-  text-decoration:none;
-  font-weight:600;
-}
+    footer a {
+      color:var(--accent-2);
+      text-decoration:none;
+      font-weight:600;
+    }
 
-footer a:hover {
-  text-decoration:underline;
-}
+    footer a:hover { text-decoration:underline; }
     
     /* Light mode */
     body.light { --bg:#f8fafc; --text:#000000; --muted:#475569; }
