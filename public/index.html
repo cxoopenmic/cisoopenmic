@@ -63,7 +63,6 @@ footer a:hover {
 
     /* Toggle button */
     .theme-toggle {
-      position:fixed; top:16px; right:16px; z-index:1000;
       background:var(--muted); color:var(--bg);
       border:none; padding:8px 14px; border-radius:6px;
       font-weight:800; cursor:pointer;
@@ -71,19 +70,32 @@ footer a:hover {
       transition:background .3s,color .3s;
     }
     .theme-toggle:hover { background:var(--text); color:var(--bg); }
-    .blog-link {
-      position:fixed; top:16px; left:16px; z-index:1000;
-      border:1px solid currentColor; border-radius:999px;
-      background:rgba(0,1,0,.72); color:#fff;
-      padding:8px 14px; font-weight:700; text-decoration:none;
-      backdrop-filter:blur(8px);
+    .site-head {
+      position:fixed; top:2px; left:50%; z-index:1000;
+      width:min(900px,calc(100% - 36px)); min-height:76px;
+      display:flex; align-items:center; justify-content:space-between; gap:20px;
+      transform:translateX(-50%); text-align:left;
     }
-    body.light .blog-link { background:rgba(248,250,252,.88); color:#000; }
+    .site-head a { color:var(--text); font-weight:800; text-decoration:none; }
+    .site-head nav { display:flex; align-items:center; gap:18px; }
+    .site-head nav a { color:var(--muted); font-size:.92rem; }
+    .site-head nav a[aria-current="page"] { color:var(--accent-2); }
+    .brand-lockup { display:inline-flex; align-items:center; }
+    .brand-lockup img {
+      width:42px; height:42px; border-radius:50%; object-fit:cover;
+      box-shadow:0 4px 14px rgba(0,0,0,.35);
+    }
   </style>
 </head>
 <body>
-  <a class="blog-link" href="/blog/" aria-label="CISO Open Mic Blog">Blog</a>
-  <button id="theme-toggle" class="theme-toggle">Light</button>
+  <header class="site-head">
+    <a href="/" aria-label="CISO Open Mic"><span class="brand-lockup"><img src="/assets/logo.png" alt="" /></span></a>
+    <nav aria-label="Main navigation">
+      <a href="/" aria-current="page">Home</a>
+      <a href="/blog/">Blog</a>
+      <button id="theme-toggle" class="theme-toggle" type="button">Light</button>
+    </nav>
+  </header>
 
   <div class="brand">
     <img src="assets/logo.png" alt="CISO Open Mic logo" class="logo"/>
