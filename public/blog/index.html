@@ -8,8 +8,16 @@
   <meta property="og:title" content="Blog · CISO Open Mic" />
   <meta property="og:description" content="Insights and community updates from CISO Open Mic." />
   <link rel="canonical" href="https://cisoopenmic.com/blog/" />
+  <script>
+    (function () {
+      var theme = "light";
+      try { theme = localStorage.getItem("openmic-blog-theme") === "dark" ? "dark" : "light"; } catch (_) {}
+      document.documentElement.setAttribute("data-theme", theme);
+    })();
+  </script>
   <style>
-    :root{color-scheme:dark;--bg:#000100;--panel:#111;--text:#fdfdfd;--muted:#e0e0e0;--accent:#c12331;--accent-2:#ff8a00;--line:#333}
+    :root{color-scheme:light;--bg:#f8fafc;--panel:#fff;--text:#000;--muted:#475569;--accent:#c12331;--accent-2:#ff8a00;--line:#d1d5db}
+    [data-theme="dark"]{color-scheme:dark;--bg:#000100;--panel:#111;--text:#fdfdfd;--muted:#e0e0e0;--line:#333}
     *{box-sizing:border-box}
     body{margin:0;background:var(--bg);color:var(--text);font:16px/1.7 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
     a{color:var(--accent-2)}
@@ -20,12 +28,14 @@
     .site-head nav{display:flex;gap:18px}
     .site-head nav a{color:var(--muted);font-size:.92rem}
     .site-head nav a[aria-current="page"]{color:var(--accent-2)}
+    .theme-toggle{border:0;border-radius:6px;background:var(--muted);color:var(--bg);padding:7px 12px;font:inherit;font-size:.8rem;font-weight:800;line-height:1;cursor:pointer}
+    .theme-toggle:hover{background:var(--text);color:var(--bg)}
     .brand-lockup{display:inline-flex;align-items:center;gap:10px}
     .brand-lockup img{width:42px;height:42px;border-radius:50%;object-fit:cover;box-shadow:0 4px 14px rgba(0,0,0,.35)}
     main{width:min(760px,calc(100% - 36px));margin:54px auto 80px}
     .eyebrow{color:var(--accent-2);font-size:.78rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase}
     h1{font-size:clamp(2.25rem,7vw,4.5rem);line-height:1.03;letter-spacing:-.045em;margin:.3rem 0 1rem;background:linear-gradient(135deg,var(--accent),var(--accent-2));-webkit-background-clip:text;background-clip:text;color:transparent}
-    .lede{font-size:1.2rem;color:#d4d7dc}
+    .lede{font-size:1.2rem;color:var(--muted)}
     .empty{margin-top:28px;padding:32px;border:1px dashed var(--line);border-radius:14px;background:var(--panel);color:var(--muted)}
     .empty strong{color:var(--text)}
     .site-foot{padding:28px 0;border-top:1px solid var(--line);color:var(--muted);font-size:.88rem}
@@ -35,7 +45,7 @@
 <body>
   <header class="site-head">
     <a href="/"><span class="brand-lockup"><img src="/assets/logo.png" alt="" />CISO Open Mic</span></a>
-    <nav aria-label="Main navigation"><a href="/">Home</a><a href="/blog/" aria-current="page">Blog</a></nav>
+    <nav aria-label="Main navigation"><a href="/">Home</a><a href="/blog/" aria-current="page">Blog</a><button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch to dark theme">Dark</button></nav>
   </header>
   <main>
     <div class="eyebrow">CISO Open Mic</div>
@@ -44,5 +54,24 @@
     <div class="empty"><strong>Stories are coming soon.</strong><br />Check back for insights and community updates.</div>
   </main>
   <footer class="site-foot"><span>© 2026 CISO Open Mic</span><a href="/">Back to the landing page</a></footer>
+  <script>
+    (function () {
+      var button = document.getElementById("theme-toggle");
+      function syncButton() {
+        var dark = document.documentElement.getAttribute("data-theme") === "dark";
+        button.textContent = dark ? "Light" : "Dark";
+        button.setAttribute("aria-label", dark ? "Switch to light theme" : "Switch to dark theme");
+        button.setAttribute("aria-pressed", dark ? "true" : "false");
+      }
+      syncButton();
+      button.addEventListener("click", function () {
+        var dark = document.documentElement.getAttribute("data-theme") === "dark";
+        var next = dark ? "light" : "dark";
+        document.documentElement.setAttribute("data-theme", next);
+        try { localStorage.setItem("openmic-blog-theme", next); } catch (_) {}
+        syncButton();
+      });
+    })();
+  </script>
 </body>
 </html>
