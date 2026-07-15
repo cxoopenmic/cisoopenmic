@@ -71,9 +71,18 @@ footer a:hover {
       transition:background .3s,color .3s;
     }
     .theme-toggle:hover { background:var(--text); color:var(--bg); }
+    .blog-link {
+      position:fixed; top:16px; left:16px; z-index:1000;
+      border:1px solid currentColor; border-radius:999px;
+      background:rgba(0,1,0,.72); color:#fff;
+      padding:8px 14px; font-weight:700; text-decoration:none;
+      backdrop-filter:blur(8px);
+    }
+    body.light .blog-link { background:rgba(248,250,252,.88); color:#000; }
   </style>
 </head>
 <body>
+  <a class="blog-link" href="/blog/" aria-label="CISO Open Mic Blog">Blog</a>
   <button id="theme-toggle" class="theme-toggle">Light</button>
 
   <div class="brand">
