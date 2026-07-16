@@ -28,7 +28,7 @@
       display:flex; align-items:center; justify-content:space-between; gap:20px;
     }
     .site-head {
-      position:sticky; top:2px; z-index:1000; min-height:76px; background:var(--bg);
+      position:sticky; top:0; z-index:1000; min-height:76px; background:var(--bg);
     }
     .site-head a { color:var(--text); font-weight:800; text-decoration:none; }
     .site-head nav { display:flex; align-items:center; gap:18px; }
@@ -94,7 +94,7 @@
       .sponsor-grid,.current-sponsor-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
     }
     @media(max-width:600px) {
-      .site-head { top:2px; width:calc(100% - 4px); min-height:72px; padding:0 16px; }
+      .site-head { top:0; width:calc(100% - 4px); min-height:72px; padding:0 16px; }
       .site-head nav { gap:10px; }
       main { margin-top:36px; }
       .site-foot { justify-content:center; gap:6px; text-align:center; }
