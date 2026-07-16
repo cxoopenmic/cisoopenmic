@@ -59,17 +59,6 @@
     .section-heading { display:flex; align-items:end; justify-content:space-between; gap:20px; margin-bottom:18px; }
     .section-heading h2 { margin:0; font-size:clamp(1.55rem,3vw,2.15rem); }
     .section-heading p { max-width:450px; margin:0; color:var(--muted); font-size:.92rem; }
-    .current-empty {
-      padding:30px; border:1px dashed var(--line); border-radius:16px; background:var(--surface);
-      display:flex; align-items:center; justify-content:space-between; gap:24px;
-    }
-    .current-empty h3 { margin:0 0 6px; font-size:1.2rem; }
-    .current-empty p { margin:0; color:var(--muted); }
-    .status {
-      flex:0 0 auto; padding:7px 11px; border:1px solid color-mix(in srgb,var(--accent-2) 45%,transparent);
-      border-radius:999px; color:var(--accent-2); background:color-mix(in srgb,var(--accent-2) 9%,transparent);
-      font-size:.72rem; font-weight:800; letter-spacing:.08em; text-transform:uppercase;
-    }
     .sponsor-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px; }
     .sponsor-card {
       min-height:176px; padding:18px; border:1px solid var(--line); border-radius:16px;
@@ -98,7 +87,7 @@
     .legal-links { display:flex; justify-content:flex-end; gap:8px; flex-wrap:wrap; }
     .site-foot a { color:var(--accent-2); font-weight:600; text-decoration:none; }
     @media(max-width:700px) {
-      .section-heading,.current-empty,.partnership { align-items:flex-start; flex-direction:column; }
+      .section-heading,.partnership { align-items:flex-start; flex-direction:column; }
       .sponsor-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
     }
     @media(max-width:600px) {
@@ -136,11 +125,14 @@
     <section class="sponsor-section" aria-labelledby="current-sponsors-heading">
       <div class="section-heading">
         <h2 id="current-sponsors-heading">Current sponsors</h2>
-        <p>Partners supporting the upcoming Fall 2026 CISO Open Mic series will appear here.</p>
+        <p>Active partners supporting CISO Open Mic and the upcoming Fall 2026 event series.</p>
       </div>
-      <div class="current-empty">
-        <div><h3>Fall partnerships are taking shape.</h3><p>Current sponsors will be announced as event details are confirmed.</p></div>
-        <span class="status">Coming soon</span>
+      <div class="sponsor-grid">
+        <article class="sponsor-card"><div class="sponsor-logo"><img src="/assets/pan.png" alt="Palo Alto Networks" /></div><div class="sponsor-name">Palo Alto Networks</div></article>
+        <article class="sponsor-card"><div class="sponsor-logo"><span class="wordmark">Immersive Labs</span></div><div class="sponsor-name">Immersive Labs</div></article>
+        <article class="sponsor-card"><div class="sponsor-logo"><span class="wordmark">Horizon3.ai</span></div><div class="sponsor-name">Horizon3.ai</div></article>
+        <article class="sponsor-card"><div class="sponsor-logo"><img src="/assets/axonius.png" alt="Axonius" /></div><div class="sponsor-name">Axonius</div></article>
+        <article class="sponsor-card"><div class="sponsor-logo"><span class="wordmark">Optiv</span></div><div class="sponsor-name">Optiv</div></article>
       </div>
     </section>
 
@@ -150,11 +142,8 @@
         <p>Organizations that have previously supported CISO Open Mic events and our community.</p>
       </div>
       <div class="sponsor-grid">
-        <article class="sponsor-card"><div class="sponsor-logo"><img src="/assets/pan.png" alt="Palo Alto Networks" /></div><div class="sponsor-name">Palo Alto Networks</div></article>
         <article class="sponsor-card"><div class="sponsor-logo"><span class="wordmark">CyberArk</span></div><div class="sponsor-name">CyberArk</div></article>
-        <article class="sponsor-card"><div class="sponsor-logo"><img src="/assets/axonius.png" alt="Axonius" /></div><div class="sponsor-name">Axonius</div></article>
         <article class="sponsor-card"><div class="sponsor-logo"><span class="wordmark">Phelps Group</span></div><div class="sponsor-name">Phelps Group</div></article>
-        <article class="sponsor-card"><div class="sponsor-logo"><img src="/assets/watchguard.png" alt="WatchGuard" /></div><div class="sponsor-name">WatchGuard</div></article>
         <article class="sponsor-card"><div class="sponsor-logo"><img src="/assets/stellarcyber.svg" alt="Stellar Cyber" /></div><div class="sponsor-name">Stellar Cyber</div></article>
       </div>
     </section>
