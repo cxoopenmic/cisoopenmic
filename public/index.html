@@ -63,7 +63,8 @@
     }
     .event-card > :not(.city-landmark) { position:relative; z-index:1; }
     .city-landmark {
-      position:absolute; right:12px; top:66px; width:78px; height:58px;
+      position:absolute; left:50%; top:66px; width:78px; height:58px;
+      transform:translateX(-50%);
       color:var(--landmark); opacity:.78; pointer-events:none;
     }
     .city-landmark * {
