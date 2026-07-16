@@ -61,6 +61,7 @@
     .section-heading p { max-width:450px; margin:0; color:var(--muted); font-size:.92rem; }
     .sponsor-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px; }
     .current-sponsor-grid { grid-template-columns:repeat(3,minmax(0,1fr)); }
+    @media(min-width:900px) { .current-sponsor-grid { grid-template-columns:repeat(5,minmax(0,1fr)); } }
     .sponsor-card {
       min-height:176px; padding:18px; border:1px solid var(--line); border-radius:16px;
       background:var(--surface); display:flex; flex-direction:column; gap:14px;
@@ -72,14 +73,14 @@
     .sponsor-logo img { display:block; width:100%; max-width:210px; max-height:62px; object-fit:contain; }
     .wordmark { color:#111827; font-size:1.35rem; font-weight:800; letter-spacing:-.02em; text-align:center; }
     .sponsor-name { color:var(--muted); font-size:.8rem; font-weight:800; text-align:center; }
-    .partnership {
+    .sponsorship-cta {
       margin-top:58px; padding:28px; border-radius:16px;
       background:linear-gradient(135deg,var(--accent),var(--accent-2)); color:#fff;
       display:flex; align-items:center; justify-content:space-between; gap:24px;
     }
-    .partnership h2 { margin:0 0 5px; }
-    .partnership p { margin:0; opacity:.9; }
-    .partnership a {
+    .sponsorship-cta h2 { margin:0 0 5px; }
+    .sponsorship-cta p { margin:0; opacity:.9; }
+    .sponsorship-cta a {
       flex:0 0 auto; padding:11px 16px; border-radius:8px; background:#fff; color:#9f1d28;
       font-weight:800; text-decoration:none;
     }
@@ -88,7 +89,7 @@
     .legal-links { display:flex; justify-content:flex-end; gap:8px; flex-wrap:wrap; }
     .site-foot a { color:var(--accent-2); font-weight:600; text-decoration:none; }
     @media(max-width:700px) {
-      .section-heading,.partnership { align-items:flex-start; flex-direction:column; }
+      .section-heading,.sponsorship-cta { align-items:flex-start; flex-direction:column; }
       .sponsor-grid,.current-sponsor-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
     }
     @media(max-width:600px) {
@@ -119,14 +120,14 @@
   </header>
 
   <main>
-    <p class="eyebrow">Our partners</p>
+    <p class="eyebrow">Our sponsors</p>
     <h1>Supporting the conversation.</h1>
-    <p class="lede">CISO Open Mic is made possible by organizations that value candid leadership conversations and stronger security communities.</p>
+    <p class="lede">CISO Open Mic is made possible by sponsors that value candid leadership conversations and stronger security communities.</p>
 
     <section class="sponsor-section" aria-labelledby="current-sponsors-heading">
       <div class="section-heading">
         <h2 id="current-sponsors-heading">Current sponsors</h2>
-        <p>Active partners supporting CISO Open Mic and the upcoming Fall 2026 event series.</p>
+        <p>Active sponsors supporting CISO Open Mic and the upcoming Fall 2026 event series.</p>
       </div>
       <div class="sponsor-grid current-sponsor-grid">
         <article class="sponsor-card"><div class="sponsor-logo"><img src="/assets/pan.png" alt="Palo Alto Networks" /></div><div class="sponsor-name">Palo Alto Networks</div></article>
@@ -138,13 +139,14 @@
         <article class="sponsor-card"><div class="sponsor-logo"><span class="wordmark">Kroll</span></div><div class="sponsor-name">Kroll</div></article>
         <article class="sponsor-card"><div class="sponsor-logo"><span class="wordmark">Noma Security</span></div><div class="sponsor-name">Noma Security</div></article>
         <article class="sponsor-card"><div class="sponsor-logo"><span class="wordmark">Chainguard</span></div><div class="sponsor-name">Chainguard</div></article>
+        <article class="sponsor-card"><div class="sponsor-logo"><span class="wordmark">Doppel</span></div><div class="sponsor-name">Doppel</div></article>
       </div>
     </section>
 
     <section class="sponsor-section" aria-labelledby="past-sponsors-heading">
       <div class="section-heading">
         <h2 id="past-sponsors-heading">Past sponsors</h2>
-        <p>Organizations that have previously supported CISO Open Mic events and our community.</p>
+        <p>Sponsors that have previously supported CISO Open Mic events and our community.</p>
       </div>
       <div class="sponsor-grid">
         <article class="sponsor-card"><div class="sponsor-logo"><span class="wordmark">CyberArk</span></div><div class="sponsor-name">CyberArk</div></article>
@@ -156,8 +158,8 @@
       </div>
     </section>
 
-    <section class="partnership" aria-labelledby="partnership-heading">
-      <div><h2 id="partnership-heading">Support the next conversation.</h2><p>Explore sponsorship opportunities for the Fall 2026 event series.</p></div>
+    <section class="sponsorship-cta" aria-labelledby="sponsorship-heading">
+      <div><h2 id="sponsorship-heading">Support the next conversation.</h2><p>Explore sponsorship opportunities for the Fall 2026 event series.</p></div>
       <a href="/sponsor.html">Sponsorship details</a>
     </section>
   </main>
