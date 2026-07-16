@@ -80,6 +80,28 @@ h1 {
 .expect-card .number { color:var(--accent-2); font-size:.72rem; font-weight:800; letter-spacing:.12em; }
 .expect-card h3 { margin:18px 0 7px; font-size:1.05rem; }
 .expect-card p { margin:0; color:var(--muted); font-size:.9rem; }
+.team-groups { display:grid; gap:22px; margin-top:22px; }
+.team-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px; }
+.team-grid.team-leads { grid-template-columns:repeat(2,minmax(0,1fr)); }
+.team-group-title {
+  margin:0 0 10px; color:var(--muted); font-size:.76rem; font-weight:800;
+  letter-spacing:.12em; text-transform:uppercase;
+}
+.team-card {
+  min-height:138px; padding:20px; border:1px solid var(--line); border-radius:14px;
+  background:var(--surface); display:flex; align-items:center; gap:16px;
+}
+.team-card.featured { min-height:154px; }
+.role-mark {
+  flex:0 0 auto; width:54px; height:54px; border-radius:50%;
+  display:grid; place-items:center; border:1px solid color-mix(in srgb,var(--accent-2) 45%,transparent);
+  background:color-mix(in srgb,var(--accent-2) 9%,transparent); color:var(--accent-2);
+  font-size:.72rem; font-weight:800; letter-spacing:.06em;
+}
+.team-card.featured .role-mark { width:64px; height:64px; }
+.team-role { display:block; color:var(--accent-2); font-size:.72rem; font-weight:800; letter-spacing:.1em; text-transform:uppercase; }
+.team-name { display:block; margin-top:6px; color:var(--text); font-size:1.05rem; font-weight:800; }
+.team-note { display:block; margin-top:3px; color:var(--muted); font-size:.8rem; }
 .newsletter {
   display:grid; grid-template-columns:minmax(0,1fr) minmax(280px,.85fr); gap:32px;
   align-items:center; padding:30px; border:1px solid var(--line); border-radius:16px;
@@ -119,7 +141,7 @@ h1 {
 @media(max-width:760px) {
   .hero,.newsletter { grid-template-columns:1fr; }
   .hero { align-items:start; }
-  .expect-grid { grid-template-columns:1fr; }
+  .expect-grid,.team-grid,.team-grid.team-leads { grid-template-columns:1fr; }
 }
 @media(max-width:600px) {
   .site-head { top:0; width:calc(100% - 4px); min-height:72px; padding:0 16px; }
