@@ -60,6 +60,7 @@
     .section-heading h2 { margin:0; font-size:clamp(1.55rem,3vw,2.15rem); }
     .section-heading p { max-width:450px; margin:0; color:var(--muted); font-size:.92rem; }
     .sponsor-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px; }
+    .current-sponsor-grid { grid-template-columns:repeat(4,minmax(0,1fr)); }
     .sponsor-card {
       min-height:176px; padding:18px; border:1px solid var(--line); border-radius:16px;
       background:var(--surface); display:flex; flex-direction:column; gap:14px;
@@ -88,7 +89,7 @@
     .site-foot a { color:var(--accent-2); font-weight:600; text-decoration:none; }
     @media(max-width:700px) {
       .section-heading,.partnership { align-items:flex-start; flex-direction:column; }
-      .sponsor-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+      .sponsor-grid,.current-sponsor-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
     }
     @media(max-width:600px) {
       .site-head { top:2px; width:calc(100% - 4px); min-height:72px; padding:0 16px; }
@@ -127,12 +128,14 @@
         <h2 id="current-sponsors-heading">Current sponsors</h2>
         <p>Active partners supporting CISO Open Mic and the upcoming Fall 2026 event series.</p>
       </div>
-      <div class="sponsor-grid">
+      <div class="sponsor-grid current-sponsor-grid">
         <article class="sponsor-card"><div class="sponsor-logo"><img src="/assets/pan.png" alt="Palo Alto Networks" /></div><div class="sponsor-name">Palo Alto Networks</div></article>
         <article class="sponsor-card"><div class="sponsor-logo"><span class="wordmark">Immersive Labs</span></div><div class="sponsor-name">Immersive Labs</div></article>
         <article class="sponsor-card"><div class="sponsor-logo"><span class="wordmark">Horizon3.ai</span></div><div class="sponsor-name">Horizon3.ai</div></article>
         <article class="sponsor-card"><div class="sponsor-logo"><img src="/assets/axonius.png" alt="Axonius" /></div><div class="sponsor-name">Axonius</div></article>
         <article class="sponsor-card"><div class="sponsor-logo"><span class="wordmark">Optiv</span></div><div class="sponsor-name">Optiv</div></article>
+        <article class="sponsor-card"><div class="sponsor-logo"><span class="wordmark">AlgoSec</span></div><div class="sponsor-name">AlgoSec</div></article>
+        <article class="sponsor-card"><div class="sponsor-logo"><span class="wordmark">Kroll</span></div><div class="sponsor-name">Kroll</div></article>
       </div>
     </section>
 
@@ -145,6 +148,9 @@
         <article class="sponsor-card"><div class="sponsor-logo"><span class="wordmark">CyberArk</span></div><div class="sponsor-name">CyberArk</div></article>
         <article class="sponsor-card"><div class="sponsor-logo"><span class="wordmark">Phelps Group</span></div><div class="sponsor-name">Phelps Group</div></article>
         <article class="sponsor-card"><div class="sponsor-logo"><img src="/assets/stellarcyber.svg" alt="Stellar Cyber" /></div><div class="sponsor-name">Stellar Cyber</div></article>
+        <article class="sponsor-card"><div class="sponsor-logo"><span class="wordmark">CrowdStrike</span></div><div class="sponsor-name">CrowdStrike</div></article>
+        <article class="sponsor-card"><div class="sponsor-logo"><span class="wordmark">Kiteworks</span></div><div class="sponsor-name">Kiteworks</div></article>
+        <article class="sponsor-card"><div class="sponsor-logo"><span class="wordmark">Arista</span></div><div class="sponsor-name">Arista</div></article>
       </div>
     </section>
 
