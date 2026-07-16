@@ -63,6 +63,25 @@
     }
 
     footer a:hover { text-decoration:underline; }
+
+    @media (max-width: 600px) {
+      footer {
+        justify-content:center;
+        gap:6px;
+        padding:22px 0;
+        text-align:center;
+      }
+
+      footer > div:first-child { width:100%; }
+
+      footer .legal-links {
+        justify-content:center;
+        flex-wrap:nowrap;
+        gap:6px;
+        white-space:nowrap;
+        font-size:.82rem;
+      }
+    }
     
     /* Light mode */
     body.light { --bg:#f8fafc; --text:#000000; --muted:#475569; }
