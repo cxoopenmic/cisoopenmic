@@ -110,6 +110,11 @@
     footer a:hover { text-decoration:underline; }
 
     @media (max-width: 600px) {
+      .site-head {
+        top:2px; width:calc(100% - 4px); min-height:72px; padding:0 16px;
+        background:var(--bg); border-bottom:1px solid var(--line);
+        box-shadow:0 8px 20px rgba(15,23,42,.08);
+      }
       footer {
         justify-content:center;
         gap:6px;
@@ -165,7 +170,6 @@
     }
     @media (max-width: 420px) {
       body { padding-inline:18px; }
-      .site-head { width:calc(100% - 32px); }
       .site-head nav { gap:14px; }
       .brand img.logo { width:112px; height:112px; }
       .events { margin-top:34px; }
