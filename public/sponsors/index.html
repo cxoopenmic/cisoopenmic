@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sponsors · CISO Open Mic</title>
+  <meta name="description" content="Current and past sponsors supporting the CISO Open Mic community." />
+  <link rel="icon" href="/assets/favicon.ico" type="image/x-icon" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg:#000100; --surface:#111312; --text:#fdfdfd; --muted:#e0e0e0;
+      --line:rgba(255,255,255,.16); --accent:#c12331; --accent-2:#ff8a00;
+    }
+    * { box-sizing:border-box; }
+    body {
+      min-height:100svh; margin:0; background:var(--bg); color:var(--text);
+      font-family:"Open Sans",Arial,sans-serif; border:2px solid var(--accent-2);
+      display:flex; flex-direction:column;
+    }
+    body.light {
+      --bg:#f8fafc; --surface:#fff; --text:#0f172a; --muted:#475569; --line:#d8dee7;
+    }
+    .site-head,.site-foot {
+      width:min(960px,calc(100% - 36px)); margin:0 auto;
+      display:flex; align-items:center; justify-content:space-between; gap:20px;
+    }
+    .site-head {
+      position:sticky; top:2px; z-index:1000; min-height:76px; background:var(--bg);
+    }
+    .site-head a { color:var(--text); font-weight:800; text-decoration:none; }
+    .site-head nav { display:flex; align-items:center; gap:18px; }
+    .site-head nav a { color:var(--muted); font-size:.92rem; }
+    .site-head nav a[aria-current="page"] { color:var(--accent-2); }
+    .brand-lockup { display:inline-flex; align-items:center; }
+    .brand-lockup img {
+      width:42px; height:42px; border-radius:50%; object-fit:cover;
+      box-shadow:0 4px 14px rgba(0,0,0,.35);
+    }
+    .theme-toggle {
+      border:0; border-radius:6px; padding:8px 14px; background:var(--muted); color:var(--bg);
+      font:inherit; font-size:.8rem; font-weight:800; line-height:1; cursor:pointer;
+      box-shadow:0 2px 6px rgba(0,0,0,.2);
+    }
+    main { width:min(960px,calc(100% - 36px)); margin:52px auto 72px; flex:1; }
+    .eyebrow {
+      margin:0 0 8px; color:var(--accent-2); font-size:.78rem;
+      font-weight:800; letter-spacing:.14em; text-transform:uppercase;
+    }
+    h1 {
+      max-width:760px; margin:0; font-size:clamp(2.5rem,7vw,5rem); line-height:1;
+      letter-spacing:-.045em; background:linear-gradient(135deg,var(--accent),var(--accent-2));
+      -webkit-background-clip:text; background-clip:text; color:transparent;
+    }
+    .lede { max-width:720px; margin:18px 0 0; color:var(--muted); font-size:1.12rem; }
+    .sponsor-section { margin-top:58px; }
+    .section-heading { display:flex; align-items:end; justify-content:space-between; gap:20px; margin-bottom:18px; }
+    .section-heading h2 { margin:0; font-size:clamp(1.55rem,3vw,2.15rem); }
+    .section-heading p { max-width:450px; margin:0; color:var(--muted); font-size:.92rem; }
+    .current-empty {
+      padding:30px; border:1px dashed var(--line); border-radius:16px; background:var(--surface);
+      display:flex; align-items:center; justify-content:space-between; gap:24px;
+    }
+    .current-empty h3 { margin:0 0 6px; font-size:1.2rem; }
+    .current-empty p { margin:0; color:var(--muted); }
+    .status {
+      flex:0 0 auto; padding:7px 11px; border:1px solid color-mix(in srgb,var(--accent-2) 45%,transparent);
+      border-radius:999px; color:var(--accent-2); background:color-mix(in srgb,var(--accent-2) 9%,transparent);
+      font-size:.72rem; font-weight:800; letter-spacing:.08em; text-transform:uppercase;
+    }
+    .sponsor-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px; }
+    .sponsor-card {
+      min-height:176px; padding:18px; border:1px solid var(--line); border-radius:16px;
+      background:var(--surface); display:flex; flex-direction:column; gap:14px;
+    }
+    .sponsor-logo {
+      min-height:108px; padding:20px; border-radius:10px; background:#fff;
+      display:flex; align-items:center; justify-content:center;
+    }
+    .sponsor-logo img { display:block; width:100%; max-width:210px; max-height:62px; object-fit:contain; }
+    .wordmark { color:#111827; font-size:1.35rem; font-weight:800; letter-spacing:-.02em; text-align:center; }
+    .sponsor-name { color:var(--muted); font-size:.8rem; font-weight:800; text-align:center; }
+    .partnership {
+      margin-top:58px; padding:28px; border-radius:16px;
+      background:linear-gradient(135deg,var(--accent),var(--accent-2)); color:#fff;
+      display:flex; align-items:center; justify-content:space-between; gap:24px;
+    }
+    .partnership h2 { margin:0 0 5px; }
+    .partnership p { margin:0; opacity:.9; }
+    .partnership a {
+      flex:0 0 auto; padding:11px 16px; border-radius:8px; background:#fff; color:#9f1d28;
+      font-weight:800; text-decoration:none;
+    }
+    .site-foot { padding:22px 0; color:var(--muted); font-size:.9rem; flex-wrap:wrap; row-gap:6px; }
+    .site-foot>div:first-child { white-space:nowrap; }
+    .legal-links { display:flex; justify-content:flex-end; gap:8px; flex-wrap:wrap; }
+    .site-foot a { color:var(--accent-2); font-weight:600; text-decoration:none; }
+    @media(max-width:700px) {
+      .section-heading,.current-empty,.partnership { align-items:flex-start; flex-direction:column; }
+      .sponsor-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+    }
+    @media(max-width:600px) {
+      .site-head { top:2px; width:calc(100% - 4px); min-height:72px; padding:0 16px; }
+      .site-head nav { gap:10px; }
+      main { margin-top:36px; }
+      .site-foot { justify-content:center; gap:6px; text-align:center; }
+      .site-foot>div:first-child { width:100%; }
+      .legal-links { justify-content:center; flex-wrap:nowrap; gap:6px; white-space:nowrap; font-size:.82rem; }
+    }
+    @media(max-width:420px) {
+      .site-head nav { gap:8px; }
+      .site-head nav a { font-size:.82rem; }
+      .theme-toggle { padding:8px 10px; }
+      .sponsor-grid { grid-template-columns:1fr; }
+    }
+  </style>
+</head>
+<body class="light">
+  <header class="site-head">
+    <a href="/" aria-label="CISO Open Mic"><span class="brand-lockup"><img src="/assets/logo.png" alt="" /></span></a>
+    <nav aria-label="Main navigation">
+      <a href="/">Home</a>
+      <a href="/blog/">Blog</a>
+      <a href="/sponsors/" aria-current="page">Sponsors</a>
+      <button id="theme-toggle" class="theme-toggle" type="button">Dark</button>
+    </nav>
+  </header>
+
+  <main>
+    <p class="eyebrow">Our partners</p>
+    <h1>Supporting the conversation.</h1>
+    <p class="lede">CISO Open Mic is made possible by organizations that value candid leadership conversations and stronger security communities.</p>
+
+    <section class="sponsor-section" aria-labelledby="current-sponsors-heading">
+      <div class="section-heading">
+        <h2 id="current-sponsors-heading">Current sponsors</h2>
+        <p>Partners supporting the upcoming Fall 2026 CISO Open Mic series will appear here.</p>
+      </div>
+      <div class="current-empty">
+        <div><h3>Fall partnerships are taking shape.</h3><p>Current sponsors will be announced as event details are confirmed.</p></div>
+        <span class="status">Coming soon</span>
+      </div>
+    </section>
+
+    <section class="sponsor-section" aria-labelledby="past-sponsors-heading">
+      <div class="section-heading">
+        <h2 id="past-sponsors-heading">Past sponsors</h2>
+        <p>Organizations that have previously supported CISO Open Mic events and our community.</p>
+      </div>
+      <div class="sponsor-grid">
+        <article class="sponsor-card"><div class="sponsor-logo"><img src="/assets/pan.png" alt="Palo Alto Networks" /></div><div class="sponsor-name">Palo Alto Networks</div></article>
+        <article class="sponsor-card"><div class="sponsor-logo"><span class="wordmark">CyberArk</span></div><div class="sponsor-name">CyberArk</div></article>
+        <article class="sponsor-card"><div class="sponsor-logo"><img src="/assets/axonius.png" alt="Axonius" /></div><div class="sponsor-name">Axonius</div></article>
+        <article class="sponsor-card"><div class="sponsor-logo"><span class="wordmark">Phelps Group</span></div><div class="sponsor-name">Phelps Group</div></article>
+        <article class="sponsor-card"><div class="sponsor-logo"><img src="/assets/watchguard.png" alt="WatchGuard" /></div><div class="sponsor-name">WatchGuard</div></article>
+        <article class="sponsor-card"><div class="sponsor-logo"><img src="/assets/stellarcyber.svg" alt="Stellar Cyber" /></div><div class="sponsor-name">Stellar Cyber</div></article>
+      </div>
+    </section>
+
+    <section class="partnership" aria-labelledby="partnership-heading">
+      <div><h2 id="partnership-heading">Support the next conversation.</h2><p>Explore sponsorship opportunities for the Fall 2026 event series.</p></div>
+      <a href="/sponsor.html">Sponsorship details</a>
+    </section>
+  </main>
+
+  <footer class="site-foot">
+    <div>© 2026 CISO Open Mic</div>
+    <div class="legal-links"><a href="/privacy">Privacy Policy</a><span>·</span><a href="/terms">Terms of Use</a><span>·</span><a href="/conduct">Code of Conduct</a></div>
+  </footer>
+
+  <script>
+    const toggleBtn = document.getElementById('theme-toggle');
+    toggleBtn.addEventListener('click', () => {
+      document.body.classList.toggle('light');
+      toggleBtn.textContent = document.body.classList.contains('light') ? 'Dark' : 'Light';
+    });
+  </script>
+</body>
+</html>
