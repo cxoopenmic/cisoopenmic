@@ -10,12 +10,16 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
-    :root { --bg:#000100; --text:#fdfdfd; --muted:#e0e0e0; --accent:#c12331; --accent-2:#ff8a00; }
+    :root {
+      --bg:#000100; --surface:#111312; --text:#fdfdfd; --muted:#e0e0e0;
+      --line:rgba(255,255,255,.16); --accent:#c12331; --accent-2:#ff8a00;
+    }
+    * { box-sizing:border-box; }
     body {
       margin:0; font-family:"Open Sans",Arial,sans-serif;
       background:var(--bg); color:var(--text);
-      display:flex; flex-direction:column; align-items:center; justify-content:center;
-      min-height:100svh; text-align:center; border:2px solid var(--accent-2); padding:24px;
+      display:flex; flex-direction:column; align-items:center;
+      min-height:100svh; text-align:center; border:2px solid var(--accent-2); padding:24px 24px 0;
     }
     .brand img.logo {
       width:140px; height:140px; border-radius:50%; object-fit:cover;
@@ -26,25 +30,54 @@
       background:linear-gradient(135deg,var(--accent),var(--accent-2));
       -webkit-background-clip:text; background-clip:text; color:transparent;
     }
-    .tagline { color:var(--muted); font-size:1.1rem; margin-bottom:28px; }
-
-    .btn {
-      background:linear-gradient(135deg,var(--accent),var(--accent-2));
-      color:#fff; padding:16px 24px; border-radius:10px; font-weight:700;
-      font-size:1.1rem; text-decoration:none; display:inline-block;
-      box-shadow:0 8px 18px rgba(0,0,0,0.25); transition:transform .15s ease;
-      min-width:280px;
+    .tagline { color:var(--muted); font-size:1.1rem; margin:0 auto; max-width:620px; }
+    main {
+      width:min(960px,100%); margin:104px auto 0; padding:28px 0 48px;
+      flex:1; display:flex; flex-direction:column; justify-content:center;
     }
-    .btn:hover { transform: translateY(-2px); }
-
-    .event-sub { margin-top:10px; color:var(--muted); font-size:.95rem; }
+    .brand img.logo { width:124px; height:124px; }
+    .events { margin-top:42px; }
+    .events-heading {
+      display:flex; align-items:end; justify-content:space-between; gap:18px;
+      margin-bottom:16px; text-align:left;
+    }
+    .eyebrow {
+      margin:0 0 4px; color:var(--accent-2); font-size:.76rem;
+      font-weight:800; letter-spacing:.16em; text-transform:uppercase;
+    }
+    .events h2 { margin:0; font-size:clamp(1.45rem,3vw,2rem); line-height:1.15; }
+    .events-intro { margin:0; max-width:390px; color:var(--muted); font-size:.92rem; }
+    .event-grid {
+      display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:12px;
+    }
+    .event-card {
+      position:relative; min-height:154px; overflow:hidden;
+      display:flex; flex-direction:column; justify-content:space-between;
+      padding:18px; border:1px solid var(--line); border-radius:14px;
+      background:var(--surface); text-align:left;
+      box-shadow:0 8px 22px rgba(0,0,0,.1);
+    }
+    .event-card::before {
+      content:""; position:absolute; inset:0 auto 0 0; width:3px;
+      background:linear-gradient(180deg,var(--accent),var(--accent-2));
+    }
+    .event-season {
+      color:var(--muted); font-size:.72rem; font-weight:800;
+      letter-spacing:.12em; text-transform:uppercase;
+    }
+    .event-city { margin:8px 0 0; color:var(--text); font-size:1.15rem; line-height:1.15; }
+    .event-status {
+      align-self:flex-start; margin-top:22px; padding:6px 9px;
+      border:1px solid color-mix(in srgb,var(--accent-2) 45%,transparent);
+      border-radius:999px; color:var(--accent-2); background:color-mix(in srgb,var(--accent-2) 9%,transparent);
+      font-size:.7rem; font-weight:800; letter-spacing:.08em; text-decoration:none; text-transform:uppercase;
+    }
+    a.event-status:hover { color:#fff; background:linear-gradient(135deg,var(--accent),var(--accent-2)); }
     footer {
-      position:fixed; bottom:0; left:50%;
-      width:min(900px,calc(100% - 36px));
-      padding:28px 0;
+      width:min(960px,100%); padding:22px 0;
       display:flex; align-items:center; justify-content:space-between;
       flex-wrap:wrap; gap:20px; row-gap:6px;
-      transform:translateX(-50%); color:var(--muted); font-size:.9rem;
+      color:var(--muted); font-size:.9rem;
     }
 
     footer > div:first-child { white-space:nowrap; }
@@ -84,7 +117,10 @@
     }
     
     /* Light mode */
-    body.light { --bg:#f8fafc; --text:#000000; --muted:#475569; }
+    body.light {
+      --bg:#f8fafc; --surface:#ffffff; --text:#0f172a; --muted:#475569;
+      --line:#d8dee7;
+    }
 
     /* Toggle button */
     .theme-toggle {
@@ -110,6 +146,21 @@
       width:42px; height:42px; border-radius:50%; object-fit:cover;
       box-shadow:0 4px 14px rgba(0,0,0,.35);
     }
+    @media (max-width: 800px) {
+      main { margin-top:88px; padding-top:20px; }
+      .event-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+      .event-card:last-child { grid-column:1 / -1; min-height:132px; }
+      .events-heading { align-items:flex-start; flex-direction:column; }
+    }
+    @media (max-width: 420px) {
+      body { padding-inline:18px; }
+      .site-head { width:calc(100% - 32px); }
+      .site-head nav { gap:14px; }
+      .brand img.logo { width:112px; height:112px; }
+      .events { margin-top:34px; }
+      .event-card { min-height:142px; padding:16px; }
+      .event-city { font-size:1.05rem; }
+    }
   </style>
 </head>
 <body>
@@ -122,20 +173,49 @@
     </nav>
   </header>
 
-  <div class="brand">
-    <img src="assets/logo.png" alt="CISO Open Mic logo" class="logo"/>
-    <h1>CISO Open Mic</h1>
-  </div>
+  <main>
+    <div class="brand">
+      <img src="assets/logo.png" alt="CISO Open Mic logo" class="logo"/>
+      <h1>CISO Open Mic</h1>
+    </div>
 
-  <div class="tagline">A forum for CISOs and security leaders to share, connect, and learn.</div>
+    <p class="tagline">A forum for CISOs and security leaders to share, connect, and learn.</p>
 
-  <!-- Hard-coded Toronto event -->
-  <a class="btn"
-     href="https://lu.ma/cisoopenmictorontosummer2026"
-     target="_blank" rel="noopener">
-    Register for Toronto — June 17th, 2026 - 5:00–8:00 PM ET
-  </a>
-  <div class="event-sub">The National Club · Toronto</div>
+    <section class="events" aria-labelledby="fall-events-heading">
+      <div class="events-heading">
+        <div>
+          <p class="eyebrow">Fall 2026</p>
+          <h2 id="fall-events-heading">The conversation continues</h2>
+        </div>
+        <p class="events-intro">New CISO Open Mic gatherings are taking shape across five cities.</p>
+      </div>
+
+      <div class="event-grid">
+        <!-- When registration opens, change a status span to:
+             <a class="event-status" href="LUMA_URL" target="_blank" rel="noopener">Register</a> -->
+        <article class="event-card">
+          <div><span class="event-season">Fall event</span><h3 class="event-city">Calgary</h3></div>
+          <span class="event-status">Coming soon</span>
+        </article>
+        <article class="event-card">
+          <div><span class="event-season">Fall event</span><h3 class="event-city">Montreal</h3></div>
+          <span class="event-status">Coming soon</span>
+        </article>
+        <article class="event-card">
+          <div><span class="event-season">Fall event</span><h3 class="event-city">Boston</h3></div>
+          <span class="event-status">Coming soon</span>
+        </article>
+        <article class="event-card">
+          <div><span class="event-season">Fall event</span><h3 class="event-city">Ottawa</h3></div>
+          <span class="event-status">Coming soon</span>
+        </article>
+        <article class="event-card">
+          <div><span class="event-season">Fall event</span><h3 class="event-city">Toronto</h3></div>
+          <span class="event-status">Coming soon</span>
+        </article>
+      </div>
+    </section>
+  </main>
 
 <footer>
   <div>© 2026 CISO Open Mic</div>
