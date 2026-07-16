@@ -8,7 +8,7 @@
   <link rel="icon" href="assets/favicon.ico" type="image/x-icon"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;800&amp;display=swap" rel="stylesheet">
   <style>
     :root {
       --bg:#000100; --surface:#111312; --text:#fdfdfd; --muted:#e0e0e0;
@@ -54,9 +54,12 @@
       position:relative; min-height:176px; overflow:hidden;
       display:flex; flex-direction:column; justify-content:space-between;
       padding:18px; border:1px solid var(--line); border-radius:14px;
-      background:var(--surface); text-align:center;
+      background:var(--surface); text-align:center; color:inherit; text-decoration:none;
       box-shadow:0 8px 22px rgba(0,0,0,.1);
+      transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease;
     }
+    .event-card:hover { transform:translateY(-3px); border-color:var(--accent-2); box-shadow:0 12px 26px rgba(0,0,0,.14); }
+    .event-card:focus-visible { outline:3px solid var(--accent-2); outline-offset:3px; }
     .event-card::before {
       content:""; position:absolute; inset:0 auto 0 0; width:3px;
       background:linear-gradient(180deg,var(--accent),var(--accent-2));
@@ -211,9 +214,8 @@
       </div>
 
       <div class="event-grid">
-        <!-- When registration opens, change a status span to:
-             <a class="event-status" href="LUMA_URL" target="_blank" rel="noopener">Register</a> -->
-        <article class="event-card">
+        <!-- Cards open permanent city pages. Registration links belong on each city page. -->
+        <a class="event-card" href="/ca/calgary/" aria-label="CISO Open Mic Calgary city page">
           <div><span class="event-season">Fall event</span><h3 class="event-city">Calgary</h3></div>
           <span class="event-status">Coming soon</span>
           <svg class="city-landmark" viewBox="0 0 160 110" aria-hidden="true">
@@ -221,8 +223,8 @@
             <path d="M84 99V45M76 45h16M79 39h10M84 39V19M81 19h6" />
             <path class="landmark-accent" d="M69 47l7-8h16l7 8-7 7H76zM72 47h24" />
           </svg>
-        </article>
-        <article class="event-card">
+        </a>
+        <a class="event-card" href="/ca/montreal/" aria-label="CISO Open Mic Montreal city page">
           <div><span class="event-season">Fall event</span><h3 class="event-city">Montreal</h3></div>
           <span class="event-status">Coming soon</span>
           <svg class="city-landmark" viewBox="0 0 160 110" aria-hidden="true">
@@ -231,8 +233,8 @@
             <path d="M73 99V76a7 7 0 0 1 14 0v23M49 61v13M111 61v13" />
             <path class="landmark-accent" d="M38 43l12-15 12 15M98 43l12-15 12 15M62 55l18-14 18 14" />
           </svg>
-        </article>
-        <article class="event-card">
+        </a>
+        <a class="event-card" href="/us/boston/" aria-label="CISO Open Mic Boston city page">
           <div><span class="event-season">Fall event</span><h3 class="event-city">Boston</h3></div>
           <span class="event-status">Coming soon</span>
           <svg class="city-landmark" viewBox="0 0 160 110" aria-hidden="true">
@@ -242,8 +244,8 @@
             <path d="M54 31L21 87M54 42L35 87M54 54L48 87M106 31l33 56M106 42l19 45M106 54l6 33" />
             <path class="landmark-accent" d="M12 86h136M54 20v69M106 20v69" />
           </svg>
-        </article>
-        <article class="event-card">
+        </a>
+        <a class="event-card" href="/ca/ottawa/" aria-label="CISO Open Mic Ottawa city page">
           <div><span class="event-season">Fall event</span><h3 class="event-city">Ottawa</h3></div>
           <span class="event-status">Coming soon</span>
           <svg class="city-landmark" viewBox="0 0 160 110" aria-hidden="true">
@@ -253,8 +255,8 @@
             <path d="M20 69l19-15 20 15M101 69l20-15 19 15M31 76v10M47 76v10M113 76v10M129 76v10" />
             <path class="landmark-accent" d="M20 69l19-15 20 15M68 44l12-20 12 20M101 69l20-15 19 15" />
           </svg>
-        </article>
-        <article class="event-card">
+        </a>
+        <a class="event-card" href="/ca/toronto/" aria-label="CISO Open Mic Toronto city page">
           <div><span class="event-season">Fall event</span><h3 class="event-city">Toronto</h3></div>
           <span class="event-status">Coming soon</span>
           <svg class="city-landmark" viewBox="0 0 160 110" aria-hidden="true">
@@ -262,7 +264,7 @@
             <path d="M84 99l-3-48h10l-3 48M79 51l-6-7 6-8h14l6 8-6 7zM86 36V14M82 14h8" />
             <path class="landmark-accent" d="M73 44h26M79 51h14M86 14V6" />
           </svg>
-        </article>
+        </a>
       </div>
     </section>
   </main>
