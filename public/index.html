@@ -33,6 +33,16 @@
       -webkit-background-clip:text; background-clip:text; color:transparent;
     }
     .tagline { color:var(--muted); font-size:1.1rem; margin:0 auto; max-width:620px; }
+    .hero-action {
+      display:inline-flex; align-items:center; justify-content:center;
+      margin-top:24px; padding:11px 17px; border-radius:9px;
+      background:linear-gradient(135deg,var(--accent),var(--accent-2));
+      color:#fff; font-size:.86rem; font-weight:800; text-decoration:none;
+      box-shadow:0 8px 20px rgba(193,35,49,.18);
+      transition:transform .18s ease,box-shadow .18s ease;
+    }
+    .hero-action:hover { transform:translateY(-2px); box-shadow:0 12px 24px rgba(193,35,49,.24); }
+    .hero-action:focus-visible { outline:3px solid var(--accent-2); outline-offset:4px; }
     main {
       width:100%; margin:0; padding:0; flex:1; display:block;
     }
@@ -56,7 +66,7 @@
       border-radius:999px; color:#fff; background:rgba(255,255,255,.08); font-size:.72rem; font-weight:800;
       letter-spacing:.08em; text-transform:uppercase;
     }
-    .events { margin:0; padding:82px 0 94px; background:var(--events-bg); }
+    .events { margin:0; padding:82px 0 94px; background:var(--events-bg); scroll-margin-top:76px; }
     .page-section { transition:background-color 1.2s ease,color 1.2s ease; }
     .events-heading {
       margin-bottom:18px; text-align:left;
@@ -112,6 +122,28 @@
       font-size:.7rem; font-weight:800; letter-spacing:.08em; text-decoration:none; text-transform:uppercase;
     }
     a.event-status:hover { color:#fff; background:linear-gradient(135deg,var(--accent),var(--accent-2)); }
+    .perspectives {
+      padding:82px 0 94px; background:#172033; color:#fff; text-align:left;
+    }
+    .perspectives-head {
+      display:flex; align-items:end; justify-content:space-between; gap:24px; margin-bottom:22px;
+    }
+    .perspectives h2 { margin:0; font-size:clamp(1.55rem,3vw,2.2rem); line-height:1.1; }
+    .perspectives-all { color:#ffad45; font-size:.86rem; font-weight:800; text-decoration:none; }
+    .perspectives-all:hover { text-decoration:underline; }
+    .perspective-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; }
+    .perspective-card {
+      display:flex; flex-direction:column; gap:10px; min-height:190px; padding:24px;
+      border:1px solid rgba(255,255,255,.16); border-radius:15px;
+      background:rgba(255,255,255,.07); color:#fff; text-decoration:none;
+      transition:transform .18s ease,border-color .18s ease,background-color .18s ease;
+    }
+    .perspective-card:hover { transform:translateY(-3px); border-color:#ffad45; background:rgba(255,255,255,.1); }
+    .perspective-card:focus-visible { outline:3px solid #ffad45; outline-offset:3px; }
+    .perspective-meta { color:#ffad45; font-size:.72rem; font-weight:800; letter-spacing:.1em; text-transform:uppercase; }
+    .perspective-card h3 { margin:0; font-size:1.25rem; line-height:1.2; }
+    .perspective-card p { margin:0; color:#dbe3ef; font-size:.92rem; line-height:1.6; }
+    .perspective-card:only-child { max-width:620px; }
     .motion-ready .page-section .section-inner {
       opacity:0; transform:translateY(30px);
       transition:opacity 1s ease,transform 1s cubic-bezier(.22,1,.36,1);
@@ -200,6 +232,10 @@
     body[data-header-section="about"] .site-head nav a[aria-current="page"] { color:#fff; }
     body[data-header-section="about"] .theme-toggle { background-color:#fff; color:#c8262f; }
     body[data-header-section="events"] .site-head { background-color:var(--events-bg); }
+    body[data-header-section="perspectives"] .site-head { background-color:#172033; }
+    body[data-header-section="perspectives"] .site-head nav a { color:#dbe3ef; }
+    body[data-header-section="perspectives"] .site-head nav a[aria-current="page"] { color:#ffad45; }
+    body[data-header-section="perspectives"] .theme-toggle { background-color:#dbe3ef; color:#172033; }
     body[data-header-section="footer"] .site-head { background-color:var(--footer-bg); }
     body[data-header-section="footer"] .site-head nav a { color:var(--footer-text); }
     body[data-header-section="footer"] .site-head nav a[aria-current="page"] { color:var(--accent-2); }
@@ -213,6 +249,7 @@
       .home-hero { padding:108px 0 68px; }
       .about .section-inner { grid-template-columns:1fr; gap:20px; }
       .event-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+      .perspective-grid { grid-template-columns:1fr; }
       .event-card:last-child { grid-column:1 / -1; min-height:176px; }
     }
     @media (max-width: 600px) {
@@ -256,6 +293,7 @@
           <h1 id="home-title">CISO Open Mic</h1>
         </div>
         <p class="tagline">A forum for CISOs and security leaders to share, connect, and learn.</p>
+        <a class="hero-action" href="#fall-events">Explore Fall 2026 events</a>
       </div>
     </section>
 
@@ -274,7 +312,7 @@
       </div>
     </section>
 
-    <section class="events page-section" aria-labelledby="fall-events-heading">
+    <section id="fall-events" class="events page-section" aria-labelledby="fall-events-heading">
       <div class="section-inner">
         <div class="events-heading">
           <p class="eyebrow">Fall 2026</p>
@@ -337,6 +375,20 @@
       </div>
       </div>
     </section>
+
+    <!-- HOME_LATEST_POSTS_START -->
+    <section class="perspectives page-section" aria-labelledby="latest-perspectives-heading">
+      <div class="section-inner">
+        <div class="perspectives-head">
+          <div><p class="eyebrow">From the community</p><h2 id="latest-perspectives-heading">Latest perspectives</h2></div>
+          <a class="perspectives-all" href="/blog/">All stories →</a>
+        </div>
+        <div class="perspective-grid">
+          <a class="perspective-card" href="/blog/whypartone/"><span class="perspective-meta">July 16, 2026</span><h3>CISO Open Mic - Why - Part One</h3><p>The CISO Open Mic concept was born out of a desire to create a space for trusted leaders to exchange ideas and insights in an intimate, fun, and insightful setting, fostering a sense of professional community among its members.</p></a>
+        </div>
+      </div>
+    </section>
+    <!-- HOME_LATEST_POSTS_END -->
   </main>
 
 <footer>
@@ -365,6 +417,7 @@
       ['hero', document.querySelector('.home-hero')],
       ['about', document.querySelector('.about')],
       ['events', document.querySelector('.events')],
+      ['perspectives', document.querySelector('.perspectives')],
       ['footer', document.querySelector('footer')]
     ].filter(([, section]) => section);
     let headerFrame = 0;
