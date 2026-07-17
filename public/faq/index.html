@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en-CA">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Frequently Asked Questions · CISO Open Mic</title>
+  <meta name="description" content="Answers about CISO Open Mic events, attendance, speaking, registration, capacity and sponsorship." />
+  <link rel="canonical" href="https://cisoopenmic.com/faq/" />
+  <link rel="icon" href="/assets/favicon.ico" type="image/x-icon" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;800&amp;display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/city-20260716.css?v=20260717-4" />
+  <style>
+    .faq-main { margin-top:72px; }
+    .faq-hero { grid-template-columns:minmax(0,1.35fr) minmax(260px,.65fr); align-items:center; }
+    .faq-hero h1 { max-width:700px; }
+    .faq-intro {
+      padding:24px; border:1px solid var(--line); border-radius:16px;
+      background:var(--surface); box-shadow:0 12px 30px rgba(0,0,0,.1);
+    }
+    .faq-intro strong { display:block; margin-bottom:8px; font-size:1.2rem; }
+    .faq-intro p { margin:0; color:var(--muted); line-height:1.65; }
+    .faq-section { margin-top:68px; }
+    .faq-section-head { max-width:700px; margin-bottom:20px; }
+    .faq-section-head h2 { margin:0; font-size:clamp(1.6rem,4vw,2.3rem); line-height:1.1; }
+    .faq-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
+    .faq-item {
+      align-self:start; border:1px solid var(--line); border-radius:14px;
+      background:var(--surface); overflow:hidden;
+    }
+    .faq-item[open] { border-color:color-mix(in srgb,var(--accent-2) 55%,var(--line)); }
+    .faq-item summary {
+      display:flex; align-items:center; justify-content:space-between; gap:18px;
+      min-height:76px; padding:18px 20px; color:var(--text);
+      font-weight:800; line-height:1.35; cursor:pointer; list-style:none;
+    }
+    .faq-item summary::-webkit-details-marker { display:none; }
+    .faq-item summary::after {
+      content:"+"; flex:0 0 auto; display:grid; place-items:center; width:28px; height:28px;
+      border:1px solid var(--line); border-radius:50%; color:var(--accent-2); font-size:1.2rem;
+    }
+    .faq-item[open] summary::after { content:"−"; }
+    .faq-answer { padding:0 20px 20px; color:var(--muted); line-height:1.7; }
+    .faq-answer p { margin:0; }
+    .faq-answer a { color:var(--accent-2); font-weight:800; }
+    @media(max-width:760px) {
+      .faq-main { margin-top:40px; }
+      .faq-hero,.faq-grid { grid-template-columns:1fr; }
+      .faq-hero { gap:24px; }
+      .faq-section { margin-top:52px; }
+    }
+    @media(max-width:420px) {
+      .site-head { padding:0 10px; gap:8px; }
+      .site-head nav { gap:6px; }
+      .site-head nav a { font-size:.76rem; }
+      .theme-toggle { padding:8px; }
+      .faq-item summary { padding:16px; }
+      .faq-answer { padding:0 16px 17px; }
+    }
+  </style>
+</head>
+<body class="light">
+  <header class="site-head">
+    <a href="/" aria-label="CISO Open Mic"><span class="brand-lockup"><img src="/assets/logo.png" alt="" /></span></a>
+    <nav aria-label="Main navigation">
+      <a href="/">Home</a><a href="/blog/">Blog</a><a href="/sponsors/">Sponsors</a><a href="/faq/" aria-current="page">FAQ</a><button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch to dark theme">Dark</button>
+    </nav>
+  </header>
+
+  <main class="faq-main">
+    <section class="hero faq-hero" aria-labelledby="faq-title">
+      <div><p class="eyebrow">Frequently asked questions</p><h1 id="faq-title">Questions, answered.</h1><p class="lede">What to expect from CISO Open Mic, how to participate and how each local gathering works.</p></div>
+      <aside class="faq-intro"><strong>Start with your city.</strong><p>Dates, locations, capacity and registration details are published on each city page as they become available.</p></aside>
+    </section>
+
+    <section class="faq-section" aria-labelledby="about-faq">
+      <div class="faq-section-head"><p class="eyebrow">The experience</p><h2 id="about-faq">About CISO Open Mic</h2></div>
+      <div class="faq-grid">
+        <details class="faq-item"><summary>What is CISO Open Mic?</summary><div class="faq-answer"><p>CISO Open Mic is a peer-led forum where CISOs and security leaders talk openly about the decisions, pressures and problems shaping their work. Each local gathering is designed for practical exchange—not presentations or sales pitches—so useful ideas and real relationships can emerge.</p></div></details>
+        <details class="faq-item"><summary>Who is it for?</summary><div class="faq-answer"><p>It is designed for CISOs and senior security leaders. Participation may be curated because each gathering is intentionally local and venue capacity is limited.</p></div></details>
+        <details class="faq-item"><summary>What happens during an event?</summary><div class="faq-answer"><p>A local MC guides the evening. Participants can share a focused five-minute contribution, listen to their peers and continue the conversation in the room. A panel of four judges recognizes the strongest contributions.</p></div></details>
+        <details class="faq-item"><summary>Do I have to speak?</summary><div class="faq-answer"><p>No. You can take the mic or take it all in. Listening, learning and connecting with peers are equally valid ways to participate.</p></div></details>
+        <details class="faq-item"><summary>Are there presentations or vendor pitches?</summary><div class="faq-answer"><p>No. CISO Open Mic is built around original perspectives and practical peer exchange, without slide decks or sales pitches.</p></div></details>
+        <details class="faq-item"><summary>Who runs each city event?</summary><div class="faq-answer"><p>Each city has its own Event Director, MC and four-person judging panel. Their profiles are published on the city page as they are confirmed.</p></div></details>
+      </div>
+    </section>
+
+    <section class="faq-section" aria-labelledby="registration-faq">
+      <div class="faq-section-head"><p class="eyebrow">Taking part</p><h2 id="registration-faq">Registration and topics</h2></div>
+      <div class="faq-grid">
+        <details class="faq-item"><summary>How do I register?</summary><div class="faq-answer"><p>When registration opens, the relevant city page will link to the event on Luma. Registration and topic submissions are handled together through that Luma process.</p></div></details>
+        <details class="faq-item"><summary>How do I submit a topic?</summary><div class="faq-answer"><p>Topic submissions are included in the Luma registration process. You do not need to complete a separate CISO Open Mic form.</p></div></details>
+        <details class="faq-item"><summary>Do you sell tickets?</summary><div class="faq-answer"><p>No. CISO Open Mic does not sell tickets. Attendance is managed through registration, approval and the capacity of each venue.</p></div></details>
+        <details class="faq-item"><summary>What does “At capacity” mean?</summary><div class="faq-answer"><p>It means the available attendance capacity has been reached. If a waitlist is available, the city page will provide the appropriate link.</p></div></details>
+        <details class="faq-item"><summary>Where can I find dates and locations?</summary><div class="faq-answer"><p>Choose Calgary, Montreal, Boston, Ottawa or Toronto from the Home page. Each permanent city page carries its current event and registration details.</p></div></details>
+        <details class="faq-item"><summary>Is Montreal available in English and French?</summary><div class="faq-answer"><p>Yes. The Montreal city experience supports English and French pages. Event-specific language details will be included with the registration information.</p></div></details>
+      </div>
+    </section>
+
+    <section class="faq-section" aria-labelledby="support-faq">
+      <div class="faq-section-head"><p class="eyebrow">Community support</p><h2 id="support-faq">Sponsors and standards</h2></div>
+      <div class="faq-grid">
+        <details class="faq-item"><summary>What role do sponsors play?</summary><div class="faq-answer"><p>Sponsors help support the community and event experience. They do not control programming, judging, editorial direction or who is invited to participate.</p></div></details>
+        <details class="faq-item"><summary>What standards apply at an event?</summary><div class="faq-answer"><p>Everyone is expected to follow the <a href="/conduct">Code of Conduct</a>. Information about participation and personal information is available in the <a href="/terms">Terms of Use</a> and <a href="/privacy">Privacy Policy</a>.</p></div></details>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-foot"><div>© 2026 CISO Open Mic</div><div class="legal-links"><a href="/privacy">Privacy Policy</a><span>·</span><a href="/terms">Terms of Use</a><span>·</span><a href="/conduct">Code of Conduct</a></div></footer>
+  <script src="/assets/city-20260716.js"></script>
+</body>
+</html>
