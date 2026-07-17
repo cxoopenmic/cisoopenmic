@@ -38,7 +38,9 @@
     }
     .section-inner { width:min(960px,calc(100% - 36px)); margin:0 auto; }
     .home-hero { padding:132px 0 86px; background:var(--bg); }
-    .brand img.logo { width:124px; height:124px; }
+    .brand img.logo {
+      width:clamp(152px,18vw,176px); height:auto; aspect-ratio:1;
+    }
     .about {
       padding:82px 0; color:#fff; text-align:left;
       background:linear-gradient(135deg,#c8262f 0%,#e84a16 52%,#ff8a00 100%);
@@ -223,7 +225,7 @@
       .site-head nav { gap:8px; }
       .site-head nav a { font-size:.82rem; }
       .theme-toggle { padding:8px 10px; }
-      .brand img.logo { width:112px; height:112px; }
+      .brand img.logo { width:138px; height:auto; }
       .about,.events { padding:64px 0; }
       .event-card { min-height:176px; padding:16px; }
       .event-city { font-size:1.05rem; }
