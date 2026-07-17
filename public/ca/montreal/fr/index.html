@@ -18,7 +18,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;800&amp;display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/assets/city.css" />
+  <link rel="stylesheet" href="/assets/city-20260716.css" />
 </head>
 <body class="light city-montreal">
   <header class="site-head">
@@ -47,21 +47,7 @@
       </div>
     </section>
 
-    <section class="section newsletter" aria-labelledby="newsletter-title">
-      <div><p class="eyebrow">Actualités de Montréal</p><h2 id="newsletter-title">Soyez informé dès l’ouverture des inscriptions.</h2><p>Abonnez-vous à l’infolettre CISO Open Mic pour recevoir les annonces d’événements à Montréal et les nouvelles de la communauté.</p></div>
-      <form method="POST" action="https://openmic-cms-worker.cxoopenmic.workers.dev/newsletter/subscribe" accept-charset="UTF-8">
-        <input type="hidden" name="brandId" value="ciso" /><input type="hidden" name="source" value="city-montreal-fr" />
-        <label>Adresse courriel<input name="email" type="email" autocomplete="email" maxlength="254" required placeholder="vous@exemple.com" /></label>
-        <label class="newsletter-consent"><input name="consent" type="checkbox" value="1" required /><span>J’accepte de recevoir l’infolettre de cette marque. Je peux me désabonner en tout temps.</span></label>
-        <label class="newsletter-honeypot" aria-hidden="true">Laisser vide<input name="company_website" type="text" tabindex="-1" autocomplete="off" /></label>
-        <div class="cf-turnstile" data-sitekey="0x4AAAAAACJnytt9-1xzQAi1" data-theme="auto" data-language="fr" data-size="flexible"></div>
-        <button type="submit">Tenez-moi au courant</button>
-      </form>
-    </section>
-
-    <section class="section archive-note" aria-labelledby="archive-title"><div><h2 id="archive-title">Historique des événements de Montréal</h2><p>Les événements passés, les comptes rendus et les futures pages d’inscription seront regroupés dans cet espace.</p></div><a href="/sponsors/">Découvrez nos sponsors</a></section>
-
-    <section class="section" aria-labelledby="team-title">
+    <section class="section city-team" aria-labelledby="team-title">
       <div class="section-heading"><p class="eyebrow">Équipe locale</p><h2 id="team-title">L’équipe derrière Montréal.</h2><p>Chaque ville CISO Open Mic compte sa propre direction d’événement, sa propre animation et son propre jury.</p></div>
       <div class="team-groups">
         <div><h3 class="team-group-title">Direction de l’événement</h3><div class="team-grid team-leads">
@@ -76,10 +62,25 @@
         </div></div>
       </div>
     </section>
+    <section class="section newsletter" aria-labelledby="newsletter-title">
+      <div><p class="eyebrow">Actualités de Montréal</p><h2 id="newsletter-title">Soyez informé dès l’ouverture des inscriptions.</h2><p>Abonnez-vous à l’infolettre CISO Open Mic pour recevoir les annonces d’événements à Montréal et les nouvelles de la communauté.</p></div>
+      <form method="POST" action="https://openmic-cms-worker.cxoopenmic.workers.dev/newsletter/subscribe" accept-charset="UTF-8">
+        <input type="hidden" name="brandId" value="ciso" /><input type="hidden" name="source" value="city-montreal-fr" />
+        <label>Adresse courriel<input name="email" type="email" autocomplete="email" maxlength="254" required placeholder="vous@exemple.com" /></label>
+        <label class="newsletter-consent"><input name="consent" type="checkbox" value="1" required /><span>J’accepte de recevoir l’infolettre de cette marque. Je peux me désabonner en tout temps.</span></label>
+        <label class="newsletter-honeypot" aria-hidden="true">Laisser vide<input name="company_website" type="text" tabindex="-1" autocomplete="off" /></label>
+        <div class="cf-turnstile" data-sitekey="0x4AAAAAACJnytt9-1xzQAi1" data-theme="auto" data-language="fr" data-size="flexible"></div>
+        <button type="submit">Tenez-moi au courant</button>
+      </form>
+    </section>
+
+    <section class="section archive-note" aria-labelledby="archive-title"><div><h2 id="archive-title">Historique des événements de Montréal</h2><p>Les événements passés, les comptes rendus et les futures pages d’inscription seront regroupés dans cet espace.</p></div><a href="/sponsors/">Découvrez nos sponsors</a></section>
+
+
   </main>
 
   <footer class="site-foot"><div>© 2026 CISO Open Mic</div><div class="legal-links"><a href="/privacy">Politique de confidentialité</a><span>·</span><a href="/terms">Conditions d’utilisation</a><span>·</span><a href="/conduct">Code de conduite</a></div></footer>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"CISO Open Mic Montréal","url":"https://cisoopenmic.com/ca/montreal/fr/","description":"Un forum local où les RSSI et les responsables de la sécurité de Montréal peuvent échanger, créer des liens et apprendre.","inLanguage":"fr-CA","isPartOf":{"@type":"WebSite","name":"CISO Open Mic","url":"https://cisoopenmic.com/"}}</script>
-  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script><script src="/assets/city.js"></script>
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script><script src="/assets/city-20260716.js"></script>
 </body>
 </html>
