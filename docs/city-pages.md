@@ -8,6 +8,11 @@ City pages are permanent hubs:
 - `/ca/toronto/`
 - `/us/boston/`
 
+Montreal is bilingual. English is the default city hub and French has its own shareable route:
+
+- `/ca/montreal/`
+- `/ca/montreal/fr/`
+
 Individual event pages live below their city and use compact, lowercase slugs without hyphens. For example:
 
 - `/ca/toronto/fall2026/`

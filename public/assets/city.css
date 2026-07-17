@@ -26,6 +26,12 @@ a { color:inherit; }
 .site-head nav { display:flex; align-items:center; gap:18px; }
 .site-head nav a { color:var(--muted); font-size:.92rem; }
 .site-head nav a[aria-current="page"] { color:var(--accent-2); }
+.language-switch {
+  display:inline-flex; align-items:center; justify-content:center; min-width:34px; padding:6px 8px;
+  border:1px solid var(--line); border-radius:999px; color:var(--accent-2)!important;
+  font-size:.72rem!important; letter-spacing:.05em; text-transform:uppercase;
+}
+.language-switch:hover { border-color:var(--accent-2); }
 .brand-lockup { display:inline-flex; align-items:center; }
 .brand-lockup img {
   width:42px; height:42px; border-radius:50%; object-fit:cover;
@@ -158,6 +164,14 @@ h1 {
 @media(max-width:420px) {
   .site-head nav { gap:8px; }
   .site-head nav a { font-size:.82rem; }
+  .language-switch { min-width:30px; padding:5px 6px; font-size:.68rem!important; }
   .theme-toggle { padding:8px 10px; }
   .newsletter { padding:18px; }
+}
+@media(max-width:360px) {
+  .city-montreal .site-head { padding:0 10px; gap:10px; }
+  .city-montreal .site-head nav { gap:5px; }
+  .city-montreal .site-head nav a { font-size:.75rem; }
+  .city-montreal .brand-lockup img { width:38px; height:38px; }
+  .city-montreal .theme-toggle { padding:7px 8px; font-size:.72rem; }
 }
