@@ -171,19 +171,33 @@
       border:none; padding:8px 14px; border-radius:6px;
       font:inherit; font-size:.8rem; font-weight:800; line-height:1; cursor:pointer;
       box-shadow:0 2px 6px rgba(0,0,0,0.2);
-      transition:background .3s,color .3s;
+      transition:background-color .7s ease,color .7s ease;
     }
     .theme-toggle:hover { background:var(--text); color:var(--bg); }
     .site-head {
       position:sticky; top:0; z-index:1000;
-      width:min(960px,calc(100% - 36px)); min-height:76px; margin:0 auto;
+      width:100%; min-height:76px; margin:0;
+      padding:0 max(18px,calc(50% - 480px));
       display:flex; align-items:center; justify-content:space-between; gap:20px;
-      background:var(--bg); text-align:left;
+      background-color:var(--bg); text-align:left;
+      transition:background-color .85s cubic-bezier(.22,1,.36,1),color .85s ease;
     }
     .site-head a { color:var(--text); font-weight:800; text-decoration:none; }
     .site-head nav { display:flex; align-items:center; gap:18px; }
-    .site-head nav a { color:var(--muted); font-size:.92rem; }
+    .site-head nav a {
+      color:var(--muted); font-size:.92rem;
+      transition:color .7s ease;
+    }
     .site-head nav a[aria-current="page"] { color:var(--accent-2); }
+    body[data-header-section="about"] .site-head { background-color:#df451d; }
+    body[data-header-section="about"] .site-head nav a { color:rgba(255,255,255,.82); }
+    body[data-header-section="about"] .site-head nav a[aria-current="page"] { color:#fff; }
+    body[data-header-section="about"] .theme-toggle { background-color:#fff; color:#c8262f; }
+    body[data-header-section="events"] .site-head { background-color:var(--events-bg); }
+    body[data-header-section="footer"] .site-head { background-color:var(--footer-bg); }
+    body[data-header-section="footer"] .site-head nav a { color:var(--footer-text); }
+    body[data-header-section="footer"] .site-head nav a[aria-current="page"] { color:var(--accent-2); }
+    body[data-header-section="footer"] .theme-toggle { background-color:var(--footer-text); color:var(--footer-bg); }
     .brand-lockup { display:inline-flex; align-items:center; }
     .brand-lockup img {
       width:42px; height:42px; border-radius:50%; object-fit:cover;
@@ -213,6 +227,7 @@
     @media (prefers-reduced-motion:reduce) {
       html { scroll-behavior:auto; }
       .motion-ready .page-section .section-inner { opacity:1; transform:none; transition:none; }
+      .site-head,.site-head nav a,.theme-toggle { transition:none; }
     }
   </style>
 </head>
@@ -338,6 +353,35 @@
       document.body.classList.toggle('light');
       toggleBtn.textContent = document.body.classList.contains('light') ? 'Dark' : 'Light';
     });
+
+    const siteHead = document.querySelector('.site-head');
+    const headerSections = [
+      ['hero', document.querySelector('.home-hero')],
+      ['about', document.querySelector('.about')],
+      ['events', document.querySelector('.events')],
+      ['footer', document.querySelector('footer')]
+    ].filter(([, section]) => section);
+    let headerFrame = 0;
+    const syncHeaderSection = () => {
+      headerFrame = 0;
+      const probe = (siteHead?.getBoundingClientRect().bottom || 76) + 20;
+      let activeSection = headerSections[0];
+      for (const section of headerSections) {
+        const bounds = section[1].getBoundingClientRect();
+        if (bounds.top <= probe && bounds.bottom > probe) {
+          activeSection = section;
+          break;
+        }
+      }
+      document.body.dataset.headerSection = activeSection?.[0] || 'hero';
+    };
+    const scheduleHeaderSync = () => {
+      if (!headerFrame) headerFrame = requestAnimationFrame(syncHeaderSection);
+    };
+    window.addEventListener('scroll', scheduleHeaderSync, { passive:true });
+    window.addEventListener('resize', scheduleHeaderSync);
+    syncHeaderSection();
+
     const sections = document.querySelectorAll('.page-section');
     const reducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (reducedMotion || !('IntersectionObserver' in window)) {
