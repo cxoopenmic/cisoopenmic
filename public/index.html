@@ -149,47 +149,50 @@
       display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:14px;
     }
     .event-card {
-      position:relative; min-height:210px; overflow:hidden;
-      display:flex; flex-direction:column; justify-content:space-between;
-      padding:22px 18px 20px; border:1px solid rgba(255,255,255,.66); border-radius:18px;
-      background:#fff; text-align:center; color:#0a1328; text-decoration:none;
-      box-shadow:0 22px 42px rgba(75,16,13,.2);
-      transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease;
+      position:relative; min-height:282px; overflow:hidden;
+      display:block; padding:0; border:0; border-radius:3px;
+      background:#0a1328; text-align:left; color:#fff; text-decoration:none;
+      box-shadow:0 24px 44px rgba(75,16,13,.28);
+      transition:transform .22s ease,box-shadow .22s ease;
     }
-    .event-card:hover { transform:translateY(-5px); border-color:#fff; box-shadow:0 28px 48px rgba(75,16,13,.26); }
+    .event-card:hover { transform:translateY(-6px); box-shadow:0 32px 54px rgba(75,16,13,.34); }
     .event-card:focus-visible { outline:3px solid #0a1328; outline-offset:3px; }
     .event-card::before {
-      content:""; position:absolute; inset:0 0 auto; width:100%; height:5px;
-      background:linear-gradient(90deg,#0a1328,#344563);
+      content:""; position:absolute; z-index:1; inset:0;
+      background:linear-gradient(180deg,rgba(7,14,29,.12) 10%,rgba(7,14,29,.35) 48%,rgba(7,14,29,.96) 100%);
     }
-    .event-card > :not(.city-landmark) { position:relative; z-index:1; }
-    .event-card > div:first-child { width:100%; }
-    .city-landmark {
-      position:absolute; left:50%; top:76px; width:88px; height:64px;
-      transform:translateX(-50%);
-      color:#c9d3e1; opacity:.92; pointer-events:none;
+    .event-card::after {
+      content:""; position:absolute; z-index:2; left:18px; right:18px; bottom:14px; height:2px;
+      background:linear-gradient(90deg,var(--accent-2),var(--accent),transparent 88%);
     }
-    .city-landmark * {
-      fill:none; stroke:currentColor; stroke-width:1.65; stroke-linecap:round;
-      stroke-linejoin:round; vector-effect:non-scaling-stroke;
+    .city-photo {
+      position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
+      filter:saturate(.78) contrast(1.08); transform:scale(1.015);
+      transition:transform .55s cubic-bezier(.22,1,.36,1),filter .35s ease;
     }
-    .city-landmark .landmark-accent { stroke:#ff8500; stroke-width:2.1; }
+    .event-card:hover .city-photo { filter:saturate(.95) contrast(1.08); transform:scale(1.07); }
+    .city-photo--boston { object-position:center 68%; }
+    .city-photo--ottawa { object-position:center 46%; }
+    .city-photo--toronto { object-position:center 38%; }
+    .event-content {
+      position:absolute; z-index:3; inset:0; display:flex; flex-direction:column;
+      justify-content:flex-end; align-items:flex-start; padding:22px 18px 27px;
+    }
     .event-season {
-      color:#53627a; font-size:.72rem; font-weight:800;
+      color:rgba(255,255,255,.72); font-size:.68rem; font-weight:800;
       letter-spacing:.12em; text-transform:uppercase;
     }
-    .event-city { margin:8px 0 0; color:#0a1328; font-size:1.2rem; line-height:1.15; }
+    .event-city { margin:7px 0 0; color:#fff; font-size:1.45rem; line-height:1.05; letter-spacing:-.035em; }
     .event-date {
       display:block; margin-top:5px; color:var(--accent-2);
       font-size:.7rem; font-weight:800; letter-spacing:.04em;
     }
     .event-status {
-      align-self:center; margin-top:24px; padding:7px 11px;
-      border:1px solid #0a1328;
-      border-radius:999px; color:#fff; background:#0a1328;
-      font-size:.7rem; font-weight:800; letter-spacing:.08em; text-decoration:none; text-transform:uppercase;
+      align-self:flex-start; margin-top:14px; padding:0;
+      border:0; border-radius:0; color:#ffae4c; background:transparent;
+      font-size:.7rem; font-weight:800; letter-spacing:.1em; text-decoration:none; text-transform:uppercase;
     }
-    a.event-status:hover { color:#fff; background:#253657; }
+    a.event-status:hover { color:#fff; background:transparent; }
     .perspectives {
       padding:82px 0 94px; background:#172033; color:#fff; text-align:left;
     }
@@ -323,7 +326,7 @@
       .difference-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
       .event-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
       .perspective-grid { grid-template-columns:1fr; }
-      .event-card:last-child { grid-column:1 / -1; min-height:210px; }
+      .event-card:last-child { grid-column:1 / -1; min-height:230px; }
     }
     @media (max-width: 600px) {
       body { padding:0; }
@@ -340,8 +343,9 @@
       .theme-toggle { padding:8px; }
       .brand img.logo { width:138px; height:auto; }
       .about,.difference,.events { padding:64px 0; }
-      .event-card { min-height:200px; padding:18px 14px; }
-      .event-city { font-size:1.05rem; }
+      .event-card { min-height:230px; }
+      .event-content { padding:18px 14px 24px; }
+      .event-city { font-size:1.2rem; }
     }
     @media (prefers-reduced-motion:reduce) {
       html { scroll-behavior:auto; }
@@ -437,54 +441,29 @@
         <div class="event-grid">
         <!-- Cards open permanent city pages. Registration links belong on each city page. -->
         <a class="event-card" href="/ca/calgary/" aria-label="CISO Open Mic Calgary city page">
-          <div><span class="event-season">Fall event</span><h3 class="event-city">Calgary</h3></div>
-          <span class="event-status">Coming soon</span>
-          <svg class="city-landmark" viewBox="0 0 160 110" aria-hidden="true">
-            <path d="M8 99h144M17 99V76h18v23M39 99V67h18v32M122 99V72h21v27" />
-            <path d="M84 99V45M76 45h16M79 39h10M84 39V19M81 19h6" />
-            <path class="landmark-accent" d="M69 47l7-8h16l7 8-7 7H76zM72 47h24" />
-          </svg>
+          <!-- Calgary photography: Ahmed Zalabany / Unsplash -->
+          <img class="city-photo" src="assets/cities/calgary.jpg" alt="" loading="lazy" decoding="async" />
+          <div class="event-content"><span class="event-season">Fall event</span><h3 class="event-city">Calgary</h3><span class="event-status">Coming soon</span></div>
         </a>
         <a class="event-card" href="/ca/montreal/" aria-label="CISO Open Mic Montreal city page">
-          <div><span class="event-season">Fall event</span><h3 class="event-city">Montreal</h3></div>
-          <span class="event-status">Coming soon</span>
-          <svg class="city-landmark" viewBox="0 0 160 110" aria-hidden="true">
-            <path d="M10 99h140M38 99V43h24v56M98 99V43h24v56M62 99V55l18-14 18 14v44" />
-            <path d="M43 43V28h14v15M103 43V28h14v15M48 28v-8M112 28v-8M45 20h6M109 20h6" />
-            <path d="M73 99V76a7 7 0 0 1 14 0v23M49 61v13M111 61v13" />
-            <path class="landmark-accent" d="M38 43l12-15 12 15M98 43l12-15 12 15M62 55l18-14 18 14" />
-          </svg>
+          <!-- Montreal photography: Aymeric Lamblin / Unsplash -->
+          <img class="city-photo" src="assets/cities/montreal.jpg" alt="" loading="lazy" decoding="async" />
+          <div class="event-content"><span class="event-season">Fall event</span><h3 class="event-city">Montreal</h3><span class="event-status">Coming soon</span></div>
         </a>
         <a class="event-card" href="/us/boston/" aria-label="CISO Open Mic Boston city page">
-          <div><span class="event-season">Fall event</span><h3 class="event-city">Boston</h3></div>
-          <span class="event-status">Coming soon</span>
-          <svg class="city-landmark" viewBox="0 0 160 110" aria-hidden="true">
-            <path d="M8 94c34-10 76-10 144 0M18 99h124" />
-            <path d="M45 89V28M54 89V20M106 89V20M115 89V28" />
-            <path d="M45 28l9-8 9 8M97 28l9-8 9 8" />
-            <path d="M54 31L21 87M54 42L35 87M54 54L48 87M106 31l33 56M106 42l19 45M106 54l6 33" />
-            <path class="landmark-accent" d="M12 86h136M54 20v69M106 20v69" />
-          </svg>
+          <!-- Boston photography: Andrew Spencer / Unsplash -->
+          <img class="city-photo city-photo--boston" src="assets/cities/boston.jpg" alt="" loading="lazy" decoding="async" />
+          <div class="event-content"><span class="event-season">Fall event</span><h3 class="event-city">Boston</h3><span class="event-status">Coming soon</span></div>
         </a>
         <a class="event-card" href="/ca/ottawa/" aria-label="CISO Open Mic Ottawa city page">
-          <div><span class="event-season">Fall event</span><h3 class="event-city">Ottawa</h3></div>
-          <span class="event-status">Coming soon</span>
-          <svg class="city-landmark" viewBox="0 0 160 110" aria-hidden="true">
-            <path d="M8 99h144M20 99V69h39v30M101 99V69h39v30M59 99V44h42v55" />
-            <path d="M68 44l12-20 12 20M80 24V13M80 13l11 4-11 4" />
-            <circle cx="80" cy="56" r="6" /><path d="M80 52v4l3 2M72 99V75h16v24" />
-            <path d="M20 69l19-15 20 15M101 69l20-15 19 15M31 76v10M47 76v10M113 76v10M129 76v10" />
-            <path class="landmark-accent" d="M20 69l19-15 20 15M68 44l12-20 12 20M101 69l20-15 19 15" />
-          </svg>
+          <!-- Ottawa photography: Benoit Debaix / Unsplash -->
+          <img class="city-photo city-photo--ottawa" src="assets/cities/ottawa.jpg" alt="" loading="lazy" decoding="async" />
+          <div class="event-content"><span class="event-season">Fall event</span><h3 class="event-city">Ottawa</h3><span class="event-status">Coming soon</span></div>
         </a>
         <a class="event-card" href="/ca/toronto/" aria-label="CISO Open Mic Toronto city page">
-          <div><span class="event-season">Fall event</span><h3 class="event-city">Toronto</h3></div>
-          <span class="event-status">Coming soon</span>
-          <svg class="city-landmark" viewBox="0 0 160 110" aria-hidden="true">
-            <path d="M8 99h144M18 99V77h18v22M42 99V68h18v31M111 99V74h15v25M131 99V61h18v38" />
-            <path d="M84 99l-3-48h10l-3 48M79 51l-6-7 6-8h14l6 8-6 7zM86 36V14M82 14h8" />
-            <path class="landmark-accent" d="M73 44h26M79 51h14M86 14V6" />
-          </svg>
+          <!-- Toronto photography: Structural Photography / Unsplash -->
+          <img class="city-photo city-photo--toronto" src="assets/cities/toronto.jpg" alt="" loading="lazy" decoding="async" />
+          <div class="event-content"><span class="event-season">Fall event</span><h3 class="event-city">Toronto</h3><span class="event-status">Coming soon</span></div>
         </a>
       </div>
       </div>
