@@ -34,15 +34,15 @@
     h1 span { display:block; margin-top:.18em; color:var(--navy); }
     .hero-lede { max-width:680px; margin:24px 0 0; color:rgba(255,255,255,.94); font-size:1.08rem; line-height:1.68; }
     .hero-logo-cloud { position:relative; min-height:390px; }
-    .hero-logo { position:absolute; width:180px; min-height:104px; padding:20px; border:1px solid rgba(255,255,255,.58); border-radius:18px; background:rgba(255,255,255,.94); display:grid; place-items:center; box-shadow:0 24px 48px rgba(71,17,14,.25); transform:rotate(-3deg); }
+    .hero-logo { position:absolute; width:46%; min-height:108px; padding:22px; border:1px solid rgba(255,255,255,.58); border-radius:18px; background:rgba(255,255,255,.96); display:grid; place-items:center; box-shadow:0 20px 42px rgba(71,17,14,.2); transform:rotate(-1.2deg); }
     .hero-logo img { display:block; max-width:100%; max-height:58px; object-fit:contain; }
     .hero-logo .wordmark { color:#111827; font-size:1.05rem; font-weight:800; text-align:center; }
-    .hero-logo:nth-child(1) { top:0; left:3%; }
-    .hero-logo:nth-child(2) { top:40px; right:0; transform:rotate(4deg); }
-    .hero-logo:nth-child(3) { top:142px; left:18%; transform:rotate(2deg); }
-    .hero-logo:nth-child(4) { top:178px; right:2%; transform:rotate(-5deg); }
-    .hero-logo:nth-child(5) { bottom:0; left:0; transform:rotate(5deg); }
-    .hero-logo:nth-child(6) { bottom:2px; right:15%; transform:rotate(-2deg); }
+    .hero-logo:nth-child(1) { top:0; left:0; }
+    .hero-logo:nth-child(2) { top:16px; right:0; transform:rotate(1.2deg); }
+    .hero-logo:nth-child(3) { top:132px; left:3%; transform:rotate(.8deg); }
+    .hero-logo:nth-child(4) { top:148px; right:3%; transform:rotate(-.9deg); }
+    .hero-logo:nth-child(5) { bottom:16px; left:0; transform:rotate(1.1deg); }
+    .hero-logo:nth-child(6) { bottom:0; right:0; transform:rotate(-1deg); }
     .hero-logo:nth-child(n+7) { display:none; }
     .sponsor-section { padding:92px 0 108px; }
     .current-section { background:radial-gradient(circle at 90% 8%,rgba(255,138,0,.12),transparent 28%),var(--bg); }
@@ -97,7 +97,7 @@
     .profile-specialties { display:flex; flex-wrap:wrap; gap:8px; margin-top:22px; }
     .profile-specialties span { padding:6px 10px; border:1px solid var(--line); border-radius:999px; color:var(--muted); font-size:.72rem; font-weight:800; }
     .profile-link { margin-top:28px; }
-    @media(max-width:900px) { .sponsor-hero .section-inner { grid-template-columns:1fr; } .hero-logo-cloud { min-height:285px; max-width:620px; width:100%; } .hero-logo { width:160px; min-height:90px; } .hero-logo:nth-child(3),.hero-logo:nth-child(4) { top:100px; } .current-sponsor-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } .past-sponsor-grid { grid-template-columns:repeat(3,minmax(0,1fr)); } }
+    @media(max-width:900px) { .sponsor-hero .section-inner { grid-template-columns:1fr; } .hero-logo-cloud { min-height:390px; max-width:620px; width:100%; } .current-sponsor-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } .past-sponsor-grid { grid-template-columns:repeat(3,minmax(0,1fr)); } }
     @media(max-width:700px) { .section-heading,.sponsorship-cta .section-inner { align-items:flex-start; flex-direction:column; } .sponsor-hero { padding:70px 0 78px; } .sponsor-section { padding:70px 0 82px; } .past-sponsor-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
     @media(max-width:600px) { .site-head { top:0; width:calc(100% - 4px); min-height:72px; padding:0 16px; } .site-head nav { gap:10px; } .site-foot { justify-content:center; gap:6px; text-align:center; } .site-foot>div:first-child { width:100%; } .legal-links { justify-content:center; flex-wrap:nowrap; gap:6px; white-space:nowrap; font-size:.82rem; } .hero-logo-cloud { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; min-height:0; } .hero-logo { position:static; width:auto; min-height:72px; padding:12px; transform:none!important; } .hero-logo img { max-height:38px; } .current-sponsor-grid { grid-template-columns:1fr; } .sponsor-card { min-height:270px; } .sponsor-profile { padding:50px 24px 30px; } }
     @media(max-width:420px) { .site-head { padding:0 10px; } .site-head nav { gap:6px; } .site-head nav a { font-size:.76rem; } .theme-toggle { padding:8px; } .past-sponsor-grid { grid-template-columns:1fr 1fr; gap:8px; } .sponsor-card--past .sponsor-card-copy { padding:11px; } .sponsor-card--past .sponsor-name { font-size:.8rem; } .sponsor-card--past .sponsor-more { display:none; } }
