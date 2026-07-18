@@ -8,7 +8,7 @@
   <link rel="icon" href="assets/favicon.ico" type="image/x-icon"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;800&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;800&amp;family=Unbounded:wght@800&amp;display=swap" rel="stylesheet">
   <style>
     :root {
       --bg:#000100; --surface:#111312; --text:#fdfdfd; --muted:#e0e0e0;
@@ -98,7 +98,11 @@
       margin:0 0 4px; color:var(--accent-2); font-size:.76rem;
       font-weight:800; letter-spacing:.16em; text-transform:uppercase;
     }
-    .events h2 { margin:0; font-size:clamp(1.45rem,3vw,2rem); line-height:1.15; }
+    .events h2 {
+      margin:0; font-family:"Unbounded","Open Sans",Arial,sans-serif;
+      font-size:clamp(1.7rem,3.5vw,2.5rem); font-weight:800; line-height:1.08;
+      letter-spacing:-.025em;
+    }
     .events-intro { margin:8px 0 0; max-width:620px; color:var(--muted); font-size:.92rem; }
     .event-grid {
       display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:12px;
@@ -291,6 +295,7 @@
       .theme-toggle { padding:8px; }
       .brand img.logo { width:138px; height:auto; }
       .about,.difference,.events { padding:64px 0; }
+      .events h2 { font-size:1.32rem; letter-spacing:-.025em; }
       .event-card { min-height:176px; padding:16px; }
       .event-city { font-size:1.05rem; }
     }
