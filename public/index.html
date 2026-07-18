@@ -14,7 +14,7 @@
       --bg:#000100; --surface:#111312; --text:#fdfdfd; --muted:#e0e0e0;
       --line:rgba(255,255,255,.16); --landmark:#cbd5e1;
       --accent:#c12331; --accent-2:#ff8a00;
-      --events-bg:#171a19; --footer-bg:#080a09; --footer-text:#d8dee7;
+      --difference-bg:#241c1b; --events-bg:#171a19; --footer-bg:#080a09; --footer-text:#d8dee7;
     }
     * { box-sizing:border-box; }
     body {
@@ -66,6 +66,29 @@
       border-radius:999px; color:#fff; background:rgba(255,255,255,.08); font-size:.72rem; font-weight:800;
       letter-spacing:.08em; text-transform:uppercase;
     }
+    .difference { padding:82px 0 94px; background:var(--difference-bg); text-align:left; }
+    .difference-head { max-width:720px; margin-bottom:24px; }
+    .difference h2 { margin:0; font-size:clamp(1.7rem,3.2vw,2.35rem); line-height:1.08; }
+    .difference-intro { margin:10px 0 0; max-width:640px; color:var(--muted); line-height:1.65; }
+    .difference-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:14px; }
+    .difference-card {
+      position:relative; min-height:222px; overflow:hidden;
+      display:flex; flex-direction:column; padding:24px 22px;
+      border:1px solid var(--line); border-radius:15px; background:var(--surface);
+      box-shadow:0 10px 26px rgba(0,0,0,.1);
+    }
+    .difference-card::before {
+      content:""; position:absolute; inset:0 0 auto; height:4px;
+      background:linear-gradient(90deg,var(--accent),var(--accent-2));
+    }
+    .difference-number {
+      display:grid; place-items:center; width:38px; height:38px; margin-bottom:34px;
+      border:1px solid color-mix(in srgb,var(--accent-2) 42%,var(--line));
+      border-radius:50%; color:var(--accent-2); background:color-mix(in srgb,var(--accent-2) 8%,transparent);
+      font-size:.74rem; font-weight:800; letter-spacing:.08em;
+    }
+    .difference-card h3 { margin:0 0 8px; color:var(--text); font-size:1.08rem; line-height:1.2; }
+    .difference-card p { margin:0; color:var(--muted); font-size:.89rem; line-height:1.58; }
     .events { margin:0; padding:82px 0 94px; background:var(--events-bg); scroll-margin-top:76px; }
     .page-section { transition:background-color 1.2s ease,color 1.2s ease; }
     .events-heading {
@@ -200,7 +223,7 @@
     body.light {
       --bg:#f8fafc; --surface:#ffffff; --text:#0f172a; --muted:#475569;
       --line:#d8dee7; --landmark:#cbd5e1;
-      --events-bg:#edf1f5; --footer-bg:#111827; --footer-text:#dbe3ef;
+      --difference-bg:#fff4e8; --events-bg:#edf1f5; --footer-bg:#111827; --footer-text:#dbe3ef;
     }
 
     /* Toggle button */
@@ -231,6 +254,7 @@
     body[data-header-section="about"] .site-head nav a { color:rgba(255,255,255,.82); }
     body[data-header-section="about"] .site-head nav a[aria-current="page"] { color:#fff; }
     body[data-header-section="about"] .theme-toggle { background-color:#fff; color:#c8262f; }
+    body[data-header-section="difference"] .site-head { background-color:var(--difference-bg); }
     body[data-header-section="events"] .site-head { background-color:var(--events-bg); }
     body[data-header-section="perspectives"] .site-head { background-color:#172033; }
     body[data-header-section="perspectives"] .site-head nav a { color:#dbe3ef; }
@@ -248,6 +272,7 @@
     @media (max-width: 800px) {
       .home-hero { padding:108px 0 68px; }
       .about .section-inner { grid-template-columns:1fr; gap:20px; }
+      .difference-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
       .event-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
       .perspective-grid { grid-template-columns:1fr; }
       .event-card:last-child { grid-column:1 / -1; min-height:176px; }
@@ -257,6 +282,7 @@
       .site-head { width:calc(100vw - 8px); min-height:72px; padding:0 16px; }
       .site-head nav { gap:10px; }
       .home-hero { padding-top:88px; }
+      .difference-grid { grid-template-columns:1fr; }
     }
     @media (max-width: 420px) {
       .site-head { padding:0 10px; }
@@ -264,7 +290,7 @@
       .site-head nav a { font-size:.76rem; }
       .theme-toggle { padding:8px; }
       .brand img.logo { width:138px; height:auto; }
-      .about,.events { padding:64px 0; }
+      .about,.difference,.events { padding:64px 0; }
       .event-card { min-height:176px; padding:16px; }
       .event-city { font-size:1.05rem; }
     }
@@ -311,6 +337,38 @@
           <div class="about-principles" aria-label="What defines CISO Open Mic">
             <span>Five-minute talks</span><span>Four judges</span><span>Peer recognition</span><span>Local community</span>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="difference page-section" aria-labelledby="difference-title">
+      <div class="section-inner">
+        <div class="difference-head">
+          <p class="eyebrow">Built differently</p>
+          <h2 id="difference-title">What Makes CISO Open Mic Different?</h2>
+          <p class="difference-intro">A simple format keeps the focus on the people, ideas and experiences in the room.</p>
+        </div>
+        <div class="difference-grid">
+          <article class="difference-card">
+            <span class="difference-number" aria-hidden="true">01</span>
+            <h3>Five Minute Talks</h3>
+            <p>Each speaker has five minutes to share an idea, lesson or experience.</p>
+          </article>
+          <article class="difference-card">
+            <span class="difference-number" aria-hidden="true">02</span>
+            <h3>No Deck Required</h3>
+            <p>Your experience is what people came to hear.</p>
+          </article>
+          <article class="difference-card">
+            <span class="difference-number" aria-hidden="true">03</span>
+            <h3>No Sales Pitches</h3>
+            <p>Built for practitioners and meaningful discussions.</p>
+          </article>
+          <article class="difference-card">
+            <span class="difference-number" aria-hidden="true">04</span>
+            <h3>Community Driven</h3>
+            <p>Every event is shaped by the people in the room.</p>
+          </article>
         </div>
       </div>
     </section>
@@ -419,6 +477,7 @@
     const headerSections = [
       ['hero', document.querySelector('.home-hero')],
       ['about', document.querySelector('.about')],
+      ['difference', document.querySelector('.difference')],
       ['events', document.querySelector('.events')],
       ['perspectives', document.querySelector('.perspectives')],
       ['footer', document.querySelector('footer')]
