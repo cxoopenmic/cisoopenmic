@@ -10,191 +10,442 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;800&display=swap" rel="stylesheet" />
   <style>
-    :root {
-      --bg:#000100; --surface:#111312; --text:#fdfdfd; --muted:#e0e0e0;
-      --line:rgba(255,255,255,.16); --accent:#c12331; --accent-2:#ff8a00;
-    }
+    :root { --bg:#000100; --surface:#111312; --surface-2:#171a19; --text:#fdfdfd; --muted:#cbd5e1; --line:rgba(255,255,255,.16); --accent:#c12331; --accent-2:#ff8a00; --navy:#0a1328; }
     * { box-sizing:border-box; }
-    body {
-      min-height:100svh; margin:0; background:var(--bg); color:var(--text);
-      font-family:"Open Sans",Arial,sans-serif; border:2px solid var(--accent-2);
-      display:flex; flex-direction:column;
-    }
-    body.light {
-      --bg:#f8fafc; --surface:#fff; --text:#0f172a; --muted:#475569; --line:#d8dee7;
-    }
-    .site-head,.site-foot {
-      width:min(960px,calc(100% - 36px)); margin:0 auto;
-      display:flex; align-items:center; justify-content:space-between; gap:20px;
-    }
-    .site-head {
-      position:sticky; top:0; z-index:1000; min-height:76px; background:var(--bg);
-    }
+    html { scroll-behavior:smooth; }
+    body { min-height:100svh; margin:0; overflow-x:hidden; background:var(--bg); color:var(--text); font-family:"Open Sans",Arial,sans-serif; border:2px solid var(--accent-2); display:flex; flex-direction:column; }
+    body.light { --bg:#f8fafc; --surface:#fff; --surface-2:#edf1f5; --text:#0f172a; --muted:#475569; --line:#d8dee7; }
+    button,a { font:inherit; }
+    .site-head,.site-foot,.section-inner { width:min(1080px,calc(100% - 36px)); margin:0 auto; }
+    .site-head { position:sticky; top:0; z-index:1000; min-height:76px; display:flex; align-items:center; justify-content:space-between; gap:20px; background:var(--bg); transition:background-color .5s ease; }
     .site-head a { color:var(--text); font-weight:800; text-decoration:none; }
     .site-head nav { display:flex; align-items:center; gap:18px; }
     .site-head nav a { color:var(--muted); font-size:.92rem; }
     .site-head nav a[aria-current="page"] { color:var(--accent-2); }
     .brand-lockup { display:inline-flex; align-items:center; }
-    .brand-lockup img {
-      width:42px; height:42px; border-radius:50%; object-fit:cover;
-      box-shadow:0 4px 14px rgba(0,0,0,.35);
-    }
-    .theme-toggle {
-      border:0; border-radius:6px; padding:8px 14px; background:var(--muted); color:var(--bg);
-      font:inherit; font-size:.8rem; font-weight:800; line-height:1; cursor:pointer;
-      box-shadow:0 2px 6px rgba(0,0,0,.2);
-    }
-    main { width:min(960px,calc(100% - 36px)); margin:52px auto 72px; flex:1; }
-    .eyebrow {
-      margin:0 0 8px; color:var(--accent-2); font-size:.78rem;
-      font-weight:800; letter-spacing:.14em; text-transform:uppercase;
-    }
-    h1 {
-      max-width:760px; margin:0; font-size:clamp(2.5rem,7vw,5rem); line-height:1.08;
-      letter-spacing:-.045em; background:linear-gradient(135deg,var(--accent),var(--accent-2));
-      -webkit-background-clip:text; background-clip:text; color:transparent;
-    }
-    .lede { max-width:720px; margin:18px 0 0; color:var(--muted); font-size:1.12rem; }
-    .sponsor-section { margin-top:58px; }
-    .section-heading { display:flex; align-items:end; justify-content:space-between; gap:20px; margin-bottom:18px; }
-    .section-heading h2 { margin:0; font-size:clamp(1.55rem,3vw,2.15rem); }
-    .section-heading p { max-width:450px; margin:0; color:var(--muted); font-size:.92rem; }
-    .sponsor-grid { display:grid; gap:14px; }
-    .current-sponsor-grid { grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px; }
-    .past-sponsor-grid { grid-template-columns:repeat(4,minmax(0,1fr)); gap:10px; }
-    @media(min-width:900px) {
-      .current-sponsor-grid { grid-template-columns:repeat(4,minmax(0,1fr)); }
-      .past-sponsor-grid { grid-template-columns:repeat(6,minmax(0,1fr)); }
-    }
-    .sponsor-card {
-      min-height:176px; padding:18px; border:1px solid var(--line); border-radius:16px;
-      background:var(--surface); display:flex; flex-direction:column; gap:14px;
-    }
-    .sponsor-logo {
-      min-height:108px; padding:20px; border-radius:10px; background:#fff;
-      display:flex; align-items:center; justify-content:center;
-    }
-    .sponsor-logo img { display:block; width:100%; max-width:210px; max-height:62px; object-fit:contain; }
-    .sponsor-logo img.invert-on-white { filter:invert(1) grayscale(1) contrast(1.25); }
-    .wordmark { color:#111827; font-size:1.35rem; font-weight:800; letter-spacing:-.02em; text-align:center; }
-    .sponsor-name { color:var(--muted); font-size:.8rem; font-weight:800; text-align:center; }
-    .current-sponsor-grid .sponsor-card { min-height:220px; padding:22px; gap:16px; }
-    .current-sponsor-grid .sponsor-logo { min-height:146px; padding:24px; }
-    .current-sponsor-grid .sponsor-logo img { max-width:240px; max-height:82px; }
-    .current-sponsor-grid .wordmark { font-size:1.55rem; }
-    .current-sponsor-grid .sponsor-name { font-size:.9rem; }
-    .past-sponsor-grid .sponsor-card { min-height:128px; padding:11px; gap:8px; border-radius:13px; }
-    .past-sponsor-grid .sponsor-logo { min-height:78px; padding:12px; border-radius:8px; }
-    .past-sponsor-grid .sponsor-logo img { max-width:140px; max-height:42px; }
-    .past-sponsor-grid .wordmark { font-size:1rem; }
-    .past-sponsor-grid .sponsor-name { font-size:.7rem; }
-    .sponsorship-cta {
-      margin-top:58px; padding:28px; border-radius:16px;
-      background:linear-gradient(135deg,var(--accent),var(--accent-2)); color:#fff;
-      display:flex; align-items:center; justify-content:space-between; gap:24px;
-    }
-    .sponsorship-cta h2 { margin:0 0 5px; }
-    .sponsorship-cta p { margin:0; opacity:.9; }
-    .sponsorship-cta a {
-      flex:0 0 auto; padding:11px 16px; border-radius:8px; background:#fff; color:#9f1d28;
-      font-weight:800; text-decoration:none;
-    }
-    .site-foot { padding:22px 0; color:var(--muted); font-size:.9rem; flex-wrap:wrap; row-gap:6px; }
+    .brand-lockup img { width:42px; height:42px; border-radius:50%; object-fit:cover; box-shadow:0 4px 14px rgba(0,0,0,.35); }
+    .theme-toggle { border:0; border-radius:6px; padding:8px 14px; background:var(--muted); color:var(--bg); font-size:.8rem; font-weight:800; line-height:1; cursor:pointer; box-shadow:0 2px 6px rgba(0,0,0,.2); }
+    main { width:100%; flex:1; }
+    .sponsor-hero { position:relative; overflow:hidden; padding:92px 0 104px; color:#fff; background:radial-gradient(circle at 88% 14%,rgba(255,255,255,.2),transparent 24%),radial-gradient(circle at 8% 100%,rgba(112,11,32,.3),transparent 34%),linear-gradient(120deg,#ff8a00 0%,#ef4d18 47%,#c62535 100%); }
+    .sponsor-hero .section-inner { display:grid; grid-template-columns:minmax(0,1.2fr) minmax(320px,.8fr); align-items:center; gap:58px; }
+    .eyebrow { margin:0 0 10px; color:var(--accent-2); font-size:.76rem; font-weight:800; letter-spacing:.16em; text-transform:uppercase; }
+    .sponsor-hero .eyebrow { display:inline-flex; padding:6px 10px; border:1px solid rgba(255,255,255,.44); border-radius:999px; color:#fff; background:rgba(10,19,40,.12); }
+    h1 { max-width:780px; margin:0; font-size:clamp(3rem,7.4vw,6.3rem); line-height:.88; letter-spacing:-.065em; }
+    h1 span { display:block; color:var(--navy); }
+    .hero-lede { max-width:680px; margin:24px 0 0; color:rgba(255,255,255,.94); font-size:1.08rem; line-height:1.68; }
+    .hero-logo-cloud { position:relative; min-height:390px; }
+    .hero-logo { position:absolute; width:180px; min-height:104px; padding:20px; border:1px solid rgba(255,255,255,.58); border-radius:18px; background:rgba(255,255,255,.94); display:grid; place-items:center; box-shadow:0 24px 48px rgba(71,17,14,.25); transform:rotate(-3deg); }
+    .hero-logo img { display:block; max-width:100%; max-height:58px; object-fit:contain; }
+    .hero-logo .wordmark { color:#111827; font-size:1.05rem; font-weight:800; text-align:center; }
+    .hero-logo:nth-child(1) { top:0; left:3%; }
+    .hero-logo:nth-child(2) { top:40px; right:0; transform:rotate(4deg); }
+    .hero-logo:nth-child(3) { top:142px; left:18%; transform:rotate(2deg); }
+    .hero-logo:nth-child(4) { top:178px; right:2%; transform:rotate(-5deg); }
+    .hero-logo:nth-child(5) { bottom:0; left:0; transform:rotate(5deg); }
+    .hero-logo:nth-child(6) { bottom:2px; right:15%; transform:rotate(-2deg); }
+    .sponsor-section { padding:92px 0 108px; }
+    .current-section { background:radial-gradient(circle at 90% 8%,rgba(255,138,0,.12),transparent 28%),var(--bg); }
+    .past-section { background:var(--surface-2); }
+    .section-heading { display:flex; align-items:end; justify-content:space-between; gap:28px; margin-bottom:32px; }
+    .section-heading h2 { margin:0; font-size:clamp(2.35rem,5vw,4.4rem); line-height:.95; letter-spacing:-.052em; }
+    .section-heading p { max-width:470px; margin:0; color:var(--muted); font-size:1rem; line-height:1.6; }
+    .sponsor-grid { display:grid; gap:18px; }
+    .current-sponsor-grid { grid-template-columns:repeat(3,minmax(0,1fr)); }
+    .past-sponsor-grid { grid-template-columns:repeat(4,minmax(0,1fr)); gap:12px; }
+    .sponsor-card { position:relative; min-width:0; min-height:310px; overflow:hidden; padding:0; border:1px solid var(--line); border-radius:20px; background:var(--surface); color:var(--text); text-align:left; cursor:pointer; box-shadow:0 22px 42px rgba(10,17,31,.12); transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease; }
+    .sponsor-card::before { content:""; position:absolute; inset:0 0 auto; height:5px; background:linear-gradient(90deg,var(--accent),var(--accent-2)); }
+    .sponsor-card:hover { transform:translateY(-6px); border-color:rgba(255,138,0,.72); box-shadow:0 30px 56px rgba(10,17,31,.2); }
+    .sponsor-card:focus-visible { outline:3px solid var(--accent-2); outline-offset:3px; }
+    .sponsor-logo { min-height:154px; padding:28px; background:#fff; display:flex; align-items:center; justify-content:center; }
+    .sponsor-logo img { display:block; width:100%; max-width:230px; max-height:82px; object-fit:contain; }
+    .sponsor-logo img.logo-invert,.profile-logo img.logo-invert,.hero-logo img.logo-invert { filter:invert(1) grayscale(1) contrast(1.25); }
+    .wordmark { color:#111827; font-size:1.4rem; font-weight:800; letter-spacing:-.03em; text-align:center; }
+    .sponsor-card-copy { display:flex; flex-direction:column; min-height:154px; padding:22px; }
+    .sponsor-kicker,.profile-kicker { color:var(--accent-2); font-size:.68rem; font-weight:800; letter-spacing:.12em; text-transform:uppercase; }
+    .sponsor-name { margin-top:7px; font-size:1.15rem; font-weight:800; line-height:1.15; }
+    .sponsor-summary { margin-top:9px; color:var(--muted); font-size:.82rem; line-height:1.5; }
+    .sponsor-more { margin-top:auto; padding-top:16px; color:var(--accent-2); font-size:.72rem; font-weight:800; }
+    .sponsor-card--past { min-height:190px; border-radius:14px; box-shadow:none; }
+    .sponsor-card--past::before { height:3px; background:linear-gradient(90deg,#94a3b8,var(--accent-2)); }
+    .sponsor-card--past .sponsor-logo { min-height:100px; padding:18px; filter:grayscale(1); opacity:.78; transition:filter .2s ease,opacity .2s ease; }
+    .sponsor-card--past:hover .sponsor-logo { filter:none; opacity:1; }
+    .sponsor-card--past .sponsor-logo img { max-width:160px; max-height:52px; }
+    .sponsor-card--past .wordmark { font-size:1rem; }
+    .sponsor-card--past .sponsor-card-copy { min-height:90px; padding:14px; }
+    .sponsor-card--past .sponsor-name { font-size:.9rem; }
+    .sponsor-card--past .sponsor-more { padding-top:10px; font-size:.66rem; }
+    .sponsorship-cta { padding:90px 0; color:#fff; background:#172033; }
+    .sponsorship-cta .section-inner { display:flex; align-items:center; justify-content:space-between; gap:32px; }
+    .sponsorship-cta h2 { max-width:650px; margin:0; font-size:clamp(2.2rem,5vw,4.2rem); line-height:.98; letter-spacing:-.05em; }
+    .sponsorship-cta p { max-width:620px; margin:16px 0 0; color:#dbe3ef; line-height:1.6; }
+    .sponsorship-cta a,.profile-link { display:inline-flex; align-items:center; justify-content:center; padding:13px 18px; border-radius:9px; background:linear-gradient(110deg,var(--accent),var(--accent-2)); color:#fff; font-weight:800; text-decoration:none; white-space:nowrap; }
+    .site-foot { padding:24px 0; color:var(--muted); font-size:.9rem; display:flex; align-items:center; justify-content:space-between; gap:20px; flex-wrap:wrap; row-gap:6px; }
     .site-foot>div:first-child { white-space:nowrap; }
     .legal-links { display:flex; justify-content:flex-end; gap:8px; flex-wrap:wrap; }
     .site-foot a { color:var(--accent-2); font-weight:600; text-decoration:none; }
-    @media(max-width:700px) {
-      .section-heading,.sponsorship-cta { align-items:flex-start; flex-direction:column; }
-      .current-sponsor-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
-      .past-sponsor-grid { grid-template-columns:repeat(3,minmax(0,1fr)); }
-    }
-    @media(max-width:600px) {
-      .site-head { top:0; width:calc(100% - 4px); min-height:72px; padding:0 16px; }
-      .site-head nav { gap:10px; }
-      main { margin-top:36px; }
-      .site-foot { justify-content:center; gap:6px; text-align:center; }
-      .site-foot>div:first-child { width:100%; }
-      .legal-links { justify-content:center; flex-wrap:nowrap; gap:6px; white-space:nowrap; font-size:.82rem; }
-    }
-    @media(max-width:420px) {
-      .site-head { padding:0 10px; }
-      .site-head nav { gap:6px; }
-      .site-head nav a { font-size:.76rem; }
-      .theme-toggle { padding:8px; }
-      .current-sponsor-grid { grid-template-columns:1fr; }
-      .past-sponsor-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
-    }
+    .sponsor-dialog { width:min(680px,calc(100% - 28px)); max-height:min(84vh,780px); margin:auto; padding:0; border:1px solid var(--line); border-radius:22px; background:var(--surface); color:var(--text); box-shadow:0 38px 90px rgba(0,0,0,.42); }
+    .sponsor-dialog::backdrop { background:rgba(2,6,18,.72); backdrop-filter:blur(7px); }
+    .dialog-close { position:sticky; z-index:2; top:16px; float:right; width:42px; height:42px; margin:16px 16px 0 0; border:1px solid var(--line); border-radius:50%; background:var(--surface); color:var(--text); font-size:1.3rem; cursor:pointer; }
+    .sponsor-profile { padding:54px 44px 44px; }
+    .profile-logo { min-height:120px; margin-bottom:26px; padding:24px; border-radius:14px; background:#fff; display:grid; place-items:center; }
+    .profile-logo img { display:block; max-width:300px; max-height:86px; object-fit:contain; }
+    .profile-logo .wordmark { font-size:1.7rem; }
+    .sponsor-profile h2 { margin:7px 0 0; font-size:clamp(2rem,5vw,3.4rem); line-height:1; letter-spacing:-.045em; }
+    .profile-summary { margin:18px 0 0; color:var(--text); font-size:1.08rem; font-weight:600; line-height:1.55; }
+    .profile-description { margin:14px 0 0; color:var(--muted); line-height:1.7; }
+    .profile-specialties { display:flex; flex-wrap:wrap; gap:8px; margin-top:22px; }
+    .profile-specialties span { padding:6px 10px; border:1px solid var(--line); border-radius:999px; color:var(--muted); font-size:.72rem; font-weight:800; }
+    .profile-link { margin-top:28px; }
+    @media(max-width:900px) { .sponsor-hero .section-inner { grid-template-columns:1fr; } .hero-logo-cloud { min-height:285px; max-width:620px; width:100%; } .hero-logo { width:160px; min-height:90px; } .hero-logo:nth-child(3),.hero-logo:nth-child(4) { top:100px; } .current-sponsor-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } .past-sponsor-grid { grid-template-columns:repeat(3,minmax(0,1fr)); } }
+    @media(max-width:700px) { .section-heading,.sponsorship-cta .section-inner { align-items:flex-start; flex-direction:column; } .sponsor-hero { padding:70px 0 78px; } .sponsor-section { padding:70px 0 82px; } .past-sponsor-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+    @media(max-width:600px) { .site-head { top:0; width:calc(100% - 4px); min-height:72px; padding:0 16px; } .site-head nav { gap:10px; } .site-foot { justify-content:center; gap:6px; text-align:center; } .site-foot>div:first-child { width:100%; } .legal-links { justify-content:center; flex-wrap:nowrap; gap:6px; white-space:nowrap; font-size:.82rem; } .hero-logo-cloud { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; min-height:0; } .hero-logo { position:static; width:auto; min-height:72px; padding:12px; transform:none!important; } .hero-logo img { max-height:38px; } .current-sponsor-grid { grid-template-columns:1fr; } .sponsor-card { min-height:270px; } .sponsor-profile { padding:50px 24px 30px; } }
+    @media(max-width:420px) { .site-head { padding:0 10px; } .site-head nav { gap:6px; } .site-head nav a { font-size:.76rem; } .theme-toggle { padding:8px; } .past-sponsor-grid { grid-template-columns:1fr 1fr; gap:8px; } .sponsor-card--past .sponsor-card-copy { padding:11px; } .sponsor-card--past .sponsor-name { font-size:.8rem; } .sponsor-card--past .sponsor-more { display:none; } }
+    @media(prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } .sponsor-card { transition:none; } }
   </style>
 </head>
 <body class="light">
   <header class="site-head">
     <a href="/" aria-label="CISO Open Mic"><span class="brand-lockup"><img src="/assets/logo.png" alt="" /></span></a>
-    <nav aria-label="Main navigation">
-      <a href="/">Home</a>
-      <a href="/blog/">Blog</a>
-      <a href="/sponsors/" aria-current="page">Sponsors</a>
-      <a href="/faq/">FAQ</a>
-      <button id="theme-toggle" class="theme-toggle" type="button">Dark</button>
-    </nav>
+    <nav aria-label="Main navigation"><a href="/">Home</a><a href="/blog/">Blog</a><a href="/sponsors/" aria-current="page">Sponsors</a><a href="/faq/">FAQ</a><button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch to dark theme">Dark</button></nav>
   </header>
-
   <main>
-    <p class="eyebrow">Our sponsors</p>
-    <h1>Supporting the conversation.</h1>
-    <p class="lede">CISO Open Mic is made possible by sponsors that value candid leadership conversations and stronger security communities.</p>
-
-    <section class="sponsor-section" aria-labelledby="current-sponsors-heading">
-      <div class="section-heading">
-        <h2 id="current-sponsors-heading">Current sponsors</h2>
-        <p>Active sponsors supporting CISO Open Mic and the upcoming Fall 2026 event series.</p>
-      </div>
-      <div class="sponsor-grid current-sponsor-grid">
-        <article class="sponsor-card"><div class="sponsor-logo"><img src="/assets/pan.png" alt="Palo Alto Networks" /></div><div class="sponsor-name">Palo Alto Networks</div></article>
-        <article class="sponsor-card"><div class="sponsor-logo"><img src="/assets/sponsors/immersive.svg" alt="Immersive Labs" /></div><div class="sponsor-name">Immersive Labs</div></article>
-        <article class="sponsor-card"><div class="sponsor-logo"><img src="/assets/sponsors/horizon3-light.svg" alt="Horizon3.ai" /></div><div class="sponsor-name">Horizon3.ai</div></article>
-        <article class="sponsor-card"><div class="sponsor-logo"><img src="/assets/axonius.png" alt="Axonius" /></div><div class="sponsor-name">Axonius</div></article>
-        <article class="sponsor-card"><div class="sponsor-logo"><img src="/assets/sponsors/optiv.png" alt="Optiv" /></div><div class="sponsor-name">Optiv</div></article>
-        <article class="sponsor-card"><div class="sponsor-logo"><img src="/assets/sponsors/algosec.png" alt="AlgoSec" /></div><div class="sponsor-name">AlgoSec</div></article>
-        <article class="sponsor-card"><div class="sponsor-logo"><img src="/assets/sponsors/kroll.svg" alt="Kroll" /></div><div class="sponsor-name">Kroll</div></article>
-        <article class="sponsor-card"><div class="sponsor-logo"><img src="/assets/sponsors/noma-security.svg" alt="Noma Security" /></div><div class="sponsor-name">Noma Security</div></article>
-        <article class="sponsor-card"><div class="sponsor-logo"><img src="/assets/sponsors/chainguard.svg" alt="Chainguard" /></div><div class="sponsor-name">Chainguard</div></article>
-        <article class="sponsor-card"><div class="sponsor-logo"><img src="/assets/sponsors/doppel.svg" alt="Doppel" /></div><div class="sponsor-name">Doppel</div></article>
+    <section class="sponsor-hero" aria-labelledby="sponsors-title">
+      <div class="section-inner">
+        <div><p class="eyebrow">Our sponsors</p><h1 id="sponsors-title">Backing the people <span>behind the ideas.</span></h1><p class="hero-lede">CISO Open Mic is made possible by organizations that value candid leadership conversations and stronger security communities. Their support helps create the room. The community shapes what happens inside it.</p></div>
+        <div class="hero-logo-cloud" aria-label="A selection of current sponsors"><div class="hero-logo"><img src="/assets/pan.png" alt="Palo Alto Networks" /></div><div class="hero-logo"><img src="/assets/sponsors/immersive.svg" alt="Immersive Labs" /></div><div class="hero-logo"><img src="/assets/sponsors/horizon3-light.svg" alt="Horizon3.ai" /></div><div class="hero-logo"><img src="/assets/axonius.png" alt="Axonius" /></div><div class="hero-logo"><img src="/assets/sponsors/optiv.png" alt="Optiv" /></div><div class="hero-logo"><img src="/assets/sponsors/algosec.png" alt="AlgoSec" /></div></div>
       </div>
     </section>
-
-    <section class="sponsor-section" aria-labelledby="past-sponsors-heading">
-      <div class="section-heading">
-        <h2 id="past-sponsors-heading">Past sponsors</h2>
-        <p>Sponsors that have previously supported CISO Open Mic events and our community.</p>
-      </div>
-      <div class="sponsor-grid past-sponsor-grid">
-        <article class="sponsor-card"><div class="sponsor-logo"><img src="/assets/sponsors/cyberark.svg" alt="CyberArk" /></div><div class="sponsor-name">CyberArk</div></article>
-        <article class="sponsor-card"><div class="sponsor-logo"><img src="/assets/sponsors/phelps-group.png" alt="Phelps Group" /></div><div class="sponsor-name">Phelps Group</div></article>
-        <article class="sponsor-card"><div class="sponsor-logo"><img src="/assets/stellarcyber.svg" alt="Stellar Cyber" /></div><div class="sponsor-name">Stellar Cyber</div></article>
-        <article class="sponsor-card"><div class="sponsor-logo"><img src="/assets/sponsors/crowdstrike.svg" alt="CrowdStrike" /></div><div class="sponsor-name">CrowdStrike</div></article>
-        <article class="sponsor-card"><div class="sponsor-logo"><img src="/assets/sponsors/hackerone.png" alt="HackerOne" /></div><div class="sponsor-name">HackerOne</div></article>
-        <article class="sponsor-card"><div class="sponsor-logo"><img src="/assets/sponsors/kiteworks-light.svg" alt="Kiteworks" /></div><div class="sponsor-name">Kiteworks</div></article>
-        <article class="sponsor-card"><div class="sponsor-logo"><img class="invert-on-white" src="/assets/sponsors/arista.png" alt="Arista" /></div><div class="sponsor-name">Arista</div></article>
+    <section class="sponsor-section current-section" aria-labelledby="current-sponsors-heading">
+      <div class="section-inner">
+        <div class="section-heading"><div><p class="eyebrow">Supporting now</p><h2 id="current-sponsors-heading">Current sponsors</h2></div><p>Select a company to learn more about its work and its relationship with the CISO Open Mic community.</p></div>
+        <div class="sponsor-grid current-sponsor-grid"><button class="sponsor-card" type="button" data-sponsor-profile="palo-alto-networks" aria-haspopup="dialog">
+    <span class="sponsor-logo"><img src="/assets/pan.png" alt="Palo Alto Networks" loading="lazy" decoding="async" /></span>
+    <span class="sponsor-card-copy">
+      <span class="sponsor-kicker">Current sponsor</span>
+      <span class="sponsor-name">Palo Alto Networks</span>
+      <span class="sponsor-summary">A global cybersecurity company helping organizations protect networks, cloud environments and security operations.</span>
+      <span class="sponsor-more">View company profile <span aria-hidden="true">↗</span></span>
+    </span>
+  </button><button class="sponsor-card" type="button" data-sponsor-profile="immersive-labs" aria-haspopup="dialog">
+    <span class="sponsor-logo"><img src="/assets/sponsors/immersive.svg" alt="Immersive Labs" loading="lazy" decoding="async" /></span>
+    <span class="sponsor-card-copy">
+      <span class="sponsor-kicker">Current sponsor</span>
+      <span class="sponsor-name">Immersive Labs</span>
+      <span class="sponsor-summary">A people-centric cyber resilience platform that helps teams build and prove practical capabilities.</span>
+      <span class="sponsor-more">View company profile <span aria-hidden="true">↗</span></span>
+    </span>
+  </button><button class="sponsor-card" type="button" data-sponsor-profile="horizon3-ai" aria-haspopup="dialog">
+    <span class="sponsor-logo"><img src="/assets/sponsors/horizon3-light.svg" alt="Horizon3.ai" loading="lazy" decoding="async" /></span>
+    <span class="sponsor-card-copy">
+      <span class="sponsor-kicker">Current sponsor</span>
+      <span class="sponsor-name">Horizon3.ai</span>
+      <span class="sponsor-summary">An autonomous security company helping organizations test their environments from an attacker’s perspective.</span>
+      <span class="sponsor-more">View company profile <span aria-hidden="true">↗</span></span>
+    </span>
+  </button><button class="sponsor-card" type="button" data-sponsor-profile="axonius" aria-haspopup="dialog">
+    <span class="sponsor-logo"><img src="/assets/axonius.png" alt="Axonius" loading="lazy" decoding="async" /></span>
+    <span class="sponsor-card-copy">
+      <span class="sponsor-kicker">Current sponsor</span>
+      <span class="sponsor-name">Axonius</span>
+      <span class="sponsor-summary">An asset intelligence platform that helps security, IT and GRC teams understand and act on their technology estate.</span>
+      <span class="sponsor-more">View company profile <span aria-hidden="true">↗</span></span>
+    </span>
+  </button><button class="sponsor-card" type="button" data-sponsor-profile="optiv" aria-haspopup="dialog">
+    <span class="sponsor-logo"><img src="/assets/sponsors/optiv.png" alt="Optiv" loading="lazy" decoding="async" /></span>
+    <span class="sponsor-card-copy">
+      <span class="sponsor-kicker">Current sponsor</span>
+      <span class="sponsor-name">Optiv</span>
+      <span class="sponsor-summary">A cyber advisory and solutions organization that advises, deploys and operates security programs.</span>
+      <span class="sponsor-more">View company profile <span aria-hidden="true">↗</span></span>
+    </span>
+  </button><button class="sponsor-card" type="button" data-sponsor-profile="algosec" aria-haspopup="dialog">
+    <span class="sponsor-logo"><img src="/assets/sponsors/algosec.png" alt="AlgoSec" loading="lazy" decoding="async" /></span>
+    <span class="sponsor-card-copy">
+      <span class="sponsor-kicker">Current sponsor</span>
+      <span class="sponsor-name">AlgoSec</span>
+      <span class="sponsor-summary">A security platform focused on application connectivity and policy management across hybrid environments.</span>
+      <span class="sponsor-more">View company profile <span aria-hidden="true">↗</span></span>
+    </span>
+  </button><button class="sponsor-card" type="button" data-sponsor-profile="kroll" aria-haspopup="dialog">
+    <span class="sponsor-logo"><img src="/assets/sponsors/kroll.svg" alt="Kroll" loading="lazy" decoding="async" /></span>
+    <span class="sponsor-card-copy">
+      <span class="sponsor-kicker">Current sponsor</span>
+      <span class="sponsor-name">Kroll</span>
+      <span class="sponsor-summary">A cyber and data resilience organization combining advisory, response and managed security capabilities.</span>
+      <span class="sponsor-more">View company profile <span aria-hidden="true">↗</span></span>
+    </span>
+  </button><button class="sponsor-card" type="button" data-sponsor-profile="noma-security" aria-haspopup="dialog">
+    <span class="sponsor-logo"><img src="/assets/sponsors/noma-security.svg" alt="Noma Security" loading="lazy" decoding="async" /></span>
+    <span class="sponsor-card-copy">
+      <span class="sponsor-kicker">Current sponsor</span>
+      <span class="sponsor-name">Noma Security</span>
+      <span class="sponsor-summary">An AI security platform for protecting enterprise AI models, applications and agents.</span>
+      <span class="sponsor-more">View company profile <span aria-hidden="true">↗</span></span>
+    </span>
+  </button><button class="sponsor-card" type="button" data-sponsor-profile="chainguard" aria-haspopup="dialog">
+    <span class="sponsor-logo"><img src="/assets/sponsors/chainguard.svg" alt="Chainguard" loading="lazy" decoding="async" /></span>
+    <span class="sponsor-card-copy">
+      <span class="sponsor-kicker">Current sponsor</span>
+      <span class="sponsor-name">Chainguard</span>
+      <span class="sponsor-summary">A software supply chain security company providing trusted, minimal open source artifacts.</span>
+      <span class="sponsor-more">View company profile <span aria-hidden="true">↗</span></span>
+    </span>
+  </button><button class="sponsor-card" type="button" data-sponsor-profile="doppel" aria-haspopup="dialog">
+    <span class="sponsor-logo"><img src="/assets/sponsors/doppel.svg" alt="Doppel" loading="lazy" decoding="async" /></span>
+    <span class="sponsor-card-copy">
+      <span class="sponsor-kicker">Current sponsor</span>
+      <span class="sponsor-name">Doppel</span>
+      <span class="sponsor-summary">An AI-powered security platform focused on social engineering, digital risk and human-layer threats.</span>
+      <span class="sponsor-more">View company profile <span aria-hidden="true">↗</span></span>
+    </span>
+  </button></div>
       </div>
     </section>
+    <section class="sponsor-section past-section" aria-labelledby="past-sponsors-heading">
+      <div class="section-inner">
+        <div class="section-heading"><div><p class="eyebrow">With thanks</p><h2 id="past-sponsors-heading">Past sponsors</h2></div><p>Organizations that have previously helped CISO Open Mic bring security leaders together.</p></div>
+        <div class="sponsor-grid past-sponsor-grid"><button class="sponsor-card sponsor-card--past" type="button" data-sponsor-profile="cyberark" aria-haspopup="dialog">
+    <span class="sponsor-logo"><img src="/assets/sponsors/cyberark.svg" alt="CyberArk" loading="lazy" decoding="async" /></span>
+    <span class="sponsor-card-copy">
+      <span class="sponsor-kicker">Past sponsor</span>
+      <span class="sponsor-name">CyberArk</span>
 
-    <section class="sponsorship-cta" aria-labelledby="sponsorship-heading">
-      <div><h2 id="sponsorship-heading">Support the next conversation.</h2><p>Start a conversation about supporting CISO Open Mic communities and events.</p></div>
-      <a href="/sponsor.html">Explore sponsorship</a>
+      <span class="sponsor-more">View company profile <span aria-hidden="true">↗</span></span>
+    </span>
+  </button><button class="sponsor-card sponsor-card--past" type="button" data-sponsor-profile="phelps-group" aria-haspopup="dialog">
+    <span class="sponsor-logo"><img src="/assets/sponsors/phelps-group.png" alt="Phelps Group" loading="lazy" decoding="async" /></span>
+    <span class="sponsor-card-copy">
+      <span class="sponsor-kicker">Past sponsor</span>
+      <span class="sponsor-name">Phelps Group</span>
+
+      <span class="sponsor-more">View company profile <span aria-hidden="true">↗</span></span>
+    </span>
+  </button><button class="sponsor-card sponsor-card--past" type="button" data-sponsor-profile="stellar-cyber" aria-haspopup="dialog">
+    <span class="sponsor-logo"><img src="/assets/stellarcyber.svg" alt="Stellar Cyber" loading="lazy" decoding="async" /></span>
+    <span class="sponsor-card-copy">
+      <span class="sponsor-kicker">Past sponsor</span>
+      <span class="sponsor-name">Stellar Cyber</span>
+
+      <span class="sponsor-more">View company profile <span aria-hidden="true">↗</span></span>
+    </span>
+  </button><button class="sponsor-card sponsor-card--past" type="button" data-sponsor-profile="crowdstrike" aria-haspopup="dialog">
+    <span class="sponsor-logo"><img src="/assets/sponsors/crowdstrike.svg" alt="CrowdStrike" loading="lazy" decoding="async" /></span>
+    <span class="sponsor-card-copy">
+      <span class="sponsor-kicker">Past sponsor</span>
+      <span class="sponsor-name">CrowdStrike</span>
+
+      <span class="sponsor-more">View company profile <span aria-hidden="true">↗</span></span>
+    </span>
+  </button><button class="sponsor-card sponsor-card--past" type="button" data-sponsor-profile="hackerone" aria-haspopup="dialog">
+    <span class="sponsor-logo"><img src="/assets/sponsors/hackerone.png" alt="HackerOne" loading="lazy" decoding="async" /></span>
+    <span class="sponsor-card-copy">
+      <span class="sponsor-kicker">Past sponsor</span>
+      <span class="sponsor-name">HackerOne</span>
+
+      <span class="sponsor-more">View company profile <span aria-hidden="true">↗</span></span>
+    </span>
+  </button><button class="sponsor-card sponsor-card--past" type="button" data-sponsor-profile="kiteworks" aria-haspopup="dialog">
+    <span class="sponsor-logo"><img src="/assets/sponsors/kiteworks-light.svg" alt="Kiteworks" loading="lazy" decoding="async" /></span>
+    <span class="sponsor-card-copy">
+      <span class="sponsor-kicker">Past sponsor</span>
+      <span class="sponsor-name">Kiteworks</span>
+
+      <span class="sponsor-more">View company profile <span aria-hidden="true">↗</span></span>
+    </span>
+  </button><button class="sponsor-card sponsor-card--past" type="button" data-sponsor-profile="arista" aria-haspopup="dialog">
+    <span class="sponsor-logo"><img class="logo-invert" src="/assets/sponsors/arista.png" alt="Arista" loading="lazy" decoding="async" /></span>
+    <span class="sponsor-card-copy">
+      <span class="sponsor-kicker">Past sponsor</span>
+      <span class="sponsor-name">Arista</span>
+
+      <span class="sponsor-more">View company profile <span aria-hidden="true">↗</span></span>
+    </span>
+  </button></div>
+      </div>
     </section>
+    <section class="sponsorship-cta" aria-labelledby="sponsorship-heading"><div class="section-inner"><div><h2 id="sponsorship-heading">Support the next conversation.</h2><p>Start a conversation about supporting CISO Open Mic communities and events.</p></div><a href="/sponsor.html">Explore sponsorship</a></div></section>
   </main>
+  <footer class="site-foot"><div>© 2026 CISO Open Mic</div><div class="legal-links"><a href="/privacy">Privacy Policy</a><span>·</span><a href="/terms">Terms of Use</a><span>·</span><a href="/conduct">Code of Conduct</a></div></footer>
+  <dialog id="sponsor-dialog" class="sponsor-dialog" aria-label="Sponsor profile"><button class="dialog-close" type="button" aria-label="Close sponsor profile">×</button><div id="sponsor-dialog-content"></div></dialog>
+  <template id="sponsor-profile-palo-alto-networks">
+    <article class="sponsor-profile">
+      <div class="profile-logo"><img src="/assets/pan.png" alt="Palo Alto Networks" /></div>
+      <p class="profile-kicker">Current sponsor</p>
+      <h2>Palo Alto Networks</h2>
+      <p class="profile-summary">A global cybersecurity company helping organizations protect networks, cloud environments and security operations.</p>
+      <p class="profile-description">Palo Alto Networks provides cybersecurity platforms and services spanning network security, cloud security and security operations. Its work is focused on helping organizations prevent threats and secure digital transformation.</p>
+      <div class="profile-specialties" aria-label="Areas of focus"><span>Network security</span><span>Cloud security</span><span>Security operations</span></div>
+      <a class="profile-link" href="https://www.paloaltonetworks.com/" target="_blank" rel="noopener">Visit Palo Alto Networks <span aria-hidden="true">↗</span></a>
+    </article>
+  </template><template id="sponsor-profile-immersive-labs">
+    <article class="sponsor-profile">
+      <div class="profile-logo"><img src="/assets/sponsors/immersive.svg" alt="Immersive Labs" /></div>
+      <p class="profile-kicker">Current sponsor</p>
+      <h2>Immersive Labs</h2>
+      <p class="profile-summary">A people-centric cyber resilience platform that helps teams build and prove practical capabilities.</p>
+      <p class="profile-description">Immersive Labs helps organizations improve cyber resilience through hands-on exercises, simulations and capability development informed by current threat intelligence.</p>
+      <div class="profile-specialties" aria-label="Areas of focus"><span>Cyber resilience</span><span>Skills development</span><span>Exercises and simulations</span></div>
+      <a class="profile-link" href="https://www.immersivelabs.com/" target="_blank" rel="noopener">Visit Immersive Labs <span aria-hidden="true">↗</span></a>
+    </article>
+  </template><template id="sponsor-profile-horizon3-ai">
+    <article class="sponsor-profile">
+      <div class="profile-logo"><img src="/assets/sponsors/horizon3-light.svg" alt="Horizon3.ai" /></div>
+      <p class="profile-kicker">Current sponsor</p>
+      <h2>Horizon3.ai</h2>
+      <p class="profile-summary">An autonomous security company helping organizations test their environments from an attacker’s perspective.</p>
+      <p class="profile-description">Horizon3.ai develops NodeZero, an autonomous penetration testing platform that safely executes real attack techniques to identify exploitable paths and help teams prioritize defensive work.</p>
+      <div class="profile-specialties" aria-label="Areas of focus"><span>Autonomous pentesting</span><span>Exposure validation</span><span>Attack-path analysis</span></div>
+      <a class="profile-link" href="https://horizon3.ai/" target="_blank" rel="noopener">Visit Horizon3.ai <span aria-hidden="true">↗</span></a>
+    </article>
+  </template><template id="sponsor-profile-axonius">
+    <article class="sponsor-profile">
+      <div class="profile-logo"><img src="/assets/axonius.png" alt="Axonius" /></div>
+      <p class="profile-kicker">Current sponsor</p>
+      <h2>Axonius</h2>
+      <p class="profile-summary">An asset intelligence platform that helps security, IT and GRC teams understand and act on their technology estate.</p>
+      <p class="profile-description">Axonius brings together data about devices, identities, applications and infrastructure to create a current asset model and support exposure management, compliance and operational action.</p>
+      <div class="profile-specialties" aria-label="Areas of focus"><span>Asset intelligence</span><span>Exposure management</span><span>SaaS management</span></div>
+      <a class="profile-link" href="https://www.axonius.com/" target="_blank" rel="noopener">Visit Axonius <span aria-hidden="true">↗</span></a>
+    </article>
+  </template><template id="sponsor-profile-optiv">
+    <article class="sponsor-profile">
+      <div class="profile-logo"><img src="/assets/sponsors/optiv.png" alt="Optiv" /></div>
+      <p class="profile-kicker">Current sponsor</p>
+      <h2>Optiv</h2>
+      <p class="profile-summary">A cyber advisory and solutions organization that advises, deploys and operates security programs.</p>
+      <p class="profile-description">Optiv works with organizations on cybersecurity strategy, technology deployment, integration and managed operations, connecting advisory work with practical execution.</p>
+      <div class="profile-specialties" aria-label="Areas of focus"><span>Cyber advisory</span><span>Security integration</span><span>Managed security</span></div>
+      <a class="profile-link" href="https://www.optiv.com/" target="_blank" rel="noopener">Visit Optiv <span aria-hidden="true">↗</span></a>
+    </article>
+  </template><template id="sponsor-profile-algosec">
+    <article class="sponsor-profile">
+      <div class="profile-logo"><img src="/assets/sponsors/algosec.png" alt="AlgoSec" /></div>
+      <p class="profile-kicker">Current sponsor</p>
+      <h2>AlgoSec</h2>
+      <p class="profile-summary">A security platform focused on application connectivity and policy management across hybrid environments.</p>
+      <p class="profile-description">AlgoSec helps organizations understand application connectivity, automate security policy changes, reduce risk and support compliance across cloud and on-premises networks.</p>
+      <div class="profile-specialties" aria-label="Areas of focus"><span>Application connectivity</span><span>Policy management</span><span>Network security</span></div>
+      <a class="profile-link" href="https://www.algosec.com/" target="_blank" rel="noopener">Visit AlgoSec <span aria-hidden="true">↗</span></a>
+    </article>
+  </template><template id="sponsor-profile-kroll">
+    <article class="sponsor-profile">
+      <div class="profile-logo"><img src="/assets/sponsors/kroll.svg" alt="Kroll" /></div>
+      <p class="profile-kicker">Current sponsor</p>
+      <h2>Kroll</h2>
+      <p class="profile-summary">A cyber and data resilience organization combining advisory, response and managed security capabilities.</p>
+      <p class="profile-description">Kroll supports organizations before, during and after cyber events through incident response, cyber risk advisory, threat exposure work, digital forensics and managed security services.</p>
+      <div class="profile-specialties" aria-label="Areas of focus"><span>Incident response</span><span>Cyber risk</span><span>Managed detection and response</span></div>
+      <a class="profile-link" href="https://www.kroll.com/en/services/cyber" target="_blank" rel="noopener">Visit Kroll <span aria-hidden="true">↗</span></a>
+    </article>
+  </template><template id="sponsor-profile-noma-security">
+    <article class="sponsor-profile">
+      <div class="profile-logo"><img src="/assets/sponsors/noma-security.svg" alt="Noma Security" /></div>
+      <p class="profile-kicker">Current sponsor</p>
+      <h2>Noma Security</h2>
+      <p class="profile-summary">An AI security platform for protecting enterprise AI models, applications and agents.</p>
+      <p class="profile-description">Noma Security helps organizations manage AI security posture, test AI systems and protect AI applications and agents at runtime across the development and production lifecycle.</p>
+      <div class="profile-specialties" aria-label="Areas of focus"><span>AI security</span><span>AI red teaming</span><span>Runtime protection</span></div>
+      <a class="profile-link" href="https://noma.security/" target="_blank" rel="noopener">Visit Noma Security <span aria-hidden="true">↗</span></a>
+    </article>
+  </template><template id="sponsor-profile-chainguard">
+    <article class="sponsor-profile">
+      <div class="profile-logo"><img src="/assets/sponsors/chainguard.svg" alt="Chainguard" /></div>
+      <p class="profile-kicker">Current sponsor</p>
+      <h2>Chainguard</h2>
+      <p class="profile-summary">A software supply chain security company providing trusted, minimal open source artifacts.</p>
+      <p class="profile-description">Chainguard helps engineering teams reduce software supply chain risk with secure, continuously updated container images and other trusted open source artifacts.</p>
+      <div class="profile-specialties" aria-label="Areas of focus"><span>Software supply chain</span><span>Container security</span><span>Open source security</span></div>
+      <a class="profile-link" href="https://www.chainguard.dev/" target="_blank" rel="noopener">Visit Chainguard <span aria-hidden="true">↗</span></a>
+    </article>
+  </template><template id="sponsor-profile-doppel">
+    <article class="sponsor-profile">
+      <div class="profile-logo"><img src="/assets/sponsors/doppel.svg" alt="Doppel" /></div>
+      <p class="profile-kicker">Current sponsor</p>
+      <h2>Doppel</h2>
+      <p class="profile-summary">An AI-powered security platform focused on social engineering, digital risk and human-layer threats.</p>
+      <p class="profile-description">Doppel helps organizations detect and disrupt social engineering campaigns, digital impersonation and human-layer threats across channels through an AI-native security platform.</p>
+      <div class="profile-specialties" aria-label="Areas of focus"><span>Social engineering defense</span><span>Digital risk protection</span><span>Email security</span></div>
+      <a class="profile-link" href="https://www.doppel.com/" target="_blank" rel="noopener">Visit Doppel <span aria-hidden="true">↗</span></a>
+    </article>
+  </template><template id="sponsor-profile-cyberark">
+    <article class="sponsor-profile">
+      <div class="profile-logo"><img src="/assets/sponsors/cyberark.svg" alt="CyberArk" /></div>
+      <p class="profile-kicker">Past sponsor</p>
+      <h2>CyberArk</h2>
+      <p class="profile-summary">An identity security company focused on protecting human and machine identities.</p>
+      <p class="profile-description">CyberArk provides identity security capabilities that help organizations secure privileged access, workforce access and machine identities.</p>
+      <div class="profile-specialties" aria-label="Areas of focus"><span>Identity security</span><span>Privileged access</span><span>Machine identities</span></div>
+      <a class="profile-link" href="https://www.cyberark.com/" target="_blank" rel="noopener">Visit CyberArk <span aria-hidden="true">↗</span></a>
+    </article>
+  </template><template id="sponsor-profile-phelps-group">
+    <article class="sponsor-profile">
+      <div class="profile-logo"><img src="/assets/sponsors/phelps-group.png" alt="Phelps Group" /></div>
+      <p class="profile-kicker">Past sponsor</p>
+      <h2>Phelps Group</h2>
+      <p class="profile-summary">A professional services organization that has supported the CISO Open Mic community.</p>
+      <p class="profile-description">Phelps Group is recognized as a past supporter of CISO Open Mic and the security leadership community it brings together.</p>
 
-  <footer class="site-foot">
-    <div>© 2026 CISO Open Mic</div>
-    <div class="legal-links"><a href="/privacy">Privacy Policy</a><span>·</span><a href="/terms">Terms of Use</a><span>·</span><a href="/conduct">Code of Conduct</a></div>
-  </footer>
 
+    </article>
+  </template><template id="sponsor-profile-stellar-cyber">
+    <article class="sponsor-profile">
+      <div class="profile-logo"><img src="/assets/stellarcyber.svg" alt="Stellar Cyber" /></div>
+      <p class="profile-kicker">Past sponsor</p>
+      <h2>Stellar Cyber</h2>
+      <p class="profile-summary">A security operations platform focused on detection, investigation and response.</p>
+      <p class="profile-description">Stellar Cyber provides an open security operations platform that brings together security data and analytics to support threat detection, investigation and response.</p>
+      <div class="profile-specialties" aria-label="Areas of focus"><span>Security operations</span><span>Open XDR</span><span>Threat detection</span></div>
+      <a class="profile-link" href="https://stellarcyber.ai/" target="_blank" rel="noopener">Visit Stellar Cyber <span aria-hidden="true">↗</span></a>
+    </article>
+  </template><template id="sponsor-profile-crowdstrike">
+    <article class="sponsor-profile">
+      <div class="profile-logo"><img src="/assets/sponsors/crowdstrike.svg" alt="CrowdStrike" /></div>
+      <p class="profile-kicker">Past sponsor</p>
+      <h2>CrowdStrike</h2>
+      <p class="profile-summary">A cybersecurity company providing endpoint, identity and cloud protection.</p>
+      <p class="profile-description">CrowdStrike provides a cloud-native security platform spanning endpoint protection, threat intelligence, identity protection, cloud security and security operations.</p>
+      <div class="profile-specialties" aria-label="Areas of focus"><span>Endpoint security</span><span>Identity protection</span><span>Cloud security</span></div>
+      <a class="profile-link" href="https://www.crowdstrike.com/" target="_blank" rel="noopener">Visit CrowdStrike <span aria-hidden="true">↗</span></a>
+    </article>
+  </template><template id="sponsor-profile-hackerone">
+    <article class="sponsor-profile">
+      <div class="profile-logo"><img src="/assets/sponsors/hackerone.png" alt="HackerOne" /></div>
+      <p class="profile-kicker">Past sponsor</p>
+      <h2>HackerOne</h2>
+      <p class="profile-summary">A human-powered security platform connecting organizations with security researchers.</p>
+      <p class="profile-description">HackerOne helps organizations find and address vulnerabilities through bug bounty programs, vulnerability disclosure, penetration testing and researcher collaboration.</p>
+      <div class="profile-specialties" aria-label="Areas of focus"><span>Bug bounty</span><span>Vulnerability disclosure</span><span>Pentesting</span></div>
+      <a class="profile-link" href="https://www.hackerone.com/" target="_blank" rel="noopener">Visit HackerOne <span aria-hidden="true">↗</span></a>
+    </article>
+  </template><template id="sponsor-profile-kiteworks">
+    <article class="sponsor-profile">
+      <div class="profile-logo"><img src="/assets/sponsors/kiteworks-light.svg" alt="Kiteworks" /></div>
+      <p class="profile-kicker">Past sponsor</p>
+      <h2>Kiteworks</h2>
+      <p class="profile-summary">A secure content communications platform for sensitive information exchange.</p>
+      <p class="profile-description">Kiteworks helps organizations govern, protect and track sensitive content shared through email, file transfer, managed file exchange and other communication channels.</p>
+      <div class="profile-specialties" aria-label="Areas of focus"><span>Secure file sharing</span><span>Content governance</span><span>Data protection</span></div>
+      <a class="profile-link" href="https://www.kiteworks.com/" target="_blank" rel="noopener">Visit Kiteworks <span aria-hidden="true">↗</span></a>
+    </article>
+  </template><template id="sponsor-profile-arista">
+    <article class="sponsor-profile">
+      <div class="profile-logo"><img class="logo-invert" src="/assets/sponsors/arista.png" alt="Arista" /></div>
+      <p class="profile-kicker">Past sponsor</p>
+      <h2>Arista</h2>
+      <p class="profile-summary">A data-driven networking company serving cloud, campus and data centre environments.</p>
+      <p class="profile-description">Arista Networks develops cloud networking platforms and software for large-scale data centre, campus, routing and security environments.</p>
+      <div class="profile-specialties" aria-label="Areas of focus"><span>Cloud networking</span><span>Data centre</span><span>Network security</span></div>
+      <a class="profile-link" href="https://www.arista.com/" target="_blank" rel="noopener">Visit Arista <span aria-hidden="true">↗</span></a>
+    </article>
+  </template>
   <script>
-    const toggleBtn = document.getElementById('theme-toggle');
-    toggleBtn.addEventListener('click', () => {
-      document.body.classList.toggle('light');
-      toggleBtn.textContent = document.body.classList.contains('light') ? 'Dark' : 'Light';
-    });
+    const toggleBtn=document.getElementById('theme-toggle');
+    toggleBtn.addEventListener('click',()=>{document.body.classList.toggle('light');const light=document.body.classList.contains('light');toggleBtn.textContent=light?'Dark':'Light';toggleBtn.setAttribute('aria-label',light?'Switch to dark theme':'Switch to light theme')});
+    const sponsorDialog=document.getElementById('sponsor-dialog');
+    const sponsorDialogContent=document.getElementById('sponsor-dialog-content');
+    document.addEventListener('click',(event)=>{const card=event.target.closest('[data-sponsor-profile]');if(!card)return;const template=document.getElementById('sponsor-profile-'+card.dataset.sponsorProfile);if(!template)return;sponsorDialogContent.replaceChildren(template.content.cloneNode(true));sponsorDialog.showModal()});
+    document.querySelector('.dialog-close').addEventListener('click',()=>sponsorDialog.close());
+    sponsorDialog.addEventListener('click',(event)=>{if(event.target===sponsorDialog)sponsorDialog.close()});
   </script>
 </body>
 </html>
