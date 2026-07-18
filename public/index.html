@@ -66,29 +66,53 @@
       border-radius:999px; color:#fff; background:rgba(255,255,255,.08); font-size:.72rem; font-weight:800;
       letter-spacing:.08em; text-transform:uppercase;
     }
-    .difference { padding:82px 0 94px; background:var(--difference-bg); text-align:left; }
-    .difference-head { max-width:720px; margin-bottom:24px; }
-    .difference h2 { margin:0; font-size:clamp(1.7rem,3.2vw,2.35rem); line-height:1.08; }
-    .difference-intro { margin:10px 0 0; max-width:640px; color:var(--muted); line-height:1.65; }
-    .difference-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:14px; }
+    .difference {
+      padding:88px 0 112px; text-align:left;
+      background:
+        radial-gradient(circle at 88% 18%,rgba(255,138,0,.12),transparent 30%),
+        radial-gradient(circle at 5% 95%,rgba(193,35,49,.08),transparent 28%),
+        var(--difference-bg);
+    }
+    .difference-head { max-width:800px; margin-bottom:34px; }
+    .difference h2 {
+      max-width:760px; margin:0; font-size:clamp(2.15rem,5vw,3.85rem);
+      line-height:.98; letter-spacing:-.052em;
+    }
+    .difference h2 .difference-accent {
+      display:block; width:max-content; max-width:100%;
+      background:linear-gradient(110deg,var(--accent),var(--accent-2));
+      -webkit-background-clip:text; background-clip:text; color:transparent;
+    }
+    .difference-intro { margin:18px 0 0; max-width:690px; color:var(--muted); font-size:1rem; line-height:1.65; }
+    .difference-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:18px; }
     .difference-card {
-      position:relative; min-height:222px; overflow:hidden;
-      display:flex; flex-direction:column; padding:24px 22px;
-      border:1px solid var(--line); border-radius:15px; background:var(--surface);
-      box-shadow:0 10px 26px rgba(0,0,0,.1);
+      position:relative; isolation:isolate; min-height:258px; overflow:hidden;
+      display:flex; flex-direction:column; padding:28px 24px 26px;
+      border:1px solid rgba(255,255,255,.13); border-radius:18px;
+      background:linear-gradient(145deg,#172137 0%,#0d1425 68%,#180f18 100%);
+      box-shadow:0 22px 42px rgba(10,17,31,.2);
     }
     .difference-card::before {
-      content:""; position:absolute; inset:0 0 auto; height:4px;
+      content:""; position:absolute; inset:0 0 auto; height:5px;
       background:linear-gradient(90deg,var(--accent),var(--accent-2));
     }
-    .difference-number {
-      display:grid; place-items:center; width:38px; height:38px; margin-bottom:34px;
-      border:1px solid color-mix(in srgb,var(--accent-2) 42%,var(--line));
-      border-radius:50%; color:var(--accent-2); background:color-mix(in srgb,var(--accent-2) 8%,transparent);
-      font-size:.74rem; font-weight:800; letter-spacing:.08em;
+    .difference-card::after {
+      content:""; position:absolute; z-index:-1; right:-60px; bottom:-80px;
+      width:190px; height:190px; border-radius:50%;
+      background:radial-gradient(circle,rgba(255,138,0,.18),transparent 68%);
     }
-    .difference-card h3 { margin:0 0 8px; color:var(--text); font-size:1.08rem; line-height:1.2; }
-    .difference-card p { margin:0; color:var(--muted); font-size:.89rem; line-height:1.58; }
+    .difference-card:nth-child(even) { transform:translateY(18px); }
+    .difference-number {
+      position:absolute; top:20px; right:20px;
+      color:transparent; -webkit-text-stroke:1px rgba(255,167,61,.54);
+      font-size:clamp(3.2rem,5vw,4.3rem); font-weight:800; line-height:1; letter-spacing:-.08em;
+    }
+    .difference-card h3 { margin:auto 0 10px; color:#fff; font-size:1.13rem; line-height:1.2; }
+    .difference-card h3::before {
+      content:""; display:block; width:34px; height:3px; margin-bottom:14px;
+      border-radius:999px; background:linear-gradient(90deg,var(--accent),var(--accent-2));
+    }
+    .difference-card p { margin:0; color:#cbd5e1; font-size:.9rem; line-height:1.58; }
     .events { margin:0; padding:82px 0 94px; background:var(--events-bg); scroll-margin-top:76px; }
     .page-section { transition:background-color 1.2s ease,color 1.2s ease; }
     .events-heading {
@@ -283,6 +307,7 @@
       .site-head nav { gap:10px; }
       .home-hero { padding-top:88px; }
       .difference-grid { grid-template-columns:1fr; }
+      .difference-card:nth-child(even) { transform:none; }
     }
     @media (max-width: 420px) {
       .site-head { padding:0 10px; }
@@ -345,7 +370,7 @@
       <div class="section-inner">
         <div class="difference-head">
           <p class="eyebrow">Built differently</p>
-          <h2 id="difference-title">What Makes CISO Open Mic Different?</h2>
+          <h2 id="difference-title">What Makes CISO Open Mic <span class="difference-accent">Different?</span></h2>
           <p class="difference-intro">A simple format keeps the focus on the people, ideas and experiences in the room.</p>
         </div>
         <div class="difference-grid">
