@@ -16,7 +16,8 @@
       transition:background-color .75s cubic-bezier(.22,1,.36,1),color .65s ease,box-shadow .65s ease;
     }
     .site-head {
-      --faq-head-surface:var(--bg); isolation:isolate; overflow:visible;
+      --faq-head-surface:var(--bg); width:100%; margin:0;
+      padding:0 max(18px,calc(50% - 590px)); isolation:isolate; overflow:visible;
     }
     .site-head > * { position:relative; z-index:1; }
     .site-head::after {
