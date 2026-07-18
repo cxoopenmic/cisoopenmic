@@ -10,6 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;800&amp;display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,300,0,0" rel="stylesheet">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"CISO Open Mic","url":"https://cisoopenmic.com/","logo":"https://cisoopenmic.com/assets/logo.png","sameAs":["https://www.linkedin.com/showcase/cisoopenmic"]}</script>
   <style>
     :root {
       --bg:#000100; --surface:#111312; --text:#fdfdfd; --muted:#e0e0e0;
@@ -234,6 +235,14 @@
     .perspective-card h3 { margin:0; font-size:1.25rem; line-height:1.2; }
     .perspective-card p { margin:0; color:#dbe3ef; font-size:.92rem; line-height:1.6; }
     .perspective-card:only-child { max-width:620px; }
+    .linkedin-band { padding:64px 0; color:#fff; background:radial-gradient(circle at 90% 10%,rgba(255,138,0,.2),transparent 30%),#0a66c2; }
+    .linkedin-band .section-inner { display:grid; grid-template-columns:auto minmax(0,1fr) auto; gap:26px; align-items:center; }
+    .linkedin-mark { display:grid; place-items:center; width:70px; height:70px; border-radius:18px; color:#0a66c2; background:#fff; font-size:2rem; font-weight:800; letter-spacing:-.08em; box-shadow:0 16px 36px rgba(4,38,75,.2); }
+    .linkedin-band .eyebrow { color:rgba(255,255,255,.75); }
+    .linkedin-band h2 { margin:4px 0 6px; color:#fff; font-size:clamp(1.8rem,4vw,3.2rem); line-height:1; }
+    .linkedin-band p:last-child { max-width:700px; margin:0; color:rgba(255,255,255,.85); line-height:1.6; }
+    .linkedin-action { display:inline-flex; align-items:center; justify-content:center; padding:12px 18px; border:1px solid rgba(255,255,255,.72); border-radius:999px; color:#fff; font-weight:800; text-decoration:none; white-space:nowrap; }
+    .linkedin-action:hover { color:#0a66c2; background:#fff; text-decoration:none; }
     .register-cta {
       position:relative; overflow:hidden; padding:94px 0 102px; color:#fff; text-align:left;
       background:
@@ -325,9 +334,8 @@
 
       footer .legal-links {
         justify-content:center;
-        flex-wrap:nowrap;
+        flex-wrap:wrap;
         gap:6px;
-        white-space:nowrap;
         font-size:.82rem;
       }
     }
@@ -376,6 +384,10 @@
     body[data-header-section="perspectives"] .site-head nav a { color:#dbe3ef; }
     body[data-header-section="perspectives"] .site-head nav a[aria-current="page"] { color:#ffad45; }
     body[data-header-section="perspectives"] .theme-toggle { background-color:#dbe3ef; color:#172033; }
+    body[data-header-section="linkedin"] .site-head { background-color:#0a66c2; }
+    body[data-header-section="linkedin"] .site-head nav a { color:rgba(255,255,255,.84); }
+    body[data-header-section="linkedin"] .site-head nav a[aria-current="page"] { color:#fff; }
+    body[data-header-section="linkedin"] .theme-toggle { background-color:#fff; color:#0a66c2; }
     body[data-header-section="register"] .site-head { background-color:#e3481d; }
     body[data-header-section="register"] .site-head nav a { color:rgba(255,255,255,.82); }
     body[data-header-section="register"] .site-head nav a[aria-current="page"] { color:#fff; }
@@ -395,6 +407,8 @@
       .difference-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
       .event-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
       .perspective-grid { grid-template-columns:1fr; }
+      .linkedin-band .section-inner { grid-template-columns:auto minmax(0,1fr); }
+      .linkedin-action { grid-column:1 / -1; justify-self:start; }
       .register-cta { padding:64px 0 70px; }
       .register-cta .section-inner { grid-template-columns:1fr; gap:26px; }
       .register-cta h2 {
@@ -412,6 +426,10 @@
       .home-hero { padding-top:88px; }
       .difference-grid { grid-template-columns:1fr; }
       .difference-card:nth-child(even) { transform:none; }
+      .linkedin-band { padding:52px 0; }
+      .linkedin-band .section-inner { grid-template-columns:1fr; }
+      .linkedin-mark { width:58px; height:58px; border-radius:15px; }
+      .linkedin-action { grid-column:auto; }
       .register-cta { padding:56px 0 62px; }
       .register-cta h2 { font-size:clamp(2.35rem,12vw,3rem); }
       .register-options { padding:22px; border-radius:20px; }
@@ -570,6 +588,18 @@
     </section>
     <!-- HOME_LATEST_POSTS_END -->
 
+    <section class="linkedin-band page-section" aria-labelledby="linkedin-home-title">
+      <div class="section-inner">
+        <span class="linkedin-mark" aria-hidden="true">in</span>
+        <div>
+          <p class="eyebrow">Continue on LinkedIn</p>
+          <h2 id="linkedin-home-title">Keep the conversation moving.</h2>
+          <p>Follow CISO Open Mic for event announcements, community perspectives and the moments worth carrying beyond the room.</p>
+        </div>
+        <a class="linkedin-action" href="https://www.linkedin.com/showcase/cisoopenmic" target="_blank" rel="noopener noreferrer">Follow CISO Open Mic</a>
+      </div>
+    </section>
+
     <section class="register-cta page-section" aria-labelledby="register-title">
       <div class="section-inner">
         <div class="register-cta-copy">
@@ -603,6 +633,7 @@
   </div>
 </footer>
 
+  <script src="/assets/linkedin-20260718.js"></script>
   <script>
     const toggleBtn = document.getElementById('theme-toggle');
     if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
@@ -620,6 +651,7 @@
       ['difference', document.querySelector('.difference')],
       ['events', document.querySelector('.events')],
       ['perspectives', document.querySelector('.perspectives')],
+      ['linkedin', document.querySelector('.linkedin-band')],
       ['register', document.querySelector('.register-cta')],
       ['footer', document.querySelector('footer')]
     ].filter(([, section]) => section);
