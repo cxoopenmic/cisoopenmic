@@ -39,6 +39,15 @@
     }
     .faq-search-clear:hover { border-color:var(--accent-2); color:var(--accent-2); }
     .faq-search-status { margin:10px 0 0; color:var(--muted); font-size:.9rem; }
+    .faq-categories { margin-top:18px; }
+    .faq-categories > span { display:block; margin-bottom:9px; color:var(--muted); font-size:.82rem; font-weight:800; text-transform:uppercase; letter-spacing:.12em; }
+    .faq-category-links { display:flex; flex-wrap:wrap; gap:8px; }
+    .faq-category-links a {
+      display:inline-flex; align-items:center; min-height:38px; padding:8px 13px;
+      border:1px solid var(--line); border-radius:999px; background:var(--surface);
+      color:var(--text); font-size:.86rem; font-weight:800; text-decoration:none;
+    }
+    .faq-category-links a:hover,.faq-category-links a:focus-visible { border-color:var(--accent-2); color:var(--accent-2); }
     .faq-no-results {
       margin-top:38px; padding:28px; border:1px dashed var(--line); border-radius:16px;
       color:var(--muted); text-align:center;
@@ -53,6 +62,7 @@
       background:var(--surface); overflow:hidden;
     }
     .faq-item[open] { border-color:color-mix(in srgb,var(--accent-2) 55%,var(--line)); }
+    .faq-item:target { border-color:var(--accent-2); box-shadow:0 0 0 3px color-mix(in srgb,var(--accent-2) 18%,transparent); scroll-margin-top:110px; }
     .faq-item summary {
       display:flex; align-items:center; justify-content:space-between; gap:18px;
       min-height:76px; padding:18px 20px; color:var(--text);
@@ -67,6 +77,8 @@
     .faq-answer { padding:0 20px 20px; color:var(--muted); line-height:1.7; }
     .faq-answer p { margin:0; }
     .faq-answer a { color:var(--accent-2); font-weight:800; }
+    .faq-permalink { display:inline-flex; margin-top:13px; font-size:.82rem; text-decoration:none; }
+    .faq-permalink::before { content:"#"; margin-right:5px; }
     @media(max-width:760px) {
       .faq-main { margin-top:40px; }
       .faq-hero,.faq-grid { grid-template-columns:1fr; }
@@ -109,6 +121,18 @@
       <p id="faq-search-status" class="faq-search-status" role="status" aria-live="polite">Search all questions and answers.</p>
     </section>
 
+    <nav class="faq-categories" aria-label="FAQ categories">
+      <span>Browse by topic</span>
+      <div class="faq-category-links">
+        <a href="#about-faq">About</a>
+        <a href="#registration-faq">Registration and approval</a>
+        <a href="#mic-faq">Taking the mic</a>
+        <a href="#event-faq">At the event</a>
+        <a href="#judging-faq">Judges and awards</a>
+        <a href="#support-faq">Sponsors</a>
+      </div>
+    </nav>
+
     <div id="faq-no-results" class="faq-no-results" hidden>
       <strong>No matching questions.</strong>
       Try a different word or clear the search to see every question.
@@ -120,28 +144,16 @@
         <details class="faq-item"><summary>What is CISO Open Mic?</summary><div class="faq-answer"><p>CISO Open Mic is a platform that allows CISOs and other security leaders to share insights, experiences and challenges. Each local gathering creates space for practical exchange, useful ideas and real relationships—without presentations or sales pitches.</p></div></details>
         <details class="faq-item"><summary>Who is it for?</summary><div class="faq-answer"><p>CISOs and other security leaders are at the core of CISO Open Mic. We also welcome aspiring leaders and other community and industry stakeholders. Participation may be curated because each gathering is intentionally local and venue capacity is limited.</p></div></details>
         <details class="faq-item"><summary>What happens during an event?</summary><div class="faq-answer"><p>A local MC and Event Director guide the evening. Participants can share a focused five-minute contribution, listen to others and continue the conversation in the room. A panel of four judges recognizes the strongest contributions.</p></div></details>
-        <details class="faq-item"><summary>How are judges selected?</summary><div class="faq-answer"><p>We aim to cycle judges and prioritize people based in the host municipality or surrounding region. At times, we may bring in an experienced judge from another region to support continuity and consistency between CISO Open Mic events.</p></div></details>
-        <details class="faq-item"><summary>Are judges compensated for their role?</summary><div class="faq-answer"><p>No. Judges are not compensated for serving in the role.</p></div></details>
-        <details class="faq-item"><summary>Are the MC and Event Director compensated for their roles?</summary><div class="faq-answer"><p>No. The MC and Event Director are not compensated for serving in their roles.</p></div></details>
-        <details class="faq-item"><summary>How are awards decided?</summary><div class="faq-answer"><p>Awards are given purely at the discretion of the judging panel. Award decisions are not directed or influenced by the MC, Event Director or representatives of CISO Open Mic. If you are not present when your award is announced or presented, we will make our best efforts to get it to you.</p></div></details>
-        <details class="faq-item"><summary>How are participation certificates issued?</summary><div class="faq-answer"><p>We use Educredu, a third-party service provider, to prepare and send participation certificates. We provide Educredu only with the relevant participant details needed to issue and deliver those certificates.</p></div></details>
-        <details class="faq-item"><summary>Do I have to speak?</summary><div class="faq-answer"><p>No. You can take the mic or take it all in. Listening, learning and connecting with peers are equally valid ways to participate.</p></div></details>
-        <details class="faq-item"><summary>What etiquette applies at the mic?</summary><div class="faq-answer"><p>Be ready when called, keep your contribution focused and within five minutes, and follow the MC’s direction. Share your own perspective without pitching, grandstanding, attacking others or revealing information that is not yours to share. Finish promptly when your time is called so the room remains open to others.</p></div></details>
-        <details class="faq-item"><summary>Are there presentations or vendor pitches?</summary><div class="faq-answer"><p>No. CISO Open Mic is built around original perspectives and practical peer exchange, without slide decks or sales pitches.</p></div></details>
-        <details class="faq-item"><summary>Are discussions confidential?</summary><div class="faq-answer"><p>CISO Open Mic discussions are held under the Chatham House Rule. You may use the information you receive, but you may not reveal the identity or affiliation of the speaker or any other participant. Do not attribute comments to a person or organization without their express permission.</p></div></details>
-        <details class="faq-item"><summary>Can I post about the event?</summary><div class="faq-answer"><p>Yes. We appreciate positive LinkedIn posts and other media about CISO Open Mic, but posting is entirely optional and no one should feel obligated. Please do not expect a response to every post. We will do our best, but we may not see it. Including <strong>#CISOOpenMic</strong> makes a post more likely to get our attention, though it does not guarantee a response. Anything shared must respect the Chatham House Rule: do not identify participants, attribute comments or disclose confidential information without permission.</p></div></details>
         <details class="faq-item"><summary>Who runs each city event?</summary><div class="faq-answer"><p>Each city has its own Event Director, MC and four-person judging panel. Their role is to facilitate the evening and create space for others—not to become its focus. CISO Open Mic is not about the people who run it; it is about the community it builds. Their profiles are published on the city page as they are confirmed.</p></div></details>
+        <details class="faq-item"><summary>Are the MC and Event Director compensated for their roles?</summary><div class="faq-answer"><p>No. The MC and Event Director are not compensated for serving in their roles.</p></div></details>
       </div>
     </section>
 
     <section class="faq-section" aria-labelledby="registration-faq">
-      <div class="faq-section-head"><p class="eyebrow">Taking part</p><h2 id="registration-faq">Registration and topics</h2></div>
+      <div class="faq-section-head"><p class="eyebrow">Taking part</p><h2 id="registration-faq">Registration and approval</h2></div>
       <div class="faq-grid">
         <details class="faq-item"><summary>How do I register?</summary><div class="faq-answer"><p>When registration opens, the relevant city page will link to the event on Luma. Registration and topic submissions are handled together through that process. A submitted registration is not admission; you must be approved through Luma before attending.</p></div></details>
         <details class="faq-item"><summary>Can I register with a personal email address?</summary><div class="faq-answer"><p>No. You must register with an organizational email address. Registrations using Gmail, Hotmail or another non-organizational email address will be declined.</p></div></details>
-        <details class="faq-item"><summary>How do I submit a topic?</summary><div class="faq-answer"><p>Topic submissions are included in the Luma registration process. You do not need to complete a separate CISO Open Mic form.</p></div></details>
-        <details class="faq-item"><summary>What if I say I will—or might—take the mic?</summary><div class="faq-answer"><p>Selecting that you will take the mic is a commitment to attend and be ready to speak. If you say you might take the mic, you should still arrive prepared in case you are called. If you cannot attend, decline the event through Luma before it begins. Contacting an event organizer or another participant does not change your registration status and does not count as notice. A mic no-show—someone who committed to take the mic, does not attend and has not declined through Luma—will be banned from future CISO Open Mic events.</p></div></details>
-        <details class="faq-item"><summary>Does indicating that I will—or might—take the mic guarantee a spot?</summary><div class="faq-answer"><p>No. Indicating that you will or might take the mic does not guarantee that you will be called. Mic opportunities depend on the available time and flow of the event. You should still attend prepared.</p></div></details>
         <details class="faq-item"><summary>Can I attend without an approved Luma registration?</summary><div class="faq-answer"><p>No. You must be approved through Luma before attending. Walk-ins are not permitted, and arriving with an expectation of being admitted does not provide access to the event.</p></div></details>
         <details class="faq-item"><summary>Can I transfer my registration or approval to someone else?</summary><div class="faq-answer"><p>No. A registration and its approval belong only to the person named in Luma. Substitutions, transfers and name changes are not permitted. Anyone else who wants to attend must register separately and receive their own approval.</p></div></details>
         <details class="faq-item"><summary>Does my approval include events held before or after the main gathering?</summary><div class="faq-answer"><p>No. CISO Open Mic may hold separate events before or after a main gathering. Approval for one event does not provide automatic entrance to another. Each event may require its own invitation, registration or approval.</p></div></details>
@@ -149,9 +161,6 @@
         <details class="faq-item"><summary>Does previous participation guarantee approval for another event?</summary><div class="faq-answer"><p>No. Previous attendance, taking the mic, judging or receiving an award does not guarantee approval for a future CISO Open Mic event. Every gathering is curated separately, and each registration requires its own approval.</p></div></details>
         <details class="faq-item"><summary>Why might my registration not be approved?</summary><div class="faq-answer"><p>Every CISO Open Mic gathering is intentionally curated to create the right mix of experience, perspectives and community participation within a limited room. Not every registration can be approved. A decline is not personal—please don’t be offended.</p></div></details>
         <details class="faq-item"><summary>Can I resubmit a declined registration?</summary><div class="faq-answer"><p>No, not with the same information. A declined registration is a decision, not an invitation to keep applying. Repeated submissions using the same information will not be approved.</p></div></details>
-        <details class="faq-item"><summary>Is there a venue dress code?</summary><div class="faq-answer"><p>Yes. The host club’s dress code applies. Anyone who does not meet it upon arrival will not be admitted, even if their Luma registration was approved. Review the venue requirements before attending.</p></div></details>
-        <details class="faq-item"><summary>Can dietary or accessibility needs be accommodated?</summary><div class="faq-answer"><p>Provide any dietary or accessibility requests during registration and as early as possible. We will work with the venue to accommodate them, but available accommodations depend on advance notice and the venue’s capabilities.</p></div></details>
-        <details class="faq-item"><summary>Are there limits on food and alcohol?</summary><div class="faq-answer"><p>Yes. Food and alcohol must not be consumed in excess. CISO Open Mic and the venue reserve the right to intervene, including cutting off alcohol service to an attendee when necessary.</p></div></details>
         <details class="faq-item"><summary>Do you sell tickets?</summary><div class="faq-answer"><p>No. CISO Open Mic does not sell tickets. Attendance is managed through registration, approval and the capacity of each venue.</p></div></details>
         <details class="faq-item"><summary>What does “At capacity” mean?</summary><div class="faq-answer"><p>It means the available attendance capacity has been reached. If a waitlist is available, the city page will provide the appropriate link.</p></div></details>
         <details class="faq-item"><summary>Where can I find dates and locations?</summary><div class="faq-answer"><p>Choose Calgary, Montreal, Boston, Ottawa or Toronto from the Home page. Each permanent city page carries its current event and registration details.</p></div></details>
@@ -159,15 +168,48 @@
       </div>
     </section>
 
+    <section class="faq-section" aria-labelledby="mic-faq">
+      <div class="faq-section-head"><p class="eyebrow">Your contribution</p><h2 id="mic-faq">Taking the mic</h2></div>
+      <div class="faq-grid">
+        <details class="faq-item"><summary>Do I have to speak?</summary><div class="faq-answer"><p>No. You can take the mic or take it all in. Listening, learning and connecting with peers are equally valid ways to participate.</p></div></details>
+        <details class="faq-item"><summary>How do I submit a topic?</summary><div class="faq-answer"><p>Topic submissions are included in the Luma registration process. You do not need to complete a separate CISO Open Mic form.</p></div></details>
+        <details class="faq-item"><summary>What if I say I will—or might—take the mic?</summary><div class="faq-answer"><p>Selecting that you will take the mic is a commitment to attend and be ready to speak. If you say you might take the mic, you should still arrive prepared in case you are called. If you cannot attend, decline the event through Luma before it begins. Contacting an event organizer or another participant does not change your registration status and does not count as notice. A mic no-show—someone who committed to take the mic, does not attend and has not declined through Luma—will be banned from future CISO Open Mic events.</p></div></details>
+        <details class="faq-item"><summary>Does indicating that I will—or might—take the mic guarantee a spot?</summary><div class="faq-answer"><p>No. Indicating that you will or might take the mic does not guarantee that you will be called. Mic opportunities depend on the available time and flow of the event. You should still attend prepared.</p></div></details>
+        <details class="faq-item"><summary>What etiquette applies at the mic?</summary><div class="faq-answer"><p>Be ready when called, keep your contribution focused and within five minutes, and follow the MC’s direction. Share your own perspective without pitching, grandstanding, attacking others or revealing information that is not yours to share. Finish promptly when your time is called so the room remains open to others.</p></div></details>
+      </div>
+    </section>
+
+    <section class="faq-section" aria-labelledby="event-faq">
+      <div class="faq-section-head"><p class="eyebrow">In the room</p><h2 id="event-faq">At the event</h2></div>
+      <div class="faq-grid">
+        <details class="faq-item"><summary>Are discussions confidential?</summary><div class="faq-answer"><p>CISO Open Mic discussions are held under the Chatham House Rule. You may use the information you receive, but you may not reveal the identity or affiliation of the speaker or any other participant. Do not attribute comments to a person or organization without their express permission.</p></div></details>
+        <details class="faq-item"><summary>Can I post about the event?</summary><div class="faq-answer"><p>Yes. We appreciate positive LinkedIn posts and other media about CISO Open Mic, but posting is entirely optional and no one should feel obligated. Please do not expect a response to every post. We will do our best, but we may not see it. Including <strong>#CISOOpenMic</strong> makes a post more likely to get our attention, though it does not guarantee a response. Anything shared must respect the Chatham House Rule: do not identify participants, attribute comments or disclose confidential information without permission.</p></div></details>
+        <details class="faq-item"><summary>Is there a venue dress code?</summary><div class="faq-answer"><p>Yes. The host club’s dress code applies. Anyone who does not meet it upon arrival will not be admitted, even if their Luma registration was approved. Review the venue requirements before attending.</p></div></details>
+        <details class="faq-item"><summary>Can dietary or accessibility needs be accommodated?</summary><div class="faq-answer"><p>Provide any dietary or accessibility requests during registration and as early as possible. We will work with the venue to accommodate them, but available accommodations depend on advance notice and the venue’s capabilities.</p></div></details>
+        <details class="faq-item"><summary>Are there limits on food and alcohol?</summary><div class="faq-answer"><p>Yes. Food and alcohol must not be consumed in excess. CISO Open Mic and the venue reserve the right to intervene, including cutting off alcohol service to an attendee when necessary.</p></div></details>
+        <details class="faq-item"><summary>What standards apply at an event?</summary><div class="faq-answer"><p>Everyone must treat others respectfully and follow the <a href="/conduct">Code of Conduct</a>. Harassment, intimidation, aggressive behaviour and repeated disruption are not permitted. Grandstanding, dominating the conversation and using the room for self-promotion are also not permitted. Organizers may remove anyone whose conduct compromises the room. Information about participation and personal information is available in the <a href="/terms">Terms of Use</a> and <a href="/privacy">Privacy Policy</a>.</p></div></details>
+      </div>
+    </section>
+
+    <section class="faq-section" aria-labelledby="judging-faq">
+      <div class="faq-section-head"><p class="eyebrow">Recognition</p><h2 id="judging-faq">Judges, awards and certificates</h2></div>
+      <div class="faq-grid">
+        <details class="faq-item"><summary>How are judges selected?</summary><div class="faq-answer"><p>We aim to cycle judges and prioritize people based in the host municipality or surrounding region. At times, we may bring in an experienced judge from another region to support continuity and consistency between CISO Open Mic events.</p></div></details>
+        <details class="faq-item"><summary>Are judges compensated for their role?</summary><div class="faq-answer"><p>No. Judges are not compensated for serving in the role.</p></div></details>
+        <details class="faq-item"><summary>How are awards decided?</summary><div class="faq-answer"><p>Awards are given purely at the discretion of the judging panel. Award decisions are not directed or influenced by the MC, Event Director or representatives of CISO Open Mic. If you are not present when your award is announced or presented, we will make our best efforts to get it to you.</p></div></details>
+        <details class="faq-item"><summary>How are participation certificates issued?</summary><div class="faq-answer"><p>We use Educredu, a third-party service provider, to prepare and send participation certificates. We provide Educredu only with the relevant participant details needed to issue and deliver those certificates.</p></div></details>
+      </div>
+    </section>
+
     <section class="faq-section" aria-labelledby="support-faq">
-      <div class="faq-section-head"><p class="eyebrow">Community support</p><h2 id="support-faq">Sponsors and standards</h2></div>
+      <div class="faq-section-head"><p class="eyebrow">Community support</p><h2 id="support-faq">Sponsors and commercial participation</h2></div>
       <div class="faq-grid">
         <details class="faq-item"><summary>What role do sponsors play?</summary><div class="faq-answer"><p>Sponsors help support the community and event experience. They do not control programming, judging, editorial direction or who is invited to participate.</p></div></details>
         <details class="faq-item"><summary>Do sponsors receive my information?</summary><div class="faq-answer"><p>Only sponsors directly supporting the event may receive limited professional information provided during registration, such as your name, title, organization, business email address and LinkedIn profile. We do not sell attendee information or provide it to unrelated third parties. Sponsor communications are subject to their own privacy practices and applicable consent and unsubscribe requirements.</p></div></details>
         <details class="faq-item"><summary>Does CISO Open Mic receive commissions from business generated through an event?</summary><div class="faq-answer"><p>No. CISO Open Mic does not receive commissions, referral fees, kickbacks or similar compensation tied to future business a sponsor may receive as a result of participating in an event. Sponsorship support is separate from any later commercial relationship or outcome.</p></div></details>
+        <details class="faq-item"><summary>Are there presentations or vendor pitches?</summary><div class="faq-answer"><p>No. CISO Open Mic is built around original perspectives and practical peer exchange, without slide decks or sales pitches.</p></div></details>
         <details class="faq-item"><summary>Can sales representatives from non-sponsors attend?</summary><div class="faq-answer"><p>No. Sales and business development representatives from organizations that are not current CISO Open Mic sponsors cannot attend. Participation as a community or industry stakeholder does not create an exception for sales attendance.</p></div></details>
         <details class="faq-item"><summary>Can we attend first and decide whether to sponsor later?</summary><div class="faq-answer"><p>No. CISO Open Mic does not offer a “try before you sponsor” option. An organization must be a confirmed sponsor before its sales or business development representatives can attend.</p></div></details>
-        <details class="faq-item"><summary>What standards apply at an event?</summary><div class="faq-answer"><p>Everyone must treat others respectfully and follow the <a href="/conduct">Code of Conduct</a>. Harassment, intimidation, aggressive behaviour and repeated disruption are not permitted. Grandstanding, dominating the conversation and using the room for self-promotion are also not permitted. Organizers may remove anyone whose conduct compromises the room. Information about participation and personal information is available in the <a href="/terms">Terms of Use</a> and <a href="/privacy">Privacy Policy</a>.</p></div></details>
       </div>
     </section>
   </main>
@@ -182,8 +224,45 @@
       const items = [...document.querySelectorAll('.faq-item')];
       const sections = [...document.querySelectorAll('.faq-section')];
       const normalize = value => value.toLocaleLowerCase().replace(/\s+/g, ' ').trim();
+      const slugify = value => value
+        .normalize('NFKD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .toLocaleLowerCase()
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/^-|-$/g, '');
 
-      items.forEach(item => { item.dataset.search = normalize(item.textContent); });
+      const structuredQuestions = items.map(item => {
+        const summary = item.querySelector('summary');
+        const answer = item.querySelector('.faq-answer');
+        const question = summary.textContent.trim();
+        const answerText = answer.textContent.trim();
+        const id = `faq-${slugify(question)}`;
+
+        item.id = id;
+        item.dataset.search = normalize(`${question} ${answerText}`);
+
+        const permalink = document.createElement('a');
+        permalink.className = 'faq-permalink';
+        permalink.href = `#${id}`;
+        permalink.textContent = 'Link to this answer';
+        permalink.setAttribute('aria-label', `Direct link to: ${question}`);
+        answer.append(permalink);
+
+        return {
+          '@type': 'Question',
+          name: question,
+          acceptedAnswer: { '@type': 'Answer', text: answerText }
+        };
+      });
+
+      const structuredData = document.createElement('script');
+      structuredData.type = 'application/ld+json';
+      structuredData.textContent = JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: structuredQuestions
+      });
+      document.head.append(structuredData);
 
       const filterFaq = () => {
         const query = normalize(input.value);
@@ -221,7 +300,21 @@
         input.focus();
       });
 
+      const openLinkedAnswer = () => {
+        if (!location.hash.startsWith('#faq-')) return;
+        const item = document.getElementById(decodeURIComponent(location.hash.slice(1)));
+        if (!item) return;
+        if (input.value) {
+          input.value = '';
+          filterFaq();
+        }
+        item.open = true;
+        requestAnimationFrame(() => item.scrollIntoView({ block:'center' }));
+      };
+
       filterFaq();
+      openLinkedAnswer();
+      window.addEventListener('hashchange', openLinkedAnswer);
     })();
   </script>
   <script src="/assets/city-20260716.js"></script>
