@@ -12,24 +12,51 @@
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;800&amp;display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/assets/city-20260716.css?v=20260717-4" />
   <style>
-    .faq-main { margin-top:72px; }
-    .faq-hero { grid-template-columns:minmax(0,1.35fr) minmax(260px,.65fr); align-items:center; }
-    .faq-hero h1 { max-width:700px; }
+    .faq-main { margin-top:34px; }
+    .faq-hero {
+      position:relative; isolation:isolate; overflow:hidden;
+      grid-template-columns:minmax(0,1.35fr) minmax(260px,.65fr); align-items:center;
+      min-height:430px; padding:62px; border-radius:30px; color:#fff;
+      background:
+        radial-gradient(circle at 88% 14%,rgba(255,255,255,.2),transparent 23%),
+        linear-gradient(118deg,#c12331 0%,#ec481c 58%,#ff8a00 100%);
+      box-shadow:0 28px 68px rgba(193,35,49,.2);
+    }
+    .faq-hero::after {
+      content:"?"; position:absolute; z-index:0; right:1%; top:-41%;
+      color:rgba(255,255,255,.08); font-size:29rem; font-weight:800; line-height:1;
+      transform:rotate(8deg); pointer-events:none;
+    }
+    .faq-hero > * { position:relative; z-index:1; }
+    .faq-hero h1 {
+      max-width:700px; padding:0; color:#fff; background:none;
+      font-size:clamp(3.7rem,8vw,6.6rem); line-height:.98; letter-spacing:-.065em;
+      -webkit-background-clip:initial; background-clip:initial;
+    }
+    .faq-hero .eyebrow { color:#fff; }
+    .faq-hero .lede { max-width:680px; color:rgba(255,255,255,.88); font-size:1.08rem; line-height:1.65; }
     .faq-intro {
-      padding:24px; border:1px solid var(--line); border-radius:16px;
-      background:var(--surface); box-shadow:0 12px 30px rgba(0,0,0,.1);
+      position:relative; padding:28px; border:1px solid rgba(255,255,255,.38); border-radius:22px;
+      color:#fff; background:rgba(7,16,32,.25); box-shadow:0 18px 42px rgba(74,21,22,.18);
+      backdrop-filter:blur(14px);
     }
     .faq-intro strong { display:block; margin-bottom:8px; font-size:1.2rem; }
-    .faq-intro p { margin:0; color:var(--muted); line-height:1.65; }
+    .faq-intro p { margin:0; color:rgba(255,255,255,.82); line-height:1.65; }
     .faq-search {
-      margin-top:42px; padding:20px; border:1px solid var(--line); border-radius:16px;
-      background:var(--surface); box-shadow:0 12px 30px rgba(0,0,0,.08);
+      position:relative; z-index:2; width:min(1040px,calc(100% - 44px));
+      margin:-34px auto 0; padding:26px 28px; border:1px solid var(--line); border-radius:22px;
+      background:var(--surface); box-shadow:0 22px 54px rgba(15,23,42,.16);
     }
-    .faq-search label { display:block; margin-bottom:10px; color:var(--text); font-weight:800; }
+    .faq-search label { display:flex; align-items:center; gap:9px; margin-bottom:11px; color:var(--text); font-weight:800; }
+    .faq-search label::before {
+      content:""; width:10px; height:10px; border-radius:50%;
+      background:linear-gradient(135deg,var(--accent),var(--accent-2));
+      box-shadow:0 0 0 5px color-mix(in srgb,var(--accent-2) 12%,transparent);
+    }
     .faq-search-row { display:flex; gap:10px; }
     .faq-search input {
       flex:1 1 auto; min-width:0; padding:14px 16px; border:1px solid var(--line); border-radius:11px;
-      background:var(--bg); color:var(--text); font:inherit;
+      background:var(--surface-soft); color:var(--text); font:inherit;
     }
     .faq-search input::placeholder { color:var(--muted); opacity:.8; }
     .faq-search input:focus-visible { outline:3px solid color-mix(in srgb,var(--accent-2) 35%,transparent); border-color:var(--accent-2); }
@@ -39,29 +66,71 @@
     }
     .faq-search-clear:hover { border-color:var(--accent-2); color:var(--accent-2); }
     .faq-search-status { margin:10px 0 0; color:var(--muted); font-size:.9rem; }
-    .faq-categories { margin-top:18px; }
+    .faq-categories {
+      margin-top:24px; padding:22px 26px; border:1px solid var(--line); border-radius:20px;
+      background:linear-gradient(135deg,var(--surface),color-mix(in srgb,var(--accent-2) 5%,var(--surface)));
+    }
     .faq-categories > span { display:block; margin-bottom:9px; color:var(--muted); font-size:.82rem; font-weight:800; text-transform:uppercase; letter-spacing:.12em; }
     .faq-category-links { display:flex; flex-wrap:wrap; gap:8px; }
     .faq-category-links a {
       display:inline-flex; align-items:center; min-height:38px; padding:8px 13px;
       border:1px solid var(--line); border-radius:999px; background:var(--surface);
       color:var(--text); font-size:.86rem; font-weight:800; text-decoration:none;
+      transition:transform .18s ease,border-color .18s ease,color .18s ease,background-color .18s ease;
     }
-    .faq-category-links a:hover,.faq-category-links a:focus-visible { border-color:var(--accent-2); color:var(--accent-2); }
+    .faq-category-links a:hover,.faq-category-links a:focus-visible {
+      transform:translateY(-2px); border-color:var(--accent-2); color:var(--accent-2);
+      background:color-mix(in srgb,var(--accent-2) 7%,var(--surface));
+    }
     .faq-no-results {
       margin-top:38px; padding:28px; border:1px dashed var(--line); border-radius:16px;
       color:var(--muted); text-align:center;
     }
     .faq-no-results strong { display:block; margin-bottom:6px; color:var(--text); font-size:1.1rem; }
-    .faq-section { margin-top:68px; }
-    .faq-section-head { max-width:700px; margin-bottom:20px; }
-    .faq-section-head h2 { margin:0; font-size:clamp(1.6rem,4vw,2.3rem); line-height:1.1; }
-    .faq-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
-    .faq-item {
-      align-self:start; border:1px solid var(--line); border-radius:14px;
-      background:var(--surface); overflow:hidden;
+    .faq-section {
+      position:relative; isolation:isolate; overflow:hidden; margin-top:44px; padding:46px;
+      border:1px solid var(--line); border-radius:30px;
+      background:linear-gradient(145deg,var(--surface-soft),color-mix(in srgb,var(--accent-2) 5%,var(--surface)));
+      box-shadow:0 22px 54px rgba(15,23,42,.07);
     }
-    .faq-item[open] { border-color:color-mix(in srgb,var(--accent-2) 55%,var(--line)); }
+    .faq-section:nth-of-type(even) {
+      background:linear-gradient(145deg,color-mix(in srgb,var(--accent) 5%,var(--surface)),var(--surface-soft));
+    }
+    .faq-section::after {
+      content:attr(data-section-number); position:absolute; z-index:0; right:18px; top:-54px;
+      color:color-mix(in srgb,var(--accent-2) 8%,transparent);
+      font-size:13rem; font-weight:800; line-height:1; letter-spacing:-.08em;
+    }
+    .faq-section-head {
+      position:relative; z-index:1; display:grid; grid-template-columns:62px minmax(0,1fr);
+      align-items:center; gap:18px; max-width:780px; margin-bottom:28px;
+    }
+    .faq-section-number {
+      display:grid; place-items:center; width:62px; height:62px; border-radius:18px;
+      color:#fff; background:linear-gradient(135deg,var(--accent),var(--accent-2));
+      font-size:.86rem; font-weight:800; letter-spacing:.08em;
+      box-shadow:0 12px 24px rgba(193,35,49,.2);
+    }
+    .faq-section-head .eyebrow { margin-bottom:5px; }
+    .faq-section-head h2 { margin:0; font-size:clamp(1.75rem,4vw,2.65rem); line-height:1.05; letter-spacing:-.035em; }
+    .faq-grid { position:relative; z-index:1; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
+    .faq-item {
+      position:relative; align-self:start; overflow:hidden;
+      border:1px solid var(--line); border-radius:16px; background:var(--surface);
+      box-shadow:0 8px 20px rgba(15,23,42,.04);
+      transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease;
+    }
+    .faq-item::before {
+      content:""; position:absolute; inset:0 0 auto; height:3px;
+      background:linear-gradient(90deg,var(--accent),var(--accent-2)); opacity:0;
+      transition:opacity .18s ease;
+    }
+    .faq-item:hover { transform:translateY(-2px); border-color:color-mix(in srgb,var(--accent-2) 38%,var(--line)); }
+    .faq-item[open] {
+      border-color:color-mix(in srgb,var(--accent-2) 55%,var(--line));
+      box-shadow:0 14px 30px rgba(15,23,42,.09);
+    }
+    .faq-item[open]::before { opacity:1; }
     .faq-item:target { border-color:var(--accent-2); box-shadow:0 0 0 3px color-mix(in srgb,var(--accent-2) 18%,transparent); scroll-margin-top:110px; }
     .faq-item summary {
       display:flex; align-items:center; justify-content:space-between; gap:18px;
@@ -71,28 +140,43 @@
     .faq-item summary::-webkit-details-marker { display:none; }
     .faq-item summary::after {
       content:"+"; flex:0 0 auto; display:grid; place-items:center; width:28px; height:28px;
-      border:1px solid var(--line); border-radius:50%; color:var(--accent-2); font-size:1.2rem;
+      border:1px solid color-mix(in srgb,var(--accent-2) 42%,var(--line)); border-radius:9px;
+      color:var(--accent-2); background:color-mix(in srgb,var(--accent-2) 7%,var(--surface)); font-size:1.2rem;
     }
-    .faq-item[open] summary::after { content:"−"; }
-    .faq-answer { padding:0 20px 20px; color:var(--muted); line-height:1.7; }
+    .faq-item[open] summary::after {
+      content:"−"; border-color:transparent; color:#fff;
+      background:linear-gradient(135deg,var(--accent),var(--accent-2));
+    }
+    .faq-answer { margin:0 20px 20px; padding:17px 0 0; border-top:1px solid var(--line); color:var(--muted); line-height:1.7; }
     .faq-answer p { margin:0; }
     .faq-answer a { color:var(--accent-2); font-weight:800; }
     .faq-permalink { display:inline-flex; margin-top:13px; font-size:.82rem; text-decoration:none; }
     .faq-permalink::before { content:"#"; margin-right:5px; }
     @media(max-width:760px) {
-      .faq-main { margin-top:40px; }
+      .faq-main { margin-top:18px; }
       .faq-hero,.faq-grid { grid-template-columns:1fr; }
-      .faq-hero { gap:24px; }
-      .faq-search { margin-top:32px; padding:16px; }
-      .faq-section { margin-top:52px; }
+      .faq-hero { min-height:auto; gap:28px; padding:40px 32px 54px; border-radius:24px; }
+      .faq-hero::after { right:-8%; top:-22%; font-size:22rem; }
+      .faq-hero h1 { font-size:clamp(3.25rem,14vw,5.2rem); }
+      .faq-search { width:calc(100% - 26px); margin-top:-24px; padding:20px; }
+      .faq-categories { padding:20px; }
+      .faq-section { margin-top:32px; padding:32px 26px; border-radius:24px; }
+      .faq-section::after { font-size:10rem; }
     }
     @media(max-width:420px) {
       .site-head { padding:0 10px; gap:8px; }
       .site-head nav { gap:6px; }
       .site-head nav a { font-size:.76rem; }
       .theme-toggle { padding:8px; }
+      .faq-hero { padding:34px 22px 48px; }
+      .faq-hero h1 { font-size:clamp(2.8rem,15vw,4rem); }
+      .faq-intro { padding:22px; }
+      .faq-section { padding:25px 18px; border-radius:20px; }
+      .faq-section-head { grid-template-columns:50px minmax(0,1fr); gap:13px; }
+      .faq-section-number { width:50px; height:50px; border-radius:14px; }
+      .faq-section-head h2 { font-size:1.55rem; }
       .faq-item summary { padding:16px; }
-      .faq-answer { padding:0 16px 17px; }
+      .faq-answer { margin:0 16px 17px; padding-top:15px; }
       .faq-search-row { align-items:stretch; }
       .faq-search-clear { padding:0 13px; }
     }
@@ -138,8 +222,8 @@
       Try a different word or clear the search to see every question.
     </div>
 
-    <section class="faq-section" aria-labelledby="about-faq">
-      <div class="faq-section-head"><p class="eyebrow">The experience</p><h2 id="about-faq">About CISO Open Mic</h2></div>
+    <section class="faq-section" data-section-number="01" aria-labelledby="about-faq">
+      <div class="faq-section-head"><span class="faq-section-number" aria-hidden="true">01</span><div><p class="eyebrow">The experience</p><h2 id="about-faq">About CISO Open Mic</h2></div></div>
       <div class="faq-grid">
         <details class="faq-item"><summary>What is CISO Open Mic?</summary><div class="faq-answer"><p>CISO Open Mic is a platform that allows CISOs and other security leaders to share insights, experiences and challenges. Each local gathering creates space for practical exchange, useful ideas and real relationships—without presentations or sales pitches.</p></div></details>
         <details class="faq-item"><summary>Who is it for?</summary><div class="faq-answer"><p>CISOs and other security leaders are at the core of CISO Open Mic. We also welcome aspiring leaders and other community and industry stakeholders. Participation may be curated because each gathering is intentionally local and venue capacity is limited.</p></div></details>
@@ -149,8 +233,8 @@
       </div>
     </section>
 
-    <section class="faq-section" aria-labelledby="registration-faq">
-      <div class="faq-section-head"><p class="eyebrow">Taking part</p><h2 id="registration-faq">Registration and approval</h2></div>
+    <section class="faq-section" data-section-number="02" aria-labelledby="registration-faq">
+      <div class="faq-section-head"><span class="faq-section-number" aria-hidden="true">02</span><div><p class="eyebrow">Taking part</p><h2 id="registration-faq">Registration and approval</h2></div></div>
       <div class="faq-grid">
         <details class="faq-item"><summary>How do I register?</summary><div class="faq-answer"><p>When registration opens, the relevant city page will link to the event on Luma. Registration and topic submissions are handled together through that process. A submitted registration is not admission; you must be approved through Luma before attending.</p></div></details>
         <details class="faq-item"><summary>Can I register with a personal email address?</summary><div class="faq-answer"><p>No. You must register with an organizational email address. Registrations using Gmail, Hotmail or another non-organizational email address will be declined.</p></div></details>
@@ -168,8 +252,8 @@
       </div>
     </section>
 
-    <section class="faq-section" aria-labelledby="mic-faq">
-      <div class="faq-section-head"><p class="eyebrow">Your contribution</p><h2 id="mic-faq">Taking the mic</h2></div>
+    <section class="faq-section" data-section-number="03" aria-labelledby="mic-faq">
+      <div class="faq-section-head"><span class="faq-section-number" aria-hidden="true">03</span><div><p class="eyebrow">Your contribution</p><h2 id="mic-faq">Taking the mic</h2></div></div>
       <div class="faq-grid">
         <details class="faq-item"><summary>Do I have to speak?</summary><div class="faq-answer"><p>No. You can take the mic or take it all in. Listening, learning and connecting with peers are equally valid ways to participate.</p></div></details>
         <details class="faq-item"><summary>How do I submit a topic?</summary><div class="faq-answer"><p>Topic submissions are included in the Luma registration process. You do not need to complete a separate CISO Open Mic form.</p></div></details>
@@ -180,8 +264,8 @@
       </div>
     </section>
 
-    <section class="faq-section" aria-labelledby="event-faq">
-      <div class="faq-section-head"><p class="eyebrow">In the room</p><h2 id="event-faq">At the event</h2></div>
+    <section class="faq-section" data-section-number="04" aria-labelledby="event-faq">
+      <div class="faq-section-head"><span class="faq-section-number" aria-hidden="true">04</span><div><p class="eyebrow">In the room</p><h2 id="event-faq">At the event</h2></div></div>
       <div class="faq-grid">
         <details class="faq-item"><summary>Are discussions confidential?</summary><div class="faq-answer"><p>CISO Open Mic discussions are held under the Chatham House Rule. You may use the information you receive, but you may not reveal the identity or affiliation of the speaker or any other participant. Do not attribute comments to a person or organization without their express permission.</p></div></details>
         <details class="faq-item"><summary>Can I post about the event?</summary><div class="faq-answer"><p>Yes. We appreciate positive LinkedIn posts and other media about CISO Open Mic, but posting is entirely optional and no one should feel obligated. Please do not expect a response to every post. We will do our best, but we may not see it. Including <strong>#CISOOpenMic</strong> makes a post more likely to get our attention, though it does not guarantee a response. Anything shared must respect the Chatham House Rule: do not identify participants, attribute comments or disclose confidential information without permission.</p></div></details>
@@ -193,8 +277,8 @@
       </div>
     </section>
 
-    <section class="faq-section" aria-labelledby="judging-faq">
-      <div class="faq-section-head"><p class="eyebrow">Recognition</p><h2 id="judging-faq">Judges, awards and certificates</h2></div>
+    <section class="faq-section" data-section-number="05" aria-labelledby="judging-faq">
+      <div class="faq-section-head"><span class="faq-section-number" aria-hidden="true">05</span><div><p class="eyebrow">Recognition</p><h2 id="judging-faq">Judges, awards and certificates</h2></div></div>
       <div class="faq-grid">
         <details class="faq-item"><summary>How are judges selected?</summary><div class="faq-answer"><p>We aim to cycle judges and prioritize people based in the host municipality or surrounding region. At times, we may bring in an experienced judge from another region to support continuity and consistency between CISO Open Mic events.</p></div></details>
         <details class="faq-item"><summary>Are judges compensated for their role?</summary><div class="faq-answer"><p>No. Judges are not compensated for serving in the role.</p></div></details>
@@ -203,8 +287,8 @@
       </div>
     </section>
 
-    <section class="faq-section" aria-labelledby="support-faq">
-      <div class="faq-section-head"><p class="eyebrow">Community support</p><h2 id="support-faq">Sponsors and commercial participation</h2></div>
+    <section class="faq-section" data-section-number="06" aria-labelledby="support-faq">
+      <div class="faq-section-head"><span class="faq-section-number" aria-hidden="true">06</span><div><p class="eyebrow">Community support</p><h2 id="support-faq">Sponsors and commercial participation</h2></div></div>
       <div class="faq-grid">
         <details class="faq-item"><summary>What role do sponsors play?</summary><div class="faq-answer"><p>Sponsors help support the community and event experience. They do not control programming, judging, editorial direction or who is invited to participate.</p></div></details>
         <details class="faq-item"><summary>Do sponsors receive my information?</summary><div class="faq-answer"><p>Only sponsors directly supporting the event may receive limited professional information provided during registration, such as your name, title, organization, business email address and LinkedIn profile. We do not sell attendee information or provide it to unrelated third parties. Sponsor communications are subject to their own privacy practices and applicable consent and unsubscribe requirements.</p></div></details>
