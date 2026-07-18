@@ -16,8 +16,8 @@
     body { min-height:100svh; margin:0; overflow-x:hidden; background:var(--bg); color:var(--text); font-family:"Open Sans",Arial,sans-serif; border:2px solid var(--accent-2); display:flex; flex-direction:column; }
     body.light { --bg:#f8fafc; --surface:#fff; --surface-2:#edf1f5; --text:#0f172a; --muted:#475569; --line:#d8dee7; }
     button,a { font:inherit; }
-    .site-head,.site-foot,.section-inner { width:min(1080px,calc(100% - 36px)); margin:0 auto; }
-    .site-head { position:sticky; top:0; z-index:1000; min-height:76px; display:flex; align-items:center; justify-content:space-between; gap:20px; background:var(--bg); transition:background-color .5s ease; }
+    .site-foot,.section-inner { width:min(1080px,calc(100% - 36px)); margin:0 auto; }
+    .site-head { position:sticky; top:0; z-index:1000; width:100%; min-height:76px; margin:0; padding:0 max(18px,calc(50% - 540px)); display:flex; align-items:center; justify-content:space-between; gap:20px; background:var(--bg); transition:background-color .5s ease; }
     .site-head a { color:var(--text); font-weight:800; text-decoration:none; }
     .site-head nav { display:flex; align-items:center; gap:18px; }
     .site-head nav a { color:var(--muted); font-size:.92rem; }
