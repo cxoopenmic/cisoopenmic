@@ -43,6 +43,7 @@
     .hero-logo:nth-child(4) { top:178px; right:2%; transform:rotate(-5deg); }
     .hero-logo:nth-child(5) { bottom:0; left:0; transform:rotate(5deg); }
     .hero-logo:nth-child(6) { bottom:2px; right:15%; transform:rotate(-2deg); }
+    .hero-logo:nth-child(n+7) { display:none; }
     .sponsor-section { padding:92px 0 108px; }
     .current-section { background:radial-gradient(circle at 90% 8%,rgba(255,138,0,.12),transparent 28%),var(--bg); }
     .past-section { background:var(--surface-2); }
@@ -112,7 +113,7 @@
     <section class="sponsor-hero" aria-labelledby="sponsors-title">
       <div class="section-inner">
         <div><p class="eyebrow">Our sponsors</p><h1 id="sponsors-title">Backing the people <span>behind the ideas.</span></h1><p class="hero-lede">CISO Open Mic is made possible by organizations that value candid leadership conversations and stronger security communities. Their support helps create the room. The community shapes what happens inside it.</p></div>
-        <div class="hero-logo-cloud" aria-label="A selection of current sponsors"><div class="hero-logo"><img src="/assets/pan.png" alt="Palo Alto Networks" /></div><div class="hero-logo"><img src="/assets/sponsors/immersive.svg" alt="Immersive Labs" /></div><div class="hero-logo"><img src="/assets/sponsors/horizon3-light.svg" alt="Horizon3.ai" /></div><div class="hero-logo"><img src="/assets/axonius.png" alt="Axonius" /></div><div class="hero-logo"><img src="/assets/sponsors/optiv.png" alt="Optiv" /></div><div class="hero-logo"><img src="/assets/sponsors/algosec.png" alt="AlgoSec" /></div></div>
+        <div class="hero-logo-cloud" aria-label="A selection of current sponsors"><div class="hero-logo" data-hero-sponsor="palo-alto-networks"><img src="/assets/pan.png" alt="Palo Alto Networks" /></div><div class="hero-logo" data-hero-sponsor="immersive-labs"><img src="/assets/sponsors/immersive.svg" alt="Immersive Labs" /></div><div class="hero-logo" data-hero-sponsor="horizon3-ai"><img src="/assets/sponsors/horizon3-light.svg" alt="Horizon3.ai" /></div><div class="hero-logo" data-hero-sponsor="axonius"><img src="/assets/axonius.png" alt="Axonius" /></div><div class="hero-logo" data-hero-sponsor="optiv"><img src="/assets/sponsors/optiv.png" alt="Optiv" /></div><div class="hero-logo" data-hero-sponsor="algosec"><img src="/assets/sponsors/algosec.png" alt="AlgoSec" /></div><div class="hero-logo" data-hero-sponsor="kroll"><img src="/assets/sponsors/kroll.svg" alt="Kroll" /></div><div class="hero-logo" data-hero-sponsor="noma-security"><img src="/assets/sponsors/noma-security.svg" alt="Noma Security" /></div><div class="hero-logo" data-hero-sponsor="chainguard"><img src="/assets/sponsors/chainguard.svg" alt="Chainguard" /></div><div class="hero-logo" data-hero-sponsor="doppel"><img src="/assets/sponsors/doppel.svg" alt="Doppel" /></div></div>
       </div>
     </section>
     <section class="sponsor-section current-section" aria-labelledby="current-sponsors-heading">
@@ -440,6 +441,8 @@
   </template>
   <script>
     const toggleBtn=document.getElementById('theme-toggle');
+    const heroCloud=document.querySelector('.hero-logo-cloud');
+    if(heroCloud){const cards=Array.from(heroCloud.querySelectorAll('[data-hero-sponsor]'));for(let i=cards.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[cards[i],cards[j]]=[cards[j],cards[i]]}try{const previous=sessionStorage.getItem('ciso-sponsor-hero');let signature=cards.slice(0,6).map(card=>card.dataset.heroSponsor).join('|');if(previous===signature&&cards.length>1){cards.push(cards.shift());signature=cards.slice(0,6).map(card=>card.dataset.heroSponsor).join('|')}sessionStorage.setItem('ciso-sponsor-hero',signature)}catch(_){}cards.forEach(card=>heroCloud.append(card))}
     toggleBtn.addEventListener('click',()=>{document.body.classList.toggle('light');const light=document.body.classList.contains('light');toggleBtn.textContent=light?'Dark':'Light';toggleBtn.setAttribute('aria-label',light?'Switch to dark theme':'Switch to light theme')});
     const sponsorDialog=document.getElementById('sponsor-dialog');
     const sponsorDialogContent=document.getElementById('sponsor-dialog-content');
