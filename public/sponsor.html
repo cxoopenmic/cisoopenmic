@@ -12,6 +12,26 @@
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;800&amp;display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/assets/city-20260716.css?v=20260717-4" />
   <style>
+    .site-head,.site-head nav a,.theme-toggle {
+      transition:background-color .75s cubic-bezier(.22,1,.36,1),color .65s ease,box-shadow .65s ease;
+    }
+    .site-head {
+      --sponsor-head-surface:var(--bg); width:100%; margin:0;
+      padding:0 max(18px,calc(50% - 590px)); isolation:isolate; overflow:visible;
+    }
+    .site-head > * { position:relative; z-index:1; }
+    .site-head::after {
+      content:""; position:absolute; z-index:0; left:0; right:0; bottom:-26px; height:26px;
+      background:linear-gradient(to bottom,var(--sponsor-head-surface) 0 30%,color-mix(in srgb,var(--sponsor-head-surface) 68%,transparent) 58%,transparent 100%);
+      pointer-events:none;
+    }
+    body[data-sponsor-header="hero"] .site-head {
+      --sponsor-head-surface:#d63228; background-color:#d63228; box-shadow:0 10px 24px rgba(119,27,25,.16);
+    }
+    body[data-sponsor-header="hero"] .site-head nav a { color:rgba(255,255,255,.82); }
+    body[data-sponsor-header="hero"] .site-head nav a[aria-current="page"] { color:#fff; }
+    body[data-sponsor-header="hero"] .theme-toggle { background-color:#fff; color:#c8262f; }
+    main { margin-top:34px; }
     .sponsor-hero {
       position:relative; isolation:isolate; overflow:hidden; min-height:560px; padding:58px;
       grid-template-columns:minmax(0,1.3fr) minmax(300px,.7fr); align-items:center;
@@ -89,6 +109,9 @@
       .sponsor-cta { align-items:flex-start; flex-direction:column; }
     }
     @media(max-width:520px) {
+      .site-head { padding:0 10px; gap:8px; }
+      .site-head nav { gap:6px; }
+      .site-head nav a { font-size:.76rem; }
       .sponsor-hero { padding:34px 22px; border-radius:22px; }
       .sponsor-hero h1 { font-size:clamp(3rem,15vw,4.4rem); }
       .sponsor-value-grid,.include-grid,.sponsor-fit-grid { grid-template-columns:1fr; }
@@ -107,7 +130,7 @@
     <nav aria-label="Main navigation">
       <a href="/">Home</a>
       <a href="/blog/">Blog</a>
-      <a href="/sponsors/">Sponsors</a>
+      <a href="/sponsors/" aria-current="page">Sponsors</a>
       <a href="/faq/">FAQ</a>
       <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch to dark theme">Dark</button>
     </nav>
@@ -199,6 +222,26 @@
     <div class="legal-links"><a href="/privacy">Privacy Policy</a><span>·</span><a href="/terms">Terms of Use</a><span>·</span><a href="/conduct">Code of Conduct</a></div>
   </footer>
 
+  <script>
+    (() => {
+      const siteHead = document.querySelector('.site-head');
+      const hero = document.querySelector('.sponsor-hero');
+      let headerFrame = 0;
+      const syncSponsorHeader = () => {
+        headerFrame = 0;
+        const headerBottom = siteHead?.getBoundingClientRect().bottom || 76;
+        const heroBounds = hero?.getBoundingClientRect();
+        const overHero = heroBounds && heroBounds.top <= headerBottom && heroBounds.bottom > headerBottom;
+        document.body.dataset.sponsorHeader = overHero ? 'hero' : 'content';
+      };
+      const queueSponsorHeaderSync = () => {
+        if (!headerFrame) headerFrame = requestAnimationFrame(syncSponsorHeader);
+      };
+      syncSponsorHeader();
+      addEventListener('scroll', queueSponsorHeaderSync, { passive:true });
+      addEventListener('resize', queueSponsorHeaderSync);
+    })();
+  </script>
   <script src="/assets/city-20260716.js"></script>
 </body>
 </html>
