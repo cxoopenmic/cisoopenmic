@@ -235,7 +235,7 @@
     .perspective-card p { margin:0; color:#dbe3ef; font-size:.92rem; line-height:1.6; }
     .perspective-card:only-child { max-width:620px; }
     .register-cta {
-      position:relative; overflow:hidden; padding:94px 0 102px; color:#fff;
+      position:relative; overflow:hidden; padding:94px 0 102px; color:#fff; text-align:left;
       background:
         radial-gradient(circle at 88% 12%,rgba(255,255,255,.2),transparent 24%),
         linear-gradient(120deg,#c12331 0%,#ef4d18 58%,#ff8a00 100%);
@@ -395,7 +395,14 @@
       .difference-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
       .event-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
       .perspective-grid { grid-template-columns:1fr; }
-      .register-cta .section-inner { grid-template-columns:1fr; gap:34px; }
+      .register-cta { padding:64px 0 70px; }
+      .register-cta .section-inner { grid-template-columns:1fr; gap:26px; }
+      .register-cta h2 {
+        max-width:560px; margin:6px 0 14px;
+        font-size:clamp(2.55rem,7vw,3.3rem); line-height:.96; letter-spacing:-.05em;
+      }
+      .register-cta-copy > p:last-child { max-width:560px; font-size:1rem; }
+      .register-options { padding:24px; }
       .event-card:last-child { grid-column:1 / -1; min-height:230px; }
     }
     @media (max-width: 600px) {
@@ -405,7 +412,8 @@
       .home-hero { padding-top:88px; }
       .difference-grid { grid-template-columns:1fr; }
       .difference-card:nth-child(even) { transform:none; }
-      .register-cta { padding:72px 0 78px; }
+      .register-cta { padding:56px 0 62px; }
+      .register-cta h2 { font-size:clamp(2.35rem,12vw,3rem); }
       .register-options { padding:22px; border-radius:20px; }
       .register-city-grid { grid-template-columns:1fr; }
       .register-city:last-child { grid-column:auto; }
