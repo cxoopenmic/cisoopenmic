@@ -12,6 +12,15 @@
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;800&amp;display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/assets/city-20260716.css?v=20260717-4" />
   <style>
+    .site-head,.site-head nav a,.theme-toggle {
+      transition:background-color .75s cubic-bezier(.22,1,.36,1),color .65s ease,box-shadow .65s ease;
+    }
+    body[data-faq-header="hero"] .site-head {
+      background-color:#df3b21; box-shadow:0 10px 24px rgba(119,27,25,.16);
+    }
+    body[data-faq-header="hero"] .site-head nav a { color:rgba(255,255,255,.82); }
+    body[data-faq-header="hero"] .site-head nav a[aria-current="page"] { color:#fff; }
+    body[data-faq-header="hero"] .theme-toggle { background-color:#fff; color:#c8262f; }
     .faq-main { margin-top:34px; }
     .faq-hero {
       position:relative; isolation:isolate; overflow:hidden;
@@ -303,6 +312,23 @@
   <footer class="site-foot"><div>© 2026 CISO Open Mic</div><div class="legal-links"><a href="/privacy">Privacy Policy</a><span>·</span><a href="/terms">Terms of Use</a><span>·</span><a href="/conduct">Code of Conduct</a></div></footer>
   <script>
     (() => {
+      const siteHead = document.querySelector('.site-head');
+      const hero = document.querySelector('.faq-hero');
+      let headerFrame = 0;
+      const syncFaqHeader = () => {
+        headerFrame = 0;
+        const headerBottom = siteHead?.getBoundingClientRect().bottom || 76;
+        const heroBounds = hero?.getBoundingClientRect();
+        const overHero = heroBounds && heroBounds.top <= headerBottom && heroBounds.bottom > headerBottom;
+        document.body.dataset.faqHeader = overHero ? 'hero' : 'content';
+      };
+      const queueFaqHeaderSync = () => {
+        if (!headerFrame) headerFrame = requestAnimationFrame(syncFaqHeader);
+      };
+      syncFaqHeader();
+      addEventListener('scroll', queueFaqHeaderSync, { passive:true });
+      addEventListener('resize', queueFaqHeaderSync);
+
       const input = document.getElementById('faq-search-input');
       const clearButton = document.getElementById('faq-search-clear');
       const status = document.getElementById('faq-search-status');
