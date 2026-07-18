@@ -121,62 +121,75 @@
       border-radius:999px; background:linear-gradient(90deg,var(--accent),var(--accent-2));
     }
     .difference-card p { margin:0; color:#cbd5e1; font-size:.9rem; line-height:1.58; }
-    .events { margin:0; padding:82px 0 94px; background:var(--events-bg); scroll-margin-top:76px; }
-    .page-section { transition:background-color 1.2s ease,color 1.2s ease; }
-    .events-heading {
-      margin-bottom:18px; text-align:left;
+    .events {
+      margin:0; padding:92px 0 108px; color:#fff; scroll-margin-top:76px;
+      background:
+        radial-gradient(circle at 92% 12%,rgba(255,255,255,.2),transparent 24%),
+        radial-gradient(circle at 7% 100%,rgba(112,11,32,.22),transparent 30%),
+        linear-gradient(120deg,#ff8a00 0%,#ef4d18 48%,#c62535 100%);
     }
+    .page-section { transition:background-color 1.2s ease,color 1.2s ease; }
+    .events-heading { max-width:820px; margin-bottom:30px; text-align:left; }
     .eyebrow {
       margin:0 0 4px; color:var(--accent-2); font-size:.76rem;
       font-weight:800; letter-spacing:.16em; text-transform:uppercase;
     }
-    .events h2 { margin:0; font-size:clamp(1.45rem,3vw,2rem); line-height:1.15; }
-    .events-intro { margin:8px 0 0; max-width:620px; color:var(--muted); font-size:.92rem; }
+    .events .eyebrow {
+      display:inline-flex; margin-bottom:12px; padding:6px 10px;
+      border:1px solid rgba(255,255,255,.42); border-radius:999px;
+      color:#fff; background:rgba(10,18,38,.12);
+    }
+    .events h2 {
+      margin:0; color:#fff; font-size:clamp(2.35rem,5vw,4rem);
+      line-height:.96; letter-spacing:-.05em;
+    }
+    .events h2 span { display:block; color:#0a1328; }
+    .events-intro { margin:18px 0 0; max-width:650px; color:rgba(255,255,255,.9); font-size:1rem; line-height:1.55; }
     .event-grid {
-      display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:12px;
+      display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:14px;
     }
     .event-card {
-      position:relative; min-height:176px; overflow:hidden;
+      position:relative; min-height:210px; overflow:hidden;
       display:flex; flex-direction:column; justify-content:space-between;
-      padding:18px; border:1px solid var(--line); border-radius:14px;
-      background:var(--surface); text-align:center; color:inherit; text-decoration:none;
-      box-shadow:0 8px 22px rgba(0,0,0,.1);
+      padding:22px 18px 20px; border:1px solid rgba(255,255,255,.66); border-radius:18px;
+      background:#fff; text-align:center; color:#0a1328; text-decoration:none;
+      box-shadow:0 22px 42px rgba(75,16,13,.2);
       transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease;
     }
-    .event-card:hover { transform:translateY(-3px); border-color:var(--accent-2); box-shadow:0 12px 26px rgba(0,0,0,.14); }
-    .event-card:focus-visible { outline:3px solid var(--accent-2); outline-offset:3px; }
+    .event-card:hover { transform:translateY(-5px); border-color:#fff; box-shadow:0 28px 48px rgba(75,16,13,.26); }
+    .event-card:focus-visible { outline:3px solid #0a1328; outline-offset:3px; }
     .event-card::before {
-      content:""; position:absolute; inset:0 auto 0 0; width:3px;
-      background:linear-gradient(180deg,var(--accent),var(--accent-2));
+      content:""; position:absolute; inset:0 0 auto; width:100%; height:5px;
+      background:linear-gradient(90deg,#0a1328,#344563);
     }
     .event-card > :not(.city-landmark) { position:relative; z-index:1; }
     .event-card > div:first-child { width:100%; }
     .city-landmark {
-      position:absolute; left:50%; top:66px; width:78px; height:58px;
+      position:absolute; left:50%; top:76px; width:88px; height:64px;
       transform:translateX(-50%);
-      color:var(--landmark); opacity:.78; pointer-events:none;
+      color:#c9d3e1; opacity:.92; pointer-events:none;
     }
     .city-landmark * {
       fill:none; stroke:currentColor; stroke-width:1.65; stroke-linecap:round;
       stroke-linejoin:round; vector-effect:non-scaling-stroke;
     }
-    .city-landmark .landmark-accent { stroke:var(--accent-2); stroke-width:2.1; }
+    .city-landmark .landmark-accent { stroke:#ff8500; stroke-width:2.1; }
     .event-season {
-      color:var(--muted); font-size:.72rem; font-weight:800;
+      color:#53627a; font-size:.72rem; font-weight:800;
       letter-spacing:.12em; text-transform:uppercase;
     }
-    .event-city { margin:8px 0 0; color:var(--text); font-size:1.15rem; line-height:1.15; }
+    .event-city { margin:8px 0 0; color:#0a1328; font-size:1.2rem; line-height:1.15; }
     .event-date {
       display:block; margin-top:5px; color:var(--accent-2);
       font-size:.7rem; font-weight:800; letter-spacing:.04em;
     }
     .event-status {
-      align-self:center; margin-top:22px; padding:6px 9px;
-      border:1px solid color-mix(in srgb,var(--accent-2) 45%,transparent);
-      border-radius:999px; color:var(--accent-2); background:color-mix(in srgb,var(--accent-2) 9%,transparent);
+      align-self:center; margin-top:24px; padding:7px 11px;
+      border:1px solid #0a1328;
+      border-radius:999px; color:#fff; background:#0a1328;
       font-size:.7rem; font-weight:800; letter-spacing:.08em; text-decoration:none; text-transform:uppercase;
     }
-    a.event-status:hover { color:#fff; background:linear-gradient(135deg,var(--accent),var(--accent-2)); }
+    a.event-status:hover { color:#fff; background:#253657; }
     .perspectives {
       padding:82px 0 94px; background:#172033; color:#fff; text-align:left;
     }
@@ -287,7 +300,10 @@
     body[data-header-section="about"] .site-head nav a[aria-current="page"] { color:#fff; }
     body[data-header-section="about"] .theme-toggle { background-color:#fff; color:#c8262f; }
     body[data-header-section="difference"] .site-head { background-color:var(--difference-bg); }
-    body[data-header-section="events"] .site-head { background-color:var(--events-bg); }
+    body[data-header-section="events"] .site-head { background-color:#e3481d; }
+    body[data-header-section="events"] .site-head nav a { color:rgba(255,255,255,.82); }
+    body[data-header-section="events"] .site-head nav a[aria-current="page"] { color:#fff; }
+    body[data-header-section="events"] .theme-toggle { background-color:#fff; color:#c8262f; }
     body[data-header-section="perspectives"] .site-head { background-color:#172033; }
     body[data-header-section="perspectives"] .site-head nav a { color:#dbe3ef; }
     body[data-header-section="perspectives"] .site-head nav a[aria-current="page"] { color:#ffad45; }
@@ -307,7 +323,7 @@
       .difference-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
       .event-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
       .perspective-grid { grid-template-columns:1fr; }
-      .event-card:last-child { grid-column:1 / -1; min-height:176px; }
+      .event-card:last-child { grid-column:1 / -1; min-height:210px; }
     }
     @media (max-width: 600px) {
       body { padding:0; }
@@ -324,7 +340,7 @@
       .theme-toggle { padding:8px; }
       .brand img.logo { width:138px; height:auto; }
       .about,.difference,.events { padding:64px 0; }
-      .event-card { min-height:176px; padding:16px; }
+      .event-card { min-height:200px; padding:18px 14px; }
       .event-city { font-size:1.05rem; }
     }
     @media (prefers-reduced-motion:reduce) {
@@ -414,7 +430,7 @@
       <div class="section-inner">
         <div class="events-heading">
           <p class="eyebrow">Fall 2026</p>
-          <h2 id="fall-events-heading">The conversation continues</h2>
+          <h2 id="fall-events-heading">The conversation <span>continues</span></h2>
           <p class="events-intro">New CISO Open Mic gatherings are taking shape across five cities.</p>
         </div>
 
