@@ -21,6 +21,29 @@
     }
     .faq-intro strong { display:block; margin-bottom:8px; font-size:1.2rem; }
     .faq-intro p { margin:0; color:var(--muted); line-height:1.65; }
+    .faq-search {
+      margin-top:42px; padding:20px; border:1px solid var(--line); border-radius:16px;
+      background:var(--surface); box-shadow:0 12px 30px rgba(0,0,0,.08);
+    }
+    .faq-search label { display:block; margin-bottom:10px; color:var(--text); font-weight:800; }
+    .faq-search-row { display:flex; gap:10px; }
+    .faq-search input {
+      flex:1 1 auto; min-width:0; padding:14px 16px; border:1px solid var(--line); border-radius:11px;
+      background:var(--bg); color:var(--text); font:inherit;
+    }
+    .faq-search input::placeholder { color:var(--muted); opacity:.8; }
+    .faq-search input:focus-visible { outline:3px solid color-mix(in srgb,var(--accent-2) 35%,transparent); border-color:var(--accent-2); }
+    .faq-search-clear {
+      flex:0 0 auto; padding:0 18px; border:1px solid var(--line); border-radius:11px;
+      background:var(--surface); color:var(--text); font:inherit; font-weight:800; cursor:pointer;
+    }
+    .faq-search-clear:hover { border-color:var(--accent-2); color:var(--accent-2); }
+    .faq-search-status { margin:10px 0 0; color:var(--muted); font-size:.9rem; }
+    .faq-no-results {
+      margin-top:38px; padding:28px; border:1px dashed var(--line); border-radius:16px;
+      color:var(--muted); text-align:center;
+    }
+    .faq-no-results strong { display:block; margin-bottom:6px; color:var(--text); font-size:1.1rem; }
     .faq-section { margin-top:68px; }
     .faq-section-head { max-width:700px; margin-bottom:20px; }
     .faq-section-head h2 { margin:0; font-size:clamp(1.6rem,4vw,2.3rem); line-height:1.1; }
@@ -48,6 +71,7 @@
       .faq-main { margin-top:40px; }
       .faq-hero,.faq-grid { grid-template-columns:1fr; }
       .faq-hero { gap:24px; }
+      .faq-search { margin-top:32px; padding:16px; }
       .faq-section { margin-top:52px; }
     }
     @media(max-width:420px) {
@@ -57,6 +81,8 @@
       .theme-toggle { padding:8px; }
       .faq-item summary { padding:16px; }
       .faq-answer { padding:0 16px 17px; }
+      .faq-search-row { align-items:stretch; }
+      .faq-search-clear { padding:0 13px; }
     }
   </style>
 </head>
@@ -73,6 +99,20 @@
       <div><p class="eyebrow">Frequently asked questions</p><h1 id="faq-title">Questions, answered.</h1><p class="lede">What to expect from CISO Open Mic, how to participate and how each local gathering works.</p></div>
       <aside class="faq-intro"><strong>Start with your city.</strong><p>Dates, locations, capacity and registration details are published on each city page as they become available.</p></aside>
     </section>
+
+    <section class="faq-search" aria-labelledby="faq-search-label">
+      <label id="faq-search-label" for="faq-search-input">Search the FAQ</label>
+      <div class="faq-search-row">
+        <input id="faq-search-input" type="search" placeholder="Search registration, mic rules, sponsors…" autocomplete="off" spellcheck="false" />
+        <button id="faq-search-clear" class="faq-search-clear" type="button" hidden>Clear</button>
+      </div>
+      <p id="faq-search-status" class="faq-search-status" role="status" aria-live="polite">Search all questions and answers.</p>
+    </section>
+
+    <div id="faq-no-results" class="faq-no-results" hidden>
+      <strong>No matching questions.</strong>
+      Try a different word or clear the search to see every question.
+    </div>
 
     <section class="faq-section" aria-labelledby="about-faq">
       <div class="faq-section-head"><p class="eyebrow">The experience</p><h2 id="about-faq">About CISO Open Mic</h2></div>
@@ -133,6 +173,57 @@
   </main>
 
   <footer class="site-foot"><div>© 2026 CISO Open Mic</div><div class="legal-links"><a href="/privacy">Privacy Policy</a><span>·</span><a href="/terms">Terms of Use</a><span>·</span><a href="/conduct">Code of Conduct</a></div></footer>
+  <script>
+    (() => {
+      const input = document.getElementById('faq-search-input');
+      const clearButton = document.getElementById('faq-search-clear');
+      const status = document.getElementById('faq-search-status');
+      const noResults = document.getElementById('faq-no-results');
+      const items = [...document.querySelectorAll('.faq-item')];
+      const sections = [...document.querySelectorAll('.faq-section')];
+      const normalize = value => value.toLocaleLowerCase().replace(/\s+/g, ' ').trim();
+
+      items.forEach(item => { item.dataset.search = normalize(item.textContent); });
+
+      const filterFaq = () => {
+        const query = normalize(input.value);
+        const terms = query ? query.split(' ') : [];
+        let visible = 0;
+
+        items.forEach(item => {
+          const matches = terms.every(term => item.dataset.search.includes(term));
+          item.hidden = !matches;
+          if (!matches) item.open = false;
+          if (matches) visible += 1;
+        });
+
+        sections.forEach(section => {
+          section.hidden = !section.querySelector('.faq-item:not([hidden])');
+        });
+
+        clearButton.hidden = !query;
+        noResults.hidden = visible !== 0;
+        status.textContent = query
+          ? `${visible} ${visible === 1 ? 'result' : 'results'} for “${input.value.trim()}”.`
+          : `${items.length} questions available.`;
+      };
+
+      input.addEventListener('input', filterFaq);
+      input.addEventListener('keydown', event => {
+        if (event.key === 'Escape' && input.value) {
+          input.value = '';
+          filterFaq();
+        }
+      });
+      clearButton.addEventListener('click', () => {
+        input.value = '';
+        filterFaq();
+        input.focus();
+      });
+
+      filterFaq();
+    })();
+  </script>
   <script src="/assets/city-20260716.js"></script>
 </body>
 </html>
