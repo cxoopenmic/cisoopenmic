@@ -189,14 +189,13 @@ body:not(.light) .experience-section { background:linear-gradient(135deg,#21170f
 .newsletter h2 { margin:4px 0 9px; font-size:clamp(1.7rem,4vw,2.4rem); line-height:1.08; }
 .newsletter p { margin:0; color:rgba(255,255,255,.86); }
 .newsletter form { padding:22px; border:1px solid rgba(255,255,255,.36); border-radius:18px; background:rgba(7,16,32,.24); backdrop-filter:blur(12px); }
-.newsletter label { color:#fff; }
 .newsletter form { min-width:0; display:grid; gap:10px; }
-.newsletter label { display:grid; gap:5px; color:var(--muted); font-size:.8rem; font-weight:800; }
+.newsletter label { display:grid; gap:5px; color:#fff; font-size:.8rem; font-weight:800; }
 .newsletter input[type="email"] {
   min-width:0; width:100%; padding:11px 12px; border:1px solid var(--line); border-radius:8px;
   background:#fff; color:#0f172a; font:inherit;
 }
-.newsletter-consent { display:flex!important; align-items:flex-start; gap:8px!important; font-weight:500!important; line-height:1.4; }
+.newsletter-consent { display:flex!important; align-items:flex-start; gap:8px!important; color:#fff!important; font-weight:600!important; line-height:1.4; }
 .newsletter-consent input { margin-top:3px; }
 .newsletter .cf-turnstile { width:100%; max-width:100%; overflow:hidden; }
 .newsletter button {
