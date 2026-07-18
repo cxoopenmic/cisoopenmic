@@ -5,30 +5,90 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Sponsorship · CISO Open Mic</title>
   <meta name="description" content="Start a conversation about supporting CISO Open Mic events and security leadership communities." />
-  <link rel="canonical" href="https://cisoopenmic.com/sponsor.html" />
+  <link rel="canonical" href="https://cisoopenmic.com/sponsor" />
   <link rel="icon" href="/assets/favicon.ico" type="image/x-icon" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;800&amp;display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/assets/city-20260716.css?v=20260717-4" />
   <style>
-    .sponsor-hero { min-height:58vh; align-items:center; }
-    .sponsor-hero .eyebrow { color:var(--accent-2); }
-    .sponsor-hero h1 { line-height:1.02; padding-bottom:.1em; }
-    .sponsor-principles { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px; }
-    .sponsor-principle { padding:22px; border:1px solid var(--line); border-radius:14px; background:var(--card); }
-    .sponsor-principle h3 { margin:0 0 8px; }
-    .sponsor-principle p { margin:0; color:var(--muted); }
-    .sponsor-cta { display:flex; align-items:center; justify-content:space-between; gap:24px; padding:28px; border-radius:16px; background:linear-gradient(135deg,var(--accent),var(--accent-2)); color:#fff; }
+    .sponsor-hero {
+      position:relative; isolation:isolate; overflow:hidden; min-height:560px; padding:58px;
+      grid-template-columns:minmax(0,1.3fr) minmax(300px,.7fr); align-items:center;
+      border-radius:30px; color:#fff;
+      background:radial-gradient(circle at 88% 12%,rgba(255,255,255,.19),transparent 24%),radial-gradient(circle at 5% 100%,rgba(80,8,28,.34),transparent 34%),linear-gradient(120deg,#c12331 0%,#ef4d18 58%,#ff8a00 100%);
+      box-shadow:0 28px 68px rgba(193,35,49,.2);
+    }
+    .sponsor-hero::after { content:""; position:absolute; z-index:-1; right:-95px; bottom:-210px; width:430px; height:430px; border:76px solid rgba(255,255,255,.07); border-radius:50%; }
+    .sponsor-hero .eyebrow { display:inline-flex; padding:7px 12px; border:1px solid rgba(255,255,255,.42); border-radius:999px; color:#fff; background:rgba(7,16,32,.12); }
+    .sponsor-hero h1 { max-width:760px; padding:0; color:#fff; background:none; font-size:clamp(3.5rem,7vw,6.6rem); line-height:.98; letter-spacing:-.065em; -webkit-background-clip:initial; background-clip:initial; }
+    .sponsor-hero .lede { max-width:720px; color:rgba(255,255,255,.9); font-size:1.08rem; line-height:1.7; }
+    .sponsor-hero .event-panel { border-color:rgba(255,255,255,.35); color:#fff; background:rgba(7,16,32,.24); box-shadow:0 20px 48px rgba(89,22,19,.2); backdrop-filter:blur(14px); }
+    .sponsor-hero .event-panel p { color:rgba(255,255,255,.82); line-height:1.65; }
+    .sponsor-hero .status { color:#fff; border-color:rgba(255,255,255,.42); background:rgba(255,255,255,.09); }
+    .sponsor-hero .event-panel h2 { font-size:clamp(1.8rem,3.4vw,2.7rem); line-height:1.02; }
+    .sponsor-section { margin-top:78px; }
+    .sponsor-section .section-heading { max-width:810px; }
+    .sponsor-section .section-heading p:last-child { font-size:1rem; line-height:1.65; }
+    .sponsor-value-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:14px; margin-top:28px; }
+    .sponsor-value-card { position:relative; min-height:278px; overflow:hidden; padding:28px 24px; border:1px solid var(--line); border-radius:20px; background:var(--surface); box-shadow:0 16px 34px rgba(15,23,42,.08); }
+    .sponsor-value-card::before { content:""; position:absolute; inset:0 0 auto; height:4px; background:linear-gradient(90deg,var(--accent),var(--accent-2)); }
+    .sponsor-value-number { color:var(--accent-2); font-size:.78rem; font-weight:800; letter-spacing:.12em; }
+    .sponsor-value-card h3 { margin:58px 0 10px; font-size:1.2rem; line-height:1.15; }
+    .sponsor-value-card p { margin:0; color:var(--muted); font-size:.91rem; line-height:1.62; }
+    .sponsor-includes { padding:54px; border-radius:30px; color:#fff; background:#172033; box-shadow:0 26px 60px rgba(10,18,34,.2); }
+    .sponsor-includes .section-heading h2,.sponsor-includes .eyebrow { color:#fff; }
+    .sponsor-includes .section-heading p { color:#dbe3ef; }
+    .include-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; margin-top:28px; }
+    .include-item { display:grid; grid-template-columns:34px minmax(0,1fr); gap:13px; align-items:start; padding:18px; border:1px solid rgba(255,255,255,.14); border-radius:15px; background:rgba(255,255,255,.06); }
+    .include-mark { display:grid; place-items:center; width:34px; height:34px; border-radius:10px; color:#172033; background:#ffad45; font-weight:800; }
+    .include-item strong { display:block; margin-bottom:5px; }
+    .include-item p { margin:0; color:#dbe3ef; font-size:.86rem; line-height:1.55; }
+    .scope-note { margin:22px 0 0; color:#aebbd0; font-size:.82rem; line-height:1.55; }
+    .sponsor-boundaries { display:grid; grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr); gap:42px; align-items:start; padding:54px; border:1px solid var(--line); border-radius:30px; background:linear-gradient(145deg,var(--surface-soft),color-mix(in srgb,var(--accent-2) 6%,var(--surface))); }
+    .sponsor-boundaries h2 { margin:0; font-size:clamp(2.1rem,4.8vw,4rem); line-height:.98; letter-spacing:-.05em; }
+    .sponsor-boundaries .intro { margin:16px 0 0; color:var(--muted); line-height:1.65; }
+    .boundary-list { display:grid; gap:10px; margin:0; padding:0; list-style:none; }
+    .boundary-list li { position:relative; padding:16px 18px 16px 48px; border:1px solid var(--line); border-radius:14px; background:var(--surface); color:var(--muted); line-height:1.55; }
+    .boundary-list li::before { content:"×"; position:absolute; left:17px; top:14px; color:var(--accent); font-size:1.25rem; font-weight:800; }
+    .sponsor-fit-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; margin-top:28px; }
+    .fit-card { padding:30px; border-radius:20px; }
+    .fit-card h3 { margin:0 0 18px; font-size:1.35rem; }
+    .fit-card ul { display:grid; gap:11px; margin:0; padding:0; list-style:none; }
+    .fit-card li { position:relative; padding-left:25px; color:var(--muted); line-height:1.55; }
+    .fit-card li::before { position:absolute; left:0; color:var(--accent-2); font-weight:800; }
+    .fit-card--yes { border:1px solid color-mix(in srgb,var(--accent-2) 45%,var(--line)); background:color-mix(in srgb,var(--accent-2) 7%,var(--surface)); }
+    .fit-card--yes li::before { content:"✓"; }
+    .fit-card--no { border:1px solid var(--line); background:var(--surface-soft); }
+    .fit-card--no li::before { content:"×"; color:var(--accent); }
+    .sponsor-steps { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px; margin-top:28px; }
+    .sponsor-step { padding:26px; border:1px solid var(--line); border-radius:18px; background:var(--surface); }
+    .sponsor-step span { color:var(--accent-2); font-size:1.8rem; font-weight:800; letter-spacing:-.06em; }
+    .sponsor-step h3 { margin:28px 0 8px; font-size:1.14rem; }
+    .sponsor-step p { margin:0; color:var(--muted); font-size:.9rem; line-height:1.58; }
+    .sponsor-cta { display:flex; align-items:center; justify-content:space-between; gap:32px; padding:46px; border-radius:24px; background:linear-gradient(135deg,var(--accent),var(--accent-2)); color:#fff; box-shadow:0 24px 56px rgba(193,35,49,.2); }
     .sponsor-cta h2,.sponsor-cta p { margin:0; }
-    .sponsor-cta p { margin-top:6px; opacity:.9; }
+    .sponsor-cta h2 { font-size:clamp(1.8rem,4vw,3rem); line-height:1.04; }
+    .sponsor-cta p { max-width:650px; margin-top:9px; opacity:.9; line-height:1.6; }
     .sponsor-actions { display:flex; flex-wrap:wrap; gap:10px; }
     .sponsor-actions a { display:inline-flex; align-items:center; justify-content:center; padding:11px 16px; border:1px solid rgba(255,255,255,.7); border-radius:9px; color:#fff; font-weight:800; text-decoration:none; }
     .sponsor-actions a:first-child { border-color:#fff; background:#fff; color:#172033; }
+    @media(max-width:900px) { .sponsor-value-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
     @media(max-width:760px) {
-      .sponsor-hero { min-height:auto; padding-top:130px; }
-      .sponsor-principles { grid-template-columns:1fr; }
+      .sponsor-hero { min-height:auto; grid-template-columns:1fr; padding:42px 30px; }
+      .sponsor-includes,.sponsor-boundaries { padding:36px 30px; }
+      .sponsor-boundaries { grid-template-columns:1fr; gap:28px; }
+      .sponsor-steps { grid-template-columns:1fr; }
       .sponsor-cta { align-items:flex-start; flex-direction:column; }
+    }
+    @media(max-width:520px) {
+      .sponsor-hero { padding:34px 22px; border-radius:22px; }
+      .sponsor-hero h1 { font-size:clamp(3rem,15vw,4.4rem); }
+      .sponsor-value-grid,.include-grid,.sponsor-fit-grid { grid-template-columns:1fr; }
+      .sponsor-value-card { min-height:230px; }
+      .sponsor-value-card h3 { margin-top:38px; }
+      .sponsor-includes,.sponsor-boundaries { padding:30px 22px; border-radius:22px; }
+      .sponsor-cta { padding:30px 22px; }
     }
   </style>
 </head>
@@ -49,30 +109,72 @@
       <div>
         <p class="eyebrow">Sponsorship</p>
         <h1 id="sponsor-title">Built around the right fit.</h1>
-        <p class="lede">CISO Open Mic works with organizations that value candid security-leadership conversations and want to support the communities where those conversations happen.</p>
+        <p class="lede">Sponsorship gives organizations a credible way to support regional security-leadership communities, be present in the room and build recognition over time—without turning the event into a sales environment.</p>
       </div>
       <aside class="event-panel">
         <span class="status">Let’s talk</span>
-        <h2>Opportunities are shaped together.</h2>
-        <p>Tell us which communities and events matter to your organization. We’ll follow up to explore whether there is a strong fit.</p>
+        <h2>Support that feels relevant.</h2>
+        <p>Choose the cities and communities that matter to your organization. We shape the relationship around fit, scope and the experience we are building together.</p>
       </aside>
     </section>
 
-    <section class="section" aria-labelledby="principles-title">
+    <section class="section sponsor-section" aria-labelledby="value-title">
       <div class="section-heading">
-        <p class="eyebrow">Our approach</p>
-        <h2 id="principles-title">Support the room. Respect the conversation.</h2>
-        <p>Sponsorship supports the community and event experience. It does not determine programming, judging, editorial direction, or who is invited to participate.</p>
+        <p class="eyebrow">Why organizations participate</p>
+        <h2 id="value-title">Value built on presence—not interruption.</h2>
+        <p>CISO Open Mic gives sponsors a visible, credible role in supporting practitioner communities while protecting the independence that makes those communities worth joining.</p>
       </div>
-      <div class="sponsor-principles">
-        <article class="sponsor-principle"><h3>Community first</h3><p>The quality and independence of the peer conversation remain central to every event.</p></article>
-        <article class="sponsor-principle"><h3>Built around fit</h3><p>We discuss opportunities in the context of the cities, events, and communities an organization hopes to support.</p></article>
-        <article class="sponsor-principle"><h3>Clear relationships</h3><p>Sponsors and community partners may contribute in different ways. We describe each relationship accurately.</p></article>
+      <div class="sponsor-value-grid">
+        <article class="sponsor-value-card"><span class="sponsor-value-number">01</span><h3>Credible presence</h3><p>Approved sponsor representatives can participate in the events they support, subject to the agreed scope, registration requirements and venue capacity.</p></article>
+        <article class="sponsor-value-card"><span class="sponsor-value-number">02</span><h3>Regional relevance</h3><p>Align support with the cities and security-leadership communities that matter most to your organization.</p></article>
+        <article class="sponsor-value-card"><span class="sponsor-value-number">03</span><h3>Meaningful recognition</h3><p>Build visibility through an active sponsor profile and recognition connected to agreed events, cities and communications.</p></article>
+        <article class="sponsor-value-card"><span class="sponsor-value-number">04</span><h3>Better context</h3><p>Hear the issues, pressures and priorities practitioners are discussing—while respecting the Chatham House Rule and the boundaries of the room.</p></article>
+      </div>
+    </section>
+
+    <section class="section sponsor-includes" aria-labelledby="included-title">
+      <div class="section-heading"><p class="eyebrow">A relationship shaped to fit</p><h2 id="included-title">What sponsorship may include.</h2><p>The exact combination depends on the communities, events and objectives agreed with each sponsor.</p></div>
+      <div class="include-grid">
+        <article class="include-item"><span class="include-mark" aria-hidden="true">✓</span><div><strong>Current sponsor profile</strong><p>Logo, company overview and a link from the CISO Open Mic Sponsors page.</p></div></article>
+        <article class="include-item"><span class="include-mark" aria-hidden="true">✓</span><div><strong>Event and city recognition</strong><p>Appropriate acknowledgement connected to the communities and gatherings being supported.</p></div></article>
+        <article class="include-item"><span class="include-mark" aria-hidden="true">✓</span><div><strong>Representative participation</strong><p>Attendance opportunities for approved sponsor representatives within the agreed event scope.</p></div></article>
+        <article class="include-item"><span class="include-mark" aria-hidden="true">✓</span><div><strong>Agreed communications visibility</strong><p>Recognition in relevant digital or event communications where it fits the relationship.</p></div></article>
+        <article class="include-item"><span class="include-mark" aria-hidden="true">✓</span><div><strong>Relevant professional information</strong><p>Limited registration details may be shared only for an event the sponsor directly supports, where disclosed and permitted.</p></div></article>
+        <article class="include-item"><span class="include-mark" aria-hidden="true">✓</span><div><strong>Clear event preparation</strong><p>A planning conversation covering logistics, participation expectations, community standards and the boundaries of the room.</p></div></article>
+      </div>
+      <p class="scope-note">These are possible components, not a universal package or guarantee. Every relationship is confirmed through an agreed scope before participation.</p>
+    </section>
+
+    <section class="section sponsor-boundaries" aria-labelledby="boundaries-title">
+      <div><p class="eyebrow">Protecting what makes it work</p><h2 id="boundaries-title">Visibility without taking over the room.</h2><p class="intro">Sponsors help create the conditions for the community to gather. The community, local team and judges remain responsible for what happens inside it.</p></div>
+      <ul class="boundary-list">
+        <li>No sales pitches, product demonstrations or guaranteed time at the mic.</li>
+        <li>No control over programming, topic selection, judging, awards or participant approval.</li>
+        <li>No guaranteed leads, meetings, business outcomes or access to confidential conversations.</li>
+        <li>No attribution of participant comments that would violate the Chatham House Rule.</li>
+        <li>No commissions, referral fees or kickbacks tied to business that may follow an event.</li>
+      </ul>
+    </section>
+
+    <section class="section sponsor-section" aria-labelledby="fit-title">
+      <div class="section-heading"><p class="eyebrow">Is there a fit?</p><h2 id="fit-title">The strongest relationships start with aligned expectations.</h2><p>We are deliberate about who enters the room and equally deliberate about the organizations associated with it.</p></div>
+      <div class="sponsor-fit-grid">
+        <article class="fit-card fit-card--yes"><h3>A strong fit looks like</h3><ul><li>Supporting practitioner-led communities for the long term.</li><li>Respecting a peer environment without pushing a sales agenda.</li><li>Investing in specific cities or regional relationships.</li><li>Valuing credibility, listening and meaningful professional connection.</li></ul></article>
+        <article class="fit-card fit-card--no"><h3>It is probably not a fit if you expect</h3><ul><li>Pay-to-speak access or a guaranteed platform.</li><li>Control over invitations, judging, awards or topics.</li><li>An unrestricted attendee list or automatic lead generation.</li><li>A one-event trial before deciding whether to sponsor.</li></ul></article>
+      </div>
+    </section>
+
+    <section class="section sponsor-section" aria-labelledby="process-title">
+      <div class="section-heading"><p class="eyebrow">How the conversation works</p><h2 id="process-title">From interest to the right scope.</h2></div>
+      <div class="sponsor-steps">
+        <article class="sponsor-step"><span>01</span><h3>Tell us what matters</h3><p>Share the cities, communities, objectives and type of involvement your organization is considering.</p></article>
+        <article class="sponsor-step"><span>02</span><h3>Explore the fit</h3><p>We discuss the event environment, participation boundaries and the components that may make sense.</p></article>
+        <article class="sponsor-step"><span>03</span><h3>Confirm the relationship</h3><p>Scope, expectations and any agreed recognition are documented before sponsorship begins.</p></article>
       </div>
     </section>
 
     <section class="section sponsor-cta" aria-labelledby="sponsor-conversation-title">
-      <div><h2 id="sponsor-conversation-title">Interested in supporting CISO Open Mic?</h2><p>Share your interests and we’ll start a conversation about the right fit.</p></div>
+      <div><h2 id="sponsor-conversation-title">Help create the room.</h2><p>Tell us which communities matter to your organization and what a meaningful relationship would look like. We’ll start with fit—not a price list.</p></div>
       <div class="sponsor-actions">
         <a href="/sponsorship">Express interest</a>
         <a href="/sponsors/">Meet our sponsors</a>
