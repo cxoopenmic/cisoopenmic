@@ -15,8 +15,22 @@
     .site-head,.site-head nav a,.theme-toggle {
       transition:background-color .75s cubic-bezier(.22,1,.36,1),color .65s ease,box-shadow .65s ease;
     }
+    .site-head {
+      --faq-head-surface:var(--bg); isolation:isolate; overflow:visible;
+    }
+    .site-head > * { position:relative; z-index:1; }
+    .site-head::after {
+      content:""; position:absolute; z-index:0; left:0; right:0; bottom:-26px; height:26px;
+      background:linear-gradient(
+        to bottom,
+        var(--faq-head-surface) 0 30%,
+        color-mix(in srgb,var(--faq-head-surface) 68%,transparent) 58%,
+        transparent 100%
+      );
+      pointer-events:none;
+    }
     body[data-faq-header="hero"] .site-head {
-      background-color:#df3b21; box-shadow:0 10px 24px rgba(119,27,25,.16);
+      --faq-head-surface:#df3b21; background-color:#df3b21; box-shadow:0 10px 24px rgba(119,27,25,.16);
     }
     body[data-faq-header="hero"] .site-head nav a { color:rgba(255,255,255,.82); }
     body[data-faq-header="hero"] .site-head nav a[aria-current="page"] { color:#fff; }
