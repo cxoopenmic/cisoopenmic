@@ -168,6 +168,16 @@ body:not(.light) .experience-section { background:linear-gradient(135deg,#21170f
 .team-name { display:block; margin-top:7px; color:var(--text); font-size:1.08rem; font-weight:800; line-height:1.2; }
 .team-note { display:block; margin-top:7px; color:var(--muted); font-size:.8rem; line-height:1.5; }
 .team-role,.team-name,.team-note { overflow-wrap:anywhere; }
+.team-apply {
+  display:flex; align-items:center; justify-content:space-between; gap:28px; margin-top:26px; padding:22px 24px;
+  border-radius:16px; background:linear-gradient(125deg,var(--accent),var(--accent-2)); color:#fff;
+}
+.team-apply > div { max-width:690px; }
+.team-apply__eyebrow { display:block; margin-bottom:5px; color:rgba(255,255,255,.72); font-size:.68rem; font-weight:800; letter-spacing:.13em; text-transform:uppercase; }
+.team-apply strong { display:block; font-size:1.08rem; line-height:1.3; }
+.team-apply p { margin:6px 0 0; color:rgba(255,255,255,.82); font-size:.85rem; line-height:1.5; }
+.team-apply a { flex:0 0 auto; padding:11px 15px; border-radius:999px; background:#fff; color:#b91f2d; font-size:.8rem; font-weight:800; text-decoration:none; }
+.team-apply a:hover { transform:translateY(-1px); box-shadow:0 8px 18px rgba(0,0,0,.16); }
 .team-grid:not(.team-leads) .team-card {
   min-height:310px; padding:0; display:grid; grid-template-rows:154px 1fr; align-items:stretch;
 }
@@ -234,6 +244,7 @@ body:not(.light) .experience-section { background:linear-gradient(135deg,#21170f
   .city-hero::after { background:linear-gradient(180deg,rgba(7,16,32,.58),rgba(7,16,32,.94) 58%,#071020 100%); }
   .city-hero h1 { font-size:clamp(3rem,15vw,5rem); }
   .experience-section,.newsletter,.city-team { padding:30px 22px; border-radius:22px; }
+  .team-apply { align-items:flex-start; flex-direction:column; padding:20px; }
   .experience-section::after { right:-20px; font-size:10rem; }
   .newsletter form { padding:18px; }
   .team-grid:not(.team-leads) .team-card { min-height:132px; grid-template-columns:108px 1fr; grid-template-rows:none; }
