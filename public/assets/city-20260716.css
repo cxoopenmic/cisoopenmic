@@ -270,9 +270,11 @@ body:not(.light) .experience-section { background:linear-gradient(135deg,#21170f
 }
 @media(max-width:560px) {
   .events-hero h1 {
-    font-size:clamp(3rem,16vw,4.25rem) !important;
-    line-height:.92 !important;
-    letter-spacing:-.055em !important;
+    max-width:100%;
+    font-size:clamp(2.75rem,12.8vw,3.35rem) !important;
+    line-height:.95 !important;
+    letter-spacing:-.05em !important;
+    text-wrap:wrap;
   }
   .events-hero::after {
     bottom:-.14em !important;
