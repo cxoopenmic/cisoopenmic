@@ -33,7 +33,9 @@
     h1 { max-width:780px; margin:0; font-size:clamp(3rem,7.4vw,6.3rem); line-height:1.02; letter-spacing:-.06em; }
     h1 span { display:block; margin-top:.18em; color:var(--navy); }
     .hero-lede { max-width:680px; margin:24px 0 0; color:rgba(255,255,255,.94); font-size:1.08rem; line-height:1.68; }
-    .hero-logo-cloud { position:relative; min-height:390px; }
+    .hero-showcase { min-width:0; }
+    .hero-logo-cloud { position:relative; min-height:390px; transition:opacity .3s ease,transform .3s cubic-bezier(.22,1,.36,1); }
+    .hero-logo-cloud.is-refreshing { opacity:0; transform:scale(.985); }
     .hero-logo { position:absolute; width:46%; min-height:108px; padding:22px; border:1px solid rgba(255,255,255,.58); border-radius:18px; background:rgba(255,255,255,.96); display:grid; place-items:center; box-shadow:0 20px 42px rgba(71,17,14,.2); transform:rotate(-1.2deg); }
     .hero-logo img { display:block; max-width:100%; max-height:58px; object-fit:contain; }
     .hero-logo .wordmark { color:#111827; font-size:1.05rem; font-weight:800; text-align:center; }
@@ -44,6 +46,8 @@
     .hero-logo:nth-child(5) { bottom:16px; left:0; transform:rotate(1.1deg); }
     .hero-logo:nth-child(6) { bottom:0; right:0; transform:rotate(-1deg); }
     .hero-logo:nth-child(n+7) { display:none; }
+    .hero-rotation-note { display:flex; align-items:center; justify-content:center; gap:8px; margin:14px 0 0; color:rgba(255,255,255,.78); font-size:.76rem; font-weight:600; }
+    .hero-rotation-note::before { content:""; width:7px; height:7px; border-radius:50%; background:#fff; box-shadow:0 0 0 5px rgba(255,255,255,.12); }
     .sponsor-section { padding:92px 0 108px; }
     .current-section { background:radial-gradient(circle at 90% 8%,rgba(255,138,0,.12),transparent 28%),var(--bg); }
     .past-section { background:var(--surface-2); }
@@ -99,9 +103,9 @@
     .profile-link { margin-top:28px; }
     @media(max-width:900px) { .sponsor-hero .section-inner { grid-template-columns:1fr; } .hero-logo-cloud { min-height:390px; max-width:620px; width:100%; } .current-sponsor-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } .past-sponsor-grid { grid-template-columns:repeat(3,minmax(0,1fr)); } }
     @media(max-width:700px) { .section-heading,.sponsorship-cta .section-inner { align-items:flex-start; flex-direction:column; } .sponsor-hero { padding:70px 0 78px; } .sponsor-section { padding:70px 0 82px; } .past-sponsor-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
-    @media(max-width:600px) { .site-head { top:0; width:calc(100% - 4px); min-height:72px; padding:0 16px; } .site-head nav { gap:10px; } .site-foot { justify-content:center; gap:6px; text-align:center; } .site-foot>div:first-child { width:100%; } .legal-links { justify-content:center; flex-wrap:nowrap; gap:6px; white-space:nowrap; font-size:.82rem; } .hero-logo-cloud { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; min-height:0; } .hero-logo { position:static; width:auto; min-height:72px; padding:12px; transform:none!important; } .hero-logo img { max-height:38px; } .current-sponsor-grid { grid-template-columns:1fr; } .sponsor-card { min-height:270px; } .sponsor-profile { padding:50px 24px 30px; } }
+    @media(max-width:600px) { .site-head { top:0; width:calc(100% - 4px); min-height:72px; padding:0 16px; } .site-head nav { gap:10px; } .site-foot { justify-content:center; gap:6px; text-align:center; } .site-foot>div:first-child { width:100%; } .legal-links { justify-content:center; flex-wrap:wrap; gap:6px; font-size:.82rem; } .hero-logo-cloud { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; min-height:0; } .hero-logo { position:static; width:auto; min-height:72px; padding:12px; transform:none!important; } .hero-logo img { max-height:38px; } .current-sponsor-grid { grid-template-columns:1fr; } .sponsor-card { min-height:270px; } .sponsor-profile { padding:50px 24px 30px; } }
     @media(max-width:420px) { .site-head { padding:0 10px; } .site-head nav { gap:6px; } .site-head nav a { font-size:.76rem; } .theme-toggle { padding:8px; } .past-sponsor-grid { grid-template-columns:1fr 1fr; gap:8px; } .sponsor-card--past .sponsor-card-copy { padding:11px; } .sponsor-card--past .sponsor-name { font-size:.8rem; } .sponsor-card--past .sponsor-more { display:none; } }
-    @media(prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } .sponsor-card { transition:none; } }
+    @media(prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } .sponsor-card,.hero-logo-cloud { transition:none; } }
   </style>
 </head>
 <body class="light">
@@ -113,7 +117,7 @@
     <section class="sponsor-hero" aria-labelledby="sponsors-title">
       <div class="section-inner">
         <div><p class="eyebrow">Our sponsors</p><h1 id="sponsors-title">Backing the people <span>behind the ideas.</span></h1><p class="hero-lede">CISO Open Mic is made possible by organizations that value candid leadership conversations and stronger security communities. Their support helps create the room. The community shapes what happens inside it.</p></div>
-        <div class="hero-logo-cloud" aria-label="A selection of current sponsors"><div class="hero-logo" data-hero-sponsor="palo-alto-networks"><img src="/assets/pan.png" alt="Palo Alto Networks" /></div><div class="hero-logo" data-hero-sponsor="immersive-labs"><img src="/assets/sponsors/immersive.svg" alt="Immersive Labs" /></div><div class="hero-logo" data-hero-sponsor="horizon3-ai"><img src="/assets/sponsors/horizon3-light.svg" alt="Horizon3.ai" /></div><div class="hero-logo" data-hero-sponsor="axonius"><img src="/assets/axonius.png" alt="Axonius" /></div><div class="hero-logo" data-hero-sponsor="optiv"><img src="/assets/sponsors/optiv.png" alt="Optiv" /></div><div class="hero-logo" data-hero-sponsor="algosec"><img src="/assets/sponsors/algosec.png" alt="AlgoSec" /></div><div class="hero-logo" data-hero-sponsor="kroll"><img src="/assets/sponsors/kroll.svg" alt="Kroll" /></div><div class="hero-logo" data-hero-sponsor="noma-security"><img src="/assets/sponsors/noma-security.svg" alt="Noma Security" /></div><div class="hero-logo" data-hero-sponsor="chainguard"><img src="/assets/sponsors/chainguard.svg" alt="Chainguard" /></div><div class="hero-logo" data-hero-sponsor="doppel"><img src="/assets/sponsors/doppel.svg" alt="Doppel" /></div></div>
+        <div class="hero-showcase"><div class="hero-logo-cloud" aria-label="Rotating showcase of all current sponsors"><div class="hero-logo" data-hero-sponsor="palo-alto-networks"><img src="/assets/pan.png" alt="Palo Alto Networks" /></div><div class="hero-logo" data-hero-sponsor="immersive-labs"><img src="/assets/sponsors/immersive.svg" alt="Immersive Labs" /></div><div class="hero-logo" data-hero-sponsor="horizon3-ai"><img src="/assets/sponsors/horizon3-light.svg" alt="Horizon3.ai" /></div><div class="hero-logo" data-hero-sponsor="axonius"><img src="/assets/axonius.png" alt="Axonius" /></div><div class="hero-logo" data-hero-sponsor="optiv"><img src="/assets/sponsors/optiv.png" alt="Optiv" /></div><div class="hero-logo" data-hero-sponsor="algosec"><img src="/assets/sponsors/algosec.png" alt="AlgoSec" /></div><div class="hero-logo" data-hero-sponsor="kroll"><img src="/assets/sponsors/kroll.svg" alt="Kroll" /></div><div class="hero-logo" data-hero-sponsor="noma-security"><img src="/assets/sponsors/noma-security.svg" alt="Noma Security" /></div><div class="hero-logo" data-hero-sponsor="chainguard"><img src="/assets/sponsors/chainguard.svg" alt="Chainguard" /></div><div class="hero-logo" data-hero-sponsor="doppel"><img src="/assets/sponsors/doppel.svg" alt="Doppel" /></div></div><p class="hero-rotation-note">All current sponsors rotate through this showcase.</p></div>
       </div>
     </section>
     <section class="sponsor-section current-section" aria-labelledby="current-sponsors-heading">
@@ -460,7 +464,34 @@
   <script>
     const toggleBtn=document.getElementById('theme-toggle');
     const heroCloud=document.querySelector('.hero-logo-cloud');
-    if(heroCloud){const cards=Array.from(heroCloud.querySelectorAll('[data-hero-sponsor]'));for(let i=cards.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[cards[i],cards[j]]=[cards[j],cards[i]]}try{const previous=sessionStorage.getItem('ciso-sponsor-hero');let signature=cards.slice(0,6).map(card=>card.dataset.heroSponsor).join('|');if(previous===signature&&cards.length>1){cards.push(cards.shift());signature=cards.slice(0,6).map(card=>card.dataset.heroSponsor).join('|')}sessionStorage.setItem('ciso-sponsor-hero',signature)}catch(_){}cards.forEach(card=>heroCloud.append(card))}
+    if(heroCloud){
+      const cards=Array.from(heroCloud.querySelectorAll('[data-hero-sponsor]'));
+      for(let i=cards.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[cards[i],cards[j]]=[cards[j],cards[i]]}
+      try{const previous=sessionStorage.getItem('ciso-sponsor-hero');let signature=cards.slice(0,6).map(card=>card.dataset.heroSponsor).join('|');if(previous===signature&&cards.length>1){cards.push(cards.shift());signature=cards.slice(0,6).map(card=>card.dataset.heroSponsor).join('|')}sessionStorage.setItem('ciso-sponsor-hero',signature)}catch(_){}
+      cards.forEach(card=>heroCloud.append(card));
+
+      const reduceMotion=matchMedia('(prefers-reduced-motion: reduce)').matches;
+      let rotationTimer=0;
+      let rotationPaused=false;
+      const scheduleRotation=()=>{
+        clearTimeout(rotationTimer);
+        if(reduceMotion||rotationPaused||document.hidden||cards.length<=6)return;
+        rotationTimer=setTimeout(rotateSponsors,5200);
+      };
+      const rotateSponsors=()=>{
+        if(rotationPaused||document.hidden){scheduleRotation();return}
+        heroCloud.classList.add('is-refreshing');
+        setTimeout(()=>{
+          for(let i=0;i<2;i++){const first=heroCloud.firstElementChild;if(first)heroCloud.append(first)}
+          requestAnimationFrame(()=>heroCloud.classList.remove('is-refreshing'));
+          scheduleRotation();
+        },300);
+      };
+      heroCloud.addEventListener('pointerenter',()=>{rotationPaused=true;clearTimeout(rotationTimer)});
+      heroCloud.addEventListener('pointerleave',()=>{rotationPaused=false;scheduleRotation()});
+      document.addEventListener('visibilitychange',scheduleRotation);
+      scheduleRotation();
+    }
     toggleBtn.addEventListener('click',()=>{document.body.classList.toggle('light');const light=document.body.classList.contains('light');toggleBtn.textContent=light?'Dark':'Light';toggleBtn.setAttribute('aria-label',light?'Switch to dark theme':'Switch to light theme')});
     const sponsorDialog=document.getElementById('sponsor-dialog');
     const sponsorDialogContent=document.getElementById('sponsor-dialog-content');
