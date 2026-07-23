@@ -24,7 +24,9 @@
     .site-head nav a[aria-current="page"] { color:var(--accent-2); }
     .brand-lockup { display:inline-flex; align-items:center; }
     .brand-lockup img { width:42px; height:42px; border-radius:50%; object-fit:cover; box-shadow:0 4px 14px rgba(0,0,0,.35); }
-    .theme-toggle { display:grid; place-items:center; width:40px; height:40px; flex:0 0 40px; border:0; border-radius:10px; padding:0; background:var(--muted); color:var(--bg); font-size:1.22rem; font-weight:800; line-height:1; cursor:pointer; box-shadow:0 2px 6px rgba(0,0,0,.2); }
+    .theme-toggle { display:grid; place-items:center; width:40px; height:40px; flex:0 0 40px; border:0; padding:0; background:transparent; color:#ffd166; font-size:1.55rem; font-weight:800; line-height:1; cursor:pointer; box-shadow:none; transition:color .25s ease,transform .25s ease; }
+    body.light .theme-toggle { color:var(--accent-2); }
+    .theme-toggle:hover { background:transparent; color:var(--accent); transform:rotate(12deg) scale(1.08); }
     main { width:100%; flex:1; }
     .sponsor-hero { position:relative; overflow:hidden; padding:92px 0 104px; color:#fff; background:radial-gradient(circle at 88% 14%,rgba(255,255,255,.2),transparent 24%),radial-gradient(circle at 8% 100%,rgba(112,11,32,.3),transparent 34%),linear-gradient(120deg,#ff8a00 0%,#ef4d18 47%,#c62535 100%); }
     .sponsor-hero .section-inner { display:grid; grid-template-columns:minmax(0,1.2fr) minmax(320px,.8fr); align-items:center; gap:58px; }
@@ -112,7 +114,7 @@
 <body class="light">
   <header class="site-head">
     <a href="/" aria-label="CISO Open Mic"><span class="brand-lockup"><img src="/assets/logo.png" alt="" /></span></a>
-    <nav aria-label="Main navigation"><a href="/">Home</a><a href="/blog/">Blog</a><a href="/sponsors/" aria-current="page">Sponsors</a><a href="/partners/">Partners</a><a href="/faq/">FAQ</a><button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch to dark theme">☾</button></nav>
+    <nav aria-label="Main navigation"><a href="/">Home</a><a href="/blog/">Blog</a><a href="/sponsors/" aria-current="page">Sponsors</a><a href="/partners/">Partners</a><a href="/faq/">FAQ</a><button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch to dark theme">☀</button></nav>
   </header>
   <main>
     <section class="sponsor-hero" aria-labelledby="sponsors-title">
@@ -493,7 +495,7 @@
       document.addEventListener('visibilitychange',scheduleRotation);
       scheduleRotation();
     }
-    toggleBtn.addEventListener('click',()=>{document.body.classList.toggle('light');const light=document.body.classList.contains('light');toggleBtn.textContent=light?'☾':'☀';toggleBtn.setAttribute('aria-label',light?'Switch to dark theme':'Switch to light theme')});
+    toggleBtn.addEventListener('click',()=>{document.body.classList.toggle('light');const light=document.body.classList.contains('light');toggleBtn.textContent='☀';toggleBtn.setAttribute('aria-label',light?'Switch to dark theme':'Switch to light theme')});
     const sponsorDialog=document.getElementById('sponsor-dialog');
     const sponsorDialogContent=document.getElementById('sponsor-dialog-content');
     document.addEventListener('click',(event)=>{const card=event.target.closest('[data-sponsor-profile]');if(!card)return;const template=document.getElementById('sponsor-profile-'+card.dataset.sponsorProfile);if(!template)return;sponsorDialogContent.replaceChildren(template.content.cloneNode(true));sponsorDialog.showModal()});

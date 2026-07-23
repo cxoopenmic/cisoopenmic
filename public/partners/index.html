@@ -29,7 +29,9 @@
     .site-head nav a[aria-current="page"] { color:var(--accent-2); }
     .brand-lockup { display:inline-flex; align-items:center; }
     .brand-lockup img { width:42px; height:42px; border-radius:50%; object-fit:cover; box-shadow:0 4px 14px rgba(0,0,0,.35); }
-    .theme-toggle { display:grid; place-items:center; width:40px; height:40px; flex:0 0 40px; border:0; border-radius:10px; padding:0; background:var(--muted); color:var(--bg); font-size:1.22rem; font-weight:800; line-height:1; cursor:pointer; box-shadow:0 2px 6px rgba(0,0,0,.2); }
+    .theme-toggle { display:grid; place-items:center; width:40px; height:40px; flex:0 0 40px; border:0; padding:0; background:transparent; color:#ffd166; font-size:1.55rem; font-weight:800; line-height:1; cursor:pointer; box-shadow:none; transition:color .25s ease,transform .25s ease; }
+    body.light .theme-toggle { color:var(--accent-2); }
+    .theme-toggle:hover { background:transparent; color:var(--accent); transform:rotate(12deg) scale(1.08); }
     main { width:100%; flex:1; }
     .partner-hero { position:relative; overflow:hidden; padding:92px 0 110px; color:#fff; background:radial-gradient(circle at 80% 18%,rgba(255,196,107,.28),transparent 24%),radial-gradient(circle at 8% 100%,rgba(193,35,49,.5),transparent 36%),linear-gradient(125deg,#081329 0%,#17274a 52%,#cf3340 100%); }
     .partner-hero::after { content:"TOGETHER"; position:absolute; right:-.03em; bottom:-.23em; color:rgba(255,255,255,.055); font-size:clamp(7rem,17vw,15rem); font-weight:800; letter-spacing:-.08em; pointer-events:none; }
@@ -112,7 +114,7 @@
 <body class="light">
   <header class="site-head">
     <a href="/" aria-label="CISO Open Mic"><span class="brand-lockup"><img src="/assets/logo.png" alt="" /></span></a>
-    <nav aria-label="Main navigation"><a href="/">Home</a><a href="/blog/">Blog</a><a href="/sponsors/">Sponsors</a><a href="/partners/" aria-current="page">Partners</a><a href="/faq/">FAQ</a><button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch to dark theme">☾</button></nav>
+    <nav aria-label="Main navigation"><a href="/">Home</a><a href="/blog/">Blog</a><a href="/sponsors/">Sponsors</a><a href="/partners/" aria-current="page">Partners</a><a href="/faq/">FAQ</a><button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch to dark theme">☀</button></nav>
   </header>
   <main>
     <section class="partner-hero" aria-labelledby="partners-title"><div class="section-inner">
@@ -190,7 +192,7 @@
   </template>
   <script>
     const toggleBtn=document.getElementById('theme-toggle');
-    toggleBtn.addEventListener('click',()=>{document.body.classList.toggle('light');const light=document.body.classList.contains('light');toggleBtn.textContent=light?'☾':'☀';toggleBtn.setAttribute('aria-label',light?'Switch to dark theme':'Switch to light theme')});
+    toggleBtn.addEventListener('click',()=>{document.body.classList.toggle('light');const light=document.body.classList.contains('light');toggleBtn.textContent='☀';toggleBtn.setAttribute('aria-label',light?'Switch to dark theme':'Switch to light theme')});
     const partnerDialog=document.getElementById('partner-dialog');
     const partnerDialogContent=document.getElementById('partner-dialog-content');
     document.addEventListener('click',(event)=>{const card=event.target.closest('[data-partner-profile]');if(!card)return;const template=document.getElementById('partner-profile-'+card.dataset.partnerProfile);if(!template)return;partnerDialogContent.replaceChildren(template.content.cloneNode(true));partnerDialog.showModal()});

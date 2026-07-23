@@ -352,13 +352,14 @@
     /* Toggle button */
     .theme-toggle {
       display:grid; place-items:center; width:40px; height:40px; flex:0 0 40px;
-      background:var(--muted); color:var(--bg);
-      border:none; padding:0; border-radius:10px;
-      font:inherit; font-size:1.22rem; font-weight:800; line-height:1; cursor:pointer;
-      box-shadow:0 2px 6px rgba(0,0,0,0.2);
-      transition:background-color .7s ease,color .7s ease;
+      background:transparent; color:#ffd166;
+      border:none; padding:0;
+      font:inherit; font-size:1.55rem; font-weight:800; line-height:1; cursor:pointer;
+      box-shadow:none;
+      transition:color .25s ease,transform .25s ease;
     }
-    .theme-toggle:hover { background:var(--text); color:var(--bg); }
+    body.light .theme-toggle { color:var(--accent-2); }
+    .theme-toggle:hover { background:transparent; color:var(--accent); transform:rotate(12deg) scale(1.08); }
     .site-head {
       position:sticky; top:0; z-index:1000;
       width:100%; min-height:76px; margin:0;
@@ -377,24 +378,24 @@
     body[data-header-section="about"] .site-head { background-color:#df451d; }
     body[data-header-section="about"] .site-head nav a { color:rgba(255,255,255,.82); }
     body[data-header-section="about"] .site-head nav a[aria-current="page"] { color:#fff; }
-    body[data-header-section="about"] .theme-toggle { background-color:#fff; color:#c8262f; }
+    body[data-header-section="about"] .theme-toggle { background:transparent; color:#fff; }
     body[data-header-section="difference"] .site-head { background-color:var(--difference-bg); }
     body[data-header-section="events"] .site-head { background-color:#e3481d; }
     body[data-header-section="events"] .site-head nav a { color:rgba(255,255,255,.82); }
     body[data-header-section="events"] .site-head nav a[aria-current="page"] { color:#fff; }
-    body[data-header-section="events"] .theme-toggle { background-color:#fff; color:#c8262f; }
+    body[data-header-section="events"] .theme-toggle { background:transparent; color:var(--accent-2); }
     body[data-header-section="perspectives"] .site-head { background-color:#172033; }
     body[data-header-section="perspectives"] .site-head nav a { color:#dbe3ef; }
     body[data-header-section="perspectives"] .site-head nav a[aria-current="page"] { color:#ffad45; }
-    body[data-header-section="perspectives"] .theme-toggle { background-color:#dbe3ef; color:#172033; }
+    body[data-header-section="perspectives"] .theme-toggle { background:transparent; color:#ffd166; }
     body[data-header-section="register"] .site-head { background-color:#e3481d; }
     body[data-header-section="register"] .site-head nav a { color:rgba(255,255,255,.82); }
     body[data-header-section="register"] .site-head nav a[aria-current="page"] { color:#fff; }
-    body[data-header-section="register"] .theme-toggle { background-color:#fff; color:#c8262f; }
+    body[data-header-section="register"] .theme-toggle { background:transparent; color:#fff; }
     body[data-header-section="footer"] .site-head { background-color:var(--footer-bg); }
     body[data-header-section="footer"] .site-head nav a { color:var(--footer-text); }
     body[data-header-section="footer"] .site-head nav a[aria-current="page"] { color:var(--accent-2); }
-    body[data-header-section="footer"] .theme-toggle { background-color:var(--footer-text); color:var(--footer-bg); }
+    body[data-header-section="footer"] .theme-toggle { background:transparent; color:#ffd166; }
     .brand-lockup { display:inline-flex; align-items:center; }
     .brand-lockup img {
       width:42px; height:42px; border-radius:50%; object-fit:cover;
@@ -637,12 +638,12 @@
   <script>
     const toggleBtn = document.getElementById('theme-toggle');
     if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
-      document.body.classList.add('light'); toggleBtn.textContent = '☾'; toggleBtn.setAttribute('aria-label', 'Switch to dark theme');
+      document.body.classList.add('light'); toggleBtn.textContent = '☀'; toggleBtn.setAttribute('aria-label', 'Switch to dark theme');
     } else { toggleBtn.textContent = '☀'; toggleBtn.setAttribute('aria-label', 'Switch to light theme'); }
     toggleBtn.addEventListener('click', () => {
       document.body.classList.toggle('light');
       const light = document.body.classList.contains('light');
-      toggleBtn.textContent = light ? '☾' : '☀';
+      toggleBtn.textContent = '☀';
       toggleBtn.setAttribute('aria-label', light ? 'Switch to dark theme' : 'Switch to light theme');
     });
 

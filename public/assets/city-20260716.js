@@ -12,7 +12,7 @@ if (savedTheme === 'dark') {
 toggleBtn.addEventListener('click', () => {
   document.body.classList.toggle('light');
   const isLight = document.body.classList.contains('light');
-  toggleBtn.textContent = isLight ? '☾' : '☀';
+  toggleBtn.textContent = '☀';
   toggleBtn.setAttribute('aria-label', isLight ? darkAriaLabel : lightAriaLabel);
   localStorage.setItem('ciso-theme', isLight ? 'light' : 'dark');
 });
