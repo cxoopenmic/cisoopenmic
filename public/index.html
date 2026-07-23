@@ -351,9 +351,10 @@
 
     /* Toggle button */
     .theme-toggle {
+      display:grid; place-items:center; width:40px; height:40px; flex:0 0 40px;
       background:var(--muted); color:var(--bg);
-      border:none; padding:8px 14px; border-radius:6px;
-      font:inherit; font-size:.8rem; font-weight:800; line-height:1; cursor:pointer;
+      border:none; padding:0; border-radius:10px;
+      font:inherit; font-size:1.22rem; font-weight:800; line-height:1; cursor:pointer;
       box-shadow:0 2px 6px rgba(0,0,0,0.2);
       transition:background-color .7s ease,color .7s ease;
     }
@@ -438,7 +439,7 @@
       .site-head { padding:0 10px; }
       .site-head nav { gap:6px; }
       .site-head nav a { font-size:.76rem; }
-      .theme-toggle { padding:8px; }
+      .theme-toggle { padding:0; }
       .brand img.logo { width:138px; height:auto; }
       .about,.difference,.events { padding:64px 0; }
       .about-visual { min-height:280px; border-radius:16px; }
@@ -464,7 +465,7 @@
       <a href="/partners/">Partners</a>
       <!-- Primary FAQ navigation -->
       <a href="/faq/">FAQ</a>
-      <button id="theme-toggle" class="theme-toggle" type="button">Light</button>
+      <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch to light theme">☀</button>
     </nav>
   </header>
 
@@ -636,11 +637,13 @@
   <script>
     const toggleBtn = document.getElementById('theme-toggle');
     if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
-      document.body.classList.add('light'); toggleBtn.textContent = 'Dark';
-    } else { toggleBtn.textContent = 'Light'; }
+      document.body.classList.add('light'); toggleBtn.textContent = '☾'; toggleBtn.setAttribute('aria-label', 'Switch to dark theme');
+    } else { toggleBtn.textContent = '☀'; toggleBtn.setAttribute('aria-label', 'Switch to light theme'); }
     toggleBtn.addEventListener('click', () => {
       document.body.classList.toggle('light');
-      toggleBtn.textContent = document.body.classList.contains('light') ? 'Dark' : 'Light';
+      const light = document.body.classList.contains('light');
+      toggleBtn.textContent = light ? '☾' : '☀';
+      toggleBtn.setAttribute('aria-label', light ? 'Switch to dark theme' : 'Switch to light theme');
     });
 
     const siteHead = document.querySelector('.site-head');

@@ -38,8 +38,9 @@ a { color:inherit; }
   box-shadow:0 4px 14px rgba(0,0,0,.35);
 }
 .theme-toggle {
-  border:0; border-radius:6px; padding:8px 14px; background:var(--muted); color:var(--bg);
-  font:inherit; font-size:.8rem; font-weight:800; line-height:1; cursor:pointer;
+  display:grid; place-items:center; width:40px; height:40px; flex:0 0 40px;
+  border:0; border-radius:10px; padding:0; background:var(--muted); color:var(--bg);
+  font:inherit; font-size:1.22rem; font-weight:800; line-height:1; cursor:pointer;
   box-shadow:0 2px 6px rgba(0,0,0,.2);
 }
 .theme-toggle:hover { background:var(--text); color:var(--bg); }
@@ -259,7 +260,7 @@ body:not(.light) .experience-section { background:linear-gradient(135deg,#21170f
   .site-head nav { gap:6px; }
   .site-head nav a { font-size:.76rem; }
   .language-switch { min-width:30px; padding:5px 6px; font-size:.68rem!important; }
-  .theme-toggle { padding:8px 10px; }
+  .theme-toggle { width:38px; height:38px; flex-basis:38px; padding:0; }
   .newsletter { padding:18px; }
 }
 @media(max-width:360px) {
@@ -267,7 +268,7 @@ body:not(.light) .experience-section { background:linear-gradient(135deg,#21170f
   .city-montreal .site-head nav { gap:3px; }
   .city-montreal .site-head nav a { font-size:.67rem; }
   .city-montreal .brand-lockup img { width:38px; height:38px; }
-  .city-montreal .theme-toggle { padding:7px 8px; font-size:.72rem; }
+  .city-montreal .theme-toggle { width:36px; height:36px; flex-basis:36px; padding:0; font-size:1.08rem; }
 }
 
 /* Events directory headline must remain legible over the orange hero. */
