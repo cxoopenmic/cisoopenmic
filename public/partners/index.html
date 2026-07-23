@@ -27,6 +27,9 @@
     .site-head nav { display:flex; align-items:center; gap:18px; }
     .site-head nav a { color:var(--muted); font-size:.92rem; }
     .site-head nav a[aria-current="page"] { color:var(--accent-2); }
+    body[data-partner-header="hero"] .site-head { background:#17274a; }
+    body[data-partner-header="hero"] .site-head nav a { color:rgba(255,255,255,.84); }
+    body[data-partner-header="hero"] .site-head nav a[aria-current="page"],body[data-partner-header="hero"] .theme-toggle { color:#fff; }
     .brand-lockup { display:inline-flex; align-items:center; }
     .brand-lockup img { width:42px; height:42px; border-radius:50%; object-fit:cover; box-shadow:0 4px 14px rgba(0,0,0,.35); }
     .theme-toggle { display:grid; place-items:center; width:40px; height:40px; flex:0 0 40px; border:0; padding:0; background:transparent; color:#ffd166; font-size:1.55rem; font-weight:800; line-height:1; cursor:pointer; box-shadow:none; transition:color .25s ease,transform .25s ease; }
@@ -192,6 +195,10 @@
   </template>
   <script>
     const toggleBtn=document.getElementById('theme-toggle');
+    const siteHead=document.querySelector('.site-head');
+    const partnerHero=document.querySelector('.partner-hero');
+    const syncPartnerHeader=()=>{const edge=siteHead.getBoundingClientRect().bottom;const bounds=partnerHero.getBoundingClientRect();document.body.dataset.partnerHeader=bounds.top<=edge&&bounds.bottom>edge?'hero':'content'};
+    syncPartnerHeader();addEventListener('scroll',syncPartnerHeader,{passive:true});addEventListener('resize',syncPartnerHeader);
     toggleBtn.addEventListener('click',()=>{document.body.classList.toggle('light');const light=document.body.classList.contains('light');toggleBtn.textContent='☀';toggleBtn.setAttribute('aria-label',light?'Switch to dark theme':'Switch to light theme')});
     const partnerDialog=document.getElementById('partner-dialog');
     const partnerDialogContent=document.getElementById('partner-dialog-content');

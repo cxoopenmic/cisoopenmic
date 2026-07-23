@@ -22,6 +22,9 @@
     .site-head nav { display:flex; align-items:center; gap:18px; }
     .site-head nav a { color:var(--muted); font-size:.92rem; }
     .site-head nav a[aria-current="page"] { color:var(--accent-2); }
+    body[data-sponsor-header="hero"] .site-head { background:#ef4d18; }
+    body[data-sponsor-header="hero"] .site-head nav a { color:rgba(255,255,255,.84); }
+    body[data-sponsor-header="hero"] .site-head nav a[aria-current="page"],body[data-sponsor-header="hero"] .theme-toggle { color:#fff; }
     .brand-lockup { display:inline-flex; align-items:center; }
     .brand-lockup img { width:42px; height:42px; border-radius:50%; object-fit:cover; box-shadow:0 4px 14px rgba(0,0,0,.35); }
     .theme-toggle { display:grid; place-items:center; width:40px; height:40px; flex:0 0 40px; border:0; padding:0; background:transparent; color:#ffd166; font-size:1.55rem; font-weight:800; line-height:1; cursor:pointer; box-shadow:none; transition:color .25s ease,transform .25s ease; }
@@ -466,6 +469,10 @@
   </template>
   <script>
     const toggleBtn=document.getElementById('theme-toggle');
+    const siteHead=document.querySelector('.site-head');
+    const sponsorHero=document.querySelector('.sponsor-hero');
+    const syncSponsorHeader=()=>{const edge=siteHead.getBoundingClientRect().bottom;const bounds=sponsorHero.getBoundingClientRect();document.body.dataset.sponsorHeader=bounds.top<=edge&&bounds.bottom>edge?'hero':'content'};
+    syncSponsorHeader();addEventListener('scroll',syncSponsorHeader,{passive:true});addEventListener('resize',syncSponsorHeader);
     const heroCloud=document.querySelector('.hero-logo-cloud');
     if(heroCloud){
       const cards=Array.from(heroCloud.querySelectorAll('[data-hero-sponsor]'));
