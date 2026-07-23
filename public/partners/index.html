@@ -59,6 +59,8 @@
     .purpose-card h3 { margin:30px 0 10px; font-size:1.35rem; line-height:1.1; }
     .purpose-card p { margin:0; color:var(--muted); line-height:1.65; }
     .partner-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px; }
+    .strategic-block { margin-bottom:86px; }
+    .strategic-grid { display:grid; grid-template-columns:1fr; }
     .partner-card { position:relative; min-width:0; min-height:340px; overflow:hidden; padding:0; border:1px solid var(--line); border-radius:20px; background:var(--surface); color:var(--text); text-align:left; cursor:pointer; box-shadow:0 24px 48px rgba(10,19,40,.12); transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease; }
     .partner-card::before { content:""; position:absolute; inset:0 0 auto; height:5px; background:linear-gradient(90deg,var(--accent),var(--accent-2)); }
     .partner-card:hover { transform:translateY(-6px); border-color:rgba(255,138,0,.72); box-shadow:0 32px 58px rgba(10,19,40,.2); }
@@ -75,6 +77,15 @@
     .partner-card--past { min-height:220px; box-shadow:none; }
     .partner-card--past .partner-logo { min-height:110px; filter:grayscale(1); opacity:.78; }
     .partner-card--past .partner-card-copy { min-height:105px; }
+    .partner-card--strategic { display:grid; grid-template-columns:minmax(280px,.82fr) minmax(0,1.18fr); min-height:300px; border:2px solid rgba(255,138,0,.72); background:linear-gradient(135deg,var(--surface),color-mix(in srgb,var(--surface) 88%,#ff8a00)); box-shadow:0 30px 70px rgba(193,35,49,.18); }
+    .partner-card--strategic::before { width:7px; height:100%; background:linear-gradient(180deg,var(--accent),var(--accent-2)); }
+    .partner-card--strategic .partner-logo { min-height:300px; padding:38px; }
+    .partner-card--strategic .partner-logo img { max-width:310px; max-height:140px; }
+    .partner-card--strategic .partner-card-copy { min-height:300px; padding:38px; justify-content:center; }
+    .partner-card--strategic .partner-kicker { font-size:.78rem; }
+    .partner-card--strategic .partner-name { max-width:620px; margin-top:12px; font-size:clamp(1.8rem,3.5vw,3rem); letter-spacing:-.04em; }
+    .partner-card--strategic .partner-summary { max-width:650px; margin-top:16px; font-size:1rem; line-height:1.7; }
+    .partner-card--strategic .partner-more { margin-top:24px; }
     .boundary { padding:92px 0; color:#fff; background:linear-gradient(115deg,#c12331,#ef4d18 55%,#ff8a00); }
     .boundary .section-inner { display:grid; grid-template-columns:minmax(0,1fr) minmax(300px,.72fr); align-items:center; gap:56px; }
     .boundary h2 { margin:0; font-size:clamp(2.7rem,5.5vw,5rem); line-height:.95; letter-spacing:-.06em; }
@@ -96,8 +107,8 @@
     .profile-specialties { display:flex; flex-wrap:wrap; gap:8px; margin-top:22px; }
     .profile-specialties span { padding:6px 10px; border:1px solid var(--line); border-radius:999px; color:var(--muted); font-size:.72rem; font-weight:800; }
     .profile-link { color:#fff; background:linear-gradient(110deg,var(--accent),var(--accent-2)); }
-    @media(max-width:900px) { .partner-hero .section-inner,.section-heading,.boundary .section-inner { grid-template-columns:1fr; } .hero-partners { max-width:620px; width:100%; } .purpose-grid,.partner-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
-    @media(max-width:650px) { .site-head { min-height:72px; padding:0 16px; } .site-head nav { gap:10px; } .partner-hero { padding:70px 0 82px; } .hero-partners { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; min-height:0; } .hero-partner { position:static; width:auto; min-height:82px; padding:10px; transform:none!important; } .hero-partner img { max-height:54px; } .partner-purpose,.partner-directory { padding:72px 0 82px; } .purpose-grid,.partner-grid { grid-template-columns:1fr; } .site-foot { justify-content:center; gap:6px; text-align:center; } .site-foot>div:first-child { width:100%; } .legal-links { justify-content:center; } }
+    @media(max-width:900px) { .partner-hero .section-inner,.section-heading,.boundary .section-inner { grid-template-columns:1fr; } .hero-partners { max-width:620px; width:100%; } .purpose-grid,.partner-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } .strategic-grid { grid-template-columns:1fr; } }
+    @media(max-width:650px) { .site-head { min-height:72px; padding:0 16px; } .site-head nav { gap:10px; } .partner-hero { padding:70px 0 82px; } .hero-partners { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; min-height:0; } .hero-partner { position:static; width:auto; min-height:82px; padding:10px; transform:none!important; } .hero-partner img { max-height:54px; } .partner-purpose,.partner-directory { padding:72px 0 82px; } .purpose-grid,.partner-grid { grid-template-columns:1fr; } .partner-card--strategic { display:block; min-height:0; } .partner-card--strategic .partner-logo { min-height:170px; padding:28px; } .partner-card--strategic .partner-card-copy { min-height:260px; padding:26px; } .site-foot { justify-content:center; gap:6px; text-align:center; } .site-foot>div:first-child { width:100%; } .legal-links { justify-content:center; } }
     @media(max-width:420px) { .site-head { padding:0 10px; } .site-head nav { gap:6px; } .site-head nav a { font-size:.76rem; } .theme-toggle { padding:8px; } h1 { font-size:clamp(3rem,15vw,4rem); } }
     @media(prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } .partner-card { transition:none; } }
   </style>
@@ -109,24 +120,25 @@
   </header>
   <main>
     <section class="partner-hero" aria-labelledby="partners-title"><div class="section-inner">
-      <div><p class="eyebrow">Community partners</p><h1 id="partners-title">Stronger rooms. <span>Wider circles.</span></h1><p class="hero-lede">CISO Open Mic works with community organizations that help useful ideas travel farther, welcome more voices into the conversation and strengthen the security community around each gathering.</p><a class="hero-related-link" href="/sponsors/">Looking for sponsors? <span aria-hidden="true">→</span></a></div>
-      <div class="hero-partners" aria-label="Current community partners"><div class="hero-partner hero-partner-1"><img src="/assets/partners/ccn.png" alt="Canadian Cybersecurity Network (CCN)" /></div><div class="hero-partner hero-partner-2"><img src="/assets/partners/leading-cyber-ladies.png" alt="Leading Cyber Ladies" /></div><div class="hero-partner hero-partner-3"><img src="/assets/partners/wicys-ontario.png" alt="WiCyS Ontario" /></div></div>
+      <div><p class="eyebrow">Strategic &amp; community partners</p><h1 id="partners-title">Stronger rooms. <span>Wider circles.</span></h1><p class="hero-lede">CISO Open Mic works with organizations that extend our reach, sharpen our understanding of the security landscape and bring more voices into the conversation.</p><a class="hero-related-link" href="/sponsors/">Looking for sponsors? <span aria-hidden="true">→</span></a></div>
+      <div class="hero-partners" aria-label="Current strategic and community partners"><div class="hero-partner hero-partner-1"><img src="/assets/partners/ccn.png" alt="Canadian Cybersecurity Network (CCN)" /></div><div class="hero-partner hero-partner-2"><img src="/assets/partners/leading-cyber-ladies.png" alt="Leading Cyber Ladies" /></div><div class="hero-partner hero-partner-3"><img src="/assets/partners/wicys-ontario.png" alt="WiCyS Ontario" /></div></div>
     </div></section>
     <section class="partner-purpose" aria-labelledby="purpose-title"><div class="section-inner">
       <div class="section-heading"><div><p class="eyebrow">Why we collaborate</p><h2 id="purpose-title">Community grows through connection.</h2></div><p>Partners bring complementary communities, perspectives and opportunities to the table while respecting the practitioner-led format of CISO Open Mic.</p></div>
       <div class="purpose-grid"><article class="purpose-card"><span>01 · CONNECT</span><h3>Bridge communities</h3><p>Help security leaders, aspiring leaders and community builders discover one another.</p></article><article class="purpose-card"><span>02 · INCLUDE</span><h3>Broaden participation</h3><p>Bring regional and underrepresented perspectives into a stronger shared conversation.</p></article><article class="purpose-card"><span>03 · AMPLIFY</span><h3>Share useful opportunities</h3><p>Extend the reach of relevant learning, mentorship and community initiatives.</p></article></div>
     </div></section>
     <section class="partner-directory" aria-labelledby="directory-title"><div class="section-inner">
-      <div class="section-heading"><div><p class="eyebrow">Working together</p><h2 id="directory-title">Our community partners.</h2></div><p>Select a partner to learn more about its community, mission and areas of focus.</p></div>
-      <div class="partner-grid"><button class="partner-card" type="button" data-partner-profile="canadian-cybersecurity-network" aria-haspopup="dialog">
+      <div class="strategic-block"><div class="section-heading"><div><p class="eyebrow">Strategic partnership</p><h2 id="directory-title">Network, intelligence, reach.</h2></div><p>CCN brings its national network and signal intelligence to bear for CISO Open Mic, helping us stay connected to the priorities, conversations and emerging needs shaping Canada’s cybersecurity community.</p></div><div class="strategic-grid"><button class="partner-card partner-card--strategic" type="button" data-partner-profile="canadian-cybersecurity-network" aria-haspopup="dialog">
     <span class="partner-logo"><img src="/assets/partners/ccn.png" alt="Canadian Cybersecurity Network (CCN)" loading="lazy" decoding="async" /></span>
     <span class="partner-card-copy">
-      <span class="partner-kicker">Community partner</span>
+      <span class="partner-kicker">Strategic partner</span>
       <span class="partner-name">Canadian Cybersecurity Network (CCN)</span>
-      <span class="partner-summary">A national network connecting Canada’s cybersecurity and digital community.</span>
+      <span class="partner-summary">A strategic partner bringing national network reach and signal intelligence to CISO Open Mic.</span>
       <span class="partner-more">View partner profile <span aria-hidden="true">↗</span></span>
     </span>
-  </button><button class="partner-card" type="button" data-partner-profile="leading-cyber-ladies" aria-haspopup="dialog">
+  </button></div></div>
+      <div class="section-heading"><div><p class="eyebrow">Working together</p><h2>Our community partners.</h2></div><p>Select a partner to learn more about its community, mission and areas of focus.</p></div>
+      <div class="partner-grid"><button class="partner-card" type="button" data-partner-profile="leading-cyber-ladies" aria-haspopup="dialog">
     <span class="partner-logo"><img src="/assets/partners/leading-cyber-ladies.png" alt="Leading Cyber Ladies" loading="lazy" decoding="async" /></span>
     <span class="partner-card-copy">
       <span class="partner-kicker">Community partner</span>
@@ -153,11 +165,11 @@
   <template id="partner-profile-canadian-cybersecurity-network">
     <article class="partner-profile">
       <div class="profile-logo"><img src="/assets/partners/ccn.png" alt="Canadian Cybersecurity Network (CCN)" /></div>
-      <p class="profile-kicker">Community partner</p>
+      <p class="profile-kicker">Strategic partner</p>
       <h2>Canadian Cybersecurity Network (CCN)</h2>
-      <p class="profile-summary">A national network connecting Canada’s cybersecurity and digital community.</p>
-      <p class="profile-description">The Canadian Cybersecurity Network connects people, businesses and institutions across Canada’s cybersecurity ecosystem through community, research, events, career resources and shared opportunities.</p>
-      <div class="profile-specialties" aria-label="Areas of focus"><span>Community connection</span><span>Cybersecurity careers</span><span>National ecosystem</span></div>
+      <p class="profile-summary">A strategic partner bringing national network reach and signal intelligence to CISO Open Mic.</p>
+      <p class="profile-description">The Canadian Cybersecurity Network brings its national network and signal intelligence to bear for CISO Open Mic, helping us understand emerging priorities, connect with the wider ecosystem and keep the conversation grounded in what Canada’s cybersecurity community is seeing and needing.</p>
+      <div class="profile-specialties" aria-label="Areas of focus"><span>Network reach</span><span>Signal intelligence</span><span>National cybersecurity ecosystem</span></div>
       <a class="profile-link" href="https://canadiancybersecuritynetwork.com/" target="_blank" rel="noopener">Visit Canadian Cybersecurity Network (CCN) <span aria-hidden="true">↗</span></a>
     </article>
   </template><template id="partner-profile-leading-cyber-ladies">
