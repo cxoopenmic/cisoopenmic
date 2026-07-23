@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Community Partners · CISO Open Mic</title>
+  <meta name="description" content="Community organizations working with CISO Open Mic to strengthen connection, participation and peer exchange." />
+  <link rel="canonical" href="https://cisoopenmic.com/partners/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Community Partners · CISO Open Mic" />
+  <meta property="og:description" content="Meet the community organizations helping CISO Open Mic strengthen connection, participation and peer exchange." />
+  <meta property="og:url" content="https://cisoopenmic.com/partners/" />
+  <link rel="icon" href="/assets/favicon.ico" type="image/x-icon" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;800&amp;display=swap" rel="stylesheet" />
+  <style>
+    :root { --bg:#080d19; --surface:#111827; --surface-2:#151d2d; --text:#fff; --muted:#cbd5e1; --line:rgba(255,255,255,.16); --accent:#c12331; --accent-2:#ff8a00; --ink:#0a1328; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { min-height:100svh; margin:0; overflow-x:hidden; background:var(--bg); color:var(--text); font-family:"Open Sans",Arial,sans-serif; border:2px solid var(--accent-2); display:flex; flex-direction:column; }
+    body.light { --bg:#f8fafc; --surface:#fff; --surface-2:#eef2f6; --text:#0f172a; --muted:#475569; --line:#d7dee8; }
+    button,a { font:inherit; }
+    .site-foot,.section-inner { width:min(1080px,calc(100% - 36px)); margin:0 auto; }
+    .site-head { position:sticky; top:0; z-index:1000; width:100%; min-height:76px; padding:0 max(18px,calc(50% - 540px)); display:flex; align-items:center; justify-content:space-between; gap:20px; background:var(--bg); transition:background-color .35s ease; }
+    .site-head a { color:var(--text); font-weight:800; text-decoration:none; }
+    .site-head nav { display:flex; align-items:center; gap:18px; }
+    .site-head nav a { color:var(--muted); font-size:.92rem; }
+    .site-head nav a[aria-current="page"] { color:var(--accent-2); }
+    .brand-lockup { display:inline-flex; align-items:center; }
+    .brand-lockup img { width:42px; height:42px; border-radius:50%; object-fit:cover; box-shadow:0 4px 14px rgba(0,0,0,.35); }
+    .theme-toggle { border:0; border-radius:6px; padding:8px 14px; background:var(--muted); color:var(--bg); font-size:.8rem; font-weight:800; cursor:pointer; box-shadow:0 2px 6px rgba(0,0,0,.2); }
+    main { width:100%; flex:1; }
+    .partner-hero { position:relative; overflow:hidden; padding:92px 0 110px; color:#fff; background:radial-gradient(circle at 80% 18%,rgba(255,196,107,.28),transparent 24%),radial-gradient(circle at 8% 100%,rgba(193,35,49,.5),transparent 36%),linear-gradient(125deg,#081329 0%,#17274a 52%,#cf3340 100%); }
+    .partner-hero::after { content:"TOGETHER"; position:absolute; right:-.03em; bottom:-.23em; color:rgba(255,255,255,.055); font-size:clamp(7rem,17vw,15rem); font-weight:800; letter-spacing:-.08em; pointer-events:none; }
+    .partner-hero .section-inner { position:relative; z-index:1; display:grid; grid-template-columns:minmax(0,1.12fr) minmax(330px,.88fr); align-items:center; gap:64px; }
+    .eyebrow { margin:0 0 12px; color:var(--accent-2); font-size:.76rem; font-weight:800; letter-spacing:.17em; text-transform:uppercase; }
+    .partner-hero .eyebrow { color:#ffb24c; }
+    h1 { max-width:750px; margin:0; font-size:clamp(3.2rem,7.2vw,6.1rem); line-height:.94; letter-spacing:-.065em; }
+    h1 span { display:block; color:#ff9b18; }
+    .hero-lede { max-width:670px; margin:26px 0 0; color:rgba(255,255,255,.9); font-size:1.08rem; line-height:1.7; }
+    .hero-related-link { display:inline-flex; margin-top:24px; color:#fff; font-size:.84rem; font-weight:800; text-underline-offset:4px; }
+    .hero-partners { position:relative; min-height:390px; }
+    .hero-partner { position:absolute; width:65%; min-height:126px; padding:24px; border:1px solid rgba(255,255,255,.45); border-radius:20px; background:rgba(255,255,255,.97); display:grid; place-items:center; box-shadow:0 28px 58px rgba(0,0,0,.25); }
+    .hero-partner img { display:block; max-width:100%; max-height:82px; object-fit:contain; }
+    .hero-partner .wordmark { color:#111827; font-weight:800; text-align:center; }
+    .hero-partner-1 { top:0; left:0; transform:rotate(-2deg); }
+    .hero-partner-2 { top:125px; right:0; transform:rotate(2.2deg); }
+    .hero-partner-3 { bottom:0; left:8%; transform:rotate(-.8deg); }
+    .hero-partner:nth-child(n+4) { display:none; }
+    .partner-purpose,.partner-directory { padding:92px 0 104px; }
+    .partner-purpose { background:var(--surface-2); }
+    .section-heading { display:grid; grid-template-columns:minmax(0,1fr) minmax(300px,.7fr); align-items:end; gap:46px; margin-bottom:34px; }
+    .section-heading h2 { max-width:760px; margin:0; font-size:clamp(2.5rem,5vw,4.6rem); line-height:.96; letter-spacing:-.055em; }
+    .section-heading>p { margin:0; color:var(--muted); line-height:1.7; }
+    .purpose-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px; }
+    .purpose-card { min-height:210px; padding:28px; border:1px solid var(--line); border-radius:18px; background:var(--surface); box-shadow:0 20px 42px rgba(10,19,40,.08); }
+    .purpose-card span { color:var(--accent-2); font-size:.72rem; font-weight:800; letter-spacing:.13em; }
+    .purpose-card h3 { margin:30px 0 10px; font-size:1.35rem; line-height:1.1; }
+    .purpose-card p { margin:0; color:var(--muted); line-height:1.65; }
+    .partner-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px; }
+    .partner-card { position:relative; min-width:0; min-height:340px; overflow:hidden; padding:0; border:1px solid var(--line); border-radius:20px; background:var(--surface); color:var(--text); text-align:left; cursor:pointer; box-shadow:0 24px 48px rgba(10,19,40,.12); transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease; }
+    .partner-card::before { content:""; position:absolute; inset:0 0 auto; height:5px; background:linear-gradient(90deg,var(--accent),var(--accent-2)); }
+    .partner-card:hover { transform:translateY(-6px); border-color:rgba(255,138,0,.72); box-shadow:0 32px 58px rgba(10,19,40,.2); }
+    .partner-card:focus-visible { outline:3px solid var(--accent-2); outline-offset:3px; }
+    .partner-logo { min-height:175px; padding:28px; background:#fff; display:flex; align-items:center; justify-content:center; }
+    .partner-logo img { display:block; width:100%; max-width:245px; max-height:105px; object-fit:contain; }
+    .partner-logo img.logo-invert,.profile-logo img.logo-invert { filter:invert(1) grayscale(1) contrast(1.25); }
+    .wordmark { color:#111827; font-size:1.35rem; font-weight:800; letter-spacing:-.03em; text-align:center; }
+    .partner-card-copy { display:flex; flex-direction:column; min-height:165px; padding:22px; }
+    .partner-kicker,.profile-kicker { color:var(--accent-2); font-size:.68rem; font-weight:800; letter-spacing:.12em; text-transform:uppercase; }
+    .partner-name { margin-top:7px; font-size:1.18rem; font-weight:800; line-height:1.18; }
+    .partner-summary { margin-top:9px; color:var(--muted); font-size:.83rem; line-height:1.5; }
+    .partner-more { margin-top:auto; padding-top:16px; color:var(--accent-2); font-size:.72rem; font-weight:800; }
+    .partner-card--past { min-height:220px; box-shadow:none; }
+    .partner-card--past .partner-logo { min-height:110px; filter:grayscale(1); opacity:.78; }
+    .partner-card--past .partner-card-copy { min-height:105px; }
+    .boundary { padding:92px 0; color:#fff; background:linear-gradient(115deg,#c12331,#ef4d18 55%,#ff8a00); }
+    .boundary .section-inner { display:grid; grid-template-columns:minmax(0,1fr) minmax(300px,.72fr); align-items:center; gap:56px; }
+    .boundary h2 { margin:0; font-size:clamp(2.7rem,5.5vw,5rem); line-height:.95; letter-spacing:-.06em; }
+    .boundary p { margin:0; color:rgba(255,255,255,.94); font-size:1.04rem; line-height:1.72; }
+    .boundary a,.profile-link { display:inline-flex; align-items:center; justify-content:center; margin-top:22px; padding:13px 18px; border-radius:9px; background:#fff; color:var(--ink); font-weight:800; text-decoration:none; }
+    .site-foot { padding:24px 0; color:var(--muted); font-size:.9rem; display:flex; align-items:center; justify-content:space-between; gap:20px; flex-wrap:wrap; }
+    .site-foot>div:first-child { white-space:nowrap; }
+    .legal-links { display:flex; justify-content:flex-end; gap:8px; flex-wrap:wrap; }
+    .site-foot a { color:var(--accent-2); font-weight:600; text-decoration:none; }
+    .partner-dialog { width:min(680px,calc(100% - 28px)); max-height:min(84vh,780px); margin:auto; padding:0; border:1px solid var(--line); border-radius:22px; background:var(--surface); color:var(--text); box-shadow:0 38px 90px rgba(0,0,0,.42); }
+    .partner-dialog::backdrop { background:rgba(2,6,18,.74); backdrop-filter:blur(7px); }
+    .dialog-close { position:sticky; z-index:2; top:16px; float:right; width:42px; height:42px; margin:16px 16px 0 0; border:1px solid var(--line); border-radius:50%; background:var(--surface); color:var(--text); font-size:1.3rem; cursor:pointer; }
+    .partner-profile { padding:54px 44px 44px; }
+    .profile-logo { min-height:130px; margin-bottom:26px; padding:24px; border-radius:14px; background:#fff; display:grid; place-items:center; }
+    .profile-logo img { display:block; max-width:320px; max-height:100px; object-fit:contain; }
+    .partner-profile h2 { margin:7px 0 0; font-size:clamp(2rem,5vw,3.4rem); line-height:1; letter-spacing:-.045em; }
+    .profile-summary { margin:18px 0 0; font-size:1.08rem; font-weight:600; line-height:1.55; }
+    .profile-description { margin:14px 0 0; color:var(--muted); line-height:1.7; }
+    .profile-specialties { display:flex; flex-wrap:wrap; gap:8px; margin-top:22px; }
+    .profile-specialties span { padding:6px 10px; border:1px solid var(--line); border-radius:999px; color:var(--muted); font-size:.72rem; font-weight:800; }
+    .profile-link { color:#fff; background:linear-gradient(110deg,var(--accent),var(--accent-2)); }
+    @media(max-width:900px) { .partner-hero .section-inner,.section-heading,.boundary .section-inner { grid-template-columns:1fr; } .hero-partners { max-width:620px; width:100%; } .purpose-grid,.partner-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+    @media(max-width:650px) { .site-head { min-height:72px; padding:0 16px; } .site-head nav { gap:10px; } .partner-hero { padding:70px 0 82px; } .hero-partners { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; min-height:0; } .hero-partner { position:static; width:auto; min-height:82px; padding:10px; transform:none!important; } .hero-partner img { max-height:54px; } .partner-purpose,.partner-directory { padding:72px 0 82px; } .purpose-grid,.partner-grid { grid-template-columns:1fr; } .site-foot { justify-content:center; gap:6px; text-align:center; } .site-foot>div:first-child { width:100%; } .legal-links { justify-content:center; } }
+    @media(max-width:420px) { .site-head { padding:0 10px; } .site-head nav { gap:6px; } .site-head nav a { font-size:.76rem; } .theme-toggle { padding:8px; } h1 { font-size:clamp(3rem,15vw,4rem); } }
+    @media(prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } .partner-card { transition:none; } }
+  </style>
+</head>
+<body class="light">
+  <header class="site-head">
+    <a href="/" aria-label="CISO Open Mic"><span class="brand-lockup"><img src="/assets/logo.png" alt="" /></span></a>
+    <nav aria-label="Main navigation"><a href="/">Home</a><a href="/blog/">Blog</a><a href="/partners/" aria-current="page">Partners</a><a href="/faq/">FAQ</a><button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch to dark theme">Dark</button></nav>
+  </header>
+  <main>
+    <section class="partner-hero" aria-labelledby="partners-title"><div class="section-inner">
+      <div><p class="eyebrow">Community partners</p><h1 id="partners-title">Stronger rooms. <span>Wider circles.</span></h1><p class="hero-lede">CISO Open Mic works with community organizations that help useful ideas travel farther, welcome more voices into the conversation and strengthen the security community around each gathering.</p><a class="hero-related-link" href="/sponsors/">Looking for sponsors? <span aria-hidden="true">→</span></a></div>
+      <div class="hero-partners" aria-label="Current community partners"><div class="hero-partner hero-partner-1"><img src="/assets/partners/ccn.png" alt="Canadian Cybersecurity Network (CCN)" /></div><div class="hero-partner hero-partner-2"><img src="/assets/partners/leading-cyber-ladies.png" alt="Leading Cyber Ladies" /></div><div class="hero-partner hero-partner-3"><img src="/assets/partners/wicys-ontario.png" alt="WiCyS Ontario" /></div></div>
+    </div></section>
+    <section class="partner-purpose" aria-labelledby="purpose-title"><div class="section-inner">
+      <div class="section-heading"><div><p class="eyebrow">Why we collaborate</p><h2 id="purpose-title">Community grows through connection.</h2></div><p>Partners bring complementary communities, perspectives and opportunities to the table while respecting the practitioner-led format of CISO Open Mic.</p></div>
+      <div class="purpose-grid"><article class="purpose-card"><span>01 · CONNECT</span><h3>Bridge communities</h3><p>Help security leaders, aspiring leaders and community builders discover one another.</p></article><article class="purpose-card"><span>02 · INCLUDE</span><h3>Broaden participation</h3><p>Bring regional and underrepresented perspectives into a stronger shared conversation.</p></article><article class="purpose-card"><span>03 · AMPLIFY</span><h3>Share useful opportunities</h3><p>Extend the reach of relevant learning, mentorship and community initiatives.</p></article></div>
+    </div></section>
+    <section class="partner-directory" aria-labelledby="directory-title"><div class="section-inner">
+      <div class="section-heading"><div><p class="eyebrow">Working together</p><h2 id="directory-title">Our community partners.</h2></div><p>Select a partner to learn more about its community, mission and areas of focus.</p></div>
+      <div class="partner-grid"><button class="partner-card" type="button" data-partner-profile="canadian-cybersecurity-network" aria-haspopup="dialog">
+    <span class="partner-logo"><img src="/assets/partners/ccn.png" alt="Canadian Cybersecurity Network (CCN)" loading="lazy" decoding="async" /></span>
+    <span class="partner-card-copy">
+      <span class="partner-kicker">Community partner</span>
+      <span class="partner-name">Canadian Cybersecurity Network (CCN)</span>
+      <span class="partner-summary">A national network connecting Canada’s cybersecurity and digital community.</span>
+      <span class="partner-more">View partner profile <span aria-hidden="true">↗</span></span>
+    </span>
+  </button><button class="partner-card" type="button" data-partner-profile="leading-cyber-ladies" aria-haspopup="dialog">
+    <span class="partner-logo"><img src="/assets/partners/leading-cyber-ladies.png" alt="Leading Cyber Ladies" loading="lazy" decoding="async" /></span>
+    <span class="partner-card-copy">
+      <span class="partner-kicker">Community partner</span>
+      <span class="partner-name">Leading Cyber Ladies</span>
+      <span class="partner-summary">A global professional network supporting women in cybersecurity.</span>
+      <span class="partner-more">View partner profile <span aria-hidden="true">↗</span></span>
+    </span>
+  </button><button class="partner-card" type="button" data-partner-profile="wicys-ontario" aria-haspopup="dialog">
+    <span class="partner-logo"><img src="/assets/partners/wicys-ontario.png" alt="WiCyS Ontario" loading="lazy" decoding="async" /></span>
+    <span class="partner-card-copy">
+      <span class="partner-kicker">Community partner</span>
+      <span class="partner-name">WiCyS Ontario</span>
+      <span class="partner-summary">Ontario’s professional affiliate of Women in CyberSecurity.</span>
+      <span class="partner-more">View partner profile <span aria-hidden="true">↗</span></span>
+    </span>
+  </button></div>
+
+    </div></section>
+    <section class="boundary" aria-labelledby="boundary-title"><div class="section-inner"><div><p class="eyebrow" style="color:#fff">A clear distinction</p><h2 id="boundary-title">Partner is not another word for sponsor.</h2></div><div><p>Community partnership reflects shared purpose and practical collaboration. It does not imply paid sponsorship, commercial endorsement, control over programming, or access to participant information.</p><a href="/sponsors/">View our sponsors</a></div></div></section>
+  </main>
+  <footer class="site-foot"><div>© 2026 CISO Open Mic</div><div class="legal-links"><a href="/privacy">Privacy Policy</a><span>·</span><a href="/terms">Terms of Use</a><span>·</span><a href="/conduct">Code of Conduct</a></div></footer>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","name":"CISO Open Mic community partners","itemListElement":[{"@type":"ListItem","position":1,"item":{"@type":"Organization","name":"Canadian Cybersecurity Network (CCN)","url":"https://canadiancybersecuritynetwork.com/"}},{"@type":"ListItem","position":2,"item":{"@type":"Organization","name":"Leading Cyber Ladies","url":"https://leadingcyberladies.com/"}},{"@type":"ListItem","position":3,"item":{"@type":"Organization","name":"WiCyS Ontario","url":"https://sites.google.com/wicys.org/wicysontario"}}]}</script>
+  <dialog id="partner-dialog" class="partner-dialog" aria-label="Partner profile"><button class="dialog-close" type="button" aria-label="Close partner profile">×</button><div id="partner-dialog-content"></div></dialog>
+  <template id="partner-profile-canadian-cybersecurity-network">
+    <article class="partner-profile">
+      <div class="profile-logo"><img src="/assets/partners/ccn.png" alt="Canadian Cybersecurity Network (CCN)" /></div>
+      <p class="profile-kicker">Community partner</p>
+      <h2>Canadian Cybersecurity Network (CCN)</h2>
+      <p class="profile-summary">A national network connecting Canada’s cybersecurity and digital community.</p>
+      <p class="profile-description">The Canadian Cybersecurity Network connects people, businesses and institutions across Canada’s cybersecurity ecosystem through community, research, events, career resources and shared opportunities.</p>
+      <div class="profile-specialties" aria-label="Areas of focus"><span>Community connection</span><span>Cybersecurity careers</span><span>National ecosystem</span></div>
+      <a class="profile-link" href="https://canadiancybersecuritynetwork.com/" target="_blank" rel="noopener">Visit Canadian Cybersecurity Network (CCN) <span aria-hidden="true">↗</span></a>
+    </article>
+  </template><template id="partner-profile-leading-cyber-ladies">
+    <article class="partner-profile">
+      <div class="profile-logo"><img src="/assets/partners/leading-cyber-ladies.png" alt="Leading Cyber Ladies" /></div>
+      <p class="profile-kicker">Community partner</p>
+      <h2>Leading Cyber Ladies</h2>
+      <p class="profile-summary">A global professional network supporting women in cybersecurity.</p>
+      <p class="profile-description">Leading Cyber Ladies creates a supportive global community where women in cybersecurity can learn, network, develop their public voices and share practical knowledge through events and workshops.</p>
+      <div class="profile-specialties" aria-label="Areas of focus"><span>Women in cybersecurity</span><span>Professional networking</span><span>Public speaking</span></div>
+      <a class="profile-link" href="https://leadingcyberladies.com/" target="_blank" rel="noopener">Visit Leading Cyber Ladies <span aria-hidden="true">↗</span></a>
+    </article>
+  </template><template id="partner-profile-wicys-ontario">
+    <article class="partner-profile">
+      <div class="profile-logo"><img src="/assets/partners/wicys-ontario.png" alt="WiCyS Ontario" /></div>
+      <p class="profile-kicker">Community partner</p>
+      <h2>WiCyS Ontario</h2>
+      <p class="profile-summary">Ontario’s professional affiliate of Women in CyberSecurity.</p>
+      <p class="profile-description">WiCyS Ontario builds and connects a local community of women and allies in cybersecurity through outreach, awareness, networking, knowledge sharing, mentoring and engagement.</p>
+      <div class="profile-specialties" aria-label="Areas of focus"><span>Women in cybersecurity</span><span>Mentorship</span><span>Ontario community</span></div>
+      <a class="profile-link" href="https://sites.google.com/wicys.org/wicysontario" target="_blank" rel="noopener">Visit WiCyS Ontario <span aria-hidden="true">↗</span></a>
+    </article>
+  </template>
+  <script>
+    const toggleBtn=document.getElementById('theme-toggle');
+    toggleBtn.addEventListener('click',()=>{document.body.classList.toggle('light');const light=document.body.classList.contains('light');toggleBtn.textContent=light?'Dark':'Light';toggleBtn.setAttribute('aria-label',light?'Switch to dark theme':'Switch to light theme')});
+    const partnerDialog=document.getElementById('partner-dialog');
+    const partnerDialogContent=document.getElementById('partner-dialog-content');
+    document.addEventListener('click',(event)=>{const card=event.target.closest('[data-partner-profile]');if(!card)return;const template=document.getElementById('partner-profile-'+card.dataset.partnerProfile);if(!template)return;partnerDialogContent.replaceChildren(template.content.cloneNode(true));partnerDialog.showModal()});
+    document.querySelector('.dialog-close').addEventListener('click',()=>partnerDialog.close());
+    partnerDialog.addEventListener('click',(event)=>{if(event.target===partnerDialog)partnerDialog.close()});
+  </script>
+</body>
+</html>
