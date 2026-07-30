@@ -77,7 +77,7 @@
       display:grid; grid-template-columns:minmax(0,1.15fr) minmax(300px,.85fr);
       align-items:center; gap:clamp(34px,7vw,88px);
     }
-    .hero-copy { position:relative; z-index:2; }
+    .hero-copy { position:relative; z-index:2; min-width:0; }
     .hero-kicker {
       display:flex; align-items:center; gap:12px; margin:0 0 18px;
       color:#ff9d2d; font-size:.78rem; font-weight:800; letter-spacing:.22em; text-transform:uppercase;
@@ -499,6 +499,7 @@
       .home-hero { padding:62px 0 46px; }
       .home-hero .section-inner { grid-template-columns:1fr; gap:28px; }
       .home-hero h1 { font-size:clamp(3.45rem,17vw,5rem); line-height:.86; }
+      .home-hero h1 span { width:auto; max-width:100%; white-space:normal; }
       .home-hero .tagline { margin-top:22px; }
       .hero-mark { grid-row:1; width:min(64vw,260px); justify-self:center; }
       .hero-mark img { width:72%; }
