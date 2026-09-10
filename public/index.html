@@ -231,9 +231,18 @@
     }
     .events h2 span { display:block; color:#0a1328; }
     .events-intro { margin:18px 0 0; max-width:650px; color:rgba(255,255,255,.9); font-size:1rem; line-height:1.55; }
-    .event-grid {
-      display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:14px;
+    .event-year-group + .event-year-group { margin-top:34px; }
+    .event-year-label {
+      display:flex; align-items:center; gap:14px; margin:0 0 14px;
+      color:rgba(255,255,255,.82); font-size:.72rem; font-weight:800;
+      letter-spacing:.16em; text-transform:uppercase;
     }
+    .event-year-label::after {
+      content:""; height:1px; flex:1; background:rgba(255,255,255,.28);
+    }
+    .event-grid { display:grid; gap:14px; }
+    .event-grid--2026 { grid-template-columns:repeat(4,minmax(0,1fr)); }
+    .event-grid--2027 { grid-template-columns:repeat(5,minmax(0,1fr)); }
     .event-card {
       position:relative; min-height:282px; overflow:hidden;
       display:block; padding:0; border:0; border-radius:3px;
@@ -478,7 +487,7 @@
       .hero-mark { width:250px; }
       .about .section-inner { grid-template-columns:1fr; gap:28px; }
       .difference-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
-      .event-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+      .event-grid--2026,.event-grid--2027 { grid-template-columns:repeat(2,minmax(0,1fr)); }
       .perspective-grid { grid-template-columns:1fr; }
       .linkedin-band .section-inner { grid-template-columns:auto minmax(0,1fr); }
       .linkedin-action { grid-column:2; justify-self:start; }
@@ -490,7 +499,6 @@
       }
       .register-cta-copy > p:last-child { max-width:560px; font-size:1rem; }
       .register-options { padding:24px; }
-      .event-card:last-child { grid-column:1 / -1; min-height:230px; }
     }
     @media (max-width: 600px) {
       body { padding:0; }
@@ -506,6 +514,7 @@
       .hero-signature { margin-top:4px; }
       .hero-signature span { padding:13px 6px; font-size:.58rem; letter-spacing:.1em; }
       .difference-grid { grid-template-columns:1fr; }
+      .event-grid--2026,.event-grid--2027 { grid-template-columns:1fr; }
       .difference-card:nth-child(even) { transform:none; }
       .linkedin-band { padding:0 0 60px; }
       .linkedin-band .section-inner { grid-template-columns:auto minmax(0,1fr); padding:20px; }
@@ -560,7 +569,7 @@
           <h1 id="home-title">Break Barriers.<span>Take the Mic.</span></h1>
           <p class="tagline">A platform for CISOs and other security leaders to share insights, experiences, and challenges.</p>
           <div class="hero-actions">
-            <a class="hero-action" href="#fall-events">Explore Fall 2026 events</a>
+            <a class="hero-action" href="#fall-events">Explore upcoming events</a>
             <a class="hero-action-secondary" href="#difference-title">See what makes it different</a>
           </div>
         </div>
@@ -630,39 +639,68 @@
     <section id="fall-events" class="events page-section" aria-labelledby="fall-events-heading">
       <div class="section-inner">
         <div class="events-heading">
-          <p class="eyebrow">Fall 2026</p>
+          <p class="eyebrow">2026 + 2027</p>
           <h2 id="fall-events-heading">The conversation <span>continues</span></h2>
-          <p class="events-intro">New CISO Open Mic gatherings are taking shape across five cities.</p>
+          <p class="events-intro">CISO Open Mic is growing from four Fall 2026 gatherings into five more cities in 2027.</p>
         </div>
 
-        <div class="event-grid">
+        <div class="event-year-group">
+          <p class="event-year-label">Fall 2026</p>
+          <div class="event-grid event-grid--2026">
         <!-- Cards open permanent city pages. Registration links belong on each city page. -->
-        <a class="event-card" data-event-status="coming-soon" href="/ca/calgary/" aria-label="CISO Open Mic Calgary city page">
-          <!-- Calgary photography: Ahmed Zalabany / Unsplash -->
-          <img class="city-photo" src="/assets/cities/calgary.jpg" alt="" loading="lazy" decoding="async" />
-          <div class="event-content"><span class="event-season">Fall 2026</span><h3 class="event-city">Calgary</h3><span class="event-date">Wednesday, November 18, 2026</span><span class="event-status">Coming soon</span></div>
+        <a class="event-card" data-event-status="coming-soon" href="/ca/ottawa/" aria-label="CISO Open Mic Ottawa city page">
+          <!-- Ottawa photography: Benoit Debaix / Unsplash -->
+          <img class="city-photo city-photo--ottawa" src="/assets/cities/ottawa.jpg" alt="" loading="lazy" decoding="async" />
+          <div class="event-content"><span class="event-season">Fall 2026</span><h3 class="event-city">Ottawa</h3><span class="event-date">Monday, October 26, 2026</span><span class="event-status">Coming soon</span></div>
         </a>
         <a class="event-card" data-event-status="coming-soon" href="/ca/montreal/" aria-label="CISO Open Mic Montreal city page">
           <!-- Montreal photography: Aymeric Lamblin / Unsplash -->
           <img class="city-photo" src="/assets/cities/montreal.jpg" alt="" loading="lazy" decoding="async" />
           <div class="event-content"><span class="event-season">Fall 2026</span><h3 class="event-city">Montreal</h3><span class="event-date">Thursday, November 5, 2026</span><span class="event-status">Coming soon</span></div>
         </a>
-        <a class="event-card" data-event-status="coming-soon" href="/us/boston/" aria-label="CISO Open Mic Boston city page">
-          <!-- Boston photography: Andrew Spencer / Unsplash -->
-          <img class="city-photo city-photo--boston" src="/assets/cities/boston.jpg" alt="" loading="lazy" decoding="async" />
-          <div class="event-content"><span class="event-season">2027</span><h3 class="event-city">Boston</h3><span class="event-status">Coming soon</span></div>
-        </a>
-        <a class="event-card" data-event-status="coming-soon" href="/ca/ottawa/" aria-label="CISO Open Mic Ottawa city page">
-          <!-- Ottawa photography: Benoit Debaix / Unsplash -->
-          <img class="city-photo city-photo--ottawa" src="/assets/cities/ottawa.jpg" alt="" loading="lazy" decoding="async" />
-          <div class="event-content"><span class="event-season">Fall 2026</span><h3 class="event-city">Ottawa</h3><span class="event-date">Monday, October 26, 2026</span><span class="event-status">Coming soon</span></div>
+        <a class="event-card" data-event-status="coming-soon" href="/ca/calgary/" aria-label="CISO Open Mic Calgary city page">
+          <!-- Calgary photography: Ahmed Zalabany / Unsplash -->
+          <img class="city-photo" src="/assets/cities/calgary.jpg" alt="" loading="lazy" decoding="async" />
+          <div class="event-content"><span class="event-season">Fall 2026</span><h3 class="event-city">Calgary</h3><span class="event-date">Wednesday, November 18, 2026</span><span class="event-status">Coming soon</span></div>
         </a>
         <a class="event-card" data-event-status="coming-soon" href="/ca/toronto/" aria-label="CISO Open Mic Toronto city page">
           <!-- Toronto photography: Structural Photography / Unsplash -->
           <img class="city-photo city-photo--toronto" src="/assets/cities/toronto.jpg" alt="" loading="lazy" decoding="async" />
           <div class="event-content"><span class="event-season">Fall 2026</span><h3 class="event-city">Toronto</h3><span class="event-date">Tuesday, November 24, 2026</span><span class="event-status">Coming soon</span></div>
         </a>
-      </div>
+          </div>
+        </div>
+
+        <div class="event-year-group">
+          <p class="event-year-label">Expanding in 2027</p>
+          <div class="event-grid event-grid--2027">
+        <a class="event-card" data-event-status="coming-soon" href="/us/boston/" aria-label="CISO Open Mic Boston city page">
+          <!-- Boston photography: Andrew Spencer / Unsplash -->
+          <img class="city-photo city-photo--boston" src="/assets/cities/boston.jpg" alt="" loading="lazy" decoding="async" />
+          <div class="event-content"><span class="event-season">2027</span><h3 class="event-city">Boston</h3><span class="event-status">Coming soon</span></div>
+        </a>
+        <a class="event-card" data-event-status="coming-soon" href="/us/atlanta/" aria-label="CISO Open Mic Atlanta city page">
+          <!-- Atlanta photography: Jessica Furtney / CC0 -->
+          <img class="city-photo" src="/assets/cities/atlanta.jpg" alt="" loading="lazy" decoding="async" />
+          <div class="event-content"><span class="event-season">2027</span><h3 class="event-city">Atlanta</h3><span class="event-status">Coming soon</span></div>
+        </a>
+        <a class="event-card" data-event-status="coming-soon" href="/us/chicago/" aria-label="CISO Open Mic Chicago city page">
+          <!-- Chicago photography: Jeff Brown / Unsplash -->
+          <img class="city-photo" src="/assets/cities/chicago.jpg" alt="" loading="lazy" decoding="async" />
+          <div class="event-content"><span class="event-season">2027</span><h3 class="event-city">Chicago</h3><span class="event-status">Coming soon</span></div>
+        </a>
+        <a class="event-card" data-event-status="coming-soon" href="/ca/vancouver/" aria-label="CISO Open Mic Vancouver city page">
+          <!-- Vancouver photography: Adrian Yu / Unsplash -->
+          <img class="city-photo" src="/assets/cities/vancouver.jpg" alt="" loading="lazy" decoding="async" />
+          <div class="event-content"><span class="event-season">2027</span><h3 class="event-city">Vancouver</h3><span class="event-status">Coming soon</span></div>
+        </a>
+        <a class="event-card" data-event-status="coming-soon" href="/uk/london/" aria-label="CISO Open Mic London city page">
+          <!-- London photography: Alev Takil / Unsplash -->
+          <img class="city-photo" src="/assets/cities/london.jpg" alt="" loading="lazy" decoding="async" />
+          <div class="event-content"><span class="event-season">2027</span><h3 class="event-city">London</h3><span class="event-status">Coming soon</span></div>
+        </a>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -702,11 +740,15 @@
         <div class="register-options" aria-label="Upcoming CISO Open Mic cities">
           <h3>Choose your city</h3>
           <div class="register-city-grid">
-            <a class="register-city" href="/ca/calgary/">Calgary</a>
-            <a class="register-city" href="/ca/montreal/">Montreal</a>
-            <a class="register-city" href="/us/boston/">Boston</a>
             <a class="register-city" href="/ca/ottawa/">Ottawa</a>
+            <a class="register-city" href="/ca/montreal/">Montreal</a>
+            <a class="register-city" href="/ca/calgary/">Calgary</a>
             <a class="register-city" href="/ca/toronto/">Toronto</a>
+            <a class="register-city" href="/us/boston/">Boston</a>
+            <a class="register-city" href="/us/atlanta/">Atlanta</a>
+            <a class="register-city" href="/us/chicago/">Chicago</a>
+            <a class="register-city" href="/ca/vancouver/">Vancouver</a>
+            <a class="register-city" href="/uk/london/">London</a>
           </div>
           <a class="register-directory" href="/events/">Browse all events and statuses</a>
           <small class="register-note">Registration and topic submissions are completed through Luma from each city’s event page.</small>
