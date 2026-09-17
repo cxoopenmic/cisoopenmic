@@ -18,3 +18,8 @@ footer .legal-links{display:flex;justify-content:flex-end;gap:8px;flex-wrap:wrap
 footer a{color:#ff8a00;text-decoration:none;font-weight:600}
 footer a:hover{text-decoration:underline}
 @media(max-width:600px){footer{justify-content:center;gap:6px;padding:22px 18px;text-align:center}footer>div:first-child{width:100%}footer .legal-links{justify-content:center;flex-wrap:wrap;gap:6px;font-size:.82rem}}
+
+/* Reduce trailing space below registration. */
+.registration-inline{padding-bottom:32px}
+.registration-inline .registration-checkout iframe{height:510px}
+@media(max-width:600px){.registration-inline{padding-bottom:24px}.registration-inline .registration-checkout iframe{height:1080px}}
