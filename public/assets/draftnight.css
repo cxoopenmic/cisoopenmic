@@ -20,3 +20,5 @@ footer{max-width:none;background:#080a09;padding-inline:max(6%,calc((100% - 1268
 img,svg{vertical-align:middle}button,input{font:inherit}
 
 .registration-checkout{margin-top:26px}.registration-checkout .button{display:flex;justify-content:center;gap:12px;margin-top:0;text-align:center}.registration-checkout p{margin-top:14px;font-size:14px;color:#e0e0e0}.registration-checkout .button:focus-visible{outline:3px solid #fff;outline-offset:4px}
+
+.registration-card{min-width:0}.registration-checkout iframe{display:block;width:100%;max-width:600px;height:800px;box-sizing:border-box;background:#fff}
