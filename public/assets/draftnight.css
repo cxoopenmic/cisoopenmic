@@ -22,3 +22,16 @@ img,svg{vertical-align:middle}button,input{font:inherit}
 .registration-checkout{margin-top:26px}.registration-checkout .button{display:flex;justify-content:center;gap:12px;margin-top:0;text-align:center}.registration-checkout p{margin-top:14px;font-size:14px;color:#e0e0e0}.registration-checkout .button:focus-visible{outline:3px solid #fff;outline-offset:4px}
 
 .registration-card{min-width:0}.registration-checkout iframe{display:block;width:100%;max-width:600px;height:800px;box-sizing:border-box;background:#fff}
+
+/* Give the embedded registration its own space without a second event card. */
+.registration-inline{display:block;padding:64px 6% 72px;background:radial-gradient(ellipse at 50% 0,rgba(255,138,0,.12),transparent 65%),#111312;color:#fff;border-top:1px solid #ffffff20}
+.registration-inline .registration-intro{max-width:680px;margin:0 auto 30px;text-align:center}
+.registration-inline .eyebrow{color:#ffad45;margin-bottom:14px}
+.registration-inline h2{font-size:clamp(1.8rem,4vw,2.75rem);line-height:1.15}
+.registration-inline .registration-intro>p:last-child{max-width:600px;margin:18px auto 0;color:#d7d9d8;font-size:16px;line-height:1.7}
+.registration-inline .registration-checkout{max-width:760px;margin:0 auto;min-width:0}
+.registration-inline .registration-checkout iframe{max-width:none;height:600px;border:1px solid #ffffff26;border-radius:12px;background:#302b2b}
+.registration-inline .registration-checkout>p{margin-top:18px;text-align:center}
+.registration-inline .fallback-link{display:inline;font-size:14px;line-height:1.6}
+.registration-inline .fallback-link:focus-visible{outline:2px solid #ffad45;outline-offset:5px}
+@media(max-width:600px){.registration-inline{padding:44px 16px 48px}.registration-inline .registration-intro{margin-bottom:24px}.registration-inline .registration-intro>p:last-child{font-size:15px}.registration-inline .registration-checkout iframe{height:1080px;border-radius:8px}}
