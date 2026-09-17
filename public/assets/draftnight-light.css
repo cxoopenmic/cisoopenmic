@@ -22,4 +22,4 @@ footer a:hover{text-decoration:underline}
 /* Reduce trailing space below registration. */
 .registration-inline{padding-bottom:32px}
 .registration-inline .registration-checkout iframe{height:510px}
-@media(max-width:600px){.registration-inline{padding-bottom:24px}.registration-inline .registration-checkout iframe{height:1080px}}
+@media(max-width:600px){.registration-inline{padding-bottom:16px}.registration-inline .registration-checkout iframe{height:max(820px,calc(100vw + 460px))}}
