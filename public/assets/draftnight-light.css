@@ -1,27 +1,21 @@
-/* Bright white and orange palette for Toronto Draft Night. */
-:root{--background:#fff;--foreground:#24201d;--muted-foreground:#59514b}
-body,.site-header,.evening{background:#fff;color:#24201d}
-.site-header{border-bottom:1px solid #f0e7df}
-.hero{background:linear-gradient(115deg,#fff 30%,#fff4e5 100%)}
-h1 strong{background:none;color:#c65300;-webkit-text-fill-color:currentColor}
-.eyebrow,.registration-inline .eyebrow{color:#a94800}
-.hero .eyebrow:before{background:#ff8a00}
-.intro,.hero-note,.experiences p{color:#59514b}
-.button{background:#ff8a00;color:#24180e;box-shadow:0 8px 20px #e8750024}
-.button:hover{background:#ff9e2b;color:#24180e}
-nav a:hover{color:#a94800}
-.hero-photo{border-color:#e8d9c9;box-shadow:0 20px 45px #492c181c}
-.hero-photo figcaption{color:#fff}
-.event-strip{background:#ff8a00;color:#24180e;border-color:#ef8000;font-weight:600}
-.event-strip svg{color:#563000}
-.experiences article{border-color:#ebdfd5}
-.experiences article>svg{color:#bd5200}
-.sponsors{background:#fff7ec;border-color:#f0dfc9}
-.sponsor-logos>div{border:1px solid #ecdfd0}
-.registration-inline{background:linear-gradient(180deg,#fff 0%,#fff4e4 100%);color:#24201d;border-top:4px solid #ff8a00}
-.registration-inline .registration-intro>p:last-child{color:#59514b}
-.registration-inline .registration-checkout{padding:12px;background:#302b2b;border-radius:20px;border-top:4px solid #ff8a00;box-shadow:0 16px 40px #6b3e161a}
-.registration-inline .registration-checkout iframe{margin-top:0}
-footer{background:#fff;color:#24201d;border-top:1px solid #eddfcf}
-footer p{color:#59514b}footer>span{color:#a94800}
-@media(max-width:600px){.registration-inline .registration-checkout{padding:6px;border-radius:14px}}
+/* Balanced palette: dark stage, warm paper content, restrained orange. */
+.site-header{background:#151515}
+.hero{background:radial-gradient(ellipse at 85% 40%,#44302566,transparent 55%),#1c1c1c}
+h1 strong{background:none;color:#ff982b;-webkit-text-fill-color:currentColor}
+.hero .eyebrow:before{background:#ff982b}
+.button{background:#ff982b;color:#22180f;box-shadow:0 8px 20px #0002}
+.button:hover{background:#ffac54;color:#22180f}
+.hero-photo{border-color:#ffffff20;box-shadow:0 20px 45px #0003}
+.event-strip{background:#262422;color:#eee6dd;border-color:#ffffff12}
+.event-strip svg{color:#ff982b}
+.evening{max-width:none;padding-inline:max(6%,calc((100% - 1268px)/2));background:#f3f0ea;color:#292723}
+.evening .eyebrow,.sponsors .eyebrow{color:#a44e16}
+.experiences p{color:#5f5b55}
+.experiences article{border-color:#d9d3c9}
+.experiences article>svg{color:#a44e16}
+.sponsors{background:#e9e4db;color:#292723;border-color:#d9d3c9}
+.sponsor-logos>div{background:#fff;border:1px solid #ded8ce;box-shadow:none}
+.registration-inline{background:#302b2b;color:#fff;border-top:1px solid #ffffff16}
+.registration-inline .eyebrow{color:#ffad45}
+.registration-inline .registration-intro>p:last-child{color:#ded6d2}
+footer{background:#1c1b1a;border-top:1px solid #ffffff12}
