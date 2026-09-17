@@ -10,3 +10,10 @@
 .registration-inline{background:#302b2b;color:#fff;border-top:1px solid #ffffff16}
 .registration-inline .eyebrow{color:#ffad45}
 .registration-inline .registration-intro>p:last-child{color:#ded6d2}
+
+/* Keep legal information visible at every screen size. */
+footer{flex-wrap:wrap}
+.footer-legal{flex-basis:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding-top:24px;border-top:1px solid #ffffff29}
+.footer-legal nav{display:flex;flex-wrap:wrap;gap:12px 24px;font-size:13px;font-weight:400}
+.footer-legal nav a{display:inline-block;text-decoration:underline;text-underline-offset:3px}
+@media(max-width:600px){.footer-legal{align-items:flex-start;flex-direction:column}.footer-legal nav>a:first-child{display:inline-block}}
