@@ -1,21 +1,12 @@
-/* Balanced palette: dark stage, warm paper content, restrained orange. */
-.site-header{background:#151515}
-.hero{background:radial-gradient(ellipse at 85% 40%,#44302566,transparent 55%),#1c1c1c}
-h1 strong{background:none;color:#ff982b;-webkit-text-fill-color:currentColor}
-.hero .eyebrow:before{background:#ff982b}
-.button{background:#ff982b;color:#22180f;box-shadow:0 8px 20px #0002}
-.button:hover{background:#ffac54;color:#22180f}
-.hero-photo{border-color:#ffffff20;box-shadow:0 20px 45px #0003}
-.event-strip{background:#262422;color:#eee6dd;border-color:#ffffff12}
-.event-strip svg{color:#ff982b}
-.evening{max-width:none;padding-inline:max(6%,calc((100% - 1268px)/2));background:#f3f0ea;color:#292723}
-.evening .eyebrow,.sponsors .eyebrow{color:#a44e16}
-.experiences p{color:#5f5b55}
-.experiences article{border-color:#d9d3c9}
-.experiences article>svg{color:#a44e16}
-.sponsors{background:#e9e4db;color:#292723;border-color:#d9d3c9}
-.sponsor-logos>div{background:#fff;border:1px solid #ded8ce;box-shadow:none}
+/* Toronto balance using the main CISO Open Mic site's colour values.
+   Hero, headline, buttons and orange accents inherit the shared base styles. */
+.evening{max-width:none;padding-inline:max(6%,calc((100% - 1268px)/2));color:#0f172a;background:radial-gradient(circle at 88% 18%,rgba(255,138,0,.12),transparent 30%),radial-gradient(circle at 5% 95%,rgba(193,35,49,.08),transparent 28%),#fff4e8}
+.evening .eyebrow,.sponsors .eyebrow{color:#475569}
+.experiences p{color:#475569}
+.experiences article{border-color:#d8dee7}
+.experiences article>svg{color:#ff8a00}
+.sponsors{background:#f8fafc;color:#0f172a;border-color:#d8dee7}
+.sponsor-logos>div{background:#fff;border:1px solid #d8dee7;box-shadow:none}
 .registration-inline{background:#302b2b;color:#fff;border-top:1px solid #ffffff16}
 .registration-inline .eyebrow{color:#ffad45}
 .registration-inline .registration-intro>p:last-child{color:#ded6d2}
-footer{background:#1c1b1a;border-top:1px solid #ffffff12}
