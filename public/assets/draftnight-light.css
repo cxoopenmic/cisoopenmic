@@ -1,0 +1,27 @@
+/* Bright white and orange palette for Toronto Draft Night. */
+:root{--background:#fff;--foreground:#24201d;--muted-foreground:#59514b}
+body,.site-header,.evening{background:#fff;color:#24201d}
+.site-header{border-bottom:1px solid #f0e7df}
+.hero{background:linear-gradient(115deg,#fff 30%,#fff4e5 100%)}
+h1 strong{background:none;color:#c65300;-webkit-text-fill-color:currentColor}
+.eyebrow,.registration-inline .eyebrow{color:#a94800}
+.hero .eyebrow:before{background:#ff8a00}
+.intro,.hero-note,.experiences p{color:#59514b}
+.button{background:#ff8a00;color:#24180e;box-shadow:0 8px 20px #e8750024}
+.button:hover{background:#ff9e2b;color:#24180e}
+nav a:hover{color:#a94800}
+.hero-photo{border-color:#e8d9c9;box-shadow:0 20px 45px #492c181c}
+.hero-photo figcaption{color:#fff}
+.event-strip{background:#ff8a00;color:#24180e;border-color:#ef8000;font-weight:600}
+.event-strip svg{color:#563000}
+.experiences article{border-color:#ebdfd5}
+.experiences article>svg{color:#bd5200}
+.sponsors{background:#fff7ec;border-color:#f0dfc9}
+.sponsor-logos>div{border:1px solid #ecdfd0}
+.registration-inline{background:linear-gradient(180deg,#fff 0%,#fff4e4 100%);color:#24201d;border-top:4px solid #ff8a00}
+.registration-inline .registration-intro>p:last-child{color:#59514b}
+.registration-inline .registration-checkout{padding:12px;background:#302b2b;border-radius:20px;border-top:4px solid #ff8a00;box-shadow:0 16px 40px #6b3e161a}
+.registration-inline .registration-checkout iframe{margin-top:0}
+footer{background:#fff;color:#24201d;border-top:1px solid #eddfcf}
+footer p{color:#59514b}footer>span{color:#a94800}
+@media(max-width:600px){.registration-inline .registration-checkout{padding:6px;border-radius:14px}}
