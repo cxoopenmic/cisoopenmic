@@ -19,7 +19,7 @@
   }
   .site-head nav > a[href="/"], .site-head nav > a[href$="cisoopenmic.com/"] { --nav-icon: url('/assets/nav-home.svg'); }
   .site-head nav > a[href$="/blog/"] { --nav-icon: url('/assets/nav-blog.svg'); }
-  .site-head nav > a[href$="/sponsors/"] { --nav-icon: url('/assets/nav-sponsors.svg'); }
+  .site-head nav > a[href$="/sponsors/"] { --nav-icon: url('/assets/nav-sponsors.svg?v=briefcase'); }
   .site-head nav > a[href$="/partners/"] { --nav-icon: url('/assets/nav-partners.svg'); }
   .site-head nav > a[href$="/faq/"] { --nav-icon: url('/assets/nav-faq.svg'); }
   .site-head nav > a[href$="/events/"] { --nav-icon: url('/assets/nav-events.svg'); }
