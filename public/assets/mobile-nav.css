@@ -1,0 +1,30 @@
+/* Keep the full navigation in the document; show compact icons only on phones. */
+@media (max-width: 600px) {
+  .site-head { gap: 4px !important; padding-left: 8px !important; padding-right: 8px !important; }
+  .site-head .brand-lockup img { width: 36px !important; height: 36px !important; }
+  .site-head nav { gap: 2px !important; flex-wrap: nowrap !important; }
+  .site-head nav > a { flex: 0 0 30px; display: inline-flex !important; align-items: center; justify-content: center; width: 30px; min-width: 30px; height: 42px; padding: 0 !important; white-space: nowrap; }
+  .site-head nav > a:not(.language-switch) { font-size: 0 !important; line-height: 0 !important; }
+  .site-head nav > a.language-switch { font-size: .75rem !important; line-height: 1 !important; }
+  .site-head nav > a[href="/"], .site-head nav > a[href$="cisoopenmic.com/"],
+  .site-head nav > a[href$="/blog/"], .site-head nav > a[href$="/sponsors/"],
+  .site-head nav > a[href$="/partners/"], .site-head nav > a[href$="/faq/"],
+  .site-head nav > a[href$="/events/"] { overflow: hidden; }
+  .site-head nav > a[href="/"]::before, .site-head nav > a[href$="cisoopenmic.com/"]::before,
+  .site-head nav > a[href$="/blog/"]::before, .site-head nav > a[href$="/sponsors/"]::before,
+  .site-head nav > a[href$="/partners/"]::before, .site-head nav > a[href$="/faq/"]::before,
+  .site-head nav > a[href$="/events/"]::before, .site-head nav > a[href$="/account/"]::before {
+    content: ""; display: block; flex: 0 0 21px; width: 21px; height: 21px;
+    background: currentColor; -webkit-mask: var(--nav-icon) center / contain no-repeat; mask: var(--nav-icon) center / contain no-repeat;
+  }
+  .site-head nav > a[href="/"], .site-head nav > a[href$="cisoopenmic.com/"] { --nav-icon: url('/assets/nav-home.svg'); }
+  .site-head nav > a[href$="/blog/"] { --nav-icon: url('/assets/nav-blog.svg'); }
+  .site-head nav > a[href$="/sponsors/"] { --nav-icon: url('/assets/nav-sponsors.svg'); }
+  .site-head nav > a[href$="/partners/"] { --nav-icon: url('/assets/nav-partners.svg'); }
+  .site-head nav > a[href$="/faq/"] { --nav-icon: url('/assets/nav-faq.svg'); }
+  .site-head nav > a[href$="/events/"] { --nav-icon: url('/assets/nav-events.svg'); }
+  .site-head nav > a[href$="/account/"]:not(.account-nav-link) { --nav-icon: url('/assets/nav-account.svg'); }
+  .site-head nav > a.account-nav-link::before { display: none; }
+  .site-head nav > a.account-nav-link svg { width: 21px; height: 21px; }
+  .site-head .theme-toggle { flex: 0 0 32px; width: 32px; height: 42px; padding: 0 !important; }
+}
