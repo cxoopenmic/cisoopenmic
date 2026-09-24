@@ -23,3 +23,7 @@ footer a:hover{text-decoration:underline}
 .registration-inline{padding-bottom:32px}
 .registration-inline .registration-checkout iframe{height:510px}
 @media(max-width:600px){.registration-inline{padding-bottom:16px}.registration-inline .registration-checkout iframe{height:max(820px,calc(100vw + 460px))}}
+
+/* Four sponsors share equal space; stack on phones. */
+.sponsor-logos{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media(max-width:650px){.sponsor-logos{grid-template-columns:1fr}}
