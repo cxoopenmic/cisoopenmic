@@ -12,7 +12,7 @@
   .site-head nav > a[href$="/events/"] { overflow: hidden; }
   .site-head nav > a[href="/"]::before, .site-head nav > a[href$="cisoopenmic.com/"]::before,
   .site-head nav > a[href$="/blog/"]::before, .site-head nav > a[href$="/sponsors/"]::before,
-  .site-head nav > a[href$="/partners/"]::before, .site-head nav > a[href$="/faq/"]::before,
+  .site-head nav > a[href$="/partners/"]::before, .site-head nav > a[href$="/faq/"]::before, .site-head nav > a[href$="/faq/fr/"]::before,
   .site-head nav > a[href$="/events/"]::before, .site-head nav > a[href$="/account/"]::before {
     content: ""; display: block; flex: 0 0 21px; width: 21px; height: 21px;
     background: currentColor; -webkit-mask: var(--nav-icon) center / contain no-repeat; mask: var(--nav-icon) center / contain no-repeat;
@@ -21,7 +21,7 @@
   .site-head nav > a[href$="/blog/"] { --nav-icon: url('/assets/nav-blog.svg'); }
   .site-head nav > a[href$="/sponsors/"] { --nav-icon: url('/assets/nav-sponsors.svg?v=briefcase'); }
   .site-head nav > a[href$="/partners/"] { --nav-icon: url('/assets/nav-partners.svg'); }
-  .site-head nav > a[href$="/faq/"] { --nav-icon: url('/assets/nav-faq.svg'); }
+  .site-head nav > a[href$="/faq/"], .site-head nav > a[href$="/faq/fr/"] { --nav-icon: url('/assets/nav-faq.svg'); }
   .site-head nav > a[href$="/events/"] { --nav-icon: url('/assets/nav-events.svg'); }
   .site-head nav > a[href$="/account/"]:not(.account-nav-link) { --nav-icon: url('/assets/nav-account.svg'); }
   .site-head nav > a.account-nav-link::before { display: none; }

@@ -6,6 +6,9 @@
   <title>Frequently Asked Questions · CISO Open Mic</title>
   <meta name="description" content="Answers about CISO Open Mic events, attendance, speaking, registration, capacity and sponsorship." />
   <link rel="canonical" href="https://cisoopenmic.com/faq/" />
+  <link rel="alternate" hreflang="en-CA" href="https://cisoopenmic.com/faq/" />
+  <link rel="alternate" hreflang="fr-CA" href="https://cisoopenmic.com/faq/fr/" />
+  <link rel="alternate" hreflang="x-default" href="https://cisoopenmic.com/faq/" />
   <link rel="icon" href="/assets/favicon.ico" type="image/x-icon" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
@@ -37,6 +40,10 @@
     body[data-faq-header="hero"] .site-head nav a[aria-current="page"] { color:#fff; }
     body[data-faq-header="hero"] .theme-toggle { background:transparent; color:#fff; }
     .faq-main { margin-top:34px; }
+    .faq-language { display:flex; justify-content:flex-end; gap:16px; margin:0 8px 20px; font-weight:800; }
+    .faq-language a { color:var(--text); text-underline-offset:5px; padding:10px 4px; }
+    .faq-language a[aria-current] { color:var(--accent-2); }
+    html[lang="fr-CA"] .faq-hero h1 { font-size:clamp(2.4rem,6vw,4.5rem); line-height:1.15; letter-spacing:-.025em; overflow-wrap:anywhere; }
     .faq-hero {
       position:relative; isolation:isolate; overflow:hidden;
       grid-template-columns:minmax(0,1.35fr) minmax(260px,.65fr); align-items:center;
@@ -215,6 +222,7 @@
   </header>
 
   <main class="faq-main">
+    <nav class="faq-language" aria-label="FAQ language"><a href="/faq/" lang="en-CA" hreflang="en-CA" aria-current="page">English</a><a href="/faq/fr/" lang="fr-CA" hreflang="fr-CA">Français</a></nav>
     <section class="hero faq-hero" aria-labelledby="faq-title">
       <div><p class="eyebrow">Frequently asked questions</p><h1 id="faq-title">Questions, answered.</h1><p class="lede">What to expect from CISO Open Mic, how to participate and how each local gathering works.</p></div>
       <aside class="faq-intro"><strong>Start with your city.</strong><p>Dates, locations, capacity and registration details are published on each city page as they become available.</p></aside>
@@ -350,7 +358,7 @@
       const noResults = document.getElementById('faq-no-results');
       const items = [...document.querySelectorAll('.faq-item')];
       const sections = [...document.querySelectorAll('.faq-section')];
-      const normalize = value => value.toLocaleLowerCase().replace(/\s+/g, ' ').trim();
+      const normalize = value => value.normalize('NFKD').replace(/[\u0300-\u036f]/g, '').toLocaleLowerCase().replace(/\s+/g, ' ').trim();
       const slugify = value => value
         .normalize('NFKD')
         .replace(/[\u0300-\u036f]/g, '')
