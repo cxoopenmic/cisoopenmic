@@ -1,0 +1,5 @@
+.legal-nav { max-width:920px; margin:0 auto; padding:24px 24px 0; display:flex; flex-wrap:wrap; gap:12px 20px; font-weight:600; }
+.legal-nav a { padding:8px 0; text-underline-offset:4px; }
+.legal-nav a[aria-current] { font-weight:800; }
+footer { max-width:920px; margin-left:auto; margin-right:auto; padding:24px; }
+@media print { .legal-nav { display:none; } }
