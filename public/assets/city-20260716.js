@@ -115,8 +115,8 @@ if (cityTeam) {
         const panel = data.members.filter((person) => person.role === 'judge').slice(0, 4);
         if (director || mc) {
           leads.replaceChildren();
-          if (director) leads.appendChild(liveTeamCard(director, 'director', marks.director, true));
           if (mc) leads.appendChild(liveTeamCard(mc, 'mc', marks.mc, true));
+          if (director) leads.appendChild(liveTeamCard(director, 'director', marks.director, true));
         }
         if (panel.length) judges.replaceChildren(...panel.map((person, index) => liveTeamCard(person, 'judge', `J${index + 1}`, false)));
       })
