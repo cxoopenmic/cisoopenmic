@@ -39,3 +39,6 @@
 
 /resonance/*
   X-Robots-Tag: noindex, nofollow, noarchive
+
+/radar/*
+  X-Robots-Tag: noindex, nofollow, noarchive
