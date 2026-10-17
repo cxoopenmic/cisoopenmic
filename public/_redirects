@@ -6,3 +6,15 @@
 /crew / 301
 /toronto /ca/toronto/ 301
 /toronto/ /ca/toronto/ 301
+
+/radar https://cxoopenmic.com/radar/ 301
+/radar/ https://cxoopenmic.com/radar/ 301
+/radar/* https://cxoopenmic.com/radar/:splat 301
+
+/amplify https://cxoopenmic.com/amplify/ 301
+/amplify/ https://cxoopenmic.com/amplify/ 301
+/amplify/* https://cxoopenmic.com/amplify/:splat 301
+
+/resonance https://cxoopenmic.com/resonance/ 301
+/resonance/ https://cxoopenmic.com/resonance/ 301
+/resonance/* https://cxoopenmic.com/resonance/:splat 301
