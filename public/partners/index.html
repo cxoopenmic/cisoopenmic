@@ -4,11 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Partners · CISO Open Mic</title>
-  <meta name="description" content="Strategic and community organizations collaborating with CISO Open Mic." />
+  <meta name="description" content="Meet the partner organizations collaborating with CISO Open Mic." />
   <link rel="canonical" href="https://cisoopenmic.com/partners/" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Partners · CISO Open Mic" />
-  <meta property="og:description" content="Meet the strategic and community organizations collaborating with CISO Open Mic." />
+  <meta property="og:description" content="Meet the partner organizations collaborating with CISO Open Mic." />
   <meta property="og:url" content="https://cisoopenmic.com/partners/" />
   <link rel="icon" href="/assets/favicon.ico" type="image/x-icon" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -45,14 +45,11 @@
     h1 span { display:block; color:#ff9b18; }
     .hero-lede { max-width:670px; margin:26px 0 0; color:rgba(255,255,255,.9); font-size:1.08rem; line-height:1.7; }
     .hero-related-link { display:inline-flex; margin-top:24px; color:#fff; font-size:.84rem; font-weight:800; text-underline-offset:4px; }
-    .hero-partners { position:relative; min-height:390px; }
-    .hero-partner { position:absolute; width:65%; min-height:126px; padding:24px; border:1px solid rgba(255,255,255,.45); border-radius:20px; background:rgba(255,255,255,.97); display:grid; place-items:center; box-shadow:0 28px 58px rgba(0,0,0,.25); }
+    .hero-partners { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; }
+    .hero-partner { min-width:0; min-height:146px; padding:20px; border:1px solid rgba(255,255,255,.45); border-radius:20px; background:rgba(255,255,255,.97); display:grid; place-items:center; gap:12px; box-shadow:0 16px 32px rgba(0,0,0,.15); }
     .hero-partner img { display:block; max-width:100%; max-height:82px; object-fit:contain; }
     .hero-partner .wordmark { color:#111827; font-weight:800; text-align:center; }
-    .hero-partner-1 { top:0; left:0; transform:rotate(-2deg); }
-    .hero-partner-2 { top:125px; right:0; transform:rotate(2.2deg); }
-    .hero-partner-3 { bottom:0; left:8%; transform:rotate(-.8deg); }
-    .hero-partner:nth-child(n+4) { display:none; }
+    .hero-partner-name { color:#334155; font-size:.75rem; line-height:1.4; text-align:center; font-weight:700; }
     .partner-purpose,.partner-directory { padding:92px 0 104px; }
     .partner-purpose { background:var(--surface-2); }
     .section-heading { display:grid; grid-template-columns:minmax(0,1fr) minmax(300px,.7fr); align-items:end; gap:46px; margin-bottom:34px; }
@@ -113,46 +110,63 @@
     @media(max-width:420px) { .site-head { padding:0 10px; } .site-head nav { gap:6px; } .site-head nav a { font-size:.76rem; } .theme-toggle { padding:0; } h1 { font-size:clamp(3rem,15vw,4rem); } }
     @media(prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } .partner-card { transition:none; } }
   </style>
-<link rel="stylesheet" href="/assets/mobile-nav.css?v=2" /></head>
+<link rel="stylesheet" href="/assets/mobile-nav.css?v=2" />
+</head>
 <body class="light">
   <header class="site-head">
     <a href="/" aria-label="CISO Open Mic"><span class="brand-lockup"><img src="/assets/logo.png" alt="" /></span></a>
-    <nav aria-label="Main navigation"><a href="/">Home</a><a href="/blog/">Blog</a><a href="/sponsors/">Sponsors</a><a href="/partners/" aria-current="page">Partners</a><a href="/faq/">FAQ</a><button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch to dark theme">☀</button></nav>
+    <nav aria-label="Main navigation"><a href="/">Home</a><a href="/blog/">Blog</a><a href="/sponsors/">Sponsors</a><a href="/partners/" aria-current="page">Partners</a><a href="/faq/">FAQ</a><a class="account-nav-link" href="/account/" aria-label="My Account" title="My Account"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"></circle><path d="M4 21a8 8 0 0 1 16 0"></path></svg></a><button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch to dark theme">☀</button></nav>
   </header>
   <main>
     <section class="partner-hero" aria-labelledby="partners-title"><div class="section-inner">
-      <div><p class="eyebrow">Strategic &amp; community partners</p><h1 id="partners-title">Stronger rooms. <span>Wider circles.</span></h1><p class="hero-lede">CISO Open Mic works with organizations that extend our reach, sharpen our understanding of the security landscape and bring more voices into the conversation.</p></div>
-      <div class="hero-partners" aria-label="Current strategic and community partners"><div class="hero-partner hero-partner-1"><img src="/assets/partners/ccn.png" alt="Canadian Cybersecurity Network (CCN)" /></div><div class="hero-partner hero-partner-2"><img src="/assets/partners/leading-cyber-ladies.png" alt="Leading Cyber Ladies" /></div><div class="hero-partner hero-partner-3"><img src="/assets/partners/wicys-ontario-transparent.png" alt="WiCyS Ontario" /></div></div>
+      <div><p class="eyebrow">Our partners</p><h1 id="partners-title">Stronger rooms. <span>Wider circles.</span></h1><p class="hero-lede">CISO Open Mic works with organizations that extend our reach, sharpen our understanding of the security landscape and bring more voices into the conversation.</p></div>
+      <div class="hero-partners" aria-label="Current partners"><div class="hero-partner"><img src="/assets/partners/ccn.png" alt="Canadian Cybersecurity Network (CCN)" /><span class="hero-partner-name">Canadian Cybersecurity Network (CCN)</span></div><div class="hero-partner"><img src="/assets/partners/leading-cyber-ladies.png" alt="Leading Cyber Ladies" /><span class="hero-partner-name">Leading Cyber Ladies</span></div><div class="hero-partner"><img src="/assets/partners/wicys-ontario-transparent.png" alt="WiCyS Canada East" /><span class="hero-partner-name">WiCyS Canada East</span></div><div class="hero-partner"><img src="/assets/partners/wicys-ontario-transparent.png" alt="WiCyS Canada West" /><span class="hero-partner-name">WiCyS Canada West</span></div><div class="hero-partner"><img src="/assets/partners/cctx.png" alt="Canadian Cyber Threat Exchange (CCTX)" /><span class="hero-partner-name">Canadian Cyber Threat Exchange (CCTX)</span></div></div>
     </div></section>
     <section class="partner-purpose" aria-labelledby="purpose-title"><div class="section-inner">
       <div class="section-heading"><div><p class="eyebrow">Why we collaborate</p><h2 id="purpose-title">Community grows through connection.</h2></div><p>Partners bring complementary communities, perspectives and opportunities to the table while respecting the practitioner-led format of CISO Open Mic.</p></div>
       <div class="purpose-grid"><article class="purpose-card"><span>01 · CONNECT</span><h3>Bridge communities</h3><p>Help security leaders, aspiring leaders and community builders discover one another.</p></article><article class="purpose-card"><span>02 · INCLUDE</span><h3>Broaden participation</h3><p>Bring regional and underrepresented perspectives into a stronger shared conversation.</p></article><article class="purpose-card"><span>03 · AMPLIFY</span><h3>Share useful opportunities</h3><p>Extend the reach of relevant learning, mentorship and community initiatives.</p></article></div>
     </div></section>
     <section class="partner-directory" aria-labelledby="directory-title"><div class="section-inner">
-      <div class="strategic-block"><div class="section-heading"><div><p class="eyebrow">Strategic partnership</p><h2 id="directory-title">Network, intelligence, reach.</h2></div><p>CCN brings its national network and signal intelligence to bear for CISO Open Mic, helping us stay connected to the priorities, conversations and emerging needs shaping Canada’s cybersecurity community.</p></div><div class="strategic-grid"><button class="partner-card partner-card--strategic" type="button" data-partner-profile="canadian-cybersecurity-network" aria-haspopup="dialog">
+
+      <div class="section-heading"><div><p class="eyebrow">Working together</p><h2 id="directory-title">Our community partners.</h2></div><p>Select a partner to learn more about its community, mission and areas of focus.</p></div>
+      <div class="partner-grid"><button class="partner-card" type="button" data-partner-profile="canadian-cybersecurity-network" aria-haspopup="dialog">
     <span class="partner-logo"><img src="/assets/partners/ccn.png" alt="Canadian Cybersecurity Network (CCN)" loading="lazy" decoding="async" /></span>
     <span class="partner-card-copy">
-      <span class="partner-kicker">Strategic partner</span>
+      <span class="partner-kicker">Partner</span>
       <span class="partner-name">Canadian Cybersecurity Network (CCN)</span>
-      <span class="partner-summary">A strategic partner bringing national network reach and signal intelligence to CISO Open Mic.</span>
+      <span class="partner-summary">A national network connecting Canada’s cybersecurity community.</span>
       <span class="partner-more">View partner profile <span aria-hidden="true">↗</span></span>
     </span>
-  </button></div></div>
-      <div class="section-heading"><div><p class="eyebrow">Working together</p><h2>Our community partners.</h2></div><p>Select a partner to learn more about its community, mission and areas of focus.</p></div>
-      <div class="partner-grid"><button class="partner-card" type="button" data-partner-profile="leading-cyber-ladies" aria-haspopup="dialog">
+  </button><button class="partner-card" type="button" data-partner-profile="leading-cyber-ladies" aria-haspopup="dialog">
     <span class="partner-logo"><img src="/assets/partners/leading-cyber-ladies.png" alt="Leading Cyber Ladies" loading="lazy" decoding="async" /></span>
     <span class="partner-card-copy">
-      <span class="partner-kicker">Community partner</span>
+      <span class="partner-kicker">Partner</span>
       <span class="partner-name">Leading Cyber Ladies</span>
       <span class="partner-summary">A global professional network supporting women in cybersecurity.</span>
       <span class="partner-more">View partner profile <span aria-hidden="true">↗</span></span>
     </span>
   </button><button class="partner-card" type="button" data-partner-profile="wicys-ontario" aria-haspopup="dialog">
-    <span class="partner-logo"><img src="/assets/partners/wicys-ontario-transparent.png" alt="WiCyS Ontario" loading="lazy" decoding="async" /></span>
+    <span class="partner-logo"><img src="/assets/partners/wicys-ontario-transparent.png" alt="WiCyS Canada East" loading="lazy" decoding="async" /></span>
     <span class="partner-card-copy">
-      <span class="partner-kicker">Community partner</span>
-      <span class="partner-name">WiCyS Ontario</span>
-      <span class="partner-summary">Ontario’s professional affiliate of Women in CyberSecurity.</span>
+      <span class="partner-kicker">Partner</span>
+      <span class="partner-name">WiCyS Canada East</span>
+      <span class="partner-summary">Connecting women and allies in cybersecurity across Eastern Canada.</span>
+      <span class="partner-more">View partner profile <span aria-hidden="true">↗</span></span>
+    </span>
+  </button><button class="partner-card" type="button" data-partner-profile="wicys-canada-west" aria-haspopup="dialog">
+    <span class="partner-logo"><img src="/assets/partners/wicys-ontario-transparent.png" alt="WiCyS Canada West" loading="lazy" decoding="async" /></span>
+    <span class="partner-card-copy">
+      <span class="partner-kicker">Partner</span>
+      <span class="partner-name">WiCyS Canada West</span>
+      <span class="partner-summary">Connecting women in cybersecurity across Western Canada.</span>
+      <span class="partner-more">View partner profile <span aria-hidden="true">↗</span></span>
+    </span>
+  </button><button class="partner-card" type="button" data-partner-profile="cctx" aria-haspopup="dialog">
+    <span class="partner-logo"><img src="/assets/partners/cctx.png" alt="Canadian Cyber Threat Exchange (CCTX)" loading="lazy" decoding="async" /></span>
+    <span class="partner-card-copy">
+      <span class="partner-kicker">Partner</span>
+      <span class="partner-name">Canadian Cyber Threat Exchange (CCTX)</span>
+      <span class="partner-summary">A Canadian hub for cyber-threat intelligence sharing and collaboration.</span>
       <span class="partner-more">View partner profile <span aria-hidden="true">↗</span></span>
     </span>
   </button></div>
@@ -160,14 +174,14 @@
     </div></section>
   </main>
   <footer class="site-foot"><div>© 2026 CISO Open Mic</div><div class="legal-links"><a href="/privacy">Privacy Policy</a><span>·</span><a href="/terms">Terms of Use</a><span>·</span><a href="/conduct">Code of Conduct</a></div></footer>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","name":"CISO Open Mic partners","itemListElement":[{"@type":"ListItem","position":1,"item":{"@type":"Organization","name":"Canadian Cybersecurity Network (CCN)","url":"https://canadiancybersecuritynetwork.com/"}},{"@type":"ListItem","position":2,"item":{"@type":"Organization","name":"Leading Cyber Ladies","url":"https://leadingcyberladies.com/"}},{"@type":"ListItem","position":3,"item":{"@type":"Organization","name":"WiCyS Ontario","url":"https://sites.google.com/wicys.org/wicysontario"}}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","name":"CISO Open Mic partners","itemListElement":[{"@type":"ListItem","position":1,"item":{"@type":"Organization","name":"Canadian Cybersecurity Network (CCN)","url":"https://canadiancybersecuritynetwork.com/"}},{"@type":"ListItem","position":2,"item":{"@type":"Organization","name":"Leading Cyber Ladies","url":"https://leadingcyberladies.com/"}},{"@type":"ListItem","position":3,"item":{"@type":"Organization","name":"WiCyS Canada East","url":"https://sites.google.com/wicys.org/wicysontario"}},{"@type":"ListItem","position":4,"item":{"@type":"Organization","name":"WiCyS Canada West","url":"https://ca.linkedin.com/company/wicys-western-canada-affiliate"}},{"@type":"ListItem","position":5,"item":{"@type":"Organization","name":"Canadian Cyber Threat Exchange (CCTX)","url":"https://cctx.ca/"}}]}</script>
   <dialog id="partner-dialog" class="partner-dialog" aria-label="Partner profile"><button class="dialog-close" type="button" aria-label="Close partner profile">×</button><div id="partner-dialog-content"></div></dialog>
   <template id="partner-profile-canadian-cybersecurity-network">
     <article class="partner-profile">
       <div class="profile-logo"><img src="/assets/partners/ccn.png" alt="Canadian Cybersecurity Network (CCN)" /></div>
-      <p class="profile-kicker">Strategic partner</p>
+      <p class="profile-kicker">Partner</p>
       <h2>Canadian Cybersecurity Network (CCN)</h2>
-      <p class="profile-summary">A strategic partner bringing national network reach and signal intelligence to CISO Open Mic.</p>
+      <p class="profile-summary">A national network connecting Canada’s cybersecurity community.</p>
       <p class="profile-description">The Canadian Cybersecurity Network brings its national network and signal intelligence to bear for CISO Open Mic, helping us understand emerging priorities, connect with the wider ecosystem and keep the conversation grounded in what Canada’s cybersecurity community is seeing and needing.</p>
       <div class="profile-specialties" aria-label="Areas of focus"><span>Network reach</span><span>Signal intelligence</span><span>National cybersecurity ecosystem</span></div>
       <a class="profile-link" href="https://canadiancybersecuritynetwork.com/" target="_blank" rel="noopener">Visit Canadian Cybersecurity Network (CCN) <span aria-hidden="true">↗</span></a>
@@ -175,7 +189,7 @@
   </template><template id="partner-profile-leading-cyber-ladies">
     <article class="partner-profile">
       <div class="profile-logo"><img src="/assets/partners/leading-cyber-ladies.png" alt="Leading Cyber Ladies" /></div>
-      <p class="profile-kicker">Community partner</p>
+      <p class="profile-kicker">Partner</p>
       <h2>Leading Cyber Ladies</h2>
       <p class="profile-summary">A global professional network supporting women in cybersecurity.</p>
       <p class="profile-description">Leading Cyber Ladies creates a supportive global community where women in cybersecurity can learn, network, develop their public voices and share practical knowledge through events and workshops.</p>
@@ -184,13 +198,33 @@
     </article>
   </template><template id="partner-profile-wicys-ontario">
     <article class="partner-profile">
-      <div class="profile-logo"><img src="/assets/partners/wicys-ontario-transparent.png" alt="WiCyS Ontario" /></div>
-      <p class="profile-kicker">Community partner</p>
-      <h2>WiCyS Ontario</h2>
-      <p class="profile-summary">Ontario’s professional affiliate of Women in CyberSecurity.</p>
-      <p class="profile-description">WiCyS Ontario builds and connects a local community of women and allies in cybersecurity through outreach, awareness, networking, knowledge sharing, mentoring and engagement.</p>
-      <div class="profile-specialties" aria-label="Areas of focus"><span>Women in cybersecurity</span><span>Mentorship</span><span>Ontario community</span></div>
-      <a class="profile-link" href="https://sites.google.com/wicys.org/wicysontario" target="_blank" rel="noopener">Visit WiCyS Ontario <span aria-hidden="true">↗</span></a>
+      <div class="profile-logo"><img src="/assets/partners/wicys-ontario-transparent.png" alt="WiCyS Canada East" /></div>
+      <p class="profile-kicker">Partner</p>
+      <h2>WiCyS Canada East</h2>
+      <p class="profile-summary">Connecting women and allies in cybersecurity across Eastern Canada.</p>
+      <p class="profile-description">The WiCyS Eastern Canada Affiliate, formerly WiCyS Ontario, builds a community of women and allies in cybersecurity through outreach, networking, knowledge sharing and mentoring.</p>
+      <div class="profile-specialties" aria-label="Areas of focus"><span>Women in cybersecurity</span><span>Mentorship</span><span>Eastern Canada community</span></div>
+      <a class="profile-link" href="https://sites.google.com/wicys.org/wicysontario" target="_blank" rel="noopener">Visit WiCyS Canada East <span aria-hidden="true">↗</span></a>
+    </article>
+  </template><template id="partner-profile-wicys-canada-west">
+    <article class="partner-profile">
+      <div class="profile-logo"><img src="/assets/partners/wicys-ontario-transparent.png" alt="WiCyS Canada West" /></div>
+      <p class="profile-kicker">Partner</p>
+      <h2>WiCyS Canada West</h2>
+      <p class="profile-summary">Connecting women in cybersecurity across Western Canada.</p>
+      <p class="profile-description">The WiCyS Western Canada Affiliate brings women in cybersecurity together through networking, education and mentoring.</p>
+      <div class="profile-specialties" aria-label="Areas of focus"><span>Women in cybersecurity</span><span>Mentorship</span><span>Western Canada community</span></div>
+      <a class="profile-link" href="https://ca.linkedin.com/company/wicys-western-canada-affiliate" target="_blank" rel="noopener">Visit WiCyS Canada West <span aria-hidden="true">↗</span></a>
+    </article>
+  </template><template id="partner-profile-cctx">
+    <article class="partner-profile">
+      <div class="profile-logo"><img src="/assets/partners/cctx.png" alt="Canadian Cyber Threat Exchange (CCTX)" /></div>
+      <p class="profile-kicker">Partner</p>
+      <h2>Canadian Cyber Threat Exchange (CCTX)</h2>
+      <p class="profile-summary">A Canadian hub for cyber-threat intelligence sharing and collaboration.</p>
+      <p class="profile-description">The Canadian Cyber Threat Exchange is a non-profit organization helping Canadian organizations collaborate and share actionable cyber-threat intelligence to strengthen their resilience.</p>
+      <div class="profile-specialties" aria-label="Areas of focus"><span>Threat intelligence</span><span>Information sharing</span><span>Cybersecurity collaboration</span></div>
+      <a class="profile-link" href="https://cctx.ca/" target="_blank" rel="noopener">Visit Canadian Cyber Threat Exchange (CCTX) <span aria-hidden="true">↗</span></a>
     </article>
   </template>
   <script>
@@ -206,7 +240,5 @@
     document.querySelector('.dialog-close').addEventListener('click',()=>partnerDialog.close());
     partnerDialog.addEventListener('click',(event)=>{if(event.target===partnerDialog)partnerDialog.close()});
   </script>
-<script src="/assets/account-nav.js?v=2"></script>
-<script src="/assets/language.js?v=1"></script>
-</body>
+<script src="/assets/language.js?v=1"></script></body>
 </html>
