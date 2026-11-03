@@ -19,3 +19,13 @@
 /* Navy, heather grey and soft white from the supplied colour reference. */
 .mic-ready .theme-toggle{color:var(--accent-2)}
 .mic-ready .bring-band{border-block:1px solid #bec3cb}
+
+/* Jersey bands carry the hockey connection without changing the site navigation. */
+.mic-ready .hero-image{border-radius:16px;border:1px solid #536074}
+.mic-ready .hero-image:before{content:"";position:absolute;inset:0 0 auto;height:28px;z-index:2;background:linear-gradient(to bottom,#d9dadd 0 10px,#17243b 10px 16px,#f5f4f0 16px 24px,#17243b 24px)}
+.mic-ready .warmup-label{display:block;width:fit-content;margin-bottom:18px;padding:6px 10px;border:1px solid #c7c9ce;font-size:.68rem;line-height:1.4;font-weight:800;text-transform:uppercase;letter-spacing:.2em;color:#f5f4f0;background:#17243bd9}
+.mic-ready .format{position:relative;background:#17243b;color:#f5f4f0;border:0;padding-block:18px}
+.mic-ready .format:before,.mic-ready .format:after{content:"";position:absolute;left:0;right:0;height:12px;background:linear-gradient(to bottom,#d9dadd 0 5px,#17243b 5px 8px,#f5f4f0 8px)}
+.mic-ready .format:before{top:0}.mic-ready .format:after{bottom:0;transform:rotate(180deg)}
+.mic-ready .number{display:flex;align-items:center;justify-content:center;flex:0 0 42px;height:48px;padding:0;border-top:3px solid var(--accent);border-bottom:1px solid var(--line);font-size:1.4rem;line-height:1;font-weight:800;font-variant-numeric:tabular-nums}
+@media(max-width:440px){.mic-ready .steps li{gap:18px}.mic-ready .format .wrap{justify-content:center;text-align:center}}
