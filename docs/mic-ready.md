@@ -1,6 +1,6 @@
 # Mic Ready with Greg
 
-The public information page is `/mic-ready/`. It links to the Toronto Fall 2026 event registration, with discovery links from the home page, Toronto hub, and Toronto event page.
+The public information page is `/micready`. It links out to the Toronto Fall 2026 registration. At the owner’s request, it has no inbound links from the home page, Toronto pages, navigation, or sitemap yet.
 
 ## Registration
 
@@ -18,6 +18,6 @@ Timing, location, price, duration, capacity, and Greg’s biography are not asse
 
 ## Content maintenance
 
-The Toronto hub and event HTML are CMS-generated. Preserve the Mic Ready discovery copy when republishing those pages. Import/sync current registration questions from Luma before pushing CMS event questions, so a stale CMS question list does not overwrite this addition. Do not add this Toronto-specific offering to every city’s standard question set.
+Keep the page unlinked from the main site until requested. Import/sync current registration questions from Luma before pushing CMS event questions, so a stale CMS question list does not overwrite this addition. Do not add this Toronto-specific offering to every city’s standard question set.
 
 Move the page’s registration link to the next applicable event when this edition closes; do not imply that the main event’s time and venue are the coaching session arrangements.
