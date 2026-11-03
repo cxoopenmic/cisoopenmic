@@ -16,10 +16,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;800&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/city-20260716.css?v=20260723-1">
-  <link rel="stylesheet" href="/assets/mic-ready.css?v=2">
+  <link rel="stylesheet" href="/assets/mic-ready.css?v=3">
   <link rel="stylesheet" href="/assets/mobile-nav.css?v=3">
 </head>
-<body class="light mic-ready">
+<body class="mic-ready">
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-head">
     <a href="/" aria-label="CISO Open Mic"><span class="brand-lockup"><img src="/assets/logo.png" alt="" /></span></a>
@@ -31,7 +31,7 @@
       <a href="/partners/">Partners</a>
       <!-- Primary FAQ navigation -->
       <a href="/faq/">FAQ</a>
-      <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch to dark theme">☀</button>
+      <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch to light theme">☀</button>
     </nav>
   </header>
   <main id="main">
@@ -68,6 +68,7 @@
     </section>
   </main>
   <footer class="site-foot"><div>© 2026 CISO Open Mic</div><div class="legal-links"><a href="/privacy">Privacy Policy</a><span>·</span><a href="/terms">Terms of Use</a><span>·</span><a href="/conduct">Code of Conduct</a></div></footer>
+<script>if(localStorage.getItem("ciso-theme")==="light"){document.body.classList.add("light");document.getElementById("theme-toggle").setAttribute("aria-label","Switch to dark theme");}</script>
 <script src="/assets/city-20260716.js?v=20260920-1"></script>
 <script src="/assets/language.js?v=1"></script>
 </body>
