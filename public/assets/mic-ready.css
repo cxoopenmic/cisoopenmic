@@ -22,7 +22,6 @@
 
 /* Jersey bands carry the hockey connection without changing the site navigation. */
 .mic-ready .hero-image{border-radius:16px;border:1px solid #536074}
-.mic-ready .hero-image:before{content:"";position:absolute;inset:0 0 auto;height:28px;z-index:2;background:linear-gradient(to bottom,#d9dadd 0 10px,#17243b 10px 16px,#f5f4f0 16px 24px,#17243b 24px)}
 .mic-ready .warmup-label{display:block;width:fit-content;margin-bottom:18px;padding:6px 10px;border:1px solid #c7c9ce;font-size:.68rem;line-height:1.4;font-weight:800;text-transform:uppercase;letter-spacing:.2em;color:#f5f4f0;background:#17243bd9}
 .mic-ready .format{position:relative;background:#17243b;color:#f5f4f0;border:0;padding-block:18px}
 .mic-ready .format:before,.mic-ready .format:after{content:"";position:absolute;left:0;right:0;height:12px;background:linear-gradient(to bottom,#d9dadd 0 5px,#17243b 5px 8px,#f5f4f0 8px)}
