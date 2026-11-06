@@ -694,10 +694,8 @@
             <img class="city-photo" src="/assets/take-the-mic.webp" alt="" loading="lazy" decoding="async" />
             <div class="event-content"><span class="event-season">Casual networking &amp; alumni celebration</span><h4 class="event-city">Toronto Draft Night</h4><span class="event-date">Tuesday, October 6, 2026 · 6:00 p.m. till late</span><span class="event-status">Past event · View details →</span></div>
           </a></div></section></div><script>(()=>{function normalizeListingOrder(value) {
-  if (value === null || value === void 0 || String(value).trim() === "")
-    return null;
-  if (!["string", "number"].includes(typeof value))
-    return null;
+  if (value === null || value === void 0 || String(value).trim() === "") return null;
+  if (!["string", "number"].includes(typeof value)) return null;
   const order = Number(value);
   return Number.isInteger(order) && order >= 1 && order <= 9999 ? order : null;
 }
@@ -705,10 +703,8 @@ function hasListingPriority(event) {
   return event.listingPinned === true || normalizeListingOrder(event.listingOrder) !== null;
 }
 function isPastEvent(event, now = /* @__PURE__ */ new Date()) {
-  if (event.status === "event-complete")
-    return true;
-  if (!/^\d{4}-\d{2}-\d{2}$/.test(event.date || "") || !Number.isFinite(Date.parse(event.date)))
-    return false;
+  if (event.status === "event-complete") return true;
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(event.date || "") || !Number.isFinite(Date.parse(event.date))) return false;
   let today;
   try {
     today = new Intl.DateTimeFormat("en-CA", { timeZone: event.timezone || "America/Toronto", year: "numeric", month: "2-digit", day: "2-digit" }).format(now);
@@ -718,27 +714,21 @@ function isPastEvent(event, now = /* @__PURE__ */ new Date()) {
   return event.date < today;
 }
 function compareDirectoryEvents(a, b) {
-  if (a.past !== b.past)
-    return Number(a.past) - Number(b.past);
+  if (a.past !== b.past) return Number(a.past) - Number(b.past);
   if (!a.past) {
     const pinned = Number(b.event.listingPinned === true) - Number(a.event.listingPinned === true);
-    if (pinned)
-      return pinned;
+    if (pinned) return pinned;
     const aOrder = normalizeListingOrder(a.event.listingOrder);
     const bOrder = normalizeListingOrder(b.event.listingOrder);
-    if (aOrder !== bOrder)
-      return (aOrder ?? Infinity) - (bOrder ?? Infinity);
+    if (aOrder !== bOrder) return (aOrder ?? Infinity) - (bOrder ?? Infinity);
   }
-  if (!a.event.date)
-    return b.event.date ? 1 : 0;
-  if (!b.event.date)
-    return -1;
+  if (!a.event.date) return b.event.date ? 1 : 0;
+  if (!b.event.date) return -1;
   return a.past ? b.event.date.localeCompare(a.event.date) : a.event.date.localeCompare(b.event.date);
 }
 (function initializeLandingEvents() {
   const root4 = document.querySelector("[data-home-events]");
-  if (!root4)
-    return;
+  if (!root4) return;
   const cards = [...root4.querySelectorAll(".event-card")];
   function refresh() {
     const entries = cards.map((card) => {
@@ -753,15 +743,13 @@ function compareDirectoryEvents(a, b) {
       const group = past ? "past" : event.date || hasListingPriority(event) ? "upcoming" : "coming-soon";
       root4.querySelector(`[data-home-grid="${group}"]`).append(card);
     }
-    for (const group of root4.querySelectorAll("[data-home-group]"))
-      group.hidden = !group.querySelector(".event-card");
+    for (const group of root4.querySelectorAll("[data-home-group]")) group.hidden = !group.querySelector(".event-card");
   }
   __name(refresh, "refresh");
   refresh();
   setInterval(refresh, 6e4);
   document.addEventListener("visibilitychange", () => {
-    if (!document.hidden)
-      refresh();
+    if (!document.hidden) refresh();
   });
 })();})();</script><!-- HOME_EVENT_LIST_END -->
       </div>
