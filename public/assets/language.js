@@ -15,7 +15,9 @@
   }));
   if (preferred !== 'fr') return;
   document.querySelectorAll('a[href]:not([hreflang])').forEach(link => {
-    const url = new URL(link.getAttribute('href'), location.href);
+    const href = link.getAttribute('href');
+    if (href.startsWith('#') || link.getAttribute('aria-current') === 'page') return;
+    const url = new URL(href, location.href);
     if (url.origin !== location.origin) return;
     const pair = pairs.find(([en]) => normalize(en) === normalize(url.pathname));
     if (!pair) return;
