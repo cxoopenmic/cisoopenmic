@@ -13,7 +13,7 @@
   .site-head nav > a[href="/"]::before, .site-head nav > a[href$="cisoopenmic.com/"]::before,
   .site-head nav > a[href$="/blog/"]::before, .site-head nav > a[href$="/sponsors/"]::before,
   .site-head nav > a[href$="/partners/"]::before, .site-head nav > a[href$="/faq/"]::before, .site-head nav > a[href$="/faq/fr/"]::before,
-  .site-head nav > a[href$="/events/"]::before, .site-head nav > a[href$="/account/"]::before {
+  .site-head nav > a[href$="/manifesto/"]::before, .site-head nav > a[href$="/news/"]::before, .site-head nav > a[href$="/events/"]::before, .site-head nav > a[href$="/account/"]::before {
     content: ""; display: block; flex: 0 0 21px; width: 21px; height: 21px;
     background: currentColor; -webkit-mask: var(--nav-icon) center / contain no-repeat; mask: var(--nav-icon) center / contain no-repeat;
   }
@@ -27,4 +27,15 @@
   .site-head nav > a.account-nav-link::before { display: none; }
   .site-head nav > a.account-nav-link svg { width: 21px; height: 21px; }
   .site-head .theme-toggle { flex: 0 0 32px; width: 32px; height: 42px; padding: 0 !important; }
+}
+
+@media (max-width: 600px) {
+  .site-head nav > a[href$="/manifesto/"] { --nav-icon: url('/assets/nav-manifesto.svg'); }
+  .site-head nav > a[href$="/news/"] { --nav-icon: url('/assets/nav-blog.svg'); }
+  .site-head nav { min-width:0; overflow-x:auto; }
+  .site-head > a { flex-shrink:0; }
+}
+@media (min-width:601px) and (max-width:900px) {
+  .site-head { gap:10px; }
+  .site-head nav { gap:10px; flex-wrap:wrap; justify-content:flex-end; padding:12px 0; }
 }
