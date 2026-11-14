@@ -6,8 +6,8 @@ const read = path => readFileSync(new URL('../'+path, import.meta.url), 'utf8');
 const en = read('public/faq/index.html');
 const fr = read('public/faq/fr/index.html');
 test('French and English FAQ cover the same question count and sections', () => {
-  assert.equal([...fr.matchAll(/<summary>/g)].length, 41);
-  assert.equal([...en.matchAll(/<summary>/g)].length, 41);
+  assert.equal([...fr.matchAll(/<summary>/g)].length, 42);
+  assert.equal([...en.matchAll(/<summary>/g)].length, 42);
   assert.equal([...fr.matchAll(/class="faq-section"/g)].length, 6);
   assert.match(fr,/href="\/privacy\/fr\/"/);
   assert.match(fr,/href="\/terms\/fr\/"/);
