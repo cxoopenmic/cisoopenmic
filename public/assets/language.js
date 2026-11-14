@@ -1,5 +1,6 @@
 (() => {
   const pairs = [
+    ['/manifesto/', '/manifesto/fr/'],
     ['/faq/', '/faq/fr/'], ['/privacy', '/privacy/fr/'], ['/terms', '/terms/fr/'], ['/conduct', '/conduct/fr/'],
     ['/ca/montreal/', '/ca/montreal/fr/'], ['/ca/montreal/fall2026/', '/ca/montreal/fr/fall2026/']
   ];
