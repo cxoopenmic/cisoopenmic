@@ -1,3 +1,16 @@
+// Shared enhancement also reaches CMS-rendered pages without changing their desktop headers.
+(() => {
+  if (typeof window === 'undefined' || !document.currentScript?.src || window.cisoMobileMenuLoading) return;
+  window.cisoMobileMenuLoading = true;
+  const base = document.currentScript.src;
+  const style = document.createElement('link');
+  style.rel = 'stylesheet';
+  style.href = new URL('mobile-nav.css?v=menu-20261114', base).href;
+  document.head.append(style);
+  const script = document.createElement('script');
+  script.src = new URL('mobile-nav.js?v=menu-20261114', base).href;
+  document.head.append(script);
+})();
 function addAccountNavigation() {
   const navigation = document.querySelector('.site-head nav');
   if (!navigation || navigation.querySelector('[href="/account/"]')) return;
