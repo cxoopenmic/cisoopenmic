@@ -12,7 +12,7 @@ test('French policies retain every section, paragraph and list item',()=>{
   assert.ok(fr.includes(`href="/${key}" lang="en-CA"`));
   assert.ok(fr.includes(`href="/${key}/fr/" lang="fr-CA"`));
   assert.match(fr,/privacy@cxoopenmic.com/);
-  assert.match(fr,key==='terms'?/1er mai 2026/:/17 juillet 2026/);
+  assert.match(fr,key==='terms'?/1er mai 2026/:/14 novembre 2026/);
  }
 });
 test('French Montréal pages have direct French FAQ and legal navigation',()=>{
