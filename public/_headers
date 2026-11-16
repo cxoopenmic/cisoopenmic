@@ -37,6 +37,26 @@
 /amplify/*
   X-Robots-Tag: noindex, nofollow, noarchive
 
+/assets/mobile-nav.js
+  Cache-Control: public, max-age=0, must-revalidate
+  Cloudflare-CDN-Cache-Control: public, max-age=0, must-revalidate
+
+/assets/mobile-nav.css
+  Cache-Control: public, max-age=0, must-revalidate
+  Cloudflare-CDN-Cache-Control: public, max-age=0, must-revalidate
+
+/assets/language.js
+  Cache-Control: public, max-age=0, must-revalidate
+  Cloudflare-CDN-Cache-Control: public, max-age=0, must-revalidate
+
+/assets/city-20260716.js
+  Cache-Control: public, max-age=0, must-revalidate
+  Cloudflare-CDN-Cache-Control: public, max-age=0, must-revalidate
+
+/assets/account-nav.js
+  Cache-Control: public, max-age=0, must-revalidate
+  Cloudflare-CDN-Cache-Control: public, max-age=0, must-revalidate
+
 /resonance/*
   X-Robots-Tag: noindex, nofollow, noarchive
 
