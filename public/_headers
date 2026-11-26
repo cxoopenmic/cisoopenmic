@@ -1,3 +1,12 @@
+# Static responses only; authentication and API Workers own their response policies.
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Content-Security-Policy: base-uri 'self'; object-src 'none'; frame-ancestors 'self' https://cxoopenmic.com https://www.cxoopenmic.com
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), usb=()
+  Strict-Transport-Security: max-age=86400
+  ! X-Powered-By
+
 /
   Cache-Control: public, max-age=0, must-revalidate
   Cloudflare-CDN-Cache-Control: public, max-age=300, stale-while-revalidate=60, stale-if-error=86400
